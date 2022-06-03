@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/contentAddVan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_bg"
+        android:backgroundTint="@color/white">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginEnd="@dimen/_20sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:paddingBottom="@dimen/_10sdp">
+
+            <TextView
+                android:id="@+id/tvLabelAddFlat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:fontFamily="@font/opensans_semi_bold"
+                android:gravity="center_vertical"
+                android:paddingBottom="@dimen/_10sdp"
+                android:text="Add Floor"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_15sdp" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/tvFlatName"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_45sdp"
+                android:layout_below="@+id/tvLabelAddFlat"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:background="@drawable/button_bg"
+                android:backgroundTint="@color/bgEdit"
+                android:fontFamily="@font/opensans_regular"
+                android:gravity="center_vertical"
+                android:hint="Flat Name"
+                android:inputType="text"
+                android:paddingStart="@dimen/_16sdp"
+                android:paddingEnd="@dimen/_16sdp"
+                android:singleLine="true"
+                android:textColor="@color/textColor"
+                android:textColorHint="@color/addProductHint"
+                android:textCursorDrawable="@color/black"
+                android:textSize="@dimen/_13sdp" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/tvFloorName"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_45sdp"
+                android:layout_below="@+id/tvFlatName"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:background="@drawable/button_bg"
+                android:backgroundTint="@color/bgEdit"
+                android:fontFamily="@font/opensans_regular"
+                android:gravity="center_vertical"
+                android:hint="Flat Number"
+                android:inputType="number"
+                android:paddingStart="@dimen/_16sdp"
+                android:paddingEnd="@dimen/_16sdp"
+                android:singleLine="true"
+                android:textColor="@color/textColor"
+                android:textColorHint="@color/addProductHint"
+                android:textCursorDrawable="@color/black"
+                android:textSize="@dimen/_13sdp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnDone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvFloorName"
+                android:layout_marginStart="@dimen/_55sdp"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:layout_marginEnd="@dimen/_55sdp"
+                android:background="@drawable/bg_btn"
+                android:backgroundTint="@color/blue"
+                android:fontFamily="@font/opensans_light"
+                android:gravity="center"
+                android:text="Done"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_13sdp" />
+
+
+        </RelativeLayout>
+    </RelativeLayout>
+</layout>

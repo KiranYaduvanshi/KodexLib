@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="../../../../../../../layout/custom_preview.xml" value="0.2984409799554566" />
+        <entry key="..\:/AndroidStudio/moderenmover/KodexLib/app/src/main/res/layout/activity_dashboard.xml" value="0.27291666666666664" />
+        <entry key="..\:/AndroidStudio/moderenmover/KodexLib/app/src/main/res/layout/activity_job_detail.xml" value="0.27291666666666664" />
+        <entry key="..\:/AndroidStudio/moderenmover/KodexLib/app/src/main/res/layout/activity_jobs_listing.xml" value="0.27291666666666664" />
+        <entry key="..\:/AndroidStudio/moderenmover/KodexLib/app/src/main/res/layout/activity_signup.xml" value="0.27291666666666664" />
+        <entry key="..\:/AndroidStudio/moderenmover/KodexLib/app/src/main/res/layout/activity_terms_services.xml" value="0.27291666666666664" />
+        <entry key="..\:/AndroidStudio/moderenmover/KodexLib/app/src/main/res/layout/confirmation_dialog.xml" value="0.27291666666666664" />
+        <entry key="..\:/AndroidStudio/moderenmover/KodexLib/app/src/main/res/layout/job_item.xml" value="0.27291666666666664" />
+        <entry key="..\:/moderenmover-UpdatedAPIs/KodexLib/app/src/main/res/drawable/color_cursor.xml" value="0.129" />
+        <entry key="..\:/moderenmover-UpdatedAPIs/KodexLib/app/src/main/res/layout/activity_add_booking.xml" value="0.16666666666666666" />
+        <entry key="..\:/moderenmover-UpdatedAPIs/KodexLib/app/src/main/res/layout/activity_login.xml" value="0.1" />
+        <entry key="..\:/moderenmover-UpdatedAPIs/KodexLib/app/src/main/res/layout/add_address_dialog.xml" value="0.15989583333333332" />
+        <entry key="..\:/moderenmover-UpdatedAPIs/KodexLib/app/src/main/res/layout/add_worker_dialog.xml" value="0.1" />
+        <entry key="..\:/moderenmover-UpdatedAPIs/KodexLib/app/src/main/res/layout/top_bar.xml" value="0.15989583333333332" />
+        <entry key="..\:/moderenmover-UpdatedAPIs/KodexLib/app/src/main/res/menu/fab_menu.xml" value="0.17552083333333332" />
+        <entry key="app/src/main/res/drawable/bg_black_border.xml" value="0.17685185185185184" />
+        <entry key="app/src/main/res/drawable/bg_btn.xml" value="0.2101851851851852" />
+        <entry key="app/src/main/res/drawable/bg_button_yes.xml" value="0.2101851851851852" />
+        <entry key="app/src/main/res/drawable/bg_circle.xml" value="0.2101851851851852" />
+        <entry key="app/src/main/res/drawable/bg_des.xml" value="0.1962962962962963" />
+        <entry key="app/src/main/res/drawable/bg_dialog.xml" value="0.18888888888888888" />
+        <entry key="app/src/main/res/drawable/bg_dottted_border.xml" value="0.125" />
+        <entry key="app/src/main/res/drawable/bg_edit_text.xml" value="0.18888888888888888" />
+        <entry key="app/src/main/res/drawable/bg_gray_border.xml" value="0.1423611111111111" />
+        <entry key="app/src/main/res/drawable/bg_left_radius.xml" value="0.14027777777777778" />
+        <entry key="app/src/main/res/drawable/bg_loc.xml" value="0.2101851851851852" />
+        <entry key="app/src/main/res/drawable/bg_right_radius.xml" value="0.14027777777777778" />
+        <entry key="app/src/main/res/drawable/bg_selection_bg.xml" value="0.1925925925925926" />
+        <entry key="app/src/main/res/drawable/border_bg.xml" value="0.18055555555555555" />
+        <entry key="app/src/main/res/drawable/button_bg.xml" value="0.2074074074074074" />
+        <entry key="app/src/main/res/drawable/button_filter.xml" value="0.14375" />
+        <entry key="app/src/main/res/drawable/button_right_radius.xml" value="0.13883161512027492" />
+        <entry key="app/src/main/res/drawable/button_without_radius.xml" value="0.17685185185185184" />
+        <entry key="app/src/main/res/drawable/edittext_border.xml" value="0.21025641025641026" />
+        <entry key="app/src/main/res/drawable/eye_close.xml" value="0.21025641025641026" />
+        <entry key="app/src/main/res/drawable/graphics_btn.xml" value="0.140893470790378" />
+        <entry key="app/src/main/res/drawable/graphics_btn2.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/graphics_btn_border_corner_round.xml" value="0.140893470790378" />
+        <entry key="app/src/main/res/drawable/graphics_btn_border_corner_round2.xml" value="0.12013888888888889" />
+        <entry key="app/src/main/res/drawable/ic_add.xml" value="0.2074074074074074" />
+        <entry key="app/src/main/res/drawable/ic_add_woker.xml" value="0.18055555555555555" />
+        <entry key="app/src/main/res/drawable/ic_arrow_down.xml" value="0.18518518518518517" />
+        <entry key="app/src/main/res/drawable/ic_back.xml" value="0.18055555555555555" />
+        <entry key="app/src/main/res/drawable/ic_back_black.xml" value="0.18055555555555555" />
+        <entry key="app/src/main/res/drawable/ic_baseline_add_circle.xml" value="0.14027777777777778" />
+        <entry key="app/src/main/res/drawable/ic_baseline_check_circle_24.xml" value="0.12013888888888889" />
+        <entry key="app/src/main/res/drawable/ic_baseline_cloud_download_24.xml" value="0.13333333333333333" />
+        <entry key="app/src/main/res/drawable/ic_booking.xml" value="0.1423611111111111" />
+        <entry key="app/src/main/res/drawable/ic_button_1.xml" value="0.2074074074074074" />
+        <entry key="app/src/main/res/drawable/ic_circle_tick_blue.xml" value="0.14375" />
+        <entry key="app/src/main/res/drawable/ic_close.xml" value="0.2101851851851852" />
+        <entry key="app/src/main/res/drawable/ic_delete.xml" value="0.140893470790378" />
+        <entry key="app/src/main/res/drawable/ic_dollar.xml" value="0.11597222222222223" />
+        <entry key="app/src/main/res/drawable/ic_drop_down.xml" value="0.2074074074074074" />
+        <entry key="app/src/main/res/drawable/ic_edit.xml" value="0.13333333333333333" />
+        <entry key="app/src/main/res/drawable/ic_empty.xml" value="0.2074074074074074" />
+        <entry key="app/src/main/res/drawable/ic_eye.xml" value="0.21025641025641026" />
+        <entry key="app/src/main/res/drawable/ic_eye_closed.xml" value="0.21025641025641026" />
+        <entry key="app/src/main/res/drawable/ic_green.xml" value="0.2101851851851852" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.21025641025641026" />
+        <entry key="app/src/main/res/drawable/ic_location.xml" value="0.2101851851851852" />
+        <entry key="app/src/main/res/drawable/ic_minus_circle.xml" value="0.14027777777777778" />
+        <entry key="app/src/main/res/drawable/ic_place_holder.xml" value="0.13883161512027492" />
+        <entry key="app/src/main/res/drawable/ic_pound.xml" value="0.11597222222222223" />
+        <entry key="app/src/main/res/drawable/ic_rectangle.xml" value="0.1962962962962963" />
+        <entry key="app/src/main/res/drawable/ic_red.xml" value="0.2101851851851852" />
+        <entry key="app/src/main/res/drawable/ic_seagreen.xml" value="0.2101851851851852" />
+        <entry key="app/src/main/res/drawable/ic_selecteddot.xml" value="0.14027777777777778" />
+        <entry key="app/src/main/res/drawable/ic_unselectdot.xml" value="0.14027777777777778" />
+        <entry key="app/src/main/res/drawable/ic_upload.xml" value="0.1962962962962963" />
+        <entry key="app/src/main/res/drawable/ic_view.xml" value="0.18518518518518517" />
+        <entry key="app/src/main/res/drawable/ic_white_icon.xml" value="0.2101851851851852" />
+        <entry key="app/src/main/res/drawable/ic_yellow.xml" value="0.2101851851851852" />
+        <entry key="app/src/main/res/drawable/person_placeholder.xml" value="0.2" />
+        <entry key="app/src/main/res/drawable/radio_button.xml" value="0.140893470790378" />
+        <entry key="app/src/main/res/drawable/state_radio_button.xml" value="0.140893470790378" />
+        <entry key="app/src/main/res/drawable/state_radio_button2.xml" value="0.12013888888888889" />
+        <entry key="app/src/main/res/layout/activity_add_booking.xml" value="0.125" />
+        <entry key="app/src/main/res/layout/activity_add_job.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/activity_booking_listing.xml" value="0.19739583333333333" />
+        <entry key="app/src/main/res/layout/activity_calendar.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_create_job.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/activity_customer_listing.xml" value="0.125" />
+        <entry key="app/src/main/res/layout/activity_customer_profile.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_dashboard.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/activity_driver_listing.xml" value="0.13159722222222223" />
+        <entry key="app/src/main/res/layout/activity_full_image_view.xml" value="0.12013888888888889" />
+        <entry key="app/src/main/res/layout/activity_invoice.xml" value="0.19739583333333333" />
+        <entry key="app/src/main/res/layout/activity_invoice_listing.xml" value="0.13159722222222223" />
+        <entry key="app/src/main/res/layout/activity_invoice_listing2.xml" value="0.12013888888888889" />
+        <entry key="app/src/main/res/layout/activity_job_detail.xml" value="0.125" />
+        <entry key="app/src/main/res/layout/activity_jobs_listing.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/activity_mark_invoice_paid.xml" value="0.1527777777777778" />
+        <entry key="app/src/main/res/layout/activity_remove_worker.xml" value="0.12222222222222222" />
+        <entry key="app/src/main/res/layout/activity_signup.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_splash.xml" value="0.17314814814814813" />
+        <entry key="app/src/main/res/layout/activity_start_job.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/activity_terms_services.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/activity_worker_listing.xml" value="0.12222222222222222" />
+        <entry key="app/src/main/res/layout/add_address_dialog.xml" value="0.1295138888888889" />
+        <entry key="app/src/main/res/layout/add_van_sheet.xml" value="0.1295138888888889" />
+        <entry key="app/src/main/res/layout/add_van_view.xml" value="0.1295138888888889" />
+        <entry key="app/src/main/res/layout/add_worker_dialog.xml" value="0.19739583333333333" />
+        <entry key="app/src/main/res/layout/address_item.xml" value="0.1295138888888889" />
+        <entry key="app/src/main/res/layout/app_dialogue.xml" value="0.19739583333333333" />
+        <entry key="app/src/main/res/layout/booking_item.xml" value="0.19739583333333333" />
+        <entry key="app/src/main/res/layout/confirmation_dialog.xml" value="0.125" />
+        <entry key="app/src/main/res/layout/custom_toast.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/customer_type_item.xml" value="0.19739583333333333" />
+        <entry key="app/src/main/res/layout/dashboard_customer_item.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/dashboard_item.xml" value="0.19739583333333333" />
+        <entry key="app/src/main/res/layout/days_item.xml" value="0.19739583333333333" />
+        <entry key="app/src/main/res/layout/detail_custoemr_item.xml" value="0.125" />
+        <entry key="app/src/main/res/layout/dialog_datetimepicker.xml" value="0.12638888888888888" />
+        <entry key="app/src/main/res/layout/generate_email_dialog.xml" value="0.1295138888888889" />
+        <entry key="app/src/main/res/layout/history_date_header.xml" value="0.13159722222222223" />
+        <entry key="app/src/main/res/layout/image_upload.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/image_upload_new.xml" value="0.16215277777777778" />
+        <entry key="app/src/main/res/layout/image_view.xml" value="0.1295138888888889" />
+        <entry key="app/src/main/res/layout/invoice_item.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/job_history.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/job_item.xml" value="0.125" />
+        <entry key="app/src/main/res/layout/list_worker.xml" value="0.19739583333333333" />
+        <entry key="app/src/main/res/layout/loader_view.xml" value="0.1787037037037037" />
+        <entry key="app/src/main/res/layout/new_invoice_item.xml" value="0.125" />
+        <entry key="app/src/main/res/layout/select_worker_dialog.xml" value="0.13159722222222223" />
+        <entry key="app/src/main/res/layout/send_confirmation_dialog.xml" value="0.1295138888888889" />
+        <entry key="app/src/main/res/layout/success_dialog.xml" value="0.13159722222222223" />
+        <entry key="app/src/main/res/layout/top_bar.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/worker_item.xml" value="0.165" />
+        <entry key="app/src/main/res/menu/fab_menu.xml" value="0.14814814814814814" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.21025641025641026" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.21025641025641026" />
+        <entry key="app/src/main/res/xml/provider_paths.xml" value="0.1302405498281787" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

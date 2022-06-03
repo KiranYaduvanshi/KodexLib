@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_135sdp">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/_2sdp"
+            app:cardBackgroundColor="@color/white"
+            android:layout_marginBottom="@dimen/_13sdp"
+            app:cardElevation="@dimen/_3sdp"
+            app:cardCornerRadius="@dimen/_14sdp"
+            android:layout_marginLeft="@dimen/_13sdp"
+            android:layout_marginRight="@dimen/_13sdp"
+
+            >
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:background="@color/white"
+                android:layout_margin="@dimen/_2sdp"
+
+                >
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:fontFamily="@font/opensans_regular"
+                    android:gravity="center_horizontal"
+                    android:paddingBottom="@dimen/_5sdp"
+                    android:text="Purchase"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/_13sdp" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ivCard"
+                    android:layout_width="@dimen/_50sdp"
+                    android:layout_height="@dimen/_50sdp"
+                    android:layout_below="@id/tvTitle"
+                    android:layout_centerInParent="true"
+                    android:layout_marginTop="@dimen/_6sdp"
+                    android:paddingBottom="@dimen/_10sdp" />
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+    </RelativeLayout>
+</layout>

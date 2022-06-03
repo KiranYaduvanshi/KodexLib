@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:background="@android:color/transparent">
+
+        <RelativeLayout
+            android:id="@+id/cardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:background="@drawable/bg_dialog"
+            android:backgroundTint="@color/white"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="@dimen/_15sdp">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/bold"
+                    android:paddingStart="@dimen/_2sdp"
+                    android:paddingTop="@dimen/_10sdp"
+                    android:paddingBottom="@dimen/_10sdp"
+                    android:text="Create Worker"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/_14sdp" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/etWrkerName"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_45sdp"
+                    android:layout_below="@+id/llName"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:background="@drawable/button_bg"
+                    android:backgroundTint="@color/bgEdit"
+                    android:fontFamily="@font/opensans_regular"
+                    android:gravity="center_vertical"
+                    android:hint="Worker Name"
+                    android:inputType="text"
+                    android:paddingStart="@dimen/_16sdp"
+                    android:paddingEnd="@dimen/_16sdp"
+                    android:singleLine="true"
+                    android:textColor="@color/textColor"
+                    android:textColorHint="@color/addProductHint"
+                    android:textCursorDrawable="@drawable/color_cursor"
+                    android:textSize="@dimen/_13sdp" />
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/llWorkerType"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_45sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:background="@drawable/button_bg"
+                    android:backgroundTint="@color/bgEdit"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <com.jaredrummler.materialspinner.MaterialSpinner
+                            android:id="@+id/spWorkerType"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="@dimen/_6sdp"
+                            android:layout_marginTop="@dimen/_2sdp"
+                            android:layout_marginRight="@dimen/_6sdp"
+                            android:layout_marginBottom="@dimen/_2sdp"
+                            android:background="@drawable/button_bg"
+                            android:fontFamily="@font/opensans_regular"
+                            android:singleLine="true"
+                            android:textSize="@dimen/_13sdp"
+                            app:ms_background_color="@color/bgEdit"
+                            app:ms_hide_arrow="true"
+                            app:ms_hint="Worker Type"
+                            app:ms_hint_color="@color/black"
+                            app:ms_padding_left="@dimen/_12sdp"
+                            app:ms_padding_right="@dimen/_5sdp"
+                            app:ms_popup_padding_left="@dimen/_8sdp"
+                            app:ms_popup_padding_right="@dimen/_13sdp"
+                            app:ms_popup_padding_top="@dimen/_3sdp"
+                            app:ms_text_color="@color/black" />
+
+                        <LinearLayout
+                            android:id="@+id/llWorkerArrow"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:paddingLeft="@dimen/_15sdp"
+                                android:paddingRight="@dimen/_15sdp"
+                                android:src="@drawable/ic_drop_down" />
+
+                        </LinearLayout>
+
+                    </RelativeLayout>
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/etWorkerEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_45sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:background="@drawable/button_bg"
+                    android:backgroundTint="@color/bgEdit"
+                    android:fontFamily="@font/opensans_regular"
+                    android:gravity="center_vertical"
+                    android:hint="Worker Email"
+                    android:inputType="textEmailAddress"
+
+                    android:paddingStart="@dimen/_16sdp"
+                    android:paddingEnd="@dimen/_16sdp"
+                    android:singleLine="true"
+                    android:textColor="@color/textColor"
+                    android:textColorHint="@color/addProductHint"
+                    android:textCursorDrawable="@drawable/color_cursor"
+                    android:textSize="@dimen/_13sdp" />
+
+                <RelativeLayout
+                    android:id="@+id/rlPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_45sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:background="@drawable/button_bg"
+                    android:backgroundTint="@color/bgEdit">
+
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/etWorkerPassword"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_45sdp"
+                        android:layout_toStartOf="@id/showPass"
+                        android:background="@drawable/button_bg"
+                        android:backgroundTint="@color/bgEdit"
+                        android:fontFamily="@font/opensans_regular"
+                        android:gravity="center_vertical"
+                        android:hint="Password"
+                        android:inputType="textPassword"
+                        android:paddingStart="@dimen/_16sdp"
+                        android:paddingEnd="@dimen/_16sdp"
+                        android:singleLine="true"
+                        android:textColor="@color/textColor"
+                        android:textColorHint="@color/addProductHint"
+                        android:textCursorDrawable="@drawable/color_cursor"
+                        android:textSize="@dimen/_13sdp" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/showPass"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:src="@drawable/ic_eye_closed"
+                        android:tint="@color/black" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/llPrice"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_45sdp"
+                    android:layout_below="@id/llPriceNature"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:background="@drawable/button_bg"
+                    android:backgroundTint="#D2D1D1"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
+
+                    <RelativeLayout
+                        android:id="@+id/ivDollar"
+                        android:layout_width="@dimen/_25sdp"
+                        android:layout_height="match_parent"
+                        android:gravity="center">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/ivDoller"
+                            android:layout_width="@dimen/_20sdp"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/ic_pound" />
+                    </RelativeLayout>
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/etHourlyRate"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_toStartOf="@id/priceSign"
+                        android:layout_toEndOf="@+id/ivDollar"
+                        android:layout_weight=".75"
+                        android:background="@drawable/button_without_radius"
+                        android:backgroundTint="@color/bgEdit"
+                        android:fontFamily="@font/opensans_regular"
+                        android:gravity="center_vertical"
+                        android:hint="Hourly Rate"
+                        android:inputType="number"
+                        android:paddingStart="@dimen/_16sdp"
+                        android:paddingEnd="@dimen/_16sdp"
+                        android:singleLine="true"
+                        android:textColor="@color/textColor"
+                        android:textColorHint="@color/addProductHint"
+                        android:textCursorDrawable="@drawable/color_cursor"
+                        android:textSize="@dimen/_13sdp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/priceSign"
+                        android:layout_width="@dimen/_30sdp"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentEnd="true"
+                        android:layout_weight=".15"
+                        android:gravity="center"
+                        android:text="/hr."
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_14sdp" />
+                </RelativeLayout>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnLogin"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/_30sdp"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:layout_marginEnd="@dimen/_30sdp"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:background="@drawable/bg_btn"
+                    android:backgroundTint="@color/blue"
+                    android:elevation="@dimen/_1sdp"
+                    android:fontFamily="@font/opensans_semi_bold"
+                    android:text="Save"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_14sdp" />
+
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        </RelativeLayout>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivCross"
+            android:layout_width="@dimen/_36sdp"
+            android:layout_height="@dimen/_36sdp"
+            android:layout_alignTop="@+id/cardView"
+            android:layout_alignEnd="@+id/cardView"
+            android:layout_gravity="end"
+
+            android:layout_marginTop="-15dp"
+            android:layout_marginEnd="-16dp"
+            android:elevation="@dimen/_2sdp"
+            android:padding="@dimen/_7sdp"
+            android:src="@drawable/ic_close" />
+
+    </RelativeLayout>
+</layout>

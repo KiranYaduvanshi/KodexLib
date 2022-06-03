@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_250sdp"
+            android:background="@color/white">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_200sdp"
+                android:id="@+id/main">
+
+                <LinearLayout
+                    android:id="@+id/title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:layout_marginEnd="@dimen/_20sdp"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:layout_marginBottom="@dimen/_20sdp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:weightSum="9">
+
+                    <TextView
+                        android:id="@+id/month"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="4"
+                        android:gravity="center_horizontal"
+                        android:paddingStart="@dimen/_5sdp"
+                        android:singleLine="true"
+                        android:text="Date"
+                        android:textColor="@color/black"></TextView>
+
+                    <TextView
+                        android:id="@+id/day"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:layout_toRightOf="@id/month"
+                        android:layout_weight="2.5"
+                        android:gravity="center"
+                        android:singleLine="true"
+                        android:text="Hours"
+                        android:textColor="@color/black"></TextView>
+
+                    <TextView
+                        android:id="@+id/year"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/day"
+                        android:layout_weight="3"
+                        android:gravity="start"
+                        android:singleLine="true"
+                        android:text="Min"
+                        android:textColor="@color/black"></TextView>
+                </LinearLayout>
+
+
+<!--                <com.github.florent37.singledateandtimepicker.SingleDateAndTimePicker-->
+<!--                    android:id="@+id/datetime"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="200dp"-->
+<!--                    android:layout_below="@id/title"-->
+<!--                    android:layout_marginLeft="@dimen/_10sdp"-->
+<!--                    android:layout_marginRight="@dimen/_10sdp"-->
+<!--                    app:picker_curved="true"-->
+<!--                    app:picker_curvedMaxAngle="80"-->
+<!--                    app:picker_cyclic="true"-->
+<!--                    app:picker_mustBeOnFuture="true"-->
+<!--                    app:picker_selectedTextColor="@color/black"-->
+<!--                    app:picker_selectorColor="@color/white"-->
+<!--                    app:picker_textColor="@color/black"-->
+<!--                    app:picker_visibleItemCount="7">-->
+
+<!--                </com.github.florent37.singledateandtimepicker.SingleDateAndTimePicker>-->
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_below="@id/main"
+                android:orientation="horizontal"
+                android:weightSum="10"
+                >
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="5"
+                    android:text="Cancel"
+                    android:id="@+id/btn_cancelone"
+                    android:background="@color/white"
+                    android:textColor="@color/black" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="5"
+                    android:background="@color/white"
+                    android:id="@+id/btn_okone"
+                    android:text="ok"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+        </RelativeLayout>
+
+    </RelativeLayout>
+</layout>

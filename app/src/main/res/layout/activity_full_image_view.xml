@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/imageViewContent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        tools:context=".activities.ImageView">
+
+
+
+
+        <com.denzcoskun.imageslider.ImageSlider
+            android:id="@+id/imageSlider"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:iss_auto_cycle="true"
+            app:iss_corner_radius="0"
+            app:iss_delay="0"
+            app:iss_indicator_align="center"
+            app:iss_period="1000"
+            app:iss_placeholder="@drawable/ic_baseline_cloud_download_24"
+            app:iss_selected_dot="@drawable/ic_selecteddot"
+            app:iss_text_align="center"
+            app:iss_title_background="@android:color/transparent"
+            app:iss_unselected_dot="@drawable/ic_unselectdot" />
+
+    </RelativeLayout>
+</layout>

@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        >
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_5sdp"
+            android:elevation="@dimen/_5sdp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="@dimen/_14sdp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_10sdp">
+
+                <RelativeLayout
+                    android:id="@+id/rlMain"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <RelativeLayout
+                        android:id="@+id/llInfo"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_32sdp"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:orientation="horizontal">
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_toStartOf="@id/rating"
+                            android:orientation="horizontal"
+                            android:weightSum="1">
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:id="@+id/ivCustomer"
+                                android:layout_width="0dp"
+                                android:layout_height="@dimen/_30sdp"
+                                android:layout_alignParentStart="true"
+                                android:layout_gravity="center"
+                                android:layout_weight=".2"
+                                android:src="@drawable/patientellie" />
+
+                            <TextView
+                                android:id="@+id/customerName"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_toStartOf="@id/rating"
+                                android:layout_toEndOf="@id/ivCustomer"
+                                android:layout_weight=".8"
+                                android:fontFamily="@font/opensans_semi_bold"
+                                android:gravity="center_vertical"
+                                android:paddingStart="@dimen/_5sdp"
+                                android:singleLine="true"
+                                android:text="John Smith"
+                                android:textColor="@color/cusCol"
+                                android:textSize="@dimen/_13sdp" />
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+                        <com.iarcuschin.simpleratingbar.SimpleRatingBar
+                            android:id="@+id/rating"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="@dimen/_2sdp"
+                            android:layout_toStartOf="@id/customerRating"
+                            android:clickable="false"
+                            android:saveEnabled="false"
+                            app:srb_borderColor="@android:color/transparent"
+                            app:srb_fillColor="@color/yellow"
+                            app:srb_numberOfStars="5"
+                            app:srb_rating="3"
+                            app:srb_starBackgroundColor="@color/gray"
+                            app:srb_starSize="@dimen/_10sdp"
+                            app:srb_stepSize="1" />
+
+
+                        <RelativeLayout
+                            android:layout_width="@dimen/_70sdp"
+                            android:layout_height="match_parent"
+                            android:layout_toStartOf="@id/customerRating"
+                            android:clickable="true"
+                            android:elevation="@dimen/_100sdp" />
+                        <TextView
+                            android:id="@+id/customerRating"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentEnd="true"
+                            android:fontFamily="@font/opensans_semi_bold"
+                            android:gravity="center_vertical"
+                            android:paddingStart="@dimen/_10sdp"
+                            android:singleLine="true"
+                            android:text="4.0"
+                            android:textColor="@color/cusCol"
+                            android:textSize="@dimen/_10sdp" />
+
+
+                    </RelativeLayout>
+
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/llLocation"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/llInfo"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:orientation="horizontal">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="@dimen/_30sdp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:paddingTop="@dimen/_2sdp"
+                            android:src="@drawable/ic_location" />
+
+                        <TextView
+                            android:id="@+id/clientAddress"
+
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".7"
+                            android:ellipsize="end"
+                            android:fontFamily="@font/opensans_regular"
+                            android:gravity="center_vertical"
+                            android:maxLines="4"
+                            android:paddingStart="@dimen/_7sdp"
+                            android:text=""
+                            android:textColor="@color/locationCol"
+                            android:textSize="@dimen/_13sdp" />
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rlInfo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/rlMain">
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/llDriverName"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_25sdp"
+                        android:orientation="horizontal"
+                        android:weightSum="1">
+
+                        <TextView
+                            android:id="@+id/tvEmailTitle"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight=".4"
+                            android:gravity="center_vertical"
+                            android:paddingStart="@dimen/_5sdp"
+                            android:text="Email"
+                            android:textColor="@color/locationCol"
+                            android:textSize="@dimen/_13sdp" />
+
+                        <TextView
+                            android:id="@+id/tvEmail"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight=".6"
+                            android:ellipsize="marquee"
+                            android:fontFamily="@font/opensans_semi_bold"
+                            android:gravity="center_vertical"
+                            android:singleLine="true"
+                            android:textColor="@color/cusCol"
+                            android:textSize="@dimen/_13sdp" />
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/llDate"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_30sdp"
+                        android:layout_below="@id/llDriverName"
+                        android:orientation="horizontal"
+                        android:weightSum="1">
+
+                        <TextView
+                            android:id="@+id/tvDateTitle"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight=".4"
+                            android:gravity="center_vertical"
+                            android:paddingStart="@dimen/_5sdp"
+                            android:text="Phone No"
+                            android:textColor="@color/locationCol"
+                            android:textSize="@dimen/_13sdp" />
+
+                        <TextView
+                            android:id="@+id/tvPhone"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight=".6"
+                            android:ellipsize="marquee"
+                            android:fontFamily="@font/opensans_semi_bold"
+                            android:gravity="center_vertical"
+                            android:singleLine="true"
+                            android:textColor="@color/textColor"
+                            android:textSize="@dimen/_13sdp" />
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_25sdp"
+                    android:layout_below="@id/rlInfo"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:gravity="center">
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnDetail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_80sdp"
+                        android:layout_marginEnd="@dimen/_80sdp"
+                        android:background="@drawable/bg_btn"
+                        android:gravity="center"
+                        android:text="Detail"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_12sdp" />
+                </RelativeLayout>
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </RelativeLayout>
+</layout>

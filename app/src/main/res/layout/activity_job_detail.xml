@@ -1,0 +1,514 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/contentDetail"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        tools:context=".ui.main.jobs.JobDetail">
+
+        <include
+            android:id="@+id/detailTopBar"
+            layout="@layout/top_bar" />
+
+        <ScrollView
+            android:id="@+id/mainContent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/detailTopBar"
+            android:paddingBottom="@dimen/_20sdp"
+
+            >
+
+            <RelativeLayout
+                android:id="@+id/mailRL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:id="@+id/rlInfo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/_15sdp">
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/llDriverName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight=".31"
+                            android:fontFamily="@font/opensans_light"
+                            android:padding="@dimen/_5sdp"
+                            android:text="Driver Name"
+                            android:textColor="@color/locationCol"
+                            android:textSize="@dimen/_12sdp" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvDriverName"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight=".69"
+                            android:fontFamily="@font/opensans_extra_bold"
+                            android:padding="@dimen/_5sdp"
+                            android:singleLine="true"
+                            android:textColor="@color/cusCol"
+                            android:textSize="@dimen/_12sdp" />
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/llPhone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/llDriverName"
+                        android:orientation="horizontal">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight=".31"
+                            android:fontFamily="@font/opensans_light"
+                            android:padding="@dimen/_5sdp"
+                            android:text="Phone"
+                            android:textColor="@color/locationCol"
+                            android:textSize="@dimen/_12sdp" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvPhone"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight=".69"
+                            android:fontFamily="@font/opensans_semi_bold"
+                            android:padding="@dimen/_5sdp"
+                            android:singleLine="true"
+                            android:text=""
+                            android:textColor="@color/cusCol"
+                            android:textSize="@dimen/_12sdp" />
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/llLocation"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/llPhone"
+                        android:orientation="horizontal">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight=".31"
+                            android:fontFamily="@font/opensans_light"
+                            android:padding="@dimen/_5sdp"
+                            android:text="Location"
+                            android:textColor="@color/locationCol"
+                            android:textSize="@dimen/_12sdp" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvLocation"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".69"
+                            android:ellipsize="end"
+                            android:fontFamily="@font/opensans_semi_bold"
+                            android:maxLines="2"
+                            android:padding="@dimen/_5sdp"
+                            android:text=""
+                            android:textColor="@color/addColor"
+                            android:textSize="@dimen/_12sdp" />
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rlTable"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/rlInfo"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginEnd="@dimen/_15sdp"
+
+                    >
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/llStatus"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_30sdp"
+                        android:orientation="horizontal"
+                        android:weightSum="1">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".45"
+                            android:fontFamily="@font/opensans_light"
+                            android:gravity="center_vertical"
+                            android:paddingStart="@dimen/_15sdp"
+                            android:paddingTop="@dimen/_5sdp"
+                            android:paddingBottom="@dimen/_5sdp"
+                            android:text="Status"
+                            android:textColor="@color/locationCol"
+                            android:textSize="@dimen/_13sdp" />
+
+                        <!--                    <View-->
+                        <!--                        android:layout_width="@dimen/_1sdp"-->
+                        <!--                        android:layout_height="match_parent"-->
+                        <!--                        android:background="@color/lineCol" />-->
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvStatus"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight=".55"
+                            android:fontFamily="@font/opensans_semi_bold"
+                            android:gravity="center_vertical"
+                            android:paddingStart="@dimen/_15sdp"
+                            android:paddingTop="@dimen/_5sdp"
+                            android:paddingEnd="@dimen/_15sdp"
+                            android:paddingBottom="@dimen/_5sdp"
+                            android:singleLine="true"
+                            android:text=""
+                            android:textColor="@color/addColor"
+                            android:textSize="@dimen/_13sdp" />
+
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/llCustomer"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_30sdp"
+                        android:layout_below="@id/llStatus"
+                        android:orientation="horizontal"
+
+                        android:weightSum="1">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight=".45"
+                            android:fontFamily="@font/opensans_light"
+                            android:gravity="center_vertical"
+                            android:paddingStart="@dimen/_15sdp"
+                            android:paddingTop="@dimen/_5sdp"
+                            android:paddingBottom="@dimen/_5sdp"
+                            android:text="Customer"
+                            android:textColor="@color/locationCol"
+                            android:textSize="@dimen/_13sdp" />
+
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvCustomerName"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight=".55"
+                            android:ellipsize="marquee"
+                            android:fontFamily="@font/opensans_semi_bold"
+                            android:gravity="center_vertical"
+                            android:maxLines="2"
+                            android:paddingStart="@dimen/_15sdp"
+                            android:paddingTop="@dimen/_5sdp"
+                            android:paddingEnd="@dimen/_15sdp"
+                            android:paddingBottom="@dimen/_5sdp"
+                            android:text=""
+                            android:textColor="@color/addColor"
+                            android:textSize="@dimen/_13sdp" />
+
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/llEmail"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_35sdp"
+                        android:layout_below="@id/llCustomer"
+                        android:orientation="horizontal"
+                        android:weightSum="1">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".45"
+                            android:fontFamily="@font/opensans_light"
+                            android:gravity="center_vertical"
+                            android:paddingStart="@dimen/_15sdp"
+                            android:paddingTop="@dimen/_5sdp"
+                            android:paddingBottom="@dimen/_5sdp"
+                            android:text="Email"
+                            android:textColor="@color/locationCol"
+                            android:textSize="@dimen/_13sdp" />
+
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvEmail"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".55"
+                            android:ellipsize="marquee"
+                            android:fontFamily="@font/opensans_semi_bold"
+                            android:gravity="center_vertical"
+                            android:maxLines="2"
+                            android:paddingStart="@dimen/_15sdp"
+                            android:paddingTop="@dimen/_5sdp"
+                            android:paddingEnd="@dimen/_15sdp"
+                            android:paddingBottom="@dimen/_5sdp"
+                            android:text=""
+                            android:textColor="@color/addColor"
+                            android:textSize="@dimen/_11sdp" />
+
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/llType"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/llEmail"
+                        android:orientation="horizontal"
+                        android:weightSum="1">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".45"
+                            android:fontFamily="@font/opensans_light"
+                            android:gravity="center_vertical"
+                            android:paddingStart="@dimen/_15sdp"
+                            android:paddingTop="@dimen/_5sdp"
+                            android:paddingBottom="@dimen/_5sdp"
+                            android:text="Type"
+                            android:textColor="@color/locationCol"
+                            android:textSize="@dimen/_13sdp" />
+
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvType"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".55"
+                            android:ellipsize="marquee"
+                            android:fontFamily="@font/opensans_semi_bold"
+                            android:gravity="center_vertical"
+                            android:paddingStart="@dimen/_15sdp"
+                            android:paddingTop="@dimen/_5sdp"
+                            android:paddingEnd="@dimen/_15sdp"
+                            android:paddingBottom="@dimen/_5sdp"
+                            android:singleLine="true"
+                            android:text=""
+                            android:textColor="@color/addColor"
+                            android:textSize="@dimen/_13sdp" />
+
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/llPrice"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/llType"
+                        android:orientation="horizontal"
+
+                        android:weightSum="1">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".45"
+                            android:fontFamily="@font/opensans_light"
+                            android:gravity="center_vertical"
+                            android:paddingStart="@dimen/_15sdp"
+                            android:paddingTop="@dimen/_5sdp"
+                            android:paddingBottom="@dimen/_5sdp"
+                            android:text="Price"
+                            android:textColor="@color/locationCol"
+                            android:textSize="@dimen/_13sdp" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvPrice"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".55"
+                            android:ellipsize="marquee"
+                            android:fontFamily="@font/opensans_semi_bold"
+                            android:gravity="center_vertical"
+                            android:paddingStart="@dimen/_15sdp"
+                            android:paddingTop="@dimen/_5sdp"
+                            android:paddingEnd="@dimen/_15sdp"
+                            android:paddingBottom="@dimen/_5sdp"
+                            android:singleLine="true"
+                            android:text=""
+                            android:textColor="@color/addColor"
+                            android:textSize="@dimen/_13sdp" />
+
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/llAdvancePayment"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/llPrice"
+                        android:orientation="horizontal"
+
+                        android:weightSum="1">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".45"
+                            android:fontFamily="@font/opensans_light"
+                            android:gravity="center_vertical"
+                            android:paddingStart="@dimen/_15sdp"
+                            android:paddingTop="@dimen/_5sdp"
+                            android:paddingBottom="@dimen/_5sdp"
+                            android:text="Deposit"
+                            android:textColor="@color/locationCol"
+                            android:textSize="@dimen/_13sdp" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvAdvancePayment"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".55"
+                            android:ellipsize="marquee"
+                            android:fontFamily="@font/opensans_semi_bold"
+                            android:gravity="center_vertical"
+                            android:paddingStart="@dimen/_15sdp"
+                            android:paddingTop="@dimen/_5sdp"
+                            android:paddingEnd="@dimen/_15sdp"
+                            android:paddingBottom="@dimen/_5sdp"
+                            android:singleLine="true"
+                            android:text=""
+                            android:textColor="@color/addColor"
+                            android:textSize="@dimen/_13sdp" />
+
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/llDateOrder"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/llAdvancePayment"
+                        android:orientation="horizontal"
+                        android:weightSum="1">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight=".45"
+                            android:fontFamily="@font/opensans_light"
+                            android:gravity="center_vertical"
+                            android:paddingStart="@dimen/_15sdp"
+                            android:paddingTop="@dimen/_5sdp"
+                            android:paddingBottom="@dimen/_5sdp"
+                            android:text="Date"
+                            android:textColor="@color/locationCol"
+                            android:textSize="@dimen/_13sdp" />
+
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvDate"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".55"
+                            android:ellipsize="marquee"
+                            android:fontFamily="@font/opensans_semi_bold"
+                            android:gravity="center_vertical"
+                            android:paddingStart="@dimen/_15sdp"
+                            android:paddingTop="@dimen/_5sdp"
+                            android:paddingEnd="@dimen/_15sdp"
+                            android:paddingBottom="@dimen/_5sdp"
+                            android:singleLine="true"
+                            android:text=""
+                            android:textColor="@color/addColor"
+                            android:textSize="@dimen/_13sdp" />
+
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/llPriceType"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/llDateOrder"
+                        android:orientation="horizontal"
+                        android:weightSum="1">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight=".45"
+                            android:fontFamily="@font/opensans_light"
+                            android:gravity="center_vertical"
+                            android:paddingStart="@dimen/_15sdp"
+                            android:paddingTop="@dimen/_5sdp"
+                            android:paddingBottom="@dimen/_5sdp"
+                            android:text="Price Type"
+                            android:textColor="@color/locationCol"
+                            android:textSize="@dimen/_13sdp" />
+
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvPriceType"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".55"
+                            android:ellipsize="marquee"
+                            android:fontFamily="@font/opensans_semi_bold"
+                            android:gravity="center_vertical"
+                            android:paddingStart="@dimen/_15sdp"
+                            android:paddingTop="@dimen/_5sdp"
+                            android:paddingEnd="@dimen/_15sdp"
+                            android:paddingBottom="@dimen/_5sdp"
+                            android:singleLine="true"
+                            android:text=""
+                            android:textColor="@color/addColor"
+                            android:textSize="@dimen/_13sdp" />
+
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+                </RelativeLayout>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnAssignJob"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_40sdp"
+                    android:layout_below="@id/rlTable"
+                    android:layout_marginStart="@dimen/_50sdp"
+                    android:layout_marginTop="@dimen/_50sdp"
+                    android:layout_marginEnd="@dimen/_50sdp"
+                    android:background="@drawable/bg_btn"
+                    android:backgroundTint="@color/blue"
+                    android:fontFamily="@font/opensans_semi_bold"
+                    android:gravity="center"
+                    android:text="Assign"
+                    android:textAllCaps="true"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_14sdp"
+
+                    />
+
+
+            </RelativeLayout>
+
+
+        </ScrollView>
+
+    </RelativeLayout>
+</layout>

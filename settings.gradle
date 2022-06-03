@@ -1,0 +1,6 @@
+rootProject.name = "KodexLib"
+include ':app'
+include ':instapicker'
+include ':cropper'
+include ':imagefilters'
+include ':android-networking'

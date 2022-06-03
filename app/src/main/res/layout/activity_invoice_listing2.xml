@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/contentInvoice"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/DimGray"
+        tools:context=".ui.main.invoice.InvoiceListing">
+
+        <include
+            android:id="@+id/topBar"
+            layout="@layout/top_bar" />
+
+
+        <RelativeLayout
+            android:id="@+id/rlNoData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/ivEmpty"
+                android:layout_width="@dimen/_60sdp"
+                android:layout_height="@dimen/_60sdp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/ic_empty" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ivEmpty"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:fontFamily="@font/opensans_semi_bold"
+                android:text="No Record Found"
+                android:textColor="@color/textColor" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rlRadioButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/topBar"
+            android:gravity="center"
+            android:paddingStart="@dimen/_14sdp"
+            android:paddingTop="@dimen/_5sdp"
+            android:paddingEnd="@dimen/_14sdp"
+
+            >
+
+            <RadioGroup
+                android:id="@+id/radioGroupButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/btnUnPaidInvoice"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:background="@drawable/state_radio_button2"
+                    android:button="@android:color/transparent"
+                    android:checked="true"
+                    android:fontFamily="@font/opensans_semi_bold"
+                    android:gravity="center"
+                    android:text="Unpaid Invoices"
+
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_12sdp" />
+
+
+                <RadioButton
+                    android:id="@+id/btnPaidInvoices"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:background="@drawable/state_radio_button2"
+                    android:button="@android:color/transparent"
+                    android:fontFamily="@font/opensans_semi_bold"
+                    android:gravity="center"
+                    android:text="Paid Invoices"
+
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_12sdp" />
+
+            </RadioGroup>
+        </RelativeLayout>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/llViews"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_1sdp"
+            android:layout_below="@id/rlRadioButton"
+            android:orientation="horizontal"
+            android:paddingStart="@dimen/_14sdp"
+            android:paddingEnd="@dimen/_14sdp"
+            android:weightSum="1">
+
+            <View
+                android:id="@+id/viewInprogress"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".5"
+                android:background="@color/blue"
+                android:visibility="visible" />
+
+            <View
+                android:id="@+id/viewCompleted"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".5"
+                android:background="@color/blue"
+                android:visibility="invisible" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <RelativeLayout
+            android:id="@+id/rlSearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/llViews">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/searchBtn"
+                android:layout_width="@dimen/_24sdp"
+                android:layout_height="@dimen/_24sdp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_20sdp"
+                android:src="@drawable/ic_search" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etSearch"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginEnd="@dimen/_15sdp"
+                android:background="@drawable/button_bg"
+                android:hint="Search With Customer Name"
+                android:imeOptions="actionDone"
+                android:paddingStart="@dimen/_10sdp"
+                android:singleLine="true"
+                android:textSize="@dimen/_10sdp"
+                android:fontFamily="@font/opensans_light"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:visibility="gone" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/btnClose"
+                android:layout_width="@dimen/_15sdp"
+                android:layout_height="@dimen/_15sdp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerInParent="true"
+                android:layout_marginEnd="@dimen/_20sdp"
+                android:elevation="@dimen/_1sdp"
+                android:src="@drawable/ic_close"
+                android:visibility="gone" />
+
+        </RelativeLayout>
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/svInvoice"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/rlSearch"
+            android:layout_marginStart="@dimen/_10sdp"
+
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_10sdp">
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvInvoices"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/_10sdp"
+                android:clipToPadding="false" />
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
+    </RelativeLayout>
+</layout>

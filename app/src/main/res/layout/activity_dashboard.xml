@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:id="@+id/contentDashboard"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/DimGray"
+        tools:context=".ui.main.dashboard.Dashboard">
+
+        <include
+            android:id="@+id/dashboardTopBar"
+            layout="@layout/top_bar" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/dashboardTopBar">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RelativeLayout
+                    android:id="@+id/rlItems"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvDashboard"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginLeft="@dimen/_15sdp"
+                        android:layout_marginTop="@dimen/_25sdp"
+                        android:layout_marginRight="@dimen/_15sdp"
+                        android:layout_marginBottom="@dimen/_5sdp"
+                        tools:ignore="NotSibling" />
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:id="@+id/rlBooking"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/rlItems"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:layout_marginEnd="@dimen/_15sdp"
+                    android:layout_marginBottom="@dimen/_15sdp"
+                    android:background="@drawable/bg_loc"
+                    android:elevation="@dimen/_1sdp"
+                    android:paddingBottom="@dimen/_25sdp">
+
+                    <RelativeLayout
+                        android:id="@+id/rlLOC"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/_10sdp">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvLOC"
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentStart="true"
+                            android:layout_marginStart="@dimen/_5sdp"
+                            android:layout_toStartOf="@id/tvSeeAll"
+                            android:fontFamily="@font/opensans_semi_bold"
+                            android:text="Bookings"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_13sdp" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvSeeAll"
+                            android:visibility="gone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginEnd="@dimen/_5sdp"
+                            android:fontFamily="@font/bold"
+                            android:text="See All"
+                            android:textColor="@color/blue"
+                            android:textSize="@dimen/_13sdp" />
+
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/rlHeading"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/rlLOC"
+                        android:background="#F2F2F2"
+                        android:padding="@dimen/_5sdp">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentStart="true"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:fontFamily="@font/opensans_regular"
+                            android:text="Name"
+                            android:id="@+id/labelName"
+                            android:textColor="@color/headingColor"
+                            android:textSize="@dimen/_13sdp" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_toEndOf="@+id/labelName"
+                            android:gravity="center"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:fontFamily="@font/opensans_regular"
+                            android:text="Address"
+                            android:textColor="@color/headingColor"
+                            android:textSize="@dimen/_13sdp" />
+
+
+
+
+                    </RelativeLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvBooking"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/rlHeading"
+                        tools:itemCount="3"
+                        tools:listitem="@layout/dashboard_customer_item" />
+
+
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:id="@+id/rlWorker"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/rlBooking"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginEnd="@dimen/_15sdp"
+                    android:layout_marginBottom="@dimen/_15sdp"
+                    android:elevation="@dimen/_1sdp"
+                    android:paddingBottom="@dimen/_25sdp">
+
+                    <RelativeLayout
+                        android:id="@+id/tvLabelWorker"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="@dimen/_10sdp"
+                        >
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvWorkers"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentStart="true"
+                            android:layout_marginStart="@dimen/_5sdp"
+                            android:fontFamily="@font/opensans_semi_bold"
+                            android:text="Workers"
+
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_13sdp" />
+
+
+
+                    </RelativeLayout>
+
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvWorker"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tvLabelWorker"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        tools:itemCount="3"
+                        tools:listitem="@layout/worker_item" />
+
+
+                </RelativeLayout>
+
+
+            </RelativeLayout>
+
+
+        </androidx.core.widget.NestedScrollView>
+
+
+    </RelativeLayout>
+</layout>

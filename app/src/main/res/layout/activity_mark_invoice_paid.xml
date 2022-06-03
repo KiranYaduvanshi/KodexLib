@@ -1,0 +1,1484 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/contentTerms"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        tools:context=".ui.main.termsAndServices.TermsServices">
+
+
+        <include
+            android:id="@+id/topBar"
+            layout="@layout/top_bar" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnEmailSend"
+            android:layout_width="wrap_content"
+
+            android:layout_height="@dimen/_35sdp"
+            android:layout_below="@id/topBar"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_15sdp"
+            android:background="@drawable/button_bg"
+            android:paddingStart="@dimen/_15sdp"
+            android:paddingEnd="@dimen/_15sdp"
+            android:text="Resend Email"
+            android:textAllCaps="false"
+            android:visibility="gone"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_13sdp" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/btnEmailSend"
+            android:fillViewport="true">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:layout_marginEnd="@dimen/_15sdp">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvBookedByTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:fontFamily="@font/opensans_semi_bold"
+                    android:gravity="center_vertical"
+                    android:paddingStart="@dimen/_2sdp"
+                    android:singleLine="true"
+                    android:text="Booked By"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/_13sdp" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvBookedBy"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_45sdp"
+                    android:layout_below="@+id/tvBookedByTitle"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:background="@drawable/button_bg"
+                    android:backgroundTint="@color/bgEdit"
+                    android:fontFamily="@font/opensans_regular"
+                    android:gravity="center_vertical"
+                    android:paddingStart="@dimen/_16sdp"
+                    android:paddingEnd="@dimen/_16sdp"
+                    android:singleLine="true"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/_13sdp" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvDateTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_below="@id/tvBookedBy"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:fontFamily="@font/opensans_semi_bold"
+                    android:gravity="center_vertical"
+                    android:paddingStart="@dimen/_2sdp"
+                    android:singleLine="true"
+                    android:text="Date"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/_13sdp" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_45sdp"
+                    android:layout_below="@id/tvDateTitle"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:background="@drawable/button_bg"
+                    android:backgroundTint="@color/bgEdit"
+                    android:fontFamily="@font/opensans_regular"
+                    android:gravity="center_vertical"
+                    android:paddingStart="@dimen/_16sdp"
+                    android:paddingEnd="@dimen/_16sdp"
+                    android:singleLine="true"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/_13sdp" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvNameTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_below="@id/tvDate"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:fontFamily="@font/opensans_semi_bold"
+                    android:gravity="center_vertical"
+                    android:paddingStart="@dimen/_2sdp"
+                    android:singleLine="true"
+                    android:text="Name"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/_13sdp" />
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/llName"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_45sdp"
+                    android:layout_below="@id/tvNameTitle"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvFirstName"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_below="@+id/etBookedBy"
+                        android:layout_weight=".47"
+                        android:background="@drawable/button_bg"
+                        android:backgroundTint="@color/bgEdit"
+                        android:fontFamily="@font/opensans_regular"
+                        android:gravity="center_vertical"
+                        android:inputType="text"
+                        android:paddingStart="@dimen/_16sdp"
+                        android:paddingEnd="@dimen/_16sdp"
+                        android:singleLine="true"
+                        android:textColor="@color/textColor"
+                        android:textCursorDrawable="@color/black"
+                        android:textSize="@dimen/_13sdp" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight=".05" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvLastName"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_below="@+id/etBookedBy"
+                        android:layout_weight=".47"
+                        android:background="@drawable/button_bg"
+                        android:backgroundTint="@color/bgEdit"
+                        android:fontFamily="@font/opensans_regular"
+                        android:gravity="center_vertical"
+                        android:inputType="text"
+                        android:paddingStart="@dimen/_16sdp"
+                        android:paddingEnd="@dimen/_16sdp"
+                        android:singleLine="true"
+                        android:textColor="@color/textColor"
+                        android:textColorHint="@color/addProductHint"
+                        android:textCursorDrawable="@color/black"
+                        android:textSize="@dimen/_13sdp" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvEmailTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_below="@id/llName"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:fontFamily="@font/opensans_semi_bold"
+                    android:gravity="center_vertical"
+                    android:paddingStart="@dimen/_2sdp"
+                    android:singleLine="true"
+                    android:text="Email"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/_13sdp" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_45sdp"
+                    android:layout_below="@+id/tvEmailTitle"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:background="@drawable/button_bg"
+                    android:backgroundTint="@color/bgEdit"
+                    android:fontFamily="@font/opensans_regular"
+                    android:gravity="center_vertical"
+                    android:inputType="textEmailAddress"
+                    android:paddingStart="@dimen/_16sdp"
+                    android:paddingEnd="@dimen/_16sdp"
+                    android:singleLine="true"
+                    android:textColor="@color/textColor"
+                    android:textCursorDrawable="@color/black"
+                    android:textSize="@dimen/_13sdp" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvPhoneTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_below="@id/tvEmail"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:fontFamily="@font/opensans_semi_bold"
+                    android:gravity="center_vertical"
+                    android:paddingStart="@dimen/_2sdp"
+                    android:singleLine="true"
+                    android:text="Phone No"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/_13sdp" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvPhone"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_45sdp"
+                    android:layout_below="@+id/tvPhoneTitle"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:background="@drawable/button_bg"
+                    android:backgroundTint="@color/bgEdit"
+                    android:fontFamily="@font/opensans_regular"
+                    android:gravity="center_vertical"
+                    android:paddingStart="@dimen/_16sdp"
+                    android:paddingEnd="@dimen/_16sdp"
+                    android:singleLine="true"
+                    android:textColor="@color/textColor"
+                    android:textCursorDrawable="@color/black"
+                    android:textSize="@dimen/_13sdp" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvServiceTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_below="@id/tvPhone"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:fontFamily="@font/opensans_semi_bold"
+                    android:gravity="center_vertical"
+                    android:paddingStart="@dimen/_2sdp"
+                    android:singleLine="true"
+                    android:text="Service"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/_13sdp" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvService"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_45sdp"
+                    android:layout_below="@+id/tvServiceTitle"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:background="@drawable/button_bg"
+                    android:backgroundTint="@color/bgEdit"
+                    android:fontFamily="@font/opensans_regular"
+                    android:gravity="center_vertical"
+                    android:paddingStart="@dimen/_16sdp"
+                    android:paddingEnd="@dimen/_16sdp"
+                    android:singleLine="true"
+                    android:textColor="@color/textColor"
+                    android:textCursorDrawable="@color/black"
+                    android:textSize="@dimen/_13sdp" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvPickupAddressTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_below="@id/tvService"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:fontFamily="@font/opensans_semi_bold"
+                    android:gravity="center_vertical"
+                    android:paddingStart="@dimen/_2sdp"
+                    android:singleLine="true"
+                    android:text="Pickup Address"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/_13sdp" />
+
+                <TextView
+                    android:id="@+id/tvPickUpAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tvPickupAddressTitle"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:background="@drawable/button_bg"
+                    android:backgroundTint="@color/bgEdit"
+                    android:fontFamily="@font/opensans_regular"
+                    android:gravity="center_vertical"
+                    android:inputType="textMultiLine"
+                    android:minHeight="@dimen/_45sdp"
+                    android:paddingStart="@dimen/_16sdp"
+                    android:paddingEnd="@dimen/_16sdp"
+                    android:singleLine="true"
+                    android:textColor="@color/textColor"
+                    android:textColorHint="@color/addProductHint"
+                    android:textCursorDrawable="@color/black"
+                    android:textSize="@dimen/_13sdp" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvDropAddressTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_below="@id/tvPickUpAddress"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:fontFamily="@font/opensans_semi_bold"
+                    android:gravity="center_vertical"
+                    android:paddingStart="@dimen/_2sdp"
+                    android:singleLine="true"
+                    android:text="Drop Address"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/_13sdp" />
+
+                <TextView
+                    android:id="@+id/tvDropAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tvDropAddressTitle"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:background="@drawable/button_bg"
+                    android:backgroundTint="@color/bgEdit"
+                    android:fontFamily="@font/opensans_regular"
+                    android:gravity="center_vertical"
+                    android:inputType="textMultiLine"
+                    android:minHeight="@dimen/_45sdp"
+                    android:paddingStart="@dimen/_16sdp"
+                    android:paddingEnd="@dimen/_16sdp"
+                    android:singleLine="true"
+                    android:textColor="@color/textColor"
+                    android:textColorHint="@color/addProductHint"
+                    android:textCursorDrawable="@color/black"
+                    android:textSize="@dimen/_13sdp" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvFloorTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_below="@id/tvDropAddress"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:fontFamily="@font/opensans_semi_bold"
+                    android:gravity="center_vertical"
+                    android:paddingStart="@dimen/_2sdp"
+                    android:singleLine="true"
+                    android:text="Floor No"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/_13sdp"
+                    android:visibility="gone" />
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvFloorNo"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_45sdp"
+                    android:layout_below="@+id/tvFloorTitle"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:background="@drawable/button_bg"
+                    android:backgroundTint="@color/bgEdit"
+                    android:fontFamily="@font/opensans_regular"
+                    android:gravity="center_vertical"
+                    android:inputType="number"
+                    android:paddingStart="@dimen/_16sdp"
+                    android:paddingEnd="@dimen/_16sdp"
+                    android:singleLine="true"
+                    android:textColor="@color/textColor"
+                    android:textColorHint="@color/addProductHint"
+                    android:textCursorDrawable="@color/black"
+                    android:textSize="@dimen/_13sdp"
+                    android:visibility="gone" />
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/llLift"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_45sdp"
+                    android:layout_below="@id/tvFloorNo"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:orientation="horizontal"
+                    android:visibility="gone"
+                    android:weightSum="1">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/liftLabel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_5sdp"
+                            android:fontFamily="@font/opensans_semi_bold"
+                            android:text="Lift Available"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_13sdp" />
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:id="@+id/rlChooseList"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_30sdp"
+                            android:layout_below="@+id/liftLabel"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:weightSum="1">
+
+                            <RadioGroup
+                                android:id="@+id/rgYes"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_5sdp"
+                                android:contentDescription="Layouts"
+                                android:orientation="horizontal"
+                                android:weightSum="1">
+
+                                <RadioButton
+                                    android:id="@+id/btnLiftYes"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight=".5"
+                                    android:buttonTint="@color/locationCol"
+                                    android:enabled="false"
+                                    android:text="Yes"
+                                    android:textColor="@color/locationCol"
+                                    android:textSize="@dimen/_12sdp" />
+
+                                <RadioButton
+                                    android:id="@+id/btnLiftNo"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight=".5"
+                                    android:buttonTint="@color/locationCol"
+                                    android:enabled="false"
+                                    android:text="No"
+                                    android:textColor="@color/locationCol"
+                                    android:textSize="@dimen/_12sdp" />
+
+                            </RadioGroup>
+
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    </RelativeLayout>
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvDepositTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_below="@id/llLift"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:fontFamily="@font/opensans_semi_bold"
+                    android:gravity="center_vertical"
+                    android:paddingStart="@dimen/_2sdp"
+                    android:singleLine="true"
+                    android:text="Deposit"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/_13sdp" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvDeposit"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_45sdp"
+                    android:layout_below="@+id/tvDepositTitle"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:background="@drawable/button_bg"
+                    android:backgroundTint="@color/bgEdit"
+                    android:fontFamily="@font/opensans_regular"
+                    android:gravity="center_vertical"
+                    android:paddingStart="@dimen/_16sdp"
+                    android:paddingEnd="@dimen/_16sdp"
+                    android:singleLine="true"
+                    android:textColor="@color/textColor"
+                    android:textCursorDrawable="@color/black"
+                    android:textSize="@dimen/_13sdp" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvGoodsTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_below="@id/tvDeposit"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:fontFamily="@font/opensans_semi_bold"
+                    android:gravity="center_vertical"
+                    android:paddingStart="@dimen/_2sdp"
+                    android:singleLine="true"
+                    android:text="List of White Goods"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/_13sdp" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvListOfGoods"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_45sdp"
+                    android:layout_below="@+id/tvGoodsTitle"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:background="@drawable/button_bg"
+                    android:backgroundTint="@color/bgEdit"
+                    android:fontFamily="@font/opensans_regular"
+                    android:gravity="center_vertical"
+                    android:hint="List of White goods (Fridges, Sofas, etc)"
+                    android:inputType="text"
+                    android:paddingStart="@dimen/_16sdp"
+                    android:paddingEnd="@dimen/_16sdp"
+                    android:singleLine="true"
+                    android:textColor="@color/textColor"
+                    android:textColorHint="@color/addProductHint"
+                    android:textCursorDrawable="@color/black"
+                    android:textSize="@dimen/_13sdp" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvBagBoxesTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_below="@id/tvListOfGoods"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:fontFamily="@font/opensans_semi_bold"
+                    android:gravity="center_vertical"
+                    android:paddingStart="@dimen/_2sdp"
+                    android:singleLine="true"
+                    android:text="Number of Bags &amp; Boxes"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/_13sdp" />
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/llBags"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_45sdp"
+                    android:layout_below="@id/tvBagBoxesTitle"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvNoOfBags"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_below="@+id/etBookedBy"
+                        android:layout_weight=".47"
+                        android:background="@drawable/button_bg"
+                        android:backgroundTint="@color/bgEdit"
+                        android:fontFamily="@font/opensans_regular"
+                        android:gravity="center_vertical"
+                        android:hint="No of Bags"
+                        android:inputType="number"
+                        android:paddingStart="@dimen/_16sdp"
+                        android:paddingEnd="@dimen/_16sdp"
+                        android:singleLine="true"
+                        android:textColor="@color/textColor"
+                        android:textColorHint="@color/addProductHint"
+                        android:textCursorDrawable="@color/black"
+                        android:textSize="@dimen/_13sdp" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight=".05" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvNoOfBoxes"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_below="@+id/etBookedBy"
+                        android:layout_weight=".47"
+                        android:background="@drawable/button_bg"
+                        android:backgroundTint="@color/bgEdit"
+                        android:fontFamily="@font/opensans_regular"
+                        android:gravity="center_vertical"
+                        android:hint="No of Boxes"
+                        android:inputType="number"
+                        android:paddingStart="@dimen/_16sdp"
+                        android:paddingEnd="@dimen/_16sdp"
+                        android:singleLine="true"
+                        android:textColor="@color/textColor"
+                        android:textColorHint="@color/addProductHint"
+                        android:textCursorDrawable="@color/black"
+                        android:textSize="@dimen/_13sdp" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvVansTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_below="@id/llBags"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:fontFamily="@font/opensans_semi_bold"
+                    android:gravity="center_vertical"
+                    android:paddingStart="@dimen/_2sdp"
+                    android:singleLine="true"
+                    android:text="Vans Reuired "
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/_13sdp" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvVans"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_45sdp"
+                    android:layout_below="@+id/tvVansTitle"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:background="@drawable/button_bg"
+                    android:backgroundTint="@color/bgEdit"
+                    android:fontFamily="@font/opensans_regular"
+                    android:gravity="center_vertical"
+                    android:inputType="number"
+                    android:paddingStart="@dimen/_16sdp"
+                    android:paddingEnd="@dimen/_16sdp"
+                    android:singleLine="true"
+                    android:textColor="@color/textColor"
+                    android:textColorHint="@color/addProductHint"
+                    android:textCursorDrawable="@color/black"
+                    android:textSize="@dimen/_13sdp" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvMensTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_below="@id/tvVans"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:fontFamily="@font/opensans_semi_bold"
+                    android:gravity="center_vertical"
+                    android:paddingStart="@dimen/_2sdp"
+                    android:singleLine="true"
+                    android:text="Mens Required"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/_13sdp" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvMen"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_45sdp"
+                    android:layout_below="@+id/tvMensTitle"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:background="@drawable/button_bg"
+                    android:backgroundTint="@color/bgEdit"
+                    android:fontFamily="@font/opensans_regular"
+                    android:gravity="center_vertical"
+                    android:inputType="number"
+                    android:paddingStart="@dimen/_16sdp"
+                    android:paddingEnd="@dimen/_16sdp"
+                    android:singleLine="true"
+                    android:textColor="@color/textColor"
+                    android:textColorHint="@color/addProductHint"
+                    android:textCursorDrawable="@color/black"
+                    android:textSize="@dimen/_13sdp" />
+
+                <CheckBox
+                    android:id="@+id/cbInsurance"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_45sdp"
+                    android:layout_below="@id/tvMen"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginBottom="8dp"
+                    android:enabled="false"
+                    android:visibility="gone"
+                    android:text="Has the Customer requested Insurance?"
+                    android:textColor="#000000"
+                    android:textSize="16sp" />
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/llPriceNature"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_45sdp"
+                    android:layout_below="@id/cbInsurance"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/priceNatureLabel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_5sdp"
+                            android:fontFamily="@font/opensans_semi_bold"
+                            android:text="Type"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_13sdp" />
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:id="@+id/rlChoose"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_30sdp"
+                            android:layout_below="@+id/priceNatureLabel"
+                            android:enabled="false"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:weightSum="1">
+
+                            <RadioGroup
+                                android:id="@+id/firstRg"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_5sdp"
+                                android:contentDescription="Layouts"
+                                android:enabled="false"
+                                android:orientation="horizontal"
+                                android:weightSum="1">
+
+                                <RadioButton
+                                    android:id="@+id/btnFixedPrice"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight=".5"
+                                    android:buttonTint="@color/locationCol"
+                                    android:enabled="false"
+                                    android:text="Fixed Price"
+                                    android:textColor="@color/locationCol"
+                                    android:textSize="@dimen/_12sdp" />
+
+                                <RadioButton
+                                    android:id="@+id/btnHourlyPrice"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight=".5"
+                                    android:buttonTint="@color/locationCol"
+                                    android:enabled="false"
+                                    android:text="Hourly Price"
+                                    android:textColor="@color/locationCol"
+                                    android:textSize="@dimen/_12sdp" />
+
+                            </RadioGroup>
+
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    </RelativeLayout>
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvPriceTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_below="@id/llPriceNature"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:fontFamily="@font/opensans_semi_bold"
+                    android:gravity="center_vertical"
+                    android:paddingStart="@dimen/_2sdp"
+                    android:singleLine="true"
+                    android:text="Price"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/_13sdp" />
+
+                <RelativeLayout
+                    android:id="@+id/llPrice"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_45sdp"
+                    android:layout_below="@id/tvPriceTitle"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:background="@drawable/button_bg"
+                    android:backgroundTint="#D2D1D1"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
+
+                    <RelativeLayout
+                        android:id="@+id/ivDollar"
+                        android:layout_width="@dimen/_25sdp"
+                        android:layout_height="match_parent"
+                        android:gravity="center">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/ivDoller"
+                            android:layout_width="@dimen/_20sdp"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/ic_pound" />
+                    </RelativeLayout>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvPrice"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_toStartOf="@id/priceSign"
+                        android:layout_toEndOf="@+id/ivDollar"
+                        android:layout_weight=".75"
+                        android:background="@drawable/button_without_radius"
+                        android:backgroundTint="@color/bgEdit"
+                        android:fontFamily="@font/opensans_regular"
+                        android:gravity="center_vertical"
+                        android:hint="Price Amount"
+                        android:inputType="number"
+                        android:paddingStart="@dimen/_16sdp"
+                        android:paddingEnd="@dimen/_16sdp"
+                        android:singleLine="true"
+                        android:textColor="@color/textColor"
+                        android:textColorHint="@color/addProductHint"
+                        android:textCursorDrawable="@color/black"
+                        android:textSize="@dimen/_13sdp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/priceSign"
+                        android:layout_width="@dimen/_30sdp"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentEnd="true"
+                        android:layout_weight=".15"
+                        android:gravity="center"
+                        android:text="/hr."
+
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_14sdp" />
+                </RelativeLayout>
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvPackingFeeLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_below="@id/llPrice"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:fontFamily="@font/opensans_semi_bold"
+                    android:gravity="center_vertical"
+                    android:paddingStart="@dimen/_2sdp"
+                    android:singleLine="true"
+                    android:text="Packing fee &amp; Dismantling/Assembling"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/_13sdp" />
+
+                <RelativeLayout
+                    android:id="@+id/rlPackingFee"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_45sdp"
+                    android:layout_below="@id/tvPackingFeeLabel"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:background="@drawable/button_bg"
+                    android:backgroundTint="#D2D1D1"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
+
+                    <RelativeLayout
+                        android:id="@+id/rlPackingFeeDollar"
+                        android:layout_width="@dimen/_25sdp"
+                        android:layout_height="match_parent"
+                        android:gravity="center">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/ivPackingFeeDoller"
+                            android:layout_width="@dimen/_20sdp"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/ic_pound" />
+                    </RelativeLayout>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvPackingFee"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_toEndOf="@+id/rlPackingFeeDollar"
+                        android:layout_weight=".75"
+                        android:background="@drawable/button_without_radius"
+                        android:backgroundTint="@color/bgEdit"
+                        android:fontFamily="@font/opensans_regular"
+                        android:gravity="center_vertical"
+                        android:hint="Packing Fee &amp; Dismantling/Assembling"
+                        android:inputType="number"
+                        android:paddingStart="@dimen/_16sdp"
+                        android:paddingEnd="@dimen/_16sdp"
+                        android:singleLine="true"
+                        android:textColor="@color/textColor"
+                        android:textColorHint="@color/addProductHint"
+                        android:textCursorDrawable="@color/black"
+                        android:textSize="@dimen/_13sdp" />
+
+
+                </RelativeLayout>
+
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/llMinimumBooking"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_45sdp"
+                    android:layout_below="@id/rlPackingFee"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/tvMinimumBooking"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_5sdp"
+                            android:fontFamily="@font/opensans_semi_bold"
+                            android:text="Minimum Booking Hour"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_13sdp" />
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_35sdp"
+                            android:layout_below="@+id/tvMinimumBooking"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:weightSum="1">
+
+                            <RadioGroup
+                                android:id="@+id/rgMinimum"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_5sdp"
+                                android:contentDescription="Layouts"
+                                android:orientation="horizontal"
+                                android:weightSum="1">
+
+                                <RadioButton
+                                    android:id="@+id/rbMinimum2"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight=".2"
+                                    android:buttonTint="@color/locationCol"
+                                    android:enabled="false"
+                                    android:text="2"
+                                    android:textColor="@color/locationCol"
+                                    android:textSize="@dimen/_12sdp" />
+
+                                <RadioButton
+                                    android:id="@+id/rbMinimum3"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight=".2"
+                                    android:buttonTint="@color/locationCol"
+                                    android:enabled="false"
+                                    android:text="3"
+                                    android:textColor="@color/locationCol"
+                                    android:textSize="@dimen/_12sdp" />
+
+                                <RadioButton
+                                    android:id="@+id/rbMinimum4"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight=".2"
+                                    android:buttonTint="@color/locationCol"
+                                    android:enabled="false"
+                                    android:text="4"
+                                    android:textColor="@color/locationCol"
+                                    android:textSize="@dimen/_12sdp" />
+
+                                <RadioButton
+                                    android:id="@+id/rbMinimum5"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight=".2"
+                                    android:buttonTint="@color/locationCol"
+                                    android:enabled="false"
+                                    android:text="5"
+                                    android:textColor="@color/locationCol"
+                                    android:textSize="@dimen/_12sdp" />
+
+                                <RadioButton
+                                    android:id="@+id/rbMinimum6"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight=".2"
+                                    android:buttonTint="@color/locationCol"
+                                    android:enabled="false"
+                                    android:text="6"
+                                    android:textColor="@color/locationCol"
+                                    android:textSize="@dimen/_12sdp" />
+
+
+                                <!--                                        <RadioButton-->
+                                <!--                                            android:id="@+id/btnNotImportant"-->
+                                <!--                                            android:layout_width="0dp"-->
+                                <!--                                            android:layout_height="match_parent"-->
+                                <!--                                            android:layout_weight=".4"-->
+                                <!--                                            android:buttonTint="@color/locationCol"-->
+                                <!--                                            android:text="Not Important"-->
+                                <!--                                            android:textColor="@color/locationCol"-->
+                                <!--                                            android:textSize="@dimen/_12sdp" />-->
+
+                            </RadioGroup>
+
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    </RelativeLayout>
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/llPriority"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_45sdp"
+                    android:layout_below="@id/llMinimumBooking"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
+
+                    <RelativeLayout
+                        android:id="@+id/rlPri"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/priorityNatureLabel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_5sdp"
+                            android:fontFamily="@font/opensans_semi_bold"
+                            android:text="Priority"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_13sdp" />
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:id="@+id/rlPriority"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_35sdp"
+                            android:layout_below="@+id/priorityNatureLabel"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:weightSum="1">
+
+                            <RadioGroup
+                                android:id="@+id/priorityRG"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_5sdp"
+                                android:layout_marginBottom="@dimen/_5sdp"
+                                android:contentDescription="Layouts"
+                                android:orientation="horizontal"
+                                android:weightSum="1">
+
+                                <RadioButton
+                                    android:id="@+id/btnNormal"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight=".5"
+                                    android:buttonTint="@color/locationCol"
+                                    android:enabled="false"
+                                    android:text="Normal"
+                                    android:textColor="@color/locationCol"
+                                    android:textSize="@dimen/_12sdp" />
+
+                                <RadioButton
+                                    android:id="@+id/btnImportant"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight=".5"
+                                    android:buttonTint="@color/locationCol"
+                                    android:enabled="false"
+                                    android:text="Important"
+                                    android:textColor="@color/locationCol"
+                                    android:textSize="@dimen/_12sdp" />
+
+                                <!--                                <RadioButton-->
+                                <!--                                    android:visibility="gone"-->
+                                <!--                                    android:id="@+id/btnNotImportant"-->
+                                <!--                                    android:layout_width="0dp"-->
+                                <!--                                    android:layout_height="match_parent"-->
+                                <!--                                    android:layout_weight=".4"-->
+                                <!--                                    android:buttonTint="@color/locationCol"-->
+                                <!--                                    android:enabled="false"-->
+                                <!--                                    android:text="Not Important"-->
+                                <!--                                    android:textColor="@color/locationCol"-->
+                                <!--                                    android:textSize="@dimen/_12sdp" />-->
+
+                            </RadioGroup>
+
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+                    </RelativeLayout>
+
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/llDismantling"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_45sdp"
+                    android:layout_below="@id/llPackingService"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/DismantlingLabel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_5sdp"
+                            android:text="Any Dismantling or Assembling?"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_13sdp" />
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:id="@+id/rlDismantling"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_30sdp"
+                            android:layout_below="@+id/DismantlingLabel"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:weightSum="1">
+
+                            <RadioGroup
+                                android:id="@+id/DismantlingRG"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_5sdp"
+                                android:contentDescription="Layouts"
+                                android:orientation="horizontal"
+                                android:enabled="false"
+
+                                android:weightSum="1">
+
+                                <RadioButton
+                                    android:id="@+id/btnDismantlingYes"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight=".5"
+                                    android:buttonTint="@color/locationCol"
+                                    android:text="Yes"
+                                    android:enabled="false"
+
+                                    android:textColor="@color/locationCol"
+                                    android:textSize="@dimen/_12sdp" />
+
+                                <RadioButton
+                                    android:id="@+id/btnDismantlingNo"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight=".5"
+                                    android:buttonTint="@color/locationCol"
+                                    android:text="No"
+                                    android:enabled="false"
+
+                                    android:textColor="@color/locationCol"
+                                    android:textSize="@dimen/_12sdp" />
+
+                                <!--                                        <RadioButton-->
+                                <!--                                            android:id="@+id/btnNotImportant"-->
+                                <!--                                            android:layout_width="0dp"-->
+                                <!--                                            android:layout_height="match_parent"-->
+                                <!--                                            android:layout_weight=".4"-->
+                                <!--                                            android:buttonTint="@color/locationCol"-->
+                                <!--                                            android:text="Not Important"-->
+                                <!--                                            android:textColor="@color/locationCol"-->
+                                <!--                                            android:textSize="@dimen/_12sdp" />-->
+
+                            </RadioGroup>
+
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    </RelativeLayout>
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/insurancedCustomer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/llDismantling"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:fontFamily="@font/bold"
+                    android:text="Has the customer requested packing service"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/_13sdp" />
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/llPackingService"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_45sdp"
+                    android:layout_below="@id/llPriority"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/packingServiceLabel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_5sdp"
+                            android:text="Packing Service"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_13sdp" />
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:id="@+id/rlPackingService"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_30sdp"
+                            android:layout_below="@+id/packingServiceLabel"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:weightSum="1">
+
+                            <RadioGroup
+                                android:id="@+id/packingServiceRG"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_5sdp"
+                                android:contentDescription="Layouts"
+                                android:orientation="horizontal"
+                                android:enabled="false"
+
+                                android:weightSum="1">
+
+                                <RadioButton
+                                    android:id="@+id/btnPackingServiceYes"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight=".5"
+                                    android:buttonTint="@color/locationCol"
+                                    android:text="Yes"
+                                    android:enabled="false"
+
+                                    android:textColor="@color/locationCol"
+                                    android:textSize="@dimen/_12sdp" />
+
+                                <RadioButton
+                                    android:id="@+id/btnPackingServiceNo"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight=".5"
+                                    android:buttonTint="@color/locationCol"
+                                    android:text="No"
+                                    android:enabled="false"
+
+                                    android:textColor="@color/locationCol"
+                                    android:textSize="@dimen/_12sdp" />
+
+                                <!--                                        <RadioButton-->
+                                <!--                                            android:id="@+id/btnNotImportant"-->
+                                <!--                                            android:layout_width="0dp"-->
+                                <!--                                            android:layout_height="match_parent"-->
+                                <!--                                            android:layout_weight=".4"-->
+                                <!--                                            android:buttonTint="@color/locationCol"-->
+                                <!--                                            android:text="Not Important"-->
+                                <!--                                            android:textColor="@color/locationCol"-->
+                                <!--                                            android:textSize="@dimen/_12sdp" />-->
+
+                            </RadioGroup>
+
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    </RelativeLayout>
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <TextView
+                    android:id="@+id/tvDiamantling"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/insurancedCustomer"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:visibility="gone"
+                    android:fontFamily="@font/opensans_semi_bold"
+                    android:text="Any Dismantling or Assembling "
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_13sdp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvDiamantling"
+                    android:layout_marginTop="@dimen/_5sdp" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvComments"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/rvImage"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:fontFamily="@font/opensans_semi_bold"
+                    android:paddingEnd="@dimen/_16sdp"
+                    android:paddingBottom="@dimen/_5sdp"
+                    android:text="Other Comments"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_15sdp" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_120sdp"
+                    android:layout_below="@id/tvComments"
+                    android:layout_marginStart="@dimen/_2sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginEnd="@dimen/_2sdp"
+                    android:layout_marginBottom="@dimen/_2sdp"
+                    android:background="@drawable/bg_des"
+                    android:gravity="top"
+                    android:inputType="textCapSentences|textNoSuggestions|textMultiLine"
+                    android:maxLines="6"
+                    android:padding="@dimen/_5sdp"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/_12sdp" />
+
+
+                <RelativeLayout
+                    android:id="@+id/rlNote"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvDescription"
+                    android:layout_marginTop="@dimen/_10sdp">
+
+
+                    <View
+                        android:id="@+id/viewOne"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_1sdp"
+                        android:layout_marginTop="@dimen/_2sdp"
+                        android:background="@color/black" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/note"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/viewOne"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:fontFamily="@font/opensans_regular"
+                        android:text="@string/term_note"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_12sdp" />
+
+                    <View
+                        android:id="@+id/view2"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_1sdp"
+                        android:layout_below="@id/note"
+                        android:layout_marginTop="@dimen/_2sdp"
+                        android:background="@color/black" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/note2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/view2"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:fontFamily="@font/opensans_regular"
+                        android:text="@string/parking_string"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_12sdp" />
+
+                    <View
+                        android:id="@+id/view3"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_1sdp"
+                        android:layout_below="@id/note2"
+                        android:layout_marginTop="@dimen/_2sdp"
+                        android:background="@color/black" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/note3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/view3"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:fontFamily="@font/opensans_regular"
+                        android:text="@string/toll_tax"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_12sdp" />
+
+
+                </RelativeLayout>
+
+                <!--                <RelativeLayout-->
+                <!--                    android:id="@+id/rlNote"-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_below="@id/tvDescription"-->
+                <!--                    android:layout_marginTop="@dimen/_10sdp">-->
+
+                <!--                    <TextView-->
+                <!--                        android:id="@+id/tvReman"-->
+                <!--                        android:layout_width="match_parent"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:padding="@dimen/_3sdp" />-->
+
+                <!--                    <TextView-->
+                <!--                        android:id="@+id/tvCashCollected"-->
+                <!--                        android:layout_width="match_parent"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:layout_below="@id/tvReman"-->
+                <!--                        android:paddingStart="@dimen/_3sdp"-->
+                <!--                        android:paddingEnd="@dimen/_3sdp"-->
+                <!--                        android:paddingBottom="@dimen/_3sdp" />-->
+
+
+                <!--                    <View-->
+                <!--                        android:id="@+id/viewOne"-->
+                <!--                        android:layout_width="match_parent"-->
+                <!--                        android:layout_height="@dimen/_1sdp"-->
+                <!--                        android:layout_below="@+id/tvCashCollected"-->
+                <!--                        android:layout_marginTop="@dimen/_2sdp"-->
+                <!--                        android:background="@color/black" />-->
+
+                <!--                    <androidx.appcompat.widget.AppCompatTextView-->
+                <!--                        android:id="@+id/note"-->
+                <!--                        android:layout_width="match_parent"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:layout_below="@id/viewOne"-->
+                <!--                        android:layout_marginTop="@dimen/_5sdp"-->
+                <!--                        android:fontFamily="@font/opensans_regular"-->
+                <!--                        android:text="@string/term_note"-->
+                <!--                        android:textColor="@color/black"-->
+                <!--                        android:textSize="@dimen/_12sdp" />-->
+
+
+                <!--                </RelativeLayout>-->
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvSignature"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/rlNote"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:fontFamily="@font/opensans_light"
+                    android:padding="@dimen/_5sdp"
+                    android:text="Signature"
+                    android:textColor="@color/cusCol"
+                    android:textSize="@dimen/_12sdp" />
+
+                <RelativeLayout
+                    android:id="@+id/rlIvSignature"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_120sdp"
+                    android:layout_below="@id/tvSignature"
+                    android:layout_marginStart="@dimen/_2sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginEnd="@dimen/_2sdp"
+                    android:layout_marginBottom="@dimen/_2sdp"
+                    android:background="@drawable/bg_black_border"
+                    android:gravity="top"
+
+                    android:inputType="textCapSentences|textNoSuggestions|textMultiLine"
+                    android:maxLines="6"
+                    android:padding="@dimen/_5sdp"
+                    android:textColor="@color/textColor">
+
+                    <com.williamww.silkysignature.views.SignaturePad xmlns:android="http://schemas.android.com/apk/res/android"
+                        xmlns:app="http://schemas.android.com/apk/res-auto"
+                        android:id="@+id/signature_pad"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/_2sdp"
+                        android:background="@android:color/transparent"
+                        app:penColor="@android:color/black" />
+
+
+                    <RelativeLayout
+                        android:id="@+id/rlIvCancel"
+                        android:layout_width="@dimen/_15sdp"
+                        android:layout_height="match_parent">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/ivCancel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_cancel" />
+                    </RelativeLayout>
+
+                    <ImageView
+                        android:id="@+id/ivSignature"
+                        android:visibility="gone"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
+                </RelativeLayout>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnSubmit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/rlIvSignature"
+                    android:layout_marginStart="@dimen/_25sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_25sdp"
+                    android:layout_marginBottom="@dimen/_15sdp"
+                    android:background="@drawable/bg_btn"
+                    android:gravity="center"
+                    android:text="Submit"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_12sdp" />
+
+            </RelativeLayout>
+
+
+        </androidx.core.widget.NestedScrollView>
+
+    </RelativeLayout>
+</layout>

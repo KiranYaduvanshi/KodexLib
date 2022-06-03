@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/contentAddVan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_bg"
+        android:backgroundTint="@color/white">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginEnd="@dimen/_20sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:paddingBottom="@dimen/_10sdp">
+
+            <TextView
+                android:id="@+id/tvLabelAddAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:fontFamily="@font/opensans_semi_bold"
+                android:gravity="center_vertical"
+                android:paddingBottom="@dimen/_10sdp"
+                android:text="Add Pickup Address"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_15sdp" />
+
+            <TextView
+                android:id="@+id/tvPickUpAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvLabelAddAddress"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:background="@drawable/button_bg"
+                android:backgroundTint="@color/bgEdit"
+                android:fontFamily="@font/opensans_regular"
+                android:gravity="center_vertical"
+                android:hint="Pickup Address"
+                android:inputType="textMultiLine"
+                android:minHeight="@dimen/_45sdp"
+                android:paddingStart="@dimen/_16sdp"
+                android:paddingEnd="@dimen/_16sdp"
+                android:singleLine="true"
+                android:textColor="@color/textColor"
+                android:textColorHint="@color/addProductHint"
+                android:textCursorDrawable="@color/black"
+                android:textSize="@dimen/_13sdp" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/llFloor"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_45sdp"
+                android:layout_below="@id/tvPickUpAddress"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/floorLabel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:text="Select Floor Number"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_13sdp" />
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_30sdp"
+                        android:layout_below="@+id/floorLabel"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:weightSum="1">
+
+                        <RadioGroup
+                            android:id="@+id/rgFloor"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:contentDescription="Layouts"
+                            android:orientation="horizontal"
+                            android:weightSum="9">
+
+                            <RadioButton
+                                android:id="@+id/rbBasement"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1.5"
+                                android:buttonTint="@color/locationCol"
+                                android:text="B"
+                                android:textColor="@color/locationCol"
+                                android:textSize="@dimen/_12sdp" />
+
+                            <RadioButton
+                                android:id="@+id/rbGround"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1.5"
+                                android:buttonTint="@color/locationCol"
+                                android:text="G"
+                                android:textColor="@color/locationCol"
+                                android:textSize="@dimen/_12sdp" />
+
+                            <RadioButton
+                                android:id="@+id/rbFirstFloor"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1.5"
+                                android:buttonTint="@color/locationCol"
+                                android:text="1"
+                                android:textColor="@color/locationCol"
+                                android:textSize="@dimen/_12sdp" />
+
+                            <RadioButton
+                                android:id="@+id/rbSecondFloor"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1.5"
+                                android:buttonTint="@color/locationCol"
+                                android:text="2"
+                                android:textColor="@color/locationCol"
+                                android:textSize="@dimen/_12sdp" />
+
+                            <RadioButton
+                                android:id="@+id/rbThirdFloor"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1.5"
+                                android:buttonTint="@color/locationCol"
+                                android:text="3"
+                                android:textColor="@color/locationCol"
+                                android:textSize="@dimen/_12sdp" />
+
+                            <RadioButton
+                                android:id="@+id/rbFourFloor"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1.5"
+                                android:buttonTint="@color/locationCol"
+                                android:text="4"
+                                android:textColor="@color/locationCol"
+                                android:textSize="@dimen/_12sdp" />
+
+
+                        </RadioGroup>
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                </RelativeLayout>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/llLift"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_45sdp"
+                android:layout_below="@id/llFloor"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/liftLabel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:text="Lift Available"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_13sdp" />
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/rlChooseList"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_30sdp"
+                        android:layout_below="@+id/liftLabel"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:weightSum="1">
+
+                        <RadioGroup
+                            android:id="@+id/rgLift"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:contentDescription="Layouts"
+                            android:orientation="horizontal"
+                            android:weightSum="1">
+
+                            <RadioButton
+                                android:id="@+id/btnLiftYes"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight=".5"
+                                android:buttonTint="@color/locationCol"
+                                android:text="Yes"
+                                android:textColor="@color/locationCol"
+                                android:textSize="@dimen/_12sdp" />
+
+                            <RadioButton
+                                android:id="@+id/btnLiftNo"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight=".5"
+                                android:buttonTint="@color/locationCol"
+                                android:text="No"
+                                android:textColor="@color/locationCol"
+                                android:textSize="@dimen/_12sdp" />
+
+                        </RadioGroup>
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                </RelativeLayout>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnSave"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/llLift"
+                android:layout_marginStart="@dimen/_55sdp"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:layout_marginEnd="@dimen/_55sdp"
+                android:background="@drawable/bg_btn"
+                android:backgroundTint="@color/blue"
+                android:fontFamily="@font/opensans_light"
+                android:gravity="center"
+                android:text="Save"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_13sdp" />
+
+
+        </RelativeLayout>
+    </RelativeLayout>
+</layout>

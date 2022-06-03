@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/DimGray"
+        tools:context=".ui.main.calendar.Calendar">
+
+
+        <include
+            android:id="@+id/topBar"
+            layout="@layout/top_bar" />
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/topBar"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_10sdp">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvMain"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_60sdp"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:layout_marginEnd="@dimen/_15sdp"
+                android:layout_marginBottom="@dimen/_5sdp"
+                app:cardCornerRadius="@dimen/_5sdp"
+                app:cardElevation="@dimen/_10sdp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_60sdp"
+                    android:orientation="horizontal"
+                    android:weightSum="4">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvDay"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@color/blue"
+                        android:fontFamily="@font/opensans_regular"
+                        android:gravity="center"
+                        android:text="Day"
+
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_13sdp" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight=".01"
+                        android:background="#D9D9D9" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvWeekly"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@color/gray"
+                        android:fontFamily="@font/opensans_regular"
+                        android:gravity="center"
+                        android:text="Weely"
+                        android:textColor="@color/cusCol"
+                        android:textSize="@dimen/_13sdp" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight=".01"
+                        android:background="#D9D9D9" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvMonth"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@color/gray"
+                        android:fontFamily="@font/opensans_regular"
+                        android:gravity="center"
+                        android:text="Monthly"
+
+                        android:textColor="@color/cusCol"
+                        android:textSize="@dimen/_13sdp" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight=".01"
+                        android:background="#D9D9D9" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvYear"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@color/gray"
+                        android:fontFamily="@font/opensans_regular"
+                        android:gravity="center"
+                        android:text="Yearly"
+
+                        android:textColor="@color/cusCol"
+                        android:textSize="@dimen/_13sdp" />
+
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvBookings"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/cvMain"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:visibility="gone"
+                tools:listitem="@layout/invoice_item" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvJobs"
+                android:layout_width="match_parent"
+
+                android:layout_height="match_parent"
+                android:layout_below="@id/cvMain"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:visibility="gone" />
+
+            <RelativeLayout
+                android:id="@+id/rlNoData"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:visibility="gone">
+
+                <ImageView
+                    android:id="@+id/ivEmpty"
+                    android:layout_width="@dimen/_60sdp"
+                    android:layout_height="@dimen/_60sdp"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/ic_empty" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/ivEmpty"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:fontFamily="@font/opensans_semi_bold"
+                    android:text="No Record Found"
+                    android:textColor="@color/textColor" />
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+</layout>

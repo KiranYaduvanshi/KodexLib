@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:id="@+id/contentJobs"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/DimGray"
+        tools:context=".ui.main.jobs.JobsListing">
+
+        <include
+            android:id="@+id/topBar"
+            layout="@layout/top_bar" />
+
+
+        <RelativeLayout
+            android:id="@+id/rlNoData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/ivEmpty"
+                android:layout_width="@dimen/_60sdp"
+                android:layout_height="@dimen/_60sdp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/ic_empty" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ivEmpty"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:fontFamily="@font/opensans_semi_bold"
+                android:text="No Record Found"
+                android:textColor="@color/textColor" />
+        </RelativeLayout>
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvMain"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_60sdp"
+            android:layout_below="@id/topBar"
+            android:layout_marginStart="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_15sdp"
+            android:layout_marginBottom="@dimen/_5sdp"
+            app:cardCornerRadius="@dimen/_5sdp"
+            app:cardElevation="@dimen/_10sdp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_60sdp"
+                android:orientation="horizontal"
+                android:weightSum="4">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvDay"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/blue"
+                    android:fontFamily="@font/opensans_regular"
+                    android:gravity="center"
+                    android:text="Today"
+
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_13sdp" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight=".01"
+                    android:background="#D9D9D9" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvWeekly"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/gray"
+                    android:fontFamily="@font/opensans_regular"
+                    android:gravity="center"
+                    android:text="Weekly"
+                    android:textColor="@color/cusCol"
+                    android:textSize="@dimen/_13sdp" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight=".01"
+                    android:background="#D9D9D9" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvMonth"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/gray"
+                    android:fontFamily="@font/opensans_regular"
+                    android:gravity="center"
+                    android:text="Monthly"
+
+                    android:textColor="@color/cusCol"
+                    android:textSize="@dimen/_13sdp" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight=".01"
+                    android:background="#D9D9D9" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvYear"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/gray"
+                    android:fontFamily="@font/opensans_regular"
+                    android:gravity="center"
+                    android:text="Yearly"
+
+                    android:textColor="@color/cusCol"
+                    android:textSize="@dimen/_13sdp" />
+
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/etSearch"
+            android:layout_below="@id/cvMain"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_marginStart="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginEnd="@dimen/_15sdp"
+            android:background="@drawable/button_bg"
+            android:hint="Search With Customer Name"
+            android:imeOptions="actionDone"
+            android:paddingStart="@dimen/_10sdp"
+            android:singleLine="true"
+            android:visibility="gone"
+            android:textSize="@dimen/_10sdp"
+            android:fontFamily="@font/opensans_light"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            />
+
+        <RelativeLayout
+            android:id="@+id/rlRadioButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/etSearch"
+            android:gravity="center"
+            android:paddingStart="@dimen/_14sdp"
+            android:paddingTop="@dimen/_5sdp"
+            android:paddingEnd="@dimen/_14sdp"
+
+            >
+
+            <RadioGroup
+                android:id="@+id/radioGroupButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/btnNotAssigned"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:background="@drawable/state_radio_button2"
+                    android:button="@android:color/transparent"
+                    android:checked="true"
+                    android:fontFamily="@font/opensans_semi_bold"
+                    android:gravity="center"
+                    android:text="Not Assigned"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10sdp" />
+
+                <RadioButton
+                    android:id="@+id/btnJobsInprogress"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:background="@drawable/state_radio_button2"
+                    android:button="@android:color/transparent"
+                    android:checked="true"
+                    android:fontFamily="@font/opensans_semi_bold"
+                    android:gravity="center"
+                    android:text="Jobs In Progress"
+
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10sdp" />
+
+                <RadioButton
+                    android:id="@+id/btnJobsCompleted"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:background="@drawable/state_radio_button2"
+                    android:button="@android:color/transparent"
+                    android:fontFamily="@font/opensans_semi_bold"
+                    android:gravity="center"
+                    android:paddingStart="@dimen/_5sdp"
+                    android:text="Jobs Completed"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10sdp" />
+
+            </RadioGroup>
+        </RelativeLayout>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_1sdp"
+            android:layout_below="@id/rlRadioButton"
+            android:layout_marginTop="@dimen/_2sdp"
+            android:orientation="horizontal"
+            android:paddingStart="@dimen/_14sdp"
+            android:paddingEnd="@dimen/_14sdp"
+            android:weightSum="1.5">
+
+            <View
+                android:id="@+id/viewNotAssigned"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".5"
+                android:background="@color/blue"
+                android:visibility="invisible" />
+
+            <View
+                android:id="@+id/viewInprogress"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".5"
+                android:background="@color/blue"
+                android:visibility="invisible" />
+
+            <View
+                android:id="@+id/viewCompleted"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+
+                android:layout_weight=".5"
+                android:background="@color/blue"
+                android:visibility="invisible" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/svJobs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rlRadioButton"
+            android:layout_above="@id/rlButton"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_10sdp">
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvJobs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_10sdp"
+                android:clipToPadding="false"
+                android:paddingStart="@dimen/_10sdp"
+                android:paddingTop="@dimen/_10sdp"
+                android:paddingEnd="@dimen/_10sdp"
+                android:paddingBottom="@dimen/_10sdp" />
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/rlButton"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_60sdp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginStart="@dimen/_15sdp"
+            android:layout_marginEnd="@dimen/_15sdp"
+            android:orientation="horizontal"
+            android:weightSum="1"
+
+            >
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".5">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnExport"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_15sdp"
+                    android:background="@drawable/bg_btn"
+                    android:gravity="center"
+                    android:text="Export"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_12sdp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".5">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnDelete"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    android:background="@drawable/bg_btn"
+                    android:backgroundTint="@color/red"
+                    android:fontFamily="@font/opensans_light"
+                    android:gravity="center"
+                    android:text="Delete"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_12sdp" />
+            </RelativeLayout>
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+    </RelativeLayout>
+</layout>

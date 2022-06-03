@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50sdp">
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_1sdp"
+            android:background="#EEF1F2" />
+
+        <RelativeLayout
+            android:id="@+id/llMain"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/view"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <ImageView
+                android:id="@+id/ivCustomer"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:src="@drawable/patientellie" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_toEndOf="@id/ivCustomer"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvName"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_weight=".3"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/opensans_semi_bold"
+                    android:gravity="center_vertical"
+                    android:singleLine="true"
+                    android:text="Ellie Goulding "
+                    android:textColor="@color/customerName"
+                    android:textSize="@dimen/_8sdp" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvAddress"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/_2sdp"
+                    android:layout_marginEnd="@dimen/_2sdp"
+                    android:layout_toStartOf="@id/rating"
+                    android:layout_toEndOf="@id/tvName"
+                    android:layout_weight=".7"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/opensans_semi_bold"
+                    android:gravity="center_vertical"
+                    android:maxLines="2"
+                    android:paddingStart="@dimen/_2sdp"
+                    android:paddingEnd="@dimen/_1sdp"
+                    android:text="Jane Doe 123 Main Dorm New York, NY 11377"
+                    android:textColor="@color/addColor"
+                    android:textSize="@dimen/_8sdp" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+</layout>

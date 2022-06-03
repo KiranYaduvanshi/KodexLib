@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/custom_toast_container"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/_3sdp"
+    android:layout_margin="@dimen/_2sdp"
+    android:layout_marginBottom="@dimen/_10sdp"
+
+    android:orientation="horizontal">
+
+
+    <TextView
+        android:id="@+id/tvMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:background="@drawable/bg_button_yes"
+        android:backgroundTint="@color/cusCol"
+        android:padding="@dimen/_10sdp"
+        android:layout_centerHorizontal="true"
+        android:text="TInvalid Account AccountAccount"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_10sdp"
+        />
+
+
+
+
+</RelativeLayout>

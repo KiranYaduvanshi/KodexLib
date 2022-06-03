@@ -1,0 +1,100 @@
+
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+//    apply plugin: 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'kotlin-parcelize'//'kotlin-android-extensions'
+
+
+}
+
+android {
+    compileSdkVersion 31//maxSdkVersion
+//    buildToolsVersion "30.0.3"
+
+    defaultConfig {
+        applicationId "com.kodextech.project.kodexlib"
+        minSdkVersion 23//minSdkVersion
+        targetSdkVersion 31//maxSdkVersion
+        versionCode 1
+        versionName "1.1"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        setProperty("archivesBaseName", "ModernMovers ${versionName}")
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        viewBinding true
+        dataBinding true
+    }
+}
+
+dependencies {
+
+    api "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    api 'androidx.core:core-ktx:1.6.0'
+    api 'androidx.appcompat:appcompat:1.3.1'
+    api 'com.google.android.material:material:1.4.0'
+    api 'androidx.constraintlayout:constraintlayout:2.1.1'
+    api 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.1'
+    api 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1'
+    api 'com.intuit.sdp:sdp-android:1.0.6'
+    api 'com.google.code.gson:gson:2.8.8'
+    api 'org.ocpsoft.prettytime:prettytime:5.0.2.Final'
+    api "com.github.bumptech.glide:glide:4.12.0"
+//    api 'com.github.ybq:Android-SpinKit:1.4.0'
+//    api 'com.loopeer.lib:shadow:0.0.4-beta3'
+    api 'androidx.legacy:legacy-support-v4:1.0.0'
+
+    api project(path: ':instapicker')
+    api project(path: ':android-networking')
+    implementation 'androidx.annotation:annotation:1.2.0'
+    api 'com.github.yesterselga:country-picker-android:2.0' //Country Picker
+
+    api 'com.iarcuschin:simpleratingbar:0.1.5' //Rating Bar
+    implementation 'com.github.devendroid:ReadMoreOption:1.0.2'
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
+    api 'com.jaredrummler:material-spinner:1.3.1' //Material Spinner
+    implementation 'com.github.jaiselrahman:FilePicker:1.3.2' //Image Picker
+    implementation 'com.karumi:dexter:6.2.3'
+    implementation 'id.zelory:compressor:3.0.1'
+    implementation 'com.github.ybq:Android-SpinKit:1.4.0'
+    implementation 'com.github.clans:fab:1.6.4'
+    implementation 'com.binaryfork:spanny:1.0.4'
+    implementation 'com.github.hkk595:Resizer:v1.5'
+
+    implementation 'com.github.florent37:singledateandtimepicker:2.2.8'
+
+    implementation 'com.williamww:silky-signature:0.1.0'
+
+    api 'com.google.android.libraries.places:places:2.5.0' // places google
+
+    implementation 'com.github.abdulrehmank7:iOS-date-time-picker:1.05'
+
+    implementation 'com.github.dhaval2404:imagepicker-support:1.7.1'
+    implementation 'id.zelory:compressor:3.0.0'
+
+    implementation 'com.droidninja:filepicker:2.2.5'
+
+    implementation 'com.droidninja:filepicker:2.2.5'
+
+    implementation 'com.github.denzcoskun:ImageSlideshow:0.1.0'
+    implementation 'com.github.smarteist:autoimageslider:1.3.9'
+
+
+}
+

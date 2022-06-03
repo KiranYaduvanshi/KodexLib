@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/DimGray"
+        tools:context=".ui.main.customer.CustomerProfile">
+
+
+        <include
+            android:id="@+id/topBar"
+            layout="@layout/top_bar" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/topBar"
+            android:clipToPadding="false"
+            android:paddingBottom="@dimen/_5sdp"
+            >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp">
+
+                <RelativeLayout
+                    android:id="@+id/rlImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_100sdp"
+                    android:layout_marginTop="@dimen/_30sdp"
+                    android:gravity="center">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/ivCustomer"
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_height="@dimen/_100sdp"
+                        android:src="@drawable/ic_place_holder" />
+
+                </RelativeLayout>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvCustomerName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/rlImage"
+                    android:fontFamily="@font/opensans_semi_bold"
+                    android:gravity="center"
+                    android:paddingTop="@dimen/_10sdp"
+                    android:textColor="@color/locationCol"
+                    android:textSize="@dimen/_14sdp" />
+
+                <RelativeLayout
+                    android:id="@+id/rlRating"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_below="@id/tvCustomerName"
+                    android:gravity="center">
+
+                    <com.iarcuschin.simpleratingbar.SimpleRatingBar
+                        android:id="@+id/rating"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="@dimen/_2sdp"
+                        android:clickable="false"
+                        app:srb_borderColor="@android:color/transparent"
+                        app:srb_fillColor="@color/yellow"
+                        app:srb_numberOfStars="5"
+                        app:srb_rating="0"
+                        app:srb_starBackgroundColor="@color/gray"
+                        app:srb_starSize="@dimen/_15sdp"
+                        app:srb_stepSize="1" />
+
+                    <TextView
+                        android:id="@+id/customerRating"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_toEndOf="@id/rating"
+                        android:fontFamily="@font/opensans_semi_bold"
+                        android:gravity="center_vertical"
+                        android:paddingStart="@dimen/_10sdp"
+                        android:singleLine="true"
+                        android:text="4.0"
+                        android:textColor="@color/cusCol"
+                        android:textSize="@dimen/_10sdp" />
+
+
+                </RelativeLayout>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/llAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_40sdp"
+                    android:layout_below="@id/rlRating"
+                    android:orientation="horizontal"
+                    android:weightSum="3">
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight=".4"
+                        android:gravity="center"
+                        android:padding="@dimen/_13sdp">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/ivLocation"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/ic_location" />
+                    </RelativeLayout>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvLocationTitle"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_below="@id/rlImage"
+                        android:layout_weight=".7"
+                        android:fontFamily="@font/opensans_light"
+                        android:gravity="center_vertical"
+
+                        android:text="Address"
+                        android:textColor="@color/locationCol"
+                        android:textSize="@dimen/_12sdp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvAddress"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_below="@id/rlImage"
+                        android:layout_weight="1.9"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/opensans_regular"
+                        android:gravity="center_vertical|start"
+                        android:singleLine="true"
+                        android:text=""
+                        android:textColor="@color/addColor"
+                        android:textSize="@dimen/_12sdp" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <View
+                    android:id="@+id/viewOne"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_1sdp"
+                    android:layout_below="@id/llAddress"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:background="@color/locationCol" />
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/llContact"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_40sdp"
+                    android:layout_below="@id/viewOne"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:orientation="horizontal"
+                    android:weightSum="3">
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight=".4"
+                        android:gravity="center"
+                        android:padding="@dimen/_13sdp">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/ivContact"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/ic_phone" />
+                    </RelativeLayout>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvContactTitle"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_below="@id/rlImage"
+                        android:layout_weight=".7"
+                        android:fontFamily="@font/opensans_light"
+                        android:gravity="center_vertical"
+                        android:text="Contact"
+                        android:textColor="@color/locationCol"
+                        android:textSize="@dimen/_12sdp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvContact"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_below="@id/rlImage"
+                        android:layout_weight="1.9"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/opensans_regular"
+                        android:gravity="center_vertical"
+                        android:singleLine="true"
+                        android:textColor="@color/addColor"
+                        android:textSize="@dimen/_12sdp" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <View
+                    android:id="@+id/viewTwo"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_1sdp"
+                    android:layout_below="@id/llContact"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:background="@color/locationCol" />
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/llEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_40sdp"
+                    android:layout_below="@id/viewTwo"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:orientation="horizontal"
+                    android:weightSum="3">
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight=".4"
+                        android:gravity="center"
+                        android:padding="@dimen/_13sdp">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/ivEmail"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_email" />
+                    </RelativeLayout>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvEmailTitle"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_below="@id/rlImage"
+                        android:layout_weight=".7"
+                        android:fontFamily="@font/opensans_light"
+                        android:gravity="center_vertical"
+                        android:text="Email"
+                        android:textColor="@color/locationCol"
+                        android:textSize="@dimen/_12sdp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvEmail"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_below="@id/rlImage"
+                        android:layout_weight="1.9"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/opensans_regular"
+                        android:gravity="center_vertical"
+                        android:singleLine="true"
+                        android:textColor="@color/addColor"
+                        android:textSize="@dimen/_12sdp" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <View
+                    android:id="@+id/viewThree"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_1sdp"
+                    android:layout_below="@id/llEmail"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:background="@color/locationCol" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvJobHistory"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/viewThree"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:padding="@dimen/_10sdp"
+                    android:text="Jobs History"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/_14sdp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvJobHistory"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvJobHistory" />
+
+                <RelativeLayout
+                    android:id="@+id/rlNoData"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvJobHistory"
+                    android:layout_centerInParent="true"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:id="@+id/ivEmpty"
+                        android:layout_width="@dimen/_60sdp"
+                        android:layout_height="@dimen/_60sdp"
+                        android:layout_centerInParent="true"
+                        android:src="@drawable/ic_empty" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/ivEmpty"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:fontFamily="@font/opensans_semi_bold"
+                        android:text="No Record Found"
+                        android:textColor="@color/textColor" />
+                </RelativeLayout>
+
+
+            </RelativeLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/rlButton"
+            android:layout_width="match_parent"
+            android:visibility="gone"
+            android:layout_height="@dimen/_60sdp"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal"
+            android:weightSum="1"
+
+            >
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".5">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnSendMessage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    android:background="@drawable/bg_btn"
+                    android:gravity="center"
+                    android:text="Send Message"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_12sdp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".5">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnEmailInvoice"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_15sdp"
+                    android:background="@drawable/bg_btn"
+                    android:backgroundTint="#F6F6F6"
+                    android:fontFamily="@font/opensans_light"
+                    android:gravity="center"
+                    android:text="Email Invoice"
+                    android:textAllCaps="false"
+                    android:textColor="@color/txtColor"
+                    android:textSize="@dimen/_12sdp" />
+            </RelativeLayout>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </RelativeLayout>
+</layout>
