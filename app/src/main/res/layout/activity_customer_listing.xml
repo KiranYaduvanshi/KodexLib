@@ -10,7 +10,6 @@
         android:background="@color/DimGray"
         tools:context=".ui.main.customer.CustomerListing">
 
-
         <include
             android:id="@+id/topBar"
             layout="@layout/top_bar" />
@@ -70,8 +69,8 @@
                 android:fontFamily="@font/opensans_light"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white"
-                android:visibility="gone"
-                 />
+                android:textCursorDrawable="@drawable/cursor_white"
+                android:visibility="gone" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/btnClose"

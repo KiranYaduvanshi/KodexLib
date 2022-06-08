@@ -1,6 +1,7 @@
 package com.kodextech.project.kodexlib.ui.main.jobs.adapter
 
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -44,6 +45,7 @@ class ImageListingAdapter(
             val intent = Intent(mContext, FullImageView::class.java)
             AddBooking.scrollImageList.clear()
             AddBooking.scrollImageList.addAll(mData)
+            Log.i("PATH",""+mData[position].path)
             mContext.startActivity(intent)
         }
     }

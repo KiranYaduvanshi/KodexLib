@@ -6,9 +6,11 @@ import android.graphics.Point
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.google.gson.Gson
 import com.kodextech.project.kodexlib.R
@@ -54,6 +56,9 @@ class ConfirmationDialog : BaseDialogueFragment() {
             payment = "paid"
             changeColorState()
         }
+        binding?.btnCancel?.setOnClickListener {
+            dismiss()
+        }
         binding?.btnInvoice?.setOnClickListener {
             payment = "un_paid"
             changeColorState()
@@ -62,12 +67,16 @@ class ConfirmationDialog : BaseDialogueFragment() {
         binding?.btnOk?.setOnClickListener {
             workerRemarks = binding?.etcomments?.text.toString()
             chargeAmount = binding?.etRecievedAmount?.text.toString()
+//            Log.i("id ---",""+)
+            if (binding?.btnInvoice?.isChecked == true || binding?.btnCash?.isChecked == true) {
 
-            finishJobCall(jobId, workerRemarks, chargeAmount, payment)
+                finishJobCall(jobId, workerRemarks, chargeAmount, payment)
+
+            } else {
+                Toast.makeText(context, "Please select a payment method", Toast.LENGTH_SHORT).show()
+            }
 
         }
-
-
 
         binding?.ivCross?.setOnClickListener {
             dismiss()

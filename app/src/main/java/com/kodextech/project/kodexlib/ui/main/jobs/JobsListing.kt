@@ -24,6 +24,7 @@ import com.kodextech.project.kodexlib.ui.main.jobs.adapter.JobListingAdapter
 import com.kodextech.project.kodexlib.ui.main.jobs.adapter.JobListingAdapter.Companion.mDataSelected
 import com.kodextech.project.kodexlib.utils.generateList
 import com.kodextech.project.kodexlib.utils.gone
+import com.kodextech.project.kodexlib.utils.text
 import com.kodextech.project.kodexlib.utils.visible
 import org.json.JSONObject
 import java.text.SimpleDateFormat
@@ -59,12 +60,13 @@ class JobsListing : BaseActivity() {
 
             }
 
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                searchText = p0.toString()
-                filter(p0.toString())
+            override fun onTextChanged(s: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
             }
 
-            override fun afterTextChanged(p0: Editable?) {
+            override fun afterTextChanged(s: Editable?) {
+                searchText = s.toString()
+                filter(s.toString())
 
             }
 
@@ -114,6 +116,8 @@ class JobsListing : BaseActivity() {
             binding?.viewNotAssigned?.visibility = View.VISIBLE
             binding?.viewCompleted?.visibility = View.INVISIBLE
             binding?.viewInprogress?.visibility = View.INVISIBLE
+            binding?.etSearch?.text("")
+
             listingFor = "notAssigned"
             checkAndSetData()
         }
@@ -122,6 +126,7 @@ class JobsListing : BaseActivity() {
             binding?.viewInprogress?.visibility = View.VISIBLE
             binding?.viewCompleted?.visibility = View.INVISIBLE
             binding?.viewNotAssigned?.visibility = View.INVISIBLE
+            binding?.etSearch?.text("")
             listingFor = "inprogress"
             checkAndSetData()
         }
@@ -131,6 +136,8 @@ class JobsListing : BaseActivity() {
             binding?.viewCompleted?.visibility = View.VISIBLE
             binding?.viewNotAssigned?.visibility = View.INVISIBLE
             listingFor = "completed"
+            binding?.etSearch?.text("")
+
             checkAndSetData()
 
         }
@@ -195,9 +202,9 @@ class JobsListing : BaseActivity() {
     }
 
     private fun getJobListCall() {
-        if (binding?.svJobs?.isRefreshing == false) {
-            binding?.svJobs?.isRefreshing = true
-        }
+//        if (binding?.svJobs?.isRefreshing == false) {
+//            binding?.svJobs?.isRefreshing = true
+//        }
         showLoading()
         NetworkClass.callApi(
             URLApi.getJobLoistByTimeNature(
@@ -234,13 +241,13 @@ class JobsListing : BaseActivity() {
                         }
                     }
                     setJobData()
-                    binding?.svJobs?.isRefreshing = false
+                  //  binding?.svJobs?.isRefreshing = false
                 }
 
                 override fun onErrorResponse(error: String?, response: String?) {
                     hideLoading()
                     showBarToast(error ?: "")
-                    binding?.svJobs?.isRefreshing = false
+                  //  binding?.svJobs?.isRefreshing = false
                 }
 
             })
@@ -250,16 +257,19 @@ class JobsListing : BaseActivity() {
         var filterlist: ArrayList<JobModel> = ArrayList()
         var fullName: String? = ""
         for (item in mData) {
-            fullName = item.first_name + " " + item.last_name
+            fullName = item.first_name.toString() + " " + item.last_name.toString()
             if (item.first_name?.lowercase()?.contains(text.lowercase()) == true
                 || item.last_name?.lowercase()?.contains(text.lowercase()) == true
-                || item.id == text.toInt()
-                || fullName?.equals(text)
+                || try {
+
+                    item.id == text.toInt()
+                } catch (e: Exception) {
+                    false
+                }
+                || fullName?.equals(text) == true
             ) {
                 filterlist.add(item)
             }
-
-
         }
         mAdapter?.filterJobList(filterlist)
     }

@@ -1,7 +1,12 @@
 package com.kodextech.project.kodexlib.ui.main.termsAndServices
 
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
 import android.content.Intent
+import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.GridLayoutManager
 import com.bumptech.glide.Glide
@@ -219,6 +224,13 @@ class TermsServices : BaseActivity() {
         } else {
 
             val mMedia = obj?.medias
+            if (mMedia != null) {
+                for (m in mMedia) {
+                    println(m.file_url);
+                }
+
+
+            }
             val mAdapter = ImageListingAdapter(this, mMedia ?: ArrayList())
             binding?.rvImage?.layoutManager = GridLayoutManager(this, 3)
             binding?.rvImage?.adapter = mAdapter
@@ -328,6 +340,28 @@ class TermsServices : BaseActivity() {
             binding?.tvDropAddress?.text =
                 obj?.drop_address?.address1
         }
+
+        binding?.tvPickUpAddress?.setOnClickListener(
+            View.OnClickListener {
+                var textToCopy = binding?.tvPickUpAddress?.text
+                val clipboardManager =
+                    applicationContext.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+                val clipData = ClipData.newPlainText("text", textToCopy)
+                clipboardManager.setPrimaryClip(clipData)
+                Toast.makeText(baseContext, "Detail Copied to Clipboard", Toast.LENGTH_SHORT).show()
+            }
+        )
+        binding?.tvDropAddress?.setOnClickListener(
+            View.OnClickListener {
+                var textToCopy = binding?.tvDropAddress?.text
+                val clipboardManager =
+                    applicationContext.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+                val clipData = ClipData.newPlainText("text", textToCopy)
+                clipboardManager.setPrimaryClip(clipData)
+                Toast.makeText(baseContext, "Detail Copied to Clipboard", Toast.LENGTH_SHORT).show()
+            }
+        )
+
 
 
 
@@ -442,6 +476,7 @@ class TermsServices : BaseActivity() {
 
             }
         }
+        Log.i("URL", "" + obj?.signature?.path)
 
         Glide.with(this).load(baseImagePath + obj?.signature?.path)
             .placeholder(R.drawable.ic_baseline_cloud_download_24).into(

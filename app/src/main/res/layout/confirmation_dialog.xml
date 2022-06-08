@@ -237,7 +237,7 @@
                         android:maxLines="2"
                         android:padding="@dimen/_5sdp"
                         android:paddingStart="@dimen/_2sdp"
-                        android:text="Otehr Comments"
+                        android:text="Other Comments"
                         android:textColor="@color/addProductHint"
                         android:textSize="@dimen/_12sdp" />
 

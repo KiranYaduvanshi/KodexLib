@@ -1,6 +1,7 @@
 package com.kodextech.project.kodexlib.ui.main.dashboard
 
 import android.content.Intent
+import android.view.WindowManager
 import androidx.core.app.ActivityCompat
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.GridLayoutManager

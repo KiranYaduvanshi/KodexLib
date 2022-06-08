@@ -34,6 +34,7 @@ class CustomerListing : BaseActivity() {
     private var mCustomerTypeAdapter: CustomerTypeAdapter? = null
 
     private var customerTypePosition: Int? = 0
+
     override fun onSetupViewGroup() {
         mViewGroup = binding?.contentCustomer
 

@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_400sdp" >
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -7,9 +11,7 @@
         android:id="@+id/content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         android:background="@android:color/transparent">
-
         <RelativeLayout
             android:id="@+id/cardView"
             android:layout_width="match_parent"
@@ -130,11 +132,11 @@
                     android:layout_marginTop="@dimen/_10sdp"
                     android:background="@drawable/button_bg"
                     android:backgroundTint="@color/bgEdit"
+                    android:digits="1234567890QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm@_-."
                     android:fontFamily="@font/opensans_regular"
                     android:gravity="center_vertical"
                     android:hint="Worker Email"
                     android:inputType="textEmailAddress"
-
                     android:paddingStart="@dimen/_16sdp"
                     android:paddingEnd="@dimen/_16sdp"
                     android:singleLine="true"
@@ -159,6 +161,7 @@
                         android:layout_toStartOf="@id/showPass"
                         android:background="@drawable/button_bg"
                         android:backgroundTint="@color/bgEdit"
+                        android:digits="ABCDEFGHIJKLMNOPQRSTqbcdefghijklmnopqrstuvwxyz1234567890!@#$%*_+"
                         android:fontFamily="@font/opensans_regular"
                         android:gravity="center_vertical"
                         android:hint="Password"
@@ -257,11 +260,11 @@
                     android:textColor="@color/white"
                     android:textSize="@dimen/_14sdp" />
 
-
             </androidx.appcompat.widget.LinearLayoutCompat>
 
 
         </RelativeLayout>
+
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/ivCross"
@@ -278,4 +281,5 @@
             android:src="@drawable/ic_close" />
 
     </RelativeLayout>
+</androidx.core.widget.NestedScrollView>
 </layout>

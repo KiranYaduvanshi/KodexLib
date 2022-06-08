@@ -1,5 +1,6 @@
 package com.kodextech.project.kodexlib.ui.main.booking
 
+import android.util.Log
 import androidx.databinding.DataBindingUtil
 import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.models.SlideModel
@@ -23,14 +24,16 @@ class FullImageView : BaseActivity() {
         val from = intent.getStringExtra("from")
 
 
-        AddBooking.scrollImageList.forEachIndexed { index, mediaModel ->
+        AddBooking.scrollImageList.forEachIndexed {
+                index, mediaModel ->
             array?.add(
                 SlideModel(
-                    "http://45.56.122.34/modern-movers/public//uploads/" + mediaModel.path,
+                    "http://45.33.19.125/modern-movers/public/uploads/" + mediaModel.path,
                     "",
                     ScaleTypes.CENTER_CROP
                 )
             )
+
         }
 
 

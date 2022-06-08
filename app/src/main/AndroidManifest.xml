@@ -84,6 +84,7 @@
         <activity
             android:name=".ui.main.dashboard.Dashboard"
             android:exported="true"
+            android:windowSoftInputMode="stateHidden|adjustResize"
             android:screenOrientation="portrait" />
         <activity
             android:name=".ui.main.auth.LoginActivity"
@@ -100,7 +101,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
+        <activity android:name=".MainActivity"
+            android:windowSoftInputMode="stateHidden|adjustResize"
+            />
         <activity android:name="ir.shahabazimi.instagrampicker.gallery.SelectActivity" />
         <activity android:name="ir.shahabazimi.instagrampicker.filter.FilterActivity" />
         <activity android:name="ir.shahabazimi.instagrampicker.gallery.MultiSelectActivity" />

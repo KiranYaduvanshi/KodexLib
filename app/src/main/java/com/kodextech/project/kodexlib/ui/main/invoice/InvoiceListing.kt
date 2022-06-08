@@ -48,10 +48,7 @@ class InvoiceListing : BaseActivity() {
             binding?.etSearch?.setText("")
         }
 
-
         binding?.topBar?.ivBack?.setOnClickListener { onBackPressed() }
-
-
         binding?.btnUnPaidInvoice?.setOnClickListener {
             binding?.viewInprogress?.visibility = View.VISIBLE
             binding?.viewCompleted?.visibility = View.INVISIBLE
@@ -159,9 +156,9 @@ class InvoiceListing : BaseActivity() {
     }
 
     private fun getInvoiceList() {
-        if (binding?.svInvoice?.isRefreshing == false) {
-            binding?.svInvoice?.isRefreshing = true
-        }
+//        if (binding?.svInvoice?.isRefreshing == false) {
+//            binding?.svInvoice?.isRefreshing = true
+//        }
         showLoading()
         NetworkClass.callApi(URLApi.getInvoicesList(), object : Response {
             override fun onSuccessResponse(response: String?, message: String) {

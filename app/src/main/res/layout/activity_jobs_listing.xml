@@ -148,6 +148,8 @@
             android:textSize="@dimen/_10sdp"
             android:fontFamily="@font/opensans_light"
             android:textColor="@color/white"
+            android:textCursorDrawable="@drawable/cursor_white"
+
             android:textColorHint="@color/white"
             />
 
@@ -259,8 +261,8 @@
             android:id="@+id/svJobs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/rlRadioButton"
             android:layout_above="@id/rlButton"
+            android:layout_below="@id/rlRadioButton"
             android:layout_marginStart="@dimen/_10sdp"
             android:layout_marginTop="@dimen/_10sdp"
             android:layout_marginEnd="@dimen/_10sdp"

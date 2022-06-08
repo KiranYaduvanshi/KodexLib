@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Environment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -74,9 +75,6 @@ class InvoiceListingAdapter(
 
         holder.binding?.ivWorker?.loadImage("", Placeholders.USER, true)
 
-
-
-
         if (mItem.status?.lowercase() == "paid".lowercase()) {
             holder.binding?.llPaid?.gone()
             holder.binding?.btnDownload?.visible()
@@ -98,14 +96,10 @@ class InvoiceListingAdapter(
             } else {
                 balanceDue = totalPrice?.minus(advance ?: 0.0)
             }
-
-
             holder.binding?.tvBalanceDue?.text = "£ $balanceDue"
         } else {
 
         }
-
-
         val number = mItem.price_amount?.toDoubleOrNull() ?: 0.0
         val rounded = String.format("%.2f", number)
         holder.binding?.tvPrice?.text = "£ $rounded"
@@ -114,20 +108,19 @@ class InvoiceListingAdapter(
         val roundedAdvance = String.format("%.2f", numberAdvance)
         holder.binding?.tvAdvance?.text = "£ $roundedAdvance"
 
-
         holder.binding?.cbPaid?.setOnClickListener {
             callBack(mItem)
         }
 
         holder.binding?.btnDownload?.setOnClickListener {
+            Log.i("PDF PATH", "" + mItem.invoice_file?.path)
             dowloadPdf(mItem.invoice_file?.path)
         }
-
     }
 
-
     private fun dowloadPdf(path: String?) {
-        val basePath = "http://45.56.122.34/modern-movers/public/uploads/"
+
+        val basePath = "http://45.33.19.125/modern-movers/public/uploads/"
         val invoicePath = basePath + path
         val uri: Uri =
             Uri.parse(invoicePath)
@@ -142,8 +135,6 @@ class InvoiceListingAdapter(
             DownloadManager.Request.NETWORK_WIFI or
                     DownloadManager.Request.NETWORK_MOBILE
         )
-
-
 // set title and description
         request.setTitle("Invoice Downloaded")
         request.setDescription("Invoice Downloaded Successfully")

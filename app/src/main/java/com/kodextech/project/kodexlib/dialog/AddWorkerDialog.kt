@@ -14,6 +14,7 @@ import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import androidx.databinding.DataBindingUtil
 import com.google.gson.Gson
 import com.kodextech.project.kodexlib.R
@@ -89,11 +90,13 @@ class AddWorkerDialog : BaseDialogueFragment() {
                 binding?.etWorkerPassword?.transformationMethod =
                     HideReturnsTransformationMethod.getInstance()
                 binding?.showPass?.setImageResource(R.drawable.ic_eye)
+                binding?.etWorkerPassword?.setSelection(binding?.etWorkerPassword?.text.toString().length)
                 isClicked = false
             } else {
                 binding?.etWorkerPassword?.transformationMethod =
                     PasswordTransformationMethod.getInstance()
                 binding?.showPass?.setImageResource(R.drawable.ic_eye_closed)
+                binding?.etWorkerPassword?.setSelection(binding?.etWorkerPassword?.text.toString().length)
 
                 isClicked = true
             }
@@ -113,6 +116,7 @@ class AddWorkerDialog : BaseDialogueFragment() {
             } else if (!Patterns.EMAIL_ADDRESS.matcher(workerEmail.toString().trim())
                     .matches()
             ) {
+                binding?.etWorkerEmail?.error="Invalid email format"
                 mActivity.showToast("Invalid Format")
             } else if (workerType.isNullOrEmpty()) {
                 mActivity.showToast("Select Worker Type")
@@ -297,6 +301,10 @@ class AddWorkerDialog : BaseDialogueFragment() {
             (getScreenWidth(mActivity) * .9).toInt(),
             ViewGroup.LayoutParams.WRAP_CONTENT
         )
+
+        dialog?.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
+
+
 
     }
 
