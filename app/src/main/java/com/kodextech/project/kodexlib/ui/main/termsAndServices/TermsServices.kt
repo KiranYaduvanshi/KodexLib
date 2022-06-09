@@ -348,9 +348,6 @@ class TermsServices : BaseActivity() {
                 newAddress += it.address + ""
             }
             binding?.tvPickUpAddress?.text = newAddress?.replace("null", "")
-
-
-
             binding?.tvDropAddress?.text =
                 obj?.drop_address?.address1
         }
@@ -359,23 +356,8 @@ class TermsServices : BaseActivity() {
 
         binding?.tvPickUpAddress?.setOnClickListener(
             View.OnClickListener {
+                  openMapDialog(binding?.tvPickUpAddress?.text.toString())
 
-                var latLng = getLocationFromAddress(
-                    context = binding?.root?.context,
-                    strAddress = binding!!.tvPickUpAddress.text.toString()
-                )
-                var geoUri: String =
-                    "http://maps.google.com/maps?q=loc:" + latLng?.latitude + "," + latLng?.longitude + " (" + binding!!.tvPickUpAddress.text.toString() + ")"
-                var mapIntent = Intent(Intent.ACTION_VIEW, Uri.parse(geoUri));
-                if (mapIntent.resolveActivity(binding?.root?.context!!.packageManager) != null) {
-                    startActivity(mapIntent);
-                }
-//                var textToCopy = binding?.tvPickUpAddress?.text
-//                val clipboardManager =
-//                    applicationContext.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-//                val clipData = ClipData.newPlainText("text", textToCopy)
-//                clipboardManager.setPrimaryClip(clipData)
-//                Toast.makeText(baseContext, "Detail Copied to Clipboard", Toast.LENGTH_SHORT).show()
             }
         )
 
@@ -399,16 +381,18 @@ class TermsServices : BaseActivity() {
         })
         binding?.tvDropAddress?.setOnClickListener(
             View.OnClickListener {
-                var latLng = getLocationFromAddress(
-                    context = binding?.root?.context,
-                    strAddress = binding!!.tvDropAddress.text.toString()
-                )
-                var geoUri: String =
-                    "http://maps.google.com/maps?q=loc:" + latLng?.latitude + "," + latLng?.longitude + " (" + binding!!.tvDropAddress.text.toString() + ")"
-                var mapIntent = Intent(Intent.ACTION_VIEW, Uri.parse(geoUri));
-                if (mapIntent.resolveActivity(binding?.root?.context!!.packageManager) != null) {
-                    startActivity(mapIntent);
-                }
+                openMapDialog(binding?.tvDropAddress?.text.toString())
+
+//                var latLng = getLocationFromAddress(
+//                    context = binding?.root?.context,
+//                    strAddress = binding!!.tvDropAddress.text.toString()
+//                )
+//                var geoUri: String =
+//                    "http://maps.google.com/maps?q=loc:" + latLng?.latitude + "," + latLng?.longitude + " (" + binding!!.tvDropAddress.text.toString() + ")"
+//                var mapIntent = Intent(Intent.ACTION_VIEW, Uri.parse(geoUri));
+//                if (mapIntent.resolveActivity(binding?.root?.context!!.packageManager) != null) {
+//                    startActivity(mapIntent);
+//                }
 //                var textToCopy = binding?.tvDropAddress?.text
 //                val clipboardManager =
 //                    applicationContext.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
@@ -652,6 +636,46 @@ class TermsServices : BaseActivity() {
     override fun setupLoader() {
 
     }
+
+    fun pickupAddressMap(address: String?){
+
+        var latLng = getLocationFromAddress(
+            context = binding?.root?.context,
+            strAddress = address
+        )
+        var geoUri: String =
+            "http://maps.google.com/maps?q=loc:" + latLng?.latitude + "," + latLng?.longitude + " (" + address + ")"
+        var mapIntent = Intent(Intent.ACTION_VIEW, Uri.parse(geoUri));
+        if (mapIntent.resolveActivity(binding?.root?.context!!.packageManager) != null) {
+            startActivity(mapIntent);
+        }
+//                var textToCopy = binding?.tvPickUpAddress?.text
+//                val clipboardManager =
+//                    applicationContext.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+//                val clipData = ClipData.newPlainText("text", textToCopy)
+//                clipboardManager.setPrimaryClip(clipData)
+//                Toast.makeText(baseContext, "Detail Copied to Clipboard", Toast.LENGTH_SHORT).show()
+
+
+    }
+
+    fun openMapDialog(address: String?) {
+
+        val builder1 = AlertDialog.Builder(binding?.root?.context)
+        builder1.setTitle("Open Map")
+        builder1.setMessage("Are you sure you want to Redirect Map?")
+        builder1.setCancelable(false)
+        builder1.setPositiveButton(
+            "Yes"
+        ) { dialog, which -> pickupAddressMap(address) }
+        builder1.setNegativeButton(
+            "No"
+        ) { dialog: DialogInterface, id: Int -> dialog.cancel() }
+        val alert11 = builder1.create()
+        alert11.show()
+
+    }
+
 
     fun makeCall() {
 
