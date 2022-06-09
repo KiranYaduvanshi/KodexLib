@@ -1530,6 +1530,7 @@
                             android:layout_marginBottom="@dimen/_50sdp"
                             android:background="@drawable/bg_des"
                             android:gravity="top"
+                            android:inputMethod="@string/done"
                             android:inputType="textCapSentences|textNoSuggestions|textMultiLine"
                             android:maxLines="6"
                             android:padding="@dimen/_5sdp"
@@ -1540,10 +1541,9 @@
                             android:layout_height="@dimen/_50sdp" />
 
                     </RelativeLayout>
-
                 </RelativeLayout>
-
             </androidx.core.widget.NestedScrollView>
+
         </RelativeLayout>
 
         <androidx.appcompat.widget.LinearLayoutCompat
