@@ -4,8 +4,10 @@
     package="com.kodextech.project.kodexlib">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <uses-permission
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         tools:ignore="ScopedStorage" />
@@ -72,6 +74,7 @@
         <activity
             android:name=".ui.main.booking.AddBooking"
             android:exported="true"
+            android:windowSoftInputMode="adjustPan"
             android:screenOrientation="portrait" />
         <activity
             android:name=".ui.main.customer.CustomerListing"
@@ -84,8 +87,8 @@
         <activity
             android:name=".ui.main.dashboard.Dashboard"
             android:exported="true"
-            android:windowSoftInputMode="stateHidden|adjustResize"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
             android:name=".ui.main.auth.LoginActivity"
             android:exported="true"
@@ -94,6 +97,7 @@
             android:name=".ui.main.splash.Splash"
             android:exported="true"
             android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan"
             android:theme="@style/Theme.KodexLib">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -101,9 +105,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"
-            android:windowSoftInputMode="stateHidden|adjustResize"
-            />
+        <activity
+            android:name=".MainActivity"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity android:name="ir.shahabazimi.instagrampicker.gallery.SelectActivity" />
         <activity android:name="ir.shahabazimi.instagrampicker.filter.FilterActivity" />
         <activity android:name="ir.shahabazimi.instagrampicker.gallery.MultiSelectActivity" />

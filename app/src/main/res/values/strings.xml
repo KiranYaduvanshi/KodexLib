@@ -18,6 +18,9 @@
     <string name="copy_to_clipboard" translatable="false"><u>Copy to Clipboard</u></string>
     <string name="parking_string">Please ensure that you have provided a suitable parking space for the van as you will be held responsible for any parking tickets during the removals</string>
     <string name="toll_tax">ou will also be charged for any traffic tolls (such as congestion/ ULEZ or any clean air charges) incurred during the removals</string>
+    <string name="resend_email">Resend Email</string>
+    <string name="booked_by">Booked By</string>
+    <string name="date">Date</string>
 
 
 </resources>

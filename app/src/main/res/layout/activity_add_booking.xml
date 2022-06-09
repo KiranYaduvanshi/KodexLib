@@ -14,7 +14,6 @@
             android:id="@+id/topBar"
             layout="@layout/top_bar" />
 
-
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -1528,7 +1527,7 @@
                             android:layout_marginStart="@dimen/_2sdp"
                             android:layout_marginTop="@dimen/_5sdp"
                             android:layout_marginEnd="@dimen/_2sdp"
-                            android:layout_marginBottom="@dimen/_2sdp"
+                            android:layout_marginBottom="@dimen/_50sdp"
                             android:background="@drawable/bg_des"
                             android:gravity="top"
                             android:inputType="textCapSentences|textNoSuggestions|textMultiLine"
@@ -1536,61 +1535,9 @@
                             android:padding="@dimen/_5sdp"
                             android:textColor="@color/textColor" />
 
-                        <androidx.appcompat.widget.LinearLayoutCompat
-                            android:id="@+id/rlButton"
+                        <TextView
                             android:layout_width="match_parent"
-                            android:layout_height="@dimen/_60sdp"
-                            android:layout_below="@id/tvDescription"
-                            android:layout_marginTop="@dimen/_10sdp"
-                            android:orientation="horizontal"
-                            android:weightSum="1"
-
-                            >
-
-                            <RelativeLayout
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_weight=".5">
-
-                                <androidx.appcompat.widget.AppCompatButton
-                                    android:id="@+id/btnAdd"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginStart="@dimen/_5sdp"
-                                    android:layout_marginTop="@dimen/_10sdp"
-                                    android:layout_marginEnd="@dimen/_15sdp"
-                                    android:background="@drawable/bg_btn"
-                                    android:gravity="center"
-                                    android:text="Save"
-                                    android:textAllCaps="false"
-                                    android:textColor="@color/white"
-                                    android:textSize="@dimen/_12sdp" />
-                            </RelativeLayout>
-
-                            <RelativeLayout
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_weight=".5">
-
-                                <androidx.appcompat.widget.AppCompatButton
-                                    android:id="@+id/btnCancel"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginStart="@dimen/_15sdp"
-                                    android:layout_marginTop="@dimen/_10sdp"
-                                    android:layout_marginEnd="@dimen/_5sdp"
-                                    android:background="@drawable/bg_btn"
-                                    android:backgroundTint="#F6F6F6"
-                                    android:fontFamily="@font/opensans_light"
-                                    android:gravity="center"
-                                    android:text="Cancel"
-                                    android:textAllCaps="false"
-                                    android:textColor="@color/txtColor"
-                                    android:textSize="@dimen/_12sdp" />
-                            </RelativeLayout>
-
-
-                        </androidx.appcompat.widget.LinearLayoutCompat>
+                            android:layout_height="@dimen/_50sdp" />
 
                     </RelativeLayout>
 
@@ -1598,6 +1545,63 @@
 
             </androidx.core.widget.NestedScrollView>
         </RelativeLayout>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/rlButton"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_60sdp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".5"
+                android:paddingLeft="@dimen/_10sdp">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnAdd"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_15sdp"
+                    android:background="@drawable/bg_btn"
+                    android:gravity="center"
+                    android:text="Save"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_12sdp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".5"
+                android:paddingRight="@dimen/_10sdp">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnCancel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    android:background="@drawable/bg_btn"
+                    android:backgroundTint="#F6F6F6"
+                    android:fontFamily="@font/opensans_light"
+                    android:gravity="center"
+                    android:text="Cancel"
+                    android:textAllCaps="false"
+                    android:textColor="@color/txtColor"
+                    android:textSize="@dimen/_12sdp" />
+            </RelativeLayout>
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
 
     </RelativeLayout>

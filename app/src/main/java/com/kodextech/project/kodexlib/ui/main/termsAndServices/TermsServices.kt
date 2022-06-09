@@ -1,15 +1,21 @@
 package com.kodextech.project.kodexlib.ui.main.termsAndServices
 
-import android.content.ClipData
-import android.content.ClipboardManager
-import android.content.Context
-import android.content.Intent
+import android.app.AlertDialog
+import android.content.*
+import android.content.pm.PackageManager
+import android.location.Address
+import android.location.Geocoder
+import android.net.Uri
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.GridLayoutManager
 import com.bumptech.glide.Glide
+import com.github.dhaval2404.imagepicker.ImagePicker.Companion.REQUEST_CODE
+import com.google.android.gms.maps.model.LatLng
 import com.google.gson.Gson
 import com.kodextech.project.kodexlib.R
 import com.kodextech.project.kodexlib.base.BaseActivity
@@ -29,13 +35,15 @@ import com.kodextech.project.kodexlib.utils.zDateConvertor
 import com.williamww.silkysignature.views.SignaturePad
 import org.json.JSONArray
 import org.json.JSONObject
+import java.io.IOException
+import java.util.*
 
 
 class TermsServices : BaseActivity() {
 
 
     private var binding: ActivityTermsServicesBinding? = null
-
+    private var isCalling: Boolean = false
     private var jobId: String? = null
 
     private var json: JSONArray? = null
@@ -56,6 +64,10 @@ class TermsServices : BaseActivity() {
 
 
         binding?.topBar?.ivBack?.setOnClickListener { onBackPressed() }
+
+        binding?.tvPhone?.setOnClickListener(View.OnClickListener {
+            makeCall()
+        })
 
 
         val mSignaturePad = findViewById<View>(R.id.signature_pad) as SignaturePad
@@ -325,7 +337,9 @@ class TermsServices : BaseActivity() {
             val newArray = ArrayList<AdressListingModel>()
             newArray.clear()
             obj?.pickup_addresses?.forEachIndexed { index, pickupAddress ->
-                val s = "Address: " + pickupAddress.address1 + "\n"
+//                val s = pickupAddress.address1 + "\n"
+//                newArray.add(AdressListingModel(s))
+                val s = pickupAddress.address1
                 newArray.add(AdressListingModel(s))
             }
 
@@ -341,24 +355,66 @@ class TermsServices : BaseActivity() {
                 obj?.drop_address?.address1
         }
 
+//        ° N, ° E
+
         binding?.tvPickUpAddress?.setOnClickListener(
             View.OnClickListener {
-                var textToCopy = binding?.tvPickUpAddress?.text
-                val clipboardManager =
-                    applicationContext.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-                val clipData = ClipData.newPlainText("text", textToCopy)
-                clipboardManager.setPrimaryClip(clipData)
-                Toast.makeText(baseContext, "Detail Copied to Clipboard", Toast.LENGTH_SHORT).show()
+
+                var latLng = getLocationFromAddress(
+                    context = binding?.root?.context,
+                    strAddress = binding!!.tvPickUpAddress.text.toString()
+                )
+                var geoUri: String =
+                    "http://maps.google.com/maps?q=loc:" + latLng?.latitude + "," + latLng?.longitude + " (" + binding!!.tvPickUpAddress.text.toString() + ")"
+                var mapIntent = Intent(Intent.ACTION_VIEW, Uri.parse(geoUri));
+                if (mapIntent.resolveActivity(binding?.root?.context!!.packageManager) != null) {
+                    startActivity(mapIntent);
+                }
+//                var textToCopy = binding?.tvPickUpAddress?.text
+//                val clipboardManager =
+//                    applicationContext.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+//                val clipData = ClipData.newPlainText("text", textToCopy)
+//                clipboardManager.setPrimaryClip(clipData)
+//                Toast.makeText(baseContext, "Detail Copied to Clipboard", Toast.LENGTH_SHORT).show()
             }
         )
+
+        binding?.tvPickUpAddress?.setOnLongClickListener(View.OnLongClickListener {
+            var textToCopy = binding?.tvPickUpAddress?.text
+            val clipboardManager =
+                applicationContext.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+            val clipData = ClipData.newPlainText("text", textToCopy)
+            clipboardManager.setPrimaryClip(clipData)
+            Toast.makeText(baseContext, "Detail Copied to Clipboard", Toast.LENGTH_SHORT).show()
+            true
+        })
+        binding?.tvDropAddress?.setOnLongClickListener(View.OnLongClickListener {
+            var textToCopy = binding?.tvDropAddress?.text
+            val clipboardManager =
+                applicationContext.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+            val clipData = ClipData.newPlainText("text", textToCopy)
+            clipboardManager.setPrimaryClip(clipData)
+            Toast.makeText(baseContext, "Detail Copied to Clipboard", Toast.LENGTH_SHORT).show()
+            true
+        })
         binding?.tvDropAddress?.setOnClickListener(
             View.OnClickListener {
-                var textToCopy = binding?.tvDropAddress?.text
-                val clipboardManager =
-                    applicationContext.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-                val clipData = ClipData.newPlainText("text", textToCopy)
-                clipboardManager.setPrimaryClip(clipData)
-                Toast.makeText(baseContext, "Detail Copied to Clipboard", Toast.LENGTH_SHORT).show()
+                var latLng = getLocationFromAddress(
+                    context = binding?.root?.context,
+                    strAddress = binding!!.tvDropAddress.text.toString()
+                )
+                var geoUri: String =
+                    "http://maps.google.com/maps?q=loc:" + latLng?.latitude + "," + latLng?.longitude + " (" + binding!!.tvDropAddress.text.toString() + ")"
+                var mapIntent = Intent(Intent.ACTION_VIEW, Uri.parse(geoUri));
+                if (mapIntent.resolveActivity(binding?.root?.context!!.packageManager) != null) {
+                    startActivity(mapIntent);
+                }
+//                var textToCopy = binding?.tvDropAddress?.text
+//                val clipboardManager =
+//                    applicationContext.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+//                val clipData = ClipData.newPlainText("text", textToCopy)
+//                clipboardManager.setPrimaryClip(clipData)
+//                Toast.makeText(baseContext, "Detail Copied to Clipboard", Toast.LENGTH_SHORT).show()
             }
         )
 
@@ -551,6 +607,36 @@ class TermsServices : BaseActivity() {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+
+        Log.i("tag", "Called: $REQUEST_CODE");
+
+        if (isCalling) {
+            if (ContextCompat.checkSelfPermission(
+                    this,
+                    android.Manifest.permission.CALL_PHONE
+                ) != PackageManager.PERMISSION_GRANTED
+            ) {
+                isCalling = false
+                ActivityCompat.requestPermissions(
+                    this, arrayOf(android.Manifest.permission.CALL_PHONE),
+                    REQUEST_CODE
+                )
+
+            } else {
+                isCalling = false
+                val intent = Intent(
+                    Intent.ACTION_CALL,
+//                    Uri.parse("tel:" + binding?.tvPhone?.text.toString())
+                    Uri.parse("tel:" + "+917814501597")
+                )
+                startActivity(intent)
+            }
+        }
+
+    }
+
     override fun onRecycleBeforeDestroy() {
 
     }
@@ -565,6 +651,66 @@ class TermsServices : BaseActivity() {
 
     override fun setupLoader() {
 
+    }
+
+    fun makeCall() {
+
+        val builder1 = AlertDialog.Builder(binding?.root?.context)
+        builder1.setTitle("Confirm Call")
+        builder1.setMessage("Are you sure you want to make a call?")
+        builder1.setCancelable(false)
+        builder1.setPositiveButton(
+            "Yes"
+        ) { dialog, which -> requestCallPermission() }
+        builder1.setNegativeButton(
+            "No"
+        ) { dialog: DialogInterface, id: Int -> dialog.cancel() }
+        val alert11 = builder1.create()
+        alert11.show()
+
+    }
+
+    fun requestCallPermission() {
+        isCalling = true
+        if (ContextCompat.checkSelfPermission(
+                this,
+                android.Manifest.permission.CALL_PHONE
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            ActivityCompat.requestPermissions(
+                this, arrayOf(android.Manifest.permission.CALL_PHONE),
+                REQUEST_CODE
+            )
+
+        } else {
+
+            val intent = Intent(
+                Intent.ACTION_CALL,
+                Uri.parse("tel:" + "+917814501597")
+//                Uri.parse("tel:" + binding?.tvPhone?.text.toString())
+            )
+            startActivity(intent)
+            isCalling = false
+
+        }
+    }
+
+    fun getLocationFromAddress(context: Context?, strAddress: String?): LatLng? {
+        val coder = Geocoder(context)
+        val address: List<Address>
+        var p1: LatLng? = null
+        try {
+            // May throw an IOException
+            address = coder.getFromLocationName(strAddress, 5)
+            if (address == null) {
+                return null
+            }
+            val location: Address = address[0]
+            p1 = LatLng(location.getLatitude(), location.getLongitude())
+        } catch (ex: IOException) {
+            ex.printStackTrace()
+        }
+        return p1
     }
 
 

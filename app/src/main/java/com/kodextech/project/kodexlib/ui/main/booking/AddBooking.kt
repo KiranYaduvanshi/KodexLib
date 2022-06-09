@@ -343,8 +343,6 @@ class AddBooking : BaseActivity() {
 //                        .build(this)
 //                startActivityForResult(intent, 223344)
             }
-
-
         }
 
         binding?.btnAdd?.setOnClickListener {

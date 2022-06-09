@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/contentTerms"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -26,11 +25,11 @@
             android:background="@drawable/button_bg"
             android:paddingStart="@dimen/_15sdp"
             android:paddingEnd="@dimen/_15sdp"
-            android:text="Resend Email"
+            android:text="@string/resend_email"
             android:textAllCaps="false"
-            android:visibility="gone"
             android:textColor="@color/white"
-            android:textSize="@dimen/_13sdp" />
+            android:textSize="@dimen/_13sdp"
+            android:visibility="gone" />
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
@@ -54,9 +53,10 @@
                     android:gravity="center_vertical"
                     android:paddingStart="@dimen/_2sdp"
                     android:singleLine="true"
-                    android:text="Booked By"
+                    android:text="@string/booked_by"
                     android:textColor="@color/textColor"
-                    android:textSize="@dimen/_13sdp" />
+                    android:textSize="@dimen/_13sdp"
+                    tools:ignore="RtlSymmetry" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvBookedBy"
@@ -84,9 +84,10 @@
                     android:gravity="center_vertical"
                     android:paddingStart="@dimen/_2sdp"
                     android:singleLine="true"
-                    android:text="Date"
+                    android:text="@string/date"
                     android:textColor="@color/textColor"
-                    android:textSize="@dimen/_13sdp" />
+                    android:textSize="@dimen/_13sdp"
+                    tools:ignore="RtlSymmetry" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvDate"
@@ -224,6 +225,8 @@
                     android:layout_marginTop="@dimen/_3sdp"
                     android:background="@drawable/button_bg"
                     android:backgroundTint="@color/bgEdit"
+                    android:drawableEnd="@drawable/ic_baseline_call_24"
+                    android:drawableTint="@color/blue"
                     android:fontFamily="@font/opensans_regular"
                     android:gravity="center_vertical"
                     android:paddingStart="@dimen/_16sdp"
@@ -290,13 +293,16 @@
                     android:gravity="center_vertical"
                     android:inputType="textMultiLine"
                     android:minHeight="@dimen/_45sdp"
+
                     android:paddingStart="@dimen/_16sdp"
                     android:paddingEnd="@dimen/_16sdp"
                     android:singleLine="true"
                     android:textColor="@color/textColor"
                     android:textColorHint="@color/addProductHint"
                     android:textCursorDrawable="@color/black"
-                    android:textSize="@dimen/_13sdp" />
+                    android:textSize="@dimen/_13sdp"
+                    app:drawableEndCompat="@drawable/ic_baseline_directions_24"
+                    app:drawableTint="@color/blue" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvDropAddressTitle"
@@ -330,7 +336,9 @@
                     android:textColor="@color/textColor"
                     android:textColorHint="@color/addProductHint"
                     android:textCursorDrawable="@color/black"
-                    android:textSize="@dimen/_13sdp" />
+                    android:textSize="@dimen/_13sdp"
+                    app:drawableEndCompat="@drawable/ic_baseline_directions_24"
+                    app:drawableTint="@color/blue" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvFloorTitle"
@@ -1095,8 +1103,8 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/_5sdp"
                                 android:contentDescription="Layouts"
-                                android:orientation="horizontal"
                                 android:enabled="false"
+                                android:orientation="horizontal"
 
                                 android:weightSum="1">
 
@@ -1106,8 +1114,8 @@
                                     android:layout_height="match_parent"
                                     android:layout_weight=".5"
                                     android:buttonTint="@color/locationCol"
-                                    android:text="Yes"
                                     android:enabled="false"
+                                    android:text="Yes"
 
                                     android:textColor="@color/locationCol"
                                     android:textSize="@dimen/_12sdp" />
@@ -1118,8 +1126,8 @@
                                     android:layout_height="match_parent"
                                     android:layout_weight=".5"
                                     android:buttonTint="@color/locationCol"
-                                    android:text="No"
                                     android:enabled="false"
+                                    android:text="No"
 
                                     android:textColor="@color/locationCol"
                                     android:textSize="@dimen/_12sdp" />
@@ -1189,8 +1197,8 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/_5sdp"
                                 android:contentDescription="Layouts"
-                                android:orientation="horizontal"
                                 android:enabled="false"
+                                android:orientation="horizontal"
 
                                 android:weightSum="1">
 
@@ -1200,8 +1208,8 @@
                                     android:layout_height="match_parent"
                                     android:layout_weight=".5"
                                     android:buttonTint="@color/locationCol"
-                                    android:text="Yes"
                                     android:enabled="false"
+                                    android:text="Yes"
 
                                     android:textColor="@color/locationCol"
                                     android:textSize="@dimen/_12sdp" />
@@ -1212,8 +1220,8 @@
                                     android:layout_height="match_parent"
                                     android:layout_weight=".5"
                                     android:buttonTint="@color/locationCol"
-                                    android:text="No"
                                     android:enabled="false"
+                                    android:text="No"
 
                                     android:textColor="@color/locationCol"
                                     android:textSize="@dimen/_12sdp" />
@@ -1236,7 +1244,6 @@
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
 
-
                 <TextView
                     android:id="@+id/tvDiamantling"
                     android:layout_width="match_parent"
@@ -1244,11 +1251,11 @@
                     android:layout_below="@id/insurancedCustomer"
                     android:layout_marginStart="@dimen/_5sdp"
                     android:layout_marginTop="@dimen/_10sdp"
-                    android:visibility="gone"
                     android:fontFamily="@font/opensans_semi_bold"
                     android:text="Any Dismantling or Assembling "
                     android:textColor="@color/black"
-                    android:textSize="@dimen/_13sdp" />
+                    android:textSize="@dimen/_13sdp"
+                    android:visibility="gone" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rvImage"
