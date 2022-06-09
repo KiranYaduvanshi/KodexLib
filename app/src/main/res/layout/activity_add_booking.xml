@@ -1030,15 +1030,10 @@
                                             android:text="Fixed Price"
                                             android:textColor="@color/locationCol"
                                             android:textSize="@dimen/_12sdp" />
-
-
                                     </RadioGroup>
-
                                 </androidx.appcompat.widget.LinearLayoutCompat>
-
                             </RelativeLayout>
                         </androidx.appcompat.widget.LinearLayoutCompat>
-
 
                         <RelativeLayout
                             android:id="@+id/llPrice"

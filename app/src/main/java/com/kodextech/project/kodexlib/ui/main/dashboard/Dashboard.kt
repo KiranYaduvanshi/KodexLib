@@ -97,7 +97,6 @@ class Dashboard : BaseActivity() {
 //            val intent = Intent(this, BookingListing::class.java)
 //            startActivity(intent)
         }
-
     }
 
     fun getWorker() {

@@ -15,6 +15,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.google.gson.Gson
 import com.kodextech.project.kodexlib.R
@@ -26,6 +27,7 @@ import com.kodextech.project.kodexlib.network.Response
 import com.kodextech.project.kodexlib.network.URLApi
 import com.kodextech.project.kodexlib.ui.main.worker.WorkerListing
 import com.kodextech.project.kodexlib.utils.gone
+import com.kodextech.project.kodexlib.utils.isValidEmail
 import com.kodextech.project.kodexlib.utils.visible
 import org.json.JSONObject
 
@@ -54,7 +56,6 @@ class AddWorkerDialog : BaseDialogueFragment() {
 
     override fun onBindItemListenerOrViewVariables() {
 
-
     }
 
     override fun setupContentViewWithBinding(
@@ -65,15 +66,12 @@ class AddWorkerDialog : BaseDialogueFragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.add_worker_dialog, container, false)
         isCancelable = false
 
-
         binding?.etWrkerName?.hint = setMandatoryHintData("Worker Name")
         binding?.etWorkerEmail?.hint = setMandatoryHintData("Work Email")
         binding?.etWorkerPassword?.hint = setMandatoryHintData("Password")
         binding?.etHourlyRate?.hint = setMandatoryHintData("Hourly Rate")
         binding?.spWorkerType?.setItems("Admin", "Office", "Driver")
         binding?.spWorkerType?.text = setMandatoryHintData("Worker Type")
-
-
 
         workerName = binding?.etWrkerName?.text.toString()
         workerPassword = binding?.etWorkerPassword?.text.toString()
@@ -200,16 +198,13 @@ class AddWorkerDialog : BaseDialogueFragment() {
                 mActivity.showToast(message ?: "")
                 onClicksCallBack?.invoke("updated")
                 dismiss()
-
             }
 
             override fun onErrorResponse(error: String?, response: String?) {
                 hideLoading()
                 mActivity.showToast(error ?: "")
             }
-
         })
-
     }
 
     private fun getSpecificWorker(uuid: String) {
@@ -269,6 +264,7 @@ class AddWorkerDialog : BaseDialogueFragment() {
             override fun onSuccessResponse(response: String?, message: String) {
                 hideLoading()
                 mActivity.showToast(message ?: "")
+                Toast.makeText(mActivity, "resposne ---->>>>", Toast.LENGTH_SHORT).show()
                 val intent = Intent(mActivity, WorkerListing::class.java)
                 startActivity(intent)
                 dismiss()
@@ -276,9 +272,9 @@ class AddWorkerDialog : BaseDialogueFragment() {
 
             override fun onErrorResponse(error: String?, response: String?) {
                 hideLoading()
-                mActivity.showToast(error ?: "")
+               // mActivity.showToast(error ?: "")
+                Toast.makeText(mActivity, "Email already exist", Toast.LENGTH_SHORT).show()
             }
-
         })
     }
 
@@ -303,9 +299,6 @@ class AddWorkerDialog : BaseDialogueFragment() {
         )
 
         dialog?.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
-
-
-
     }
 
     private fun getScreenWidth(activity: Activity): Int {
