@@ -32,6 +32,7 @@ class CustomerProfile : BaseActivity() {
     private var customerObj: CustomerModel? = null
     private var customerEmail: String? = null
     var file: File? = null
+
     override fun onSetupViewGroup() {
         mViewGroup = binding?.content
     }
