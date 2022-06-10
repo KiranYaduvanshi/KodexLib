@@ -128,10 +128,11 @@ l̥       <entry key="..\:/Users/hp/Downloads/Modern_mover/app/src/main/res/layo
         <entry key="app/src/main/res/layout/activity_customer_profile.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_dashboard.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_driver_listing.xml" value="0.13159722222222223" />
+        <entry key="app/src/main/res/layout/activity_expenses.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_full_image_view.xml" value="0.12013888888888889" />
         <entry key="app/src/main/res/layout/activity_invoice.xml" value="0.19739583333333333" />
         <entry key="app/src/main/res/layout/activity_invoice_listing.xml" value="0.13159722222222223" />
-        <entry key="app/src/main/res/layout/activity_invoice_listing2.xml" value="0.12013888888888889" />
+        <entry key="app/src/main/res/layout/activity_invoice_listing2.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_job_detail.xml" value="0.125" />
         <entry key="app/src/main/res/layout/activity_jobs_listing.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.165" />
@@ -167,11 +168,11 @@ l̥       <entry key="..\:/Users/hp/Downloads/Modern_mover/app/src/main/res/layo
         <entry key="app/src/main/res/layout/job_item.xml" value="0.125" />
         <entry key="app/src/main/res/layout/list_worker.xml" value="0.19739583333333333" />
         <entry key="app/src/main/res/layout/loader_view.xml" value="0.1787037037037037" />
-        <entry key="app/src/main/res/layout/new_invoice_item.xml" value="0.125" />
+        <entry key="app/src/main/res/layout/new_invoice_item.xml" value="0.33" />
         <entry key="app/src/main/res/layout/select_worker_dialog.xml" value="0.13159722222222223" />
         <entry key="app/src/main/res/layout/send_confirmation_dialog.xml" value="0.1295138888888889" />
         <entry key="app/src/main/res/layout/success_dialog.xml" value="0.13159722222222223" />
-        <entry key="app/src/main/res/layout/top_bar.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/top_bar.xml" value="0.25" />
         <entry key="app/src/main/res/layout/worker_item.xml" value="0.165" />
         <entry key="app/src/main/res/menu/fab_menu.xml" value="0.14814814814814814" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.21025641025641026" />

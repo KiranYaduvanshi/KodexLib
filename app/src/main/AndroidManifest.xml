@@ -32,9 +32,16 @@
         tools:replace="android:theme,android:allowBackup"
         tools:targetApi="r">
         <activity
-            android:name=".CommunicationActivity"
-            android:exported="false" />
-        <activity
+            android:name=".ui.main.expenses.ExpensesActivity"
+            android:exported="true">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>   <activity
             android:name=".ui.main.invoice.MarkInvoicePaid"
             android:exported="false" />
         <activity
@@ -101,11 +108,11 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme.KodexLib"
             android:windowSoftInputMode="adjustPan">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            <!--                <category android:name="android.intent.category.LAUNCHER" />-->
+            <!--            </intent-filter>-->
         </activity>
         <activity
             android:name=".MainActivity"

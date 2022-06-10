@@ -2,7 +2,6 @@
 <layout>
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/contentInvoice"
         android:layout_width="match_parent"
@@ -143,14 +142,14 @@
                 android:layout_marginTop="@dimen/_5sdp"
                 android:layout_marginEnd="@dimen/_15sdp"
                 android:background="@drawable/button_bg"
+                android:fontFamily="@font/opensans_light"
                 android:hint="Search With Customer Name"
                 android:imeOptions="actionDone"
                 android:paddingStart="@dimen/_10sdp"
                 android:singleLine="true"
-                android:textSize="@dimen/_10sdp"
-                android:fontFamily="@font/opensans_light"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white"
+                android:textSize="@dimen/_10sdp"
                 android:visibility="gone" />
 
             <androidx.appcompat.widget.AppCompatImageView
