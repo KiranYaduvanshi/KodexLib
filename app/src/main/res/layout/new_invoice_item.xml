@@ -473,7 +473,6 @@
                     android:id="@+id/tvCopy"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/btnAssign"
                     android:layout_alignParentEnd="true"
                     android:layout_marginTop="@dimen/_5sdp"
                     android:fontFamily="@font/opensans_semi_bold"
@@ -481,10 +480,10 @@
                     android:padding="@dimen/_2sdp"
                     android:paddingStart="@dimen/_15sdp"
                     android:paddingEnd="@dimen/_15sdp"
+                    android:visibility="gone"
                     android:text="@string/copy_to_clipboard"
                     android:textAlignment="center"
-                    android:textColor="@color/blue"
-                    android:visibility="gone" />
+                    android:textColor="@color/blue"/>
 
             </RelativeLayout>
 

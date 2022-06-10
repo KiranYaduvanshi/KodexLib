@@ -154,29 +154,32 @@ class JobsListing : BaseActivity() {
 
         binding?.tvDay?.setOnClickListener {
             viewStates = "today"
+            binding?.etSearch?.text("");
             getJobListCall()
             changeViewColor()
 
         }
         binding?.tvMonth?.setOnClickListener {
+            binding?.etSearch?.text("");
             viewStates = "current-month"
             changeViewColor()
             getJobListCall()
 
         }
         binding?.tvYear?.setOnClickListener {
+            binding?.etSearch?.text("");
             viewStates = "current-year"
             changeViewColor()
             getJobListCall()
 
         }
         binding?.tvWeekly?.setOnClickListener {
+            binding?.etSearch?.text("");
             viewStates = "current-week"
             changeViewColor()
             getJobListCall()
 
         }
-
 
     }
 

@@ -240,8 +240,6 @@ class AddWorkerDialog : BaseDialogueFragment() {
         binding?.etWorkerEmail?.setText(workerEmail.toString())
         binding?.spWorkerType?.text = workerType.toString()
         binding?.etHourlyRate?.setText(workerHourlyRate?.toString())
-
-
     }
 
     private fun addWorkerCall(
@@ -250,7 +248,7 @@ class AddWorkerDialog : BaseDialogueFragment() {
         password: String? = null,
         type: String? = null,
         workerHourlyRate: String,
-    ) {
+    ){
         showLoading()
         NetworkClass.callApi(URLApi.addWorker(
             worker_uuid = null,
@@ -264,12 +262,11 @@ class AddWorkerDialog : BaseDialogueFragment() {
             override fun onSuccessResponse(response: String?, message: String) {
                 hideLoading()
                 mActivity.showToast(message ?: "")
-                Toast.makeText(mActivity, "resposne ---->>>>", Toast.LENGTH_SHORT).show()
+//                Toast.makeText(mActivity, "resposne ---->>>>", Toast.LENGTH_SHORT).show()
                 val intent = Intent(mActivity, WorkerListing::class.java)
                 startActivity(intent)
                 dismiss()
             }
-
             override fun onErrorResponse(error: String?, response: String?) {
                 hideLoading()
                // mActivity.showToast(error ?: "")
@@ -297,7 +294,6 @@ class AddWorkerDialog : BaseDialogueFragment() {
             (getScreenWidth(mActivity) * .9).toInt(),
             ViewGroup.LayoutParams.WRAP_CONTENT
         )
-
         dialog?.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
     }
 
@@ -315,6 +311,7 @@ class AddWorkerDialog : BaseDialogueFragment() {
             onClicksCallBack: ((label: String) -> Unit)? = null
         ): AddWorkerDialog {
             val args = Bundle()
+
             args.putString("TITLE", tvLabel)
             args.putString("isFor", isFor)
             args.putString("WORKERUUID", WORKERUUID)

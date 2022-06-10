@@ -197,8 +197,10 @@ class Dashboard : BaseActivity() {
         mCardData.add(DashboardItemModel("View Jobs", R.drawable.ic_job_inprogress))
         mCardData.add(DashboardItemModel("Customers", R.drawable.ic_customers))
         mCardData.add(DashboardItemModel("Invoices", R.drawable.ic_invoice))
-        mCardData.add(DashboardItemModel("Create Worker", R.drawable.ic_invoice))
+        mCardData.add(DashboardItemModel("Create Worker", R.drawable.ic_add_workers))
         mCardData.add(DashboardItemModel("List of All Workers", R.drawable.ic_job_completed))
+        mCardData.add(DashboardItemModel("Expenses", R.drawable.ic_expenses))
+        mCardData.add(DashboardItemModel("Communication", R.drawable.ic_mails))
 
 
 
@@ -230,6 +232,14 @@ class Dashboard : BaseActivity() {
                     dialog.show(supportFragmentManager, "")
                 }
                 5 -> {
+                    val intent = Intent(this, WorkerListing::class.java)
+                    startActivity(intent)
+                }
+                6 -> {
+                    val intent = Intent(this, WorkerListing::class.java)
+                    startActivity(intent)
+                }
+                7 -> {
                     val intent = Intent(this, WorkerListing::class.java)
                     startActivity(intent)
                 }
