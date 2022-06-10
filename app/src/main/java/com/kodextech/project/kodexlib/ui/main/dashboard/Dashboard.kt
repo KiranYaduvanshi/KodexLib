@@ -26,6 +26,7 @@ import com.kodextech.project.kodexlib.ui.main.booking.adapter.DashboardBookingAd
 import com.kodextech.project.kodexlib.ui.main.calendar.Calendar
 import com.kodextech.project.kodexlib.ui.main.customer.CustomerListing
 import com.kodextech.project.kodexlib.ui.main.dashboard.adapter.*
+import com.kodextech.project.kodexlib.ui.main.expenses.ExpensesActivity
 import com.kodextech.project.kodexlib.ui.main.invoice.InvoiceListing
 import com.kodextech.project.kodexlib.ui.main.jobs.JobsListing
 import com.kodextech.project.kodexlib.ui.main.worker.WorkerListing
@@ -237,7 +238,7 @@ class Dashboard : BaseActivity() {
                     startActivity(intent)
                 }
                 6 -> {
-                    val intent = Intent(this, CommunicationActivity::class.java)
+                    val intent = Intent(this, ExpensesActivity::class.java)
                     startActivity(intent)
                 }
                 7 -> {

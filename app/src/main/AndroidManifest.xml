@@ -51,6 +51,11 @@
         <activity
             android:name=".ui.main.jobs.StartJobActivity"
             android:exported="false" />
+
+        <activity
+            android:name=".ui.main.expenses.ExpensesActivity"
+            android:exported="false" />
+
         <activity
             android:name=".ui.main.booking.FullImageView"
             android:exported="false" />
@@ -106,18 +111,18 @@
             android:name=".ui.main.auth.LoginActivity"
             android:exported="true"
             android:screenOrientation="portrait" />
-        <activity
-            android:name=".ui.main.splash.Splash"
-            android:exported="true"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.KodexLib"
-            android:windowSoftInputMode="adjustPan">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
+<!--        <activity-->
+<!--            android:name=".ui.main.splash.Splash"-->
+<!--            android:exported="true"-->
+<!--            android:screenOrientation="portrait"-->
+<!--            android:theme="@style/Theme.KodexLib"-->
+<!--            android:windowSoftInputMode="adjustPan">-->
+<!--&lt;!&ndash;            <intent-filter>&ndash;&gt;-->
+<!--&lt;!&ndash;                <action android:name="android.intent.action.MAIN" />&ndash;&gt;-->
 
-            <!--                <category android:name="android.intent.category.LAUNCHER" />-->
-            <!--            </intent-filter>-->
-        </activity>
+<!--            &lt;!&ndash;                <category android:name="android.intent.category.LAUNCHER" />&ndash;&gt;-->
+<!--            &lt;!&ndash;            </intent-filter>&ndash;&gt;-->
+<!--        </activity>-->
         <activity
             android:name=".MainActivity"
             android:windowSoftInputMode="stateHidden|adjustResize" />
