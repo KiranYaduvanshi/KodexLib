@@ -150,7 +150,6 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight=".2"
-                            android:background="draw"
                             android:fontFamily="@font/opensans_semi_bold"
                             android:gravity="center"
                             android:singleLine="true"

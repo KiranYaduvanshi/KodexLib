@@ -33,6 +33,9 @@ class ExpensesActivity : AppCompatActivity() {
             viewStates = "current-week"
             changeViewColor()
         }
+        binding?.icBack?.setOnClickListener {
+            onBackPressed()
+        }
 
     }
 
