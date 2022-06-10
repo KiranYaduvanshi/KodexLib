@@ -264,7 +264,7 @@ class AddWorkerDialog : BaseDialogueFragment() {
             override fun onSuccessResponse(response: String?, message: String) {
                 hideLoading()
                 mActivity.showToast(message ?: "")
-                Toast.makeText(mActivity, "resposne ---->>>>", Toast.LENGTH_SHORT).show()
+//                Toast.makeText(mActivity, "resposne ---->>>>", Toast.LENGTH_SHORT).show()
                 val intent = Intent(mActivity, WorkerListing::class.java)
                 startActivity(intent)
                 dismiss()
