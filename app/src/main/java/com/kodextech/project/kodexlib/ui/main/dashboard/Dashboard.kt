@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.kodextech.project.kodexlib.R
 import com.kodextech.project.kodexlib.base.BaseActivity
+import com.kodextech.project.kodexlib.communication.CommunicationActivity
 import com.kodextech.project.kodexlib.databinding.ActivityDashboardBinding
 import com.kodextech.project.kodexlib.dialog.AddWorkerDialog
 import com.kodextech.project.kodexlib.dialog.AppAlertOption
@@ -236,11 +237,11 @@ class Dashboard : BaseActivity() {
                     startActivity(intent)
                 }
                 6 -> {
-                    val intent = Intent(this, WorkerListing::class.java)
+                    val intent = Intent(this, CommunicationActivity::class.java)
                     startActivity(intent)
                 }
                 7 -> {
-                    val intent = Intent(this, WorkerListing::class.java)
+                    val intent = Intent(this, CommunicationActivity::class.java)
                     startActivity(intent)
                 }
 

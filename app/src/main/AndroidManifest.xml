@@ -32,7 +32,7 @@
         tools:replace="android:theme,android:allowBackup"
         tools:targetApi="r">
         <activity
-            android:name=".CommunicationActivity"
+            android:name=".communication.CommunicationActivity"
             android:exported="false" />
         <activity
             android:name=".ui.main.invoice.MarkInvoicePaid"

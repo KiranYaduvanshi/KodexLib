@@ -59,7 +59,7 @@
             android:weightSum="2">
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tvDay"
+                android:id="@+id/tvemail"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -78,7 +78,7 @@
 
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tvYear"
+                android:id="@+id/tvsms"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
