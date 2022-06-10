@@ -2,11 +2,11 @@ package com.kodextech.project.kodexlib.ui.main.booking
 
 import android.Manifest
 import android.app.Activity
+import android.app.Dialog
 import android.app.PendingIntent
-import android.content.BroadcastReceiver
-import android.content.Context
-import android.content.Intent
-import android.content.IntentFilter
+import android.content.*
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.location.Geocoder
 import android.net.Uri
 import android.os.AsyncTask
@@ -18,11 +18,15 @@ import android.text.method.ScrollingMovementMethod
 import android.text.style.ForegroundColorSpan
 import android.util.Log
 import android.util.Patterns
+import android.view.Gravity
 import android.view.View
+import android.view.WindowManager
 import android.widget.ArrayAdapter
+import android.widget.Button
 import android.widget.RadioButton
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.appcompat.widget.AppCompatImageView
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -1215,6 +1219,7 @@ class AddBooking : BaseActivity() {
                                     sendSMS(finish())
                                 }
                                 ConfirmationOption.EMAIL -> {
+                                 //   resendEmailDialog()
                                     sendEmail(finish(), obj?.uuid)
                                 }
                                 ConfirmationOption.CANCEL -> {
@@ -1224,8 +1229,6 @@ class AddBooking : BaseActivity() {
                         }
                         dialog.show(supportFragmentManager, "")
                     }
-
-
                 }
 
                 override fun onErrorResponse(error: String?, response: String?) {
@@ -1245,12 +1248,19 @@ class AddBooking : BaseActivity() {
             override fun onSuccessResponse(response: String?, message: String) {
                 hideLoading()
                 showBarToast(message)
+               // Toast.makeText(binding?.root?.context, "response"+response, Toast.LENGTH_SHORT).show()
+                Log.i("Res","reposne "+response)
+//                resendEmailDialog()
                 finish
             }
 
             override fun onErrorResponse(error: String?, response: String?) {
                 hideLoading()
+              //  Toast.makeText(binding?.root?.context, "error"+response, Toast.LENGTH_SHORT).show()
+
                 showBarToast(error ?: "")
+                Log.i("Res","error "+response)
+
             }
 
         })
@@ -1741,6 +1751,46 @@ class AddBooking : BaseActivity() {
             }
 
         })
+    }
+
+
+    fun resendEmailDialog() {
+
+        val dialog = Dialog(this)
+        dialog.setContentView(R.layout.resendemail)
+        val resendEmail = dialog.findViewById<Button>(R.id.btnResenEmail)
+        val cancelBtn = dialog.findViewById<Button>(R.id.cancelBtn)
+        val crossImg = dialog.findViewById<AppCompatImageView>(R.id.ivCross)
+        resendEmail.setOnClickListener { // App.getSharedPre().userLogOut();
+            dialog.dismiss()
+        }
+        crossImg.setOnClickListener {
+            dialog.dismiss()
+        }
+        cancelBtn.setOnClickListener { dialog.dismiss() }
+        dialog.setCancelable(false)
+        dialog.show()
+        dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.window!!.setLayout(
+            WindowManager.LayoutParams.MATCH_PARENT,
+            WindowManager.LayoutParams.WRAP_CONTENT
+        )
+        dialog.window!!.setGravity(Gravity.CENTER)
+
+
+//        val builder1 = AlertDialog.Builder(binding?.root?.context)
+//        builder1.setTitle("Resend Email")
+//        builder1.setMessage("Are you sure you want to resend  ")
+//        builder1.setCancelable(false)
+////        builder1.setPositiveButton(
+////            "Yes"
+////        ) { dialog, which -> dialog.cancel() }
+//        builder1.setNegativeButton(
+//            "No"
+//        ) { dialog: DialogInterface, id: Int -> dialog.cancel() }
+//        val alert11 = builder1.create()
+//        alert11.show()
+
     }
 
 

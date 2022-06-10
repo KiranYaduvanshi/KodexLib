@@ -9,7 +9,6 @@
         android:background="@color/white"
         tools:context=".ui.main.termsAndServices.TermsServices">
 
-
         <include
             android:id="@+id/topBar"
             layout="@layout/top_bar" />
