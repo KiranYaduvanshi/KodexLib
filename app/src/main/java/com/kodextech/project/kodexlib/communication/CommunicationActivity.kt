@@ -18,20 +18,14 @@ class CommunicationActivity : BaseActivity() {
     private var emialCommunicationAdapter: EmialCommunicationAdapter? = null
     private var smsCommunicationAdapter: SmsCommunicationAdapter? = null
 
-
     override fun onSetupViewGroup() {
         mViewGroup = binding?.rlCommunication
-
     }
 
     override fun setupContentViewWithBinding() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_communication)
         setEmailAdapter()
         binding?.ivBack?.setOnClickListener { onBackPressed() }
-
-
-
-
         binding?.tvemail?.setOnClickListener {
 
             binding?.tvemail?.setBackgroundColor(getColor(R.color.blue))
@@ -39,8 +33,6 @@ class CommunicationActivity : BaseActivity() {
             binding?.tvsms?.setBackgroundColor(getColor(R.color.gray))
             binding?.tvsms?.setTextColor(getColor(R.color.cusCol))
            setEmailAdapter()
-
-
         }
         binding?.tvsms?.setOnClickListener {
             binding?.tvsms?.setBackgroundColor(getColor(R.color.blue))
@@ -66,12 +58,10 @@ class CommunicationActivity : BaseActivity() {
     fun setEmailAdapter(){
         emialCommunicationAdapter = EmialCommunicationAdapter(this)
         binding?.rvMails?.adapter = emialCommunicationAdapter
-
     }
 
     fun setSmsAdapter(){
         smsCommunicationAdapter = SmsCommunicationAdapter(this)
         binding?.rvMails?.adapter = smsCommunicationAdapter
-
     }
 }

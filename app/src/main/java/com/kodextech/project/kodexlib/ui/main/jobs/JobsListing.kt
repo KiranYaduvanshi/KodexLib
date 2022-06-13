@@ -33,7 +33,6 @@ import java.util.*
 class JobsListing : BaseActivity() {
 
     private var binding: ActivityJobsListingBinding? = null
-
     private var mData = ArrayList<JobModel>()
     private var mAdapter: JobListingAdapter? = null
     private var viewStates: String? = "today"
@@ -41,9 +40,9 @@ class JobsListing : BaseActivity() {
     private var listingFor: String? = null
     private var mDataDate = ArrayList<String>()
     private var searchText: String? = ""
-
     private var screenSate: JOBSSTATE? = JOBSSTATE.INPROGRESS
     private var isFor: String? = ""
+
     override fun onSetupViewGroup() {
         mViewGroup = binding?.contentJobs
     }
@@ -51,10 +50,8 @@ class JobsListing : BaseActivity() {
     override fun setupContentViewWithBinding() {
         statusBarColor(getColor(R.color.blue))
         binding = DataBindingUtil.setContentView(this, R.layout.activity_jobs_listing)
-
         initTopBar()
         setJobData()
-
         binding?.etSearch?.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
 
@@ -67,11 +64,8 @@ class JobsListing : BaseActivity() {
             override fun afterTextChanged(s: Editable?) {
                 searchText = s.toString()
                 filter(s.toString())
-
             }
-
         })
-
 
         binding?.btnDelete?.setOnClickListener {
             deleteBookings()
@@ -139,17 +133,13 @@ class JobsListing : BaseActivity() {
             binding?.etSearch?.text("")
 
             checkAndSetData()
-
         }
-
-
         binding?.svJobs?.setOnRefreshListener {
             if (LocalPreference.shared.user?.user?.profile_type == "worker") {
                 getWorkerJob(LocalPreference.shared.user?.user?.profile?.uuid)
             } else {
                 getJobListCall()
             }
-
         }
 
         binding?.tvDay?.setOnClickListener {
@@ -178,9 +168,7 @@ class JobsListing : BaseActivity() {
             viewStates = "current-week"
             changeViewColor()
             getJobListCall()
-
         }
-
     }
 
     private fun deleteBookings() {
@@ -200,7 +188,6 @@ class JobsListing : BaseActivity() {
                 hideLoading()
                 showToast(error ?: "")
             }
-
         })
     }
 
@@ -252,7 +239,6 @@ class JobsListing : BaseActivity() {
                     showBarToast(error ?: "")
                   //  binding?.svJobs?.isRefreshing = false
                 }
-
             })
     }
 
@@ -336,7 +322,6 @@ class JobsListing : BaseActivity() {
                     hideLoading()
                     showBarToast(error ?: "")
                 }
-
             })
     }
 
@@ -421,7 +406,6 @@ class JobsListing : BaseActivity() {
                 hideLoading()
                 showBarToast(error ?: "")
             }
-
         })
     }
 
@@ -510,8 +494,6 @@ class JobsListing : BaseActivity() {
                 binding?.tvWeekly?.setTextColor(getColor(R.color.white))
             }
         }
-
-
     }
 
     fun logout() {
@@ -529,12 +511,8 @@ class JobsListing : BaseActivity() {
                 hideLoading()
                 showBarToast(error ?: "")
             }
-
         })
-
-
     }
-
 }
 
 

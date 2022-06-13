@@ -44,8 +44,6 @@ class Dashboard : BaseActivity() {
 
     private var mBookingData = ArrayList<JobModel>()
     private var mABookingAdapter: DashboardBookingAdapter? = null
-
-
     private var mWorkerData = ArrayList<User>()
     private var mWorkerAdapter: WorkerListingAdapter? = null
     private var mCardData = ArrayList<DashboardItemModel>()
@@ -53,7 +51,6 @@ class Dashboard : BaseActivity() {
     override fun onBackPressed() {
         finish()
     }
-
 
     override fun onSetupViewGroup() {
         mViewGroup = findViewById(R.id.contentDashboard)
@@ -69,8 +66,6 @@ class Dashboard : BaseActivity() {
         setWorkerRecycler()
         getWorker()
         getJobListCall()
-
-
         binding?.dashboardTopBar?.ivLogout?.setOnClickListener {
             val dl = LogoutDialog.newInstance(
                 "LOGOUT",
@@ -121,7 +116,6 @@ class Dashboard : BaseActivity() {
                 hideLoading()
                 showBarToast(error ?: "")
             }
-
         })
     }
 
@@ -164,10 +158,7 @@ class Dashboard : BaseActivity() {
                 hideLoading()
                 showBarToast(error ?: "")
             }
-
         })
-
-
     }
 
 
@@ -189,8 +180,6 @@ class Dashboard : BaseActivity() {
     private fun initTopBar() {
         binding?.dashboardTopBar?.ivBack?.gone()
         binding?.dashboardTopBar?.tvText?.text = "Dashboard"
-
-
     }
 
     private fun setUpDashboardRecyler() {
@@ -204,8 +193,6 @@ class Dashboard : BaseActivity() {
         mCardData.add(DashboardItemModel("Expenses", R.drawable.ic_expenses))
         mCardData.add(DashboardItemModel("Communication", R.drawable.ic_mails))
 
-
-
         binding?.rvDashboard?.layoutManager = GridLayoutManager(this, 2)
         binding?.rvDashboard?.adapter = DashboardItemAdapter(this, mCardData) { position: Int ->
             when (position) {
@@ -213,7 +200,6 @@ class Dashboard : BaseActivity() {
                     val intent = Intent(this, AddBooking::class.java)
                     startActivity(intent)
                 }
-
                 1 -> {
                     val intent = Intent(this, JobsListing::class.java)
                     startActivity(intent)

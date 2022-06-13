@@ -36,7 +36,6 @@ class ExpensesActivity : AppCompatActivity() {
         binding?.icBack?.setOnClickListener {
             onBackPressed()
         }
-
     }
 
     private fun changeViewColor() {
