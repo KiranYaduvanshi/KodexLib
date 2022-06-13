@@ -92,6 +92,12 @@
         <item name="android:windowMinWidthMajor">@android:dimen/dialog_min_width_major</item>
         <item name="android:windowMinWidthMinor">100%</item>
     </style>
+    <style name="Theme.KodexLib.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="Theme.KodexLib.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.KodexLib.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 
 </resources>
