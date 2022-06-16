@@ -31,9 +31,8 @@ object URLApi {
     const val SOCKET_URL = "http://45.56.122.34:1028"
 //    const val SOCKET_URL = "http://45.56.122.34:1028"
     public const val BaseUrl =
-//<<<<<<< HEAD
-        "http://45.33.19.125/modern-movers/api/" //Base URL here
-//=======
+        "http://45.33.19.125/modern-movers/api/"
+    //Base URL here
 //        "http://45.56.122.34/modern-movers/public/api/" //Base URL here
 //        "http://45.33.19.125/modern-movers/api/" //Base URL here
 //        "http://kodextech.net/modern-movers/public/api/" //Base URL here

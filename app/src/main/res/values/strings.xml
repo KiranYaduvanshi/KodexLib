@@ -27,6 +27,7 @@
     <string name="today">Today</string>
     <string name="yearly">Yearly</string>
     <string name="_300">$300</string>
+    <string name="statics">Statics</string>
 
 
 </resources>

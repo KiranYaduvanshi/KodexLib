@@ -1,7 +1,6 @@
 package com.kodextech.project.kodexlib.ui.main.dashboard
 
 import android.content.Intent
-import android.view.WindowManager
 import androidx.core.app.ActivityCompat
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.GridLayoutManager
@@ -9,7 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.kodextech.project.kodexlib.R
 import com.kodextech.project.kodexlib.base.BaseActivity
-import com.kodextech.project.kodexlib.communication.CommunicationActivity
+import com.kodextech.project.kodexlib.ui.main.communication.CommunicationActivity
 import com.kodextech.project.kodexlib.databinding.ActivityDashboardBinding
 import com.kodextech.project.kodexlib.dialog.AddWorkerDialog
 import com.kodextech.project.kodexlib.dialog.AppAlertOption

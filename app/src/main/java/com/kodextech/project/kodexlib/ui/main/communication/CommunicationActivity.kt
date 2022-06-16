@@ -1,16 +1,11 @@
-package com.kodextech.project.kodexlib.communication
+package com.kodextech.project.kodexlib.ui.main.communication
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import com.kodextech.project.kodexlib.R
 import com.kodextech.project.kodexlib.base.BaseActivity
-import com.kodextech.project.kodexlib.communication.adapter.EmialCommunicationAdapter
-import com.kodextech.project.kodexlib.communication.adapter.SmsCommunicationAdapter
-import com.kodextech.project.kodexlib.databinding.ActivityAddBookingBinding
+import com.kodextech.project.kodexlib.ui.main.communication.adapter.EmialCommunicationAdapter
+import com.kodextech.project.kodexlib.ui.main.communication.adapter.SmsCommunicationAdapter
 import com.kodextech.project.kodexlib.databinding.ActivityCommunicationBinding
-import com.kodextech.project.kodexlib.ui.main.booking.adapter.ImageUploadAdapter
 
 class CommunicationActivity : BaseActivity() {
 

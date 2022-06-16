@@ -1,4 +1,4 @@
-package com.kodextech.project.kodexlib.communication.adapter
+package com.kodextech.project.kodexlib.ui.main.communication.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.kodextech.project.kodexlib.R
-import com.kodextech.project.kodexlib.databinding.LayoutRvItemCommunicationEmailBinding
 import com.kodextech.project.kodexlib.databinding.LayoutRvItemCommunicationSmsBinding
 
 class SmsCommunicationAdapter(var context:Context):RecyclerView.Adapter<SmsViewHolder>() {
