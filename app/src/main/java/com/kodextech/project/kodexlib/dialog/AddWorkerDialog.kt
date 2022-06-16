@@ -269,8 +269,8 @@ class AddWorkerDialog : BaseDialogueFragment() {
             }
             override fun onErrorResponse(error: String?, response: String?) {
                 hideLoading()
-               // mActivity.showToast(error ?: "")
-                Toast.makeText(mActivity, "Email already exist", Toast.LENGTH_SHORT).show()
+                mActivity.showToast(error ?: "")
+//                Toast.makeText(mActivity, "Email already exist", Toast.LENGTH_SHORT).show()
             }
         })
     }

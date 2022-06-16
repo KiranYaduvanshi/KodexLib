@@ -29,12 +29,13 @@ object URLApi {
 
     private val TAG = URLApi::class.java.toString()
 
-    const val SOCKET_URL = "http://45.56.122.34:1028"
+    const val SOCKET_URL = "http://moderns.modernmover.co.uk"
 
     //    const val SOCKET_URL = "http://45.56.122.34:1028"
     public const val BaseUrl =
 //<<<<<<< HEAD
-        "http://45.33.19.125/modern-movers/api/" //Base URL here
+        "http://moderns.modernmover.co.uk/api/" //Base URL here
+//        "http://45.33.19.125/modern-movers/api/" //Base URL here
 
     //=======
 //        "http://45.56.122.34/modern-movers/public/api/" //Base URL here
