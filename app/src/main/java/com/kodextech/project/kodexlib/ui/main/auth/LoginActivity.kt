@@ -1,10 +1,8 @@
 package com.kodextech.project.kodexlib.ui.main.auth
 
 import android.content.Intent
-import android.text.Editable
 import android.text.Spannable
 import android.text.SpannableStringBuilder
-import android.text.TextWatcher
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
 import android.text.style.ForegroundColorSpan
@@ -20,8 +18,7 @@ import com.kodextech.project.kodexlib.network.NetworkClass
 import com.kodextech.project.kodexlib.network.Response
 import com.kodextech.project.kodexlib.network.URLApi
 import com.kodextech.project.kodexlib.ui.main.dashboard.Dashboard
-import com.kodextech.project.kodexlib.ui.main.jobs.JobsListing
-import com.kodextech.project.kodexlib.utils.text
+import com.kodextech.project.kodexlib.ui.main.dashboard.DriverDashboardActivity
 import org.json.JSONObject
 
 
@@ -85,8 +82,8 @@ class LoginActivity : BaseActivity() {
         } else if (!Patterns.EMAIL_ADDRESS.matcher(binding?.etEmail?.text.toString().trim())
                 .matches()
         ) {
-            binding?.etEmail?.error="Invalid email format"
-          //  showBarToast("Invalid Format")
+            binding?.etEmail?.error = "Invalid email format"
+            //  showBarToast("Invalid Format")
         } else if (password.isNullOrEmpty()) {
             binding?.etPassword?.error = "Required"
         } else {
@@ -112,8 +109,11 @@ class LoginActivity : BaseActivity() {
                     LocalPreference.shared.token = LocalPreference.shared.user?.access_token
 
                     if (LocalPreference?.shared?.user?.user?.profile?.worker_type?.lowercase() == "Driver".lowercase()) {
-                        val intent = Intent(this@LoginActivity, JobsListing::class.java)
-                        intent.putExtra("from", "driver")
+//                        val intent = Intent(this@LoginActivity, JobsListing::class.java)
+//                        intent.putExtra("from", "driver")
+//                        startActivity(intent)
+//                        finish()
+                        val intent = Intent(this@LoginActivity, DriverDashboardActivity::class.java)
                         startActivity(intent)
                         finish()
                     } else {
@@ -130,7 +130,7 @@ class LoginActivity : BaseActivity() {
             })
     }
 
-    override fun onRecycleBeforeDestroy() {
+ override fun onRecycleBeforeDestroy() {
 
     }
 
@@ -146,7 +146,7 @@ class LoginActivity : BaseActivity() {
 
     }
 
-    fun setMandatoryHintData(hintData: String ): SpannableStringBuilder? {
+    fun setMandatoryHintData(hintData: String): SpannableStringBuilder? {
         val colored = " *"
         val builder = SpannableStringBuilder()
         builder.append(hintData)

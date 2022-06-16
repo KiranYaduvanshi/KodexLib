@@ -191,6 +191,7 @@ class Dashboard : BaseActivity() {
         mCardData.add(DashboardItemModel("List of All Workers", R.drawable.ic_job_completed))
         mCardData.add(DashboardItemModel("Expenses", R.drawable.ic_expenses))
         mCardData.add(DashboardItemModel("Communication", R.drawable.ic_mails))
+        mCardData.add(DashboardItemModel("Statics", R.drawable.ic_statics))
 
         binding?.rvDashboard?.layoutManager = GridLayoutManager(this, 2)
         binding?.rvDashboard?.adapter = DashboardItemAdapter(this, mCardData) { position: Int ->
@@ -227,6 +228,9 @@ class Dashboard : BaseActivity() {
                     startActivity(intent)
                 }
                 7 -> {
+                    val intent = Intent(this, CommunicationActivity::class.java)
+                    startActivity(intent)
+                }   8 -> {
                     val intent = Intent(this, CommunicationActivity::class.java)
                     startActivity(intent)
                 }

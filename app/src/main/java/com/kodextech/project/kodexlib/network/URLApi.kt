@@ -3,6 +3,7 @@
 package com.kodextech.project.kodexlib.network
 
 
+import android.util.Log
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.kodextech.project.kodexlib.model.MediaModel
@@ -28,11 +29,15 @@ object URLApi {
 
     private val TAG = URLApi::class.java.toString()
 
-    const val SOCKET_URL = "http://45.56.122.34:1028"
-//    const val SOCKET_URL = "http://45.56.122.34:1028"
+    const val SOCKET_URL = "http://moderns.modernmover.co.uk"
+
+    //    const val SOCKET_URL = "http://45.56.122.34:1028"
     public const val BaseUrl =
-        "http://45.33.19.125/modern-movers/api/"
+        //"http://45.33.19.125/modern-movers/api/"
     //Base URL here
+        "http://moderns.modernmover.co.uk/api/" //Base URL here
+//        "http://45.33.19.125/modern-movers/api/" //Base URL here
+
 //        "http://45.56.122.34/modern-movers/public/api/" //Base URL here
 //        "http://45.33.19.125/modern-movers/api/" //Base URL here
 //        "http://kodextech.net/modern-movers/public/api/" //Base URL here
@@ -151,7 +156,7 @@ object URLApi {
         params.put("email", email)
         params.put("activation_code", activation_code)
         params.put("is_social", is_social)
-
+        Log.i("MODERN_MOVERS", activation_code + "");
         return this
     }
 

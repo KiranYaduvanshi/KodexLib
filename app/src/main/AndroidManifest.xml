@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.kodextech.project.kodexlib">
+    package="com.kodextech.project.kodexlib" >
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
@@ -31,9 +31,12 @@
         android:usesCleartextTraffic="true"
         tools:replace="android:theme,android:allowBackup"
         tools:targetApi="r">
-<!--        <activity-->
-<!--            android:name=".ui.main.StaticActivity"-->
-<!--            android:exported="false" />-->
+
+        <activity
+            android:name=".ui.main.dashboard.DriverDashboardActivity"
+            android:exported="false"
+            android:label="@string/title_activity_driver_dashboard"
+            android:theme="@style/Theme.KodexLib.NoActionBar" />
         <activity
             android:name="com.kodextech.project.kodexlib.ui.main.communication.CommunicationActivity"
             android:exported="false" />
@@ -42,7 +45,7 @@
 
 
             android:exported="true">
-            <intent-filter>
+         <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -142,7 +145,7 @@
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.provider"
             android:exported="false"
-            android:grantUriPermissions="true">
+            android:grantUriPermissions="true" >
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/provider_paths" />

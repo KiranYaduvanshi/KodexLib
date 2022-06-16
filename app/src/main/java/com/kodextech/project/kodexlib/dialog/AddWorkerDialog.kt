@@ -277,6 +277,8 @@ class AddWorkerDialog : BaseDialogueFragment() {
                // mActivity.showToast(error ?: "")
                 Toast.makeText(mActivity, "Email already exist", Toast.LENGTH_SHORT).show()
                 Log.i("error","error "+error)
+                mActivity.showToast(error ?: "")
+//                Toast.makeText(mActivity, "Email already exist", Toast.LENGTH_SHORT).show()
             }
         })
     }
