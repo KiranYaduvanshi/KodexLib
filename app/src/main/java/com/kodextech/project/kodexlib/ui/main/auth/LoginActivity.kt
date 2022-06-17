@@ -12,6 +12,7 @@ import com.google.gson.Gson
 import com.kodextech.project.kodexlib.R
 import com.kodextech.project.kodexlib.base.BaseActivity
 import com.kodextech.project.kodexlib.databinding.ActivityLoginBinding
+import com.kodextech.project.kodexlib.model.EmailCommunicationModel
 import com.kodextech.project.kodexlib.model.UserModel
 import com.kodextech.project.kodexlib.network.LocalPreference
 import com.kodextech.project.kodexlib.network.NetworkClass
@@ -33,6 +34,8 @@ class LoginActivity : BaseActivity() {
     override fun onSetupViewGroup() {
         mViewGroup = findViewById(R.id.contentLogin)
         makeLightContentStatusBar()
+        val emailCommunicationModel = EmailCommunicationModel(false,"",);
+        emailCommunicationModel.data[0].Email
     }
 
     override fun setupContentViewWithBinding() {

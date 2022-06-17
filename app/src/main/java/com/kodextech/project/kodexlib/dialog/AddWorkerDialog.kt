@@ -54,11 +54,9 @@ class AddWorkerDialog : BaseDialogueFragment() {
             this.workerUUID = it.getString("WORKERUUID", "") ?: ""
         }
     }
-
     override fun onBindItemListenerOrViewVariables() {
 
     }
-
     override fun setupContentViewWithBinding(
         inflater: LayoutInflater,
         container: ViewGroup?,

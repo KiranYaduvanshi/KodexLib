@@ -136,6 +136,11 @@ object URLApi {
         params.put("is_social", is_social)
         return this
     }
+    fun getEmailCommunationApi():URLApi{
+        method =NetworkMethod.GET
+        path ="get-email-communication"
+        return this
+    }
 
     fun signout(): URLApi {
         method = NetworkMethod.POST

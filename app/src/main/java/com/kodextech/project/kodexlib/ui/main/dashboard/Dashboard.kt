@@ -19,6 +19,7 @@ import com.kodextech.project.kodexlib.network.LocalPreference
 import com.kodextech.project.kodexlib.network.NetworkClass
 import com.kodextech.project.kodexlib.network.Response
 import com.kodextech.project.kodexlib.network.URLApi
+import com.kodextech.project.kodexlib.ui.main.StaticActivity
 import com.kodextech.project.kodexlib.ui.main.auth.LoginActivity
 import com.kodextech.project.kodexlib.ui.main.booking.AddBooking
 import com.kodextech.project.kodexlib.ui.main.booking.adapter.DashboardBookingAdapter
@@ -231,7 +232,7 @@ class Dashboard : BaseActivity() {
                     val intent = Intent(this, CommunicationActivity::class.java)
                     startActivity(intent)
                 }   8 -> {
-                    val intent = Intent(this, CommunicationActivity::class.java)
+                    val intent = Intent(this, StaticActivity::class.java)
                     startActivity(intent)
                 }
 
