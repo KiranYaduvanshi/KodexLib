@@ -94,7 +94,7 @@
             android:name=".ui.main.booking.AddBooking"
             android:exported="true"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan" />
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".ui.main.customer.CustomerListing"
             android:exported="true"

@@ -28,7 +28,7 @@ class FullImageView : BaseActivity() {
                 index, mediaModel ->
             array?.add(
                 SlideModel(
-                    "http://45.33.19.125/modern-movers/public/uploads/" + mediaModel.path,
+                    "http://moderns.modernmover.co.uk/modern-movers/public/uploads/" + mediaModel.path,
                     "",
                     ScaleTypes.CENTER_CROP
                 )
