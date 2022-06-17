@@ -21,7 +21,6 @@ class LogoutDialog : BaseDialogueFragment() {
     var btnYesTitle: String? = ""
     var btnNoTitle: String? = ""
 
-
     override fun onSetupArguments() {
         arguments?.let {
             this.title = it.getString("TITLE", "") ?: ""
@@ -110,7 +109,6 @@ class LogoutDialog : BaseDialogueFragment() {
             fragment.arguments = args
             return fragment
         }
-
     }
 }
 

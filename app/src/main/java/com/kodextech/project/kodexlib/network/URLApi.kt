@@ -35,6 +35,7 @@ object URLApi {
   const val BaseUrl =
         "http://moderns.modernmover.co.uk/api/" //Base URL here
 //        "http://45.33.19.125/modern-movers/api/" //Base URL here
+
 //        "http://45.56.122.34/modern-movers/public/api/" //Base URL here
 //        "http://kodextech.net/modern-movers/public/api/" //Base URL here
     private var path: String = ""
@@ -129,6 +130,11 @@ object URLApi {
         params.put("email", email)
         params.put("password", password)
         params.put("is_social", is_social)
+        return this
+    }
+    fun getEmailCommunationApi():URLApi{
+        method =NetworkMethod.GET
+        path ="get-email-communication"
         return this
     }
 

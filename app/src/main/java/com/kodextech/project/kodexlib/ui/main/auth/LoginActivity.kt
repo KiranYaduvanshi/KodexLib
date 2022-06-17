@@ -12,6 +12,7 @@ import com.google.gson.Gson
 import com.kodextech.project.kodexlib.R
 import com.kodextech.project.kodexlib.base.BaseActivity
 import com.kodextech.project.kodexlib.databinding.ActivityLoginBinding
+import com.kodextech.project.kodexlib.model.EmailCommunicationModel
 import com.kodextech.project.kodexlib.model.UserModel
 import com.kodextech.project.kodexlib.network.LocalPreference
 import com.kodextech.project.kodexlib.network.NetworkClass
@@ -33,24 +34,22 @@ class LoginActivity : BaseActivity() {
     override fun onSetupViewGroup() {
         mViewGroup = findViewById(R.id.contentLogin)
         makeLightContentStatusBar()
-
+        val emailCommunicationModel = EmailCommunicationModel(false,"",);
+        emailCommunicationModel.data[0].Email
     }
 
     override fun setupContentViewWithBinding() {
+
         statusBarColor(this.getColor(R.color.white))
-
-
         binding = DataBindingUtil.setContentView(this, R.layout.activity_login)
         binding?.etEmail?.hint = setMandatoryHintData("Enter Email");
         binding?.etPassword?.hint = setMandatoryHintData("Enter Password");
-
 
         binding?.btnLogIn?.setOnClickListener {
             validation()
 //            val intent = Intent(this, Dashboard::class.java)
 //            startActivity(intent)
         }
-
 
         binding?.showPass?.setOnClickListener {
             if (isClicked) {
@@ -125,20 +124,16 @@ class LoginActivity : BaseActivity() {
                         startActivity(intent)
                         finish()
                     }
-
-
                 }
 
                 override fun onErrorResponse(error: String?, response: String?) {
                     hideLoading()
                     showBarToast(error ?: "")
                 }
-
             })
     }
 
-
-    override fun onRecycleBeforeDestroy() {
+ override fun onRecycleBeforeDestroy() {
 
     }
 
@@ -169,6 +164,4 @@ class LoginActivity : BaseActivity() {
         )
         return builder
     }
-
-
 }

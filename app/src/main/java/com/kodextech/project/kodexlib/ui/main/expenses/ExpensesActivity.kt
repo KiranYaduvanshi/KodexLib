@@ -127,7 +127,6 @@ class ExpensesActivity : BaseActivity() {
         binding?.icBack?.setOnClickListener {
             onBackPressed()
         }
-
     }
 
     private fun changeViewColor() {

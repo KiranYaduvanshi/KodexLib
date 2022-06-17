@@ -30,19 +30,22 @@
         android:theme="@style/Theme.KodexLib"
         android:usesCleartextTraffic="true"
         tools:replace="android:theme,android:allowBackup"
-        tools:targetApi="r" >
+        tools:targetApi="r">
+
         <activity
             android:name=".ui.main.dashboard.DriverDashboardActivity"
             android:exported="false"
             android:label="@string/title_activity_driver_dashboard"
             android:theme="@style/Theme.KodexLib.NoActionBar" />
         <activity
-            android:name=".communication.CommunicationActivity"
+            android:name="com.kodextech.project.kodexlib.ui.main.communication.CommunicationActivity"
             android:exported="false" />
         <activity
             android:name=".ui.main.splash.Splash"
-            android:exported="true" >
-            <intent-filter>
+
+
+            android:exported="true">
+         <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -74,6 +77,12 @@
             android:name=".ui.main.termsAndServices.TermsServices"
             android:exported="true"
             android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.main.StaticActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+
         <activity
             android:name=".ui.main.calendar.Calendar"
             android:exported="true"

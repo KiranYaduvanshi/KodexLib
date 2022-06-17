@@ -10,6 +10,7 @@ import android.text.SpannableStringBuilder
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
 import android.text.style.ForegroundColorSpan
+import android.util.Log
 import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
@@ -53,11 +54,9 @@ class AddWorkerDialog : BaseDialogueFragment() {
             this.workerUUID = it.getString("WORKERUUID", "") ?: ""
         }
     }
-
     override fun onBindItemListenerOrViewVariables() {
 
     }
-
     override fun setupContentViewWithBinding(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -78,11 +77,9 @@ class AddWorkerDialog : BaseDialogueFragment() {
         workerEmail = binding?.etWorkerEmail?.text.toString()
         workerHourlyRate = binding?.etHourlyRate?.text.toString()
 
-
         binding?.spWorkerType?.setOnItemSelectedListener { view, position, id, item ->
             workerType = item.toString()
         }
-
         binding?.showPass?.setOnClickListener {
             if (isClicked) {
                 binding?.etWorkerPassword?.transformationMethod =
@@ -123,7 +120,13 @@ class AddWorkerDialog : BaseDialogueFragment() {
                 binding?.etHourlyRate?.error = "Required"
                 mActivity.showToast("Select Worker Hourly Rate")
 
-            } else {
+            }
+            else if(workerName.toString().length < 3){
+                mActivity.showToast("The name must be at least 3 characters ")
+
+
+            }
+            else {
                 if (tvLabel != "Update Worker") {
                     when {
                         workerPassword.isNullOrEmpty() -> {
@@ -171,8 +174,6 @@ class AddWorkerDialog : BaseDialogueFragment() {
         } else {
             binding?.rlPassword?.visible()
         }
-
-
         return binding?.root!!
     }
 
@@ -265,10 +266,15 @@ class AddWorkerDialog : BaseDialogueFragment() {
 //                Toast.makeText(mActivity, "resposne ---->>>>", Toast.LENGTH_SHORT).show()
                 val intent = Intent(mActivity, WorkerListing::class.java)
                 startActivity(intent)
+                Log.i("error","resposne "+response)
+
                 dismiss()
             }
             override fun onErrorResponse(error: String?, response: String?) {
                 hideLoading()
+               // mActivity.showToast(error ?: "")
+                Toast.makeText(mActivity, "Email already exist", Toast.LENGTH_SHORT).show()
+                Log.i("error","error "+error)
                 mActivity.showToast(error ?: "")
 //                Toast.makeText(mActivity, "Email already exist", Toast.LENGTH_SHORT).show()
             }

@@ -1,23 +1,28 @@
-package com.kodextech.project.kodexlib.communication
+package com.kodextech.project.kodexlib.ui.main.communication
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import android.view.ViewGroup
+import android.util.Log
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.kodextech.project.kodexlib.R
 import com.kodextech.project.kodexlib.base.BaseActivity
-import com.kodextech.project.kodexlib.communication.adapter.EmialCommunicationAdapter
-import com.kodextech.project.kodexlib.communication.adapter.SmsCommunicationAdapter
-import com.kodextech.project.kodexlib.databinding.ActivityAddBookingBinding
+import com.kodextech.project.kodexlib.ui.main.communication.adapter.EmialCommunicationAdapter
+import com.kodextech.project.kodexlib.ui.main.communication.adapter.SmsCommunicationAdapter
 import com.kodextech.project.kodexlib.databinding.ActivityCommunicationBinding
-import com.kodextech.project.kodexlib.ui.main.booking.adapter.ImageUploadAdapter
+import com.kodextech.project.kodexlib.model.Data
+import com.kodextech.project.kodexlib.model.InvoiceModel
+import com.kodextech.project.kodexlib.network.NetworkClass
+import com.kodextech.project.kodexlib.network.Response
+import com.kodextech.project.kodexlib.network.URLApi
+import com.kodextech.project.kodexlib.utils.generateList
+import org.json.JSONArray
+import org.json.JSONObject
 
 class CommunicationActivity : BaseActivity() {
 
     private var binding: ActivityCommunicationBinding? = null
     private var emialCommunicationAdapter: EmialCommunicationAdapter? = null
     private var smsCommunicationAdapter: SmsCommunicationAdapter? = null
-
+    private var mData = ArrayList<Data>()
 
     override fun onSetupViewGroup() {
         mViewGroup = binding?.rlCommunication
@@ -26,11 +31,8 @@ class CommunicationActivity : BaseActivity() {
 
     override fun setupContentViewWithBinding() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_communication)
-        setEmailAdapter()
         binding?.ivBack?.setOnClickListener { onBackPressed() }
-
-
-
+        getEmailCommunicationList()
 
         binding?.tvemail?.setOnClickListener {
 
@@ -38,9 +40,7 @@ class CommunicationActivity : BaseActivity() {
             binding?.tvemail?.setTextColor(getColor(R.color.white))
             binding?.tvsms?.setBackgroundColor(getColor(R.color.gray))
             binding?.tvsms?.setTextColor(getColor(R.color.cusCol))
-           setEmailAdapter()
-
-
+            getEmailCommunicationList()
         }
         binding?.tvsms?.setOnClickListener {
             binding?.tvsms?.setBackgroundColor(getColor(R.color.blue))
@@ -64,14 +64,35 @@ class CommunicationActivity : BaseActivity() {
     }
 
     fun setEmailAdapter(){
-        emialCommunicationAdapter = EmialCommunicationAdapter(this)
+        emialCommunicationAdapter = EmialCommunicationAdapter(this,mData)
         binding?.rvMails?.adapter = emialCommunicationAdapter
-
     }
 
     fun setSmsAdapter(){
         smsCommunicationAdapter = SmsCommunicationAdapter(this)
         binding?.rvMails?.adapter = smsCommunicationAdapter
+    }
 
+    private fun getEmailCommunicationList() {
+  showLoading()
+        NetworkClass.callApi(URLApi.getEmailCommunationApi(), object : Response {
+            override fun onSuccessResponse(response: String?, message: String) {
+                hideLoading()
+                Log.i("Check","response "+response)
+                val json = JSONArray(response ?: "")
+                val data = generateList(json.toString(), Array<Data>::class.java)
+               // Toast.makeText(binding?.root?.context, "data "+data[0].Date, Toast.LENGTH_SHORT).show()
+               // Toast.makeText(binding?.root?.context, "response"+response, Toast.LENGTH_SHORT).show()
+                mData.addAll(data)
+                setEmailAdapter()
+
+            }
+
+            override fun onErrorResponse(error: String?, response: String?) {
+                hideLoading()
+                showBarToast(error ?: "")
+            }
+
+        })
     }
 }

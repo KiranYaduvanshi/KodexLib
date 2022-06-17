@@ -6,7 +6,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.GridLayoutManager
 import com.kodextech.project.kodexlib.R
 import com.kodextech.project.kodexlib.base.BaseActivity
-import com.kodextech.project.kodexlib.communication.CommunicationActivity
 import com.kodextech.project.kodexlib.databinding.ActivityDriverDashboardBinding
 import com.kodextech.project.kodexlib.dialog.AddWorkerDialog
 import com.kodextech.project.kodexlib.dialog.AppAlertOption
@@ -15,9 +14,11 @@ import com.kodextech.project.kodexlib.network.LocalPreference
 import com.kodextech.project.kodexlib.network.NetworkClass
 import com.kodextech.project.kodexlib.network.Response
 import com.kodextech.project.kodexlib.network.URLApi
+import com.kodextech.project.kodexlib.ui.main.StaticActivity
 import com.kodextech.project.kodexlib.ui.main.auth.LoginActivity
 import com.kodextech.project.kodexlib.ui.main.booking.AddBooking
 import com.kodextech.project.kodexlib.ui.main.calendar.Calendar
+import com.kodextech.project.kodexlib.ui.main.communication.CommunicationActivity
 import com.kodextech.project.kodexlib.ui.main.customer.CustomerListing
 import com.kodextech.project.kodexlib.ui.main.dashboard.adapter.DashboardItemAdapter
 import com.kodextech.project.kodexlib.ui.main.dashboard.adapter.DashboardItemModel
@@ -148,7 +149,7 @@ class DriverDashboardActivity : BaseActivity() {
                     startActivity(intent)
                 }
                 3 -> {
-                    val intent = Intent(this, CommunicationActivity::class.java)
+                    val intent = Intent(this, StaticActivity::class.java)
                     startActivity(intent)
                 }
 
