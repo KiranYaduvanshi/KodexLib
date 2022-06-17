@@ -32,16 +32,12 @@ object URLApi {
     const val SOCKET_URL = "http://moderns.modernmover.co.uk"
 
     //    const val SOCKET_URL = "http://45.56.122.34:1028"
-    public const val BaseUrl =
-        //"http://45.33.19.125/modern-movers/api/"
-    //Base URL here
+  const val BaseUrl =
         "http://moderns.modernmover.co.uk/api/" //Base URL here
 //        "http://45.33.19.125/modern-movers/api/" //Base URL here
 
 //        "http://45.56.122.34/modern-movers/public/api/" //Base URL here
-//        "http://45.33.19.125/modern-movers/api/" //Base URL here
 //        "http://kodextech.net/modern-movers/public/api/" //Base URL here
-//>>>>>>> af8db0227c7214f891473ab2a2981ab422d4c0a5
     private var path: String = ""
     private var params: JSONObject = JSONObject()
     var method: NetworkMethod = NetworkMethod.GET
@@ -641,6 +637,12 @@ object URLApi {
         params.put("signature_media", signature_media)
         params.put("pickup_address1", pickup_address1)
         params.put("drop_address1", drop_address1)
+        return this
+    }
+
+    fun getExpensis(id :String):URLApi{
+        method = NetworkMethod.GET
+        path="get-expensive/"+id
         return this
     }
 

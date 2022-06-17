@@ -117,7 +117,9 @@ class InvoiceListingAdapter(
 
     private fun dowloadPdf(path: String?) {
 
-        val basePath = "http://45.33.19.125/modern-movers/public/uploads/"
+//        val basePath = "http://45.33.19.125/modern-movers/public/uploads/"
+        val basePath = "http://moderns.modernmover.co.uk/public/uploads/"
+
         val invoicePath = basePath + path
         val uri: Uri =
             Uri.parse(invoicePath)

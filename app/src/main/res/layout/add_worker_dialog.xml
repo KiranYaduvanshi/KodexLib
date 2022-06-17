@@ -223,6 +223,7 @@
                         android:gravity="center_vertical"
                         android:hint="Hourly Rate"
                         android:inputType="number"
+                        android:maxLength="3"
                         android:paddingStart="@dimen/_16sdp"
                         android:paddingEnd="@dimen/_16sdp"
                         android:singleLine="true"
