@@ -13,29 +13,28 @@
     <string name="sign_up" tools:ignore="MissingTranslation"> <u>Sign Up</u></string>
     <string name="term_note" tools:ignore="MissingTranslation">Please note that this is an hourly service, but it is common for our drivers to give a leeway of 10–15 mins, however this issolely at the drivers discretion</string>
     <string name="dismantling" tools:ignore="MissingTranslation">Any dismantling or assembling? (Y/N)</string>
-
     <string name="google_map_key" translatable="false">AIzaSyAVGqg6utoXhEejF1ZFo-hvKEInA8KbcO8</string>
     <string name="copy_to_clipboard" translatable="false"><u>Copy to Clipboard</u></string>
-    <string name="parking_string">Please ensure that you have provided a suitable parking space for the van as you will be held responsible for any parking tickets during the removals</string>
-    <string name="toll_tax">ou will also be charged for any traffic tolls (such as congestion/ ULEZ or any clean air charges) incurred during the removals</string>
-    <string name="resend_email">Resend Email</string>
-    <string name="booked_by">Booked By</string>
-    <string name="date">Date</string>
-    <string name="expenses">Expenses</string>
-    <string name="monthly">Monthly</string>
-    <string name="weekly">Weekly</string>
-    <string name="today">Today</string>
-    <string name="yearly">Yearly</string>
-    <string name="_300">$300</string>
-    <string name="title_activity_driver_dashboard">DriverDashboardActivity</string>
+    <string name="parking_string" tools:ignore="MissingTranslation">Please ensure that you have provided a suitable parking space for the van as you will be held responsible for any parking tickets during the removals</string>
+    <string name="toll_tax" tools:ignore="MissingTranslation">ou will also be charged for any traffic tolls (such as congestion/ ULEZ or any clean air charges) incurred during the removals</string>
+    <string name="resend_email" tools:ignore="MissingTranslation">Resend Email</string>
+    <string name="booked_by" tools:ignore="MissingTranslation">Booked By</string>
+    <string name="date" tools:ignore="MissingTranslation">Date</string>
+    <string name="expenses" tools:ignore="MissingTranslation">Expenses</string>
+    <string name="monthly" tools:ignore="MissingTranslation">Monthly</string>
+    <string name="weekly" tools:ignore="MissingTranslation">Weekly</string>
+    <string name="today" tools:ignore="MissingTranslation">Today</string>
+    <string name="yearly" tools:ignore="MissingTranslation">Yearly</string>
+    <string name="_300" tools:ignore="MissingTranslation">$300</string>
+    <string name="statics" tools:ignore="MissingTranslation">Statics</string>
+    <string name="title_activity_driver_dashboard" tools:ignore="MissingTranslation">DriverDashboardActivity</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
-
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="first_fragment_label" tools:ignore="MissingTranslation">First Fragment</string>
+    <string name="second_fragment_label" tools:ignore="MissingTranslation">Second Fragment</string>
+    <string name="next" tools:ignore="MissingTranslation">Next</string>
+    <string name="previous" tools:ignore="MissingTranslation">Previous</string>
+    <string name="hello_first_fragment" tools:ignore="MissingTranslation">Hello first fragment</string>
+    <string name="hello_second_fragment" tools:ignore="MissingTranslation">Hello second fragment. Arg: %1$s</string>
 
 
 </resources>

@@ -1,17 +1,18 @@
-package com.kodextech.project.kodexlib.ui.main.expenses
+package com.kodextech.project.kodexlib.ui.main
 
-import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
 import com.kodextech.project.kodexlib.R
-import com.kodextech.project.kodexlib.databinding.ActivityExpensesBinding
+import com.kodextech.project.kodexlib.databinding.ActivityStaticBinding
 
-class ExpensesActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityExpensesBinding
+class StaticActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityStaticBinding
     private lateinit var viewStates: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityExpensesBinding.inflate(layoutInflater)
+        binding = ActivityStaticBinding.inflate(layoutInflater)
         setContentView(binding.root)
         onclickListeners()
     }
@@ -82,5 +83,4 @@ class ExpensesActivity : AppCompatActivity() {
             }
         }
     }
-
 }

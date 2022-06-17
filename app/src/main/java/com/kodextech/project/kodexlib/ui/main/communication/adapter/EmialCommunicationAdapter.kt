@@ -1,28 +1,32 @@
-package com.kodextech.project.kodexlib.communication.adapter
+package com.kodextech.project.kodexlib.ui.main.communication.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.kodextech.project.kodexlib.R
-import com.kodextech.project.kodexlib.databinding.AddressItemBinding
 import com.kodextech.project.kodexlib.databinding.LayoutRvItemCommunicationEmailBinding
-import com.kodextech.project.kodexlib.ui.main.booking.adapter.AddAddressVH
+import com.kodextech.project.kodexlib.model.Data
 
-class EmialCommunicationAdapter(var context:Context) : RecyclerView.Adapter<EmailViewHolder>() {
+class EmialCommunicationAdapter(var context:Context,
+                                var mData: ArrayList<Data>) : RecyclerView.Adapter<EmailViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EmailViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.layout_rv_item_communication_email, parent, false)
         return EmailViewHolder(view)
-
     }
 
     override fun onBindViewHolder(holder: EmailViewHolder, position: Int) {
+        holder.binding?.tvOrder?.text = mData[position].Order.toString()
+        holder.binding?.tvWorkerEmail?.text = mData[position].Email
+        holder.binding?.tvName?.text = mData[position].Name
+        holder.binding?.dateTv?.text = mData[position].Date
     }
 
     override fun getItemCount(): Int {
-       return  5
+       return  mData.size
     }
 }
 

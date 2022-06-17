@@ -41,7 +41,6 @@
                         tools:ignore="NotSibling" />
                 </RelativeLayout>
 
-
                 <RelativeLayout
                     android:id="@+id/rlBooking"
                     android:layout_width="match_parent"
@@ -98,13 +97,13 @@
                         android:padding="@dimen/_5sdp">
 
                         <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/labelName"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:layout_alignParentStart="true"
                             android:layout_marginStart="@dimen/_10sdp"
                             android:fontFamily="@font/opensans_regular"
                             android:text="Name"
-                            android:id="@+id/labelName"
                             android:textColor="@color/headingColor"
                             android:textSize="@dimen/_13sdp" />
 
@@ -120,9 +119,6 @@
                             android:textColor="@color/headingColor"
                             android:textSize="@dimen/_13sdp" />
 
-
-
-
                     </RelativeLayout>
 
                     <androidx.recyclerview.widget.RecyclerView
@@ -133,9 +129,7 @@
                         tools:itemCount="3"
                         tools:listitem="@layout/dashboard_customer_item" />
 
-
                 </RelativeLayout>
-
 
                 <RelativeLayout
                     android:id="@+id/rlWorker"
@@ -152,8 +146,7 @@
                         android:id="@+id/tvLabelWorker"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingStart="@dimen/_10sdp"
-                        >
+                        android:paddingStart="@dimen/_10sdp">
 
                         <androidx.appcompat.widget.AppCompatTextView
                             android:id="@+id/tvWorkers"
@@ -163,14 +156,9 @@
                             android:layout_marginStart="@dimen/_5sdp"
                             android:fontFamily="@font/opensans_semi_bold"
                             android:text="Workers"
-
                             android:textColor="@color/black"
                             android:textSize="@dimen/_13sdp" />
-
-
-
                     </RelativeLayout>
-
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rvWorker"
@@ -180,16 +168,11 @@
                         android:layout_marginTop="@dimen/_5sdp"
                         tools:itemCount="3"
                         tools:listitem="@layout/worker_item" />
-
-
                 </RelativeLayout>
-
 
             </RelativeLayout>
 
-
         </androidx.core.widget.NestedScrollView>
-
 
     </RelativeLayout>
 </layout>
