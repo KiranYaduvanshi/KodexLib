@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rlExpensis"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.main.expenses.ExpensesActivity">
@@ -143,7 +144,6 @@
             android:weightSum="1">
 
             <TextView
-                android:id="@+id/tvPhoneTitle"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight=".5"
@@ -155,7 +155,7 @@
                 tools:ignore="RtlSymmetry" />
 
             <TextView
-
+                android:id="@+id/txtFuel"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight=".5"
@@ -189,7 +189,7 @@
                 tools:ignore="RtlSymmetry" />
 
             <TextView
-
+                android:id="@+id/txtLabour"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight=".5"
@@ -205,7 +205,7 @@
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/_30sdp"
             android:layout_marginHorizontal="@dimen/_25sdp"
             android:layout_marginTop="@dimen/_5sdp"
             android:orientation="horizontal"
@@ -224,7 +224,7 @@
                 tools:ignore="RtlSymmetry" />
 
             <TextView
-
+                android:id="@+id/txtVehicleMaintainance"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight=".3"
@@ -259,7 +259,7 @@
                 tools:ignore="RtlSymmetry" />
 
             <TextView
-
+                android:id="@+id/txtAdvertising"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight=".5"
@@ -294,7 +294,7 @@
                 tools:ignore="RtlSymmetry" />
 
             <TextView
-
+                android:id="@+id/txtEquipment"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight=".5"
@@ -328,7 +328,7 @@
                 tools:ignore="RtlSymmetry" />
 
             <TextView
-
+                android:id="@+id/txtOther"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight=".5"

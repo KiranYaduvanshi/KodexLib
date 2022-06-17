@@ -1212,6 +1212,7 @@ class AddBooking : BaseActivity() {
                         finish()
                     } else {
                         showBarToast("Booking Created Successfully")
+                        showBarToast("Booking Created Successfully")
                         setDataForSMS(obj)
                         val dialog = SendConfirmationDialog.newInstance {
                             when (it) {
