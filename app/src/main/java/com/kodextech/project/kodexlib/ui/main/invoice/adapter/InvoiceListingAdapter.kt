@@ -33,10 +33,7 @@ class InvoiceListingAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): InvoiceVH {
         val view = LayoutInflater.from(mContext).inflate(R.layout.new_invoice_item, parent, false)
         return InvoiceVH(view)
-
-
     }
-
 
     override fun onBindViewHolder(holder: InvoiceVH, position: Int) {
         val mItem = mData[position]

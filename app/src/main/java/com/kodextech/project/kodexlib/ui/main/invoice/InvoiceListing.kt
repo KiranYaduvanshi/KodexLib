@@ -31,7 +31,6 @@ class InvoiceListing : BaseActivity() {
 
     override fun onSetupViewGroup() {
         mViewGroup = binding?.contentInvoice
-
     }
 
     override fun setupContentViewWithBinding() {
@@ -61,7 +60,6 @@ class InvoiceListing : BaseActivity() {
             binding?.viewCompleted?.visibility = View.VISIBLE
             listingFor = "paid"
             getInvoiceList()
-
         }
 
         binding?.searchBtn?.setOnClickListener {
@@ -90,10 +88,7 @@ class InvoiceListing : BaseActivity() {
                 searchText = p0.toString()
                 filter(p0.toString())
             }
-
         })
-
-
     }
 
     private fun filter(text: String) {
@@ -104,8 +99,6 @@ class InvoiceListing : BaseActivity() {
             ) {
                 filterlist.add(item)
             }
-
-
         }
         mAdapter?.filterList(filterlist)
     }
