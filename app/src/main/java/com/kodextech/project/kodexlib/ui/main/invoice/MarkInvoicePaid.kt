@@ -45,7 +45,7 @@ class MarkInvoicePaid : BaseActivity() {
     private var invoiceId: String? = null
     private var json: JSONArray? = null
     private var media: String? = null
-    private var baseImagePath = "http://45.56.122.34/modern-movers/public/uploads/"
+    private var baseImagePath = "http://13.58.42.125/public/uploads/"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         statusBarColor(getColor(R.color.blue))

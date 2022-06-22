@@ -32,11 +32,10 @@ object URLApi {
     const val SOCKET_URL = "http://moderns.modernmover.co.uk"
 
     //    const val SOCKET_URL = "http://45.56.122.34:1028"
-  const val BaseUrl =
-        "http://13.58.42.125/api/"//Base URL here
+    const val BaseUrl = "http://13.58.42.125/api/"//Base URL h
 //        "http://45.33.19.125/modern-movers/api/" //Base URL here
 
-//        "http://45.56.122.34/modern-movers/public/api/" //Base URL here
+    //        "http://45.56.122.34/modern-movers/public/api/" //Base URL here
 //        "http://kodextech.net/modern-movers/public/api/" //Base URL here
     private var path: String = ""
     private var params: JSONObject = JSONObject()
@@ -132,9 +131,10 @@ object URLApi {
         params.put("is_social", is_social)
         return this
     }
-    fun getEmailCommunationApi():URLApi{
-        method =NetworkMethod.GET
-        path ="get-email-communication"
+
+    fun getEmailCommunationApi(): URLApi {
+        method = NetworkMethod.GET
+        path = "get-email-communication"
         return this
     }
 
@@ -158,6 +158,18 @@ object URLApi {
         params.put("activation_code", activation_code)
         params.put("is_social", is_social)
         Log.i("MODERN_MOVERS", activation_code + "");
+        return this
+    }
+
+    fun saveSMS(
+        booking_id: Int? = null,
+        sms_text: String? = null,
+    ): URLApi {
+        method = NetworkMethod.POST
+        path = "save-sms"
+        params = JSONObject()
+        params.put("booking_id", booking_id)
+        params.put("sms_text", sms_text)
         return this
     }
 
@@ -640,9 +652,15 @@ object URLApi {
         return this
     }
 
-    fun getExpensis(id :String):URLApi{
+    fun getExpensis(id: String): URLApi {
         method = NetworkMethod.GET
-        path="get-expensive/"+id
+        path = "get-expensive/" + id
+        return this
+    }
+
+    fun getStatics(id: String): URLApi {
+        method = NetworkMethod.GET
+        path = "get-earnings/" + id
         return this
     }
 
@@ -687,4 +705,6 @@ object URLApi {
         FREE("free"),
         KOINAHI("empty")
     }
+
+
 }

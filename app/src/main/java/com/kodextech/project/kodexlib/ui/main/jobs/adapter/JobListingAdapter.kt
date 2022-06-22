@@ -88,7 +88,6 @@ class JobListingAdapter(
                 } else {
                     mDataSelected.add(mItem)
                 }
-
                 notifyDataSetChanged()
 
             } else {
