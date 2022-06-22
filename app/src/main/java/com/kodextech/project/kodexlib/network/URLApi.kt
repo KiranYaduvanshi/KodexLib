@@ -33,7 +33,7 @@ object URLApi {
 
     //    const val SOCKET_URL = "http://45.56.122.34:1028"
   const val BaseUrl =
-        "http://moderns.modernmover.co.uk/api/" //Base URL here
+        "http://13.58.42.125/api/" //Base URL here
 //        "http://45.33.19.125/modern-movers/api/" //Base URL here
 
 //        "http://45.56.122.34/modern-movers/public/api/" //Base URL here
@@ -158,6 +158,18 @@ object URLApi {
         params.put("activation_code", activation_code)
         params.put("is_social", is_social)
         Log.i("MODERN_MOVERS", activation_code + "");
+        return this
+    }
+
+    fun saveSMS(
+        booking_id: Int? = null,
+        sms_text: String? = null,
+    ): URLApi {
+        method = NetworkMethod.POST
+        path = "save-sms"
+        params = JSONObject()
+        params.put("booking_id", booking_id)
+        params.put("sms_text", sms_text)
         return this
     }
 
@@ -646,6 +658,12 @@ object URLApi {
         return this
     }
 
+    fun getStatics(id :String):URLApi{
+        method = NetworkMethod.GET
+        path="get-earnings/"+id
+        return this
+    }
+
 
     fun getInvoice(job_uuid: String): URLApi {
         method = NetworkMethod.POST
@@ -687,4 +705,6 @@ object URLApi {
         FREE("free"),
         KOINAHI("empty")
     }
+
+
 }

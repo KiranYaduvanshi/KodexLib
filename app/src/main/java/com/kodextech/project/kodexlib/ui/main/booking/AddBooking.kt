@@ -3,7 +3,6 @@ package com.kodextech.project.kodexlib.ui.main.booking
 import android.Manifest
 import android.app.Activity
 import android.app.Dialog
-import android.app.PendingIntent
 import android.content.*
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -78,6 +77,7 @@ class AddBooking : BaseActivity() {
     private val AUTOCOMPLETE_REQUEST_CODE = 1
     val fields = listOf(Place.Field.ID, Place.Field.NAME, Place.Field.ADDRESS, Place.Field.LAT_LNG)
 
+    private var bookingId: Int? = null;
     private var location_id_GOOGLE: String = ""
     private var locationName: String = ""
     private var location_lat: String = ""
@@ -1204,6 +1204,7 @@ class AddBooking : BaseActivity() {
 
                     val json = JSONObject(response ?: "")
                     val obj = Gson().fromJson(json.toString(), JobModel::class.java)
+                    bookingId = obj.id;
 
                     if (jobIdForEdit?.isNullOrEmpty() == false) {
                         showBarToast("Booking Updated Successfully")
@@ -1217,10 +1218,10 @@ class AddBooking : BaseActivity() {
                         val dialog = SendConfirmationDialog.newInstance {
                             when (it) {
                                 ConfirmationOption.SMS -> {
-                                    sendSMS(finish())
+                                  sendSms(bookingId,smsContent , finish())
                                 }
                                 ConfirmationOption.EMAIL -> {
-                                 //   resendEmailDialog()
+                                    //   resendEmailDialog()
                                     sendEmail(finish(), obj?.uuid)
                                 }
                                 ConfirmationOption.CANCEL -> {
@@ -1249,18 +1250,48 @@ class AddBooking : BaseActivity() {
             override fun onSuccessResponse(response: String?, message: String) {
                 hideLoading()
                 showBarToast(message)
-               // Toast.makeText(binding?.root?.context, "response"+response, Toast.LENGTH_SHORT).show()
-                Log.i("Res","reposne "+response)
+                // Toast.makeText(binding?.root?.context, "response"+response, Toast.LENGTH_SHORT).show()
+                Log.i("Res", "reposne " + response)
 //                resendEmailDialog()
                 finish
             }
 
             override fun onErrorResponse(error: String?, response: String?) {
                 hideLoading()
-              //  Toast.makeText(binding?.root?.context, "error"+response, Toast.LENGTH_SHORT).show()
+                //  Toast.makeText(binding?.root?.context, "error"+response, Toast.LENGTH_SHORT).show()
 
                 showBarToast(error ?: "")
-                Log.i("Res","error "+response)
+                Log.i("Res", "error " + response)
+
+            }
+
+        })
+    }
+
+    private fun sendSms(id: Int?, msg: String?, finish: Unit) {
+        showLoading()
+        NetworkClass.callApi(URLApi.saveSMS(
+            booking_id = id,
+            sms_text = msg
+        ), object : Response {
+            override fun onSuccessResponse(response: String?, message: String) {
+                hideLoading()
+                showBarToast(message)
+                val json = JSONObject(response ?: "")
+                val obj = Gson().fromJson(json.toString(), Sms::class.java)
+//                 Toast.makeText(binding?.root?.context, "response"+response, Toast.LENGTH_SHORT).show()
+                Log.i("Res", "reposne " + response)
+//                resendEmailDialog()
+                sendSMS(finish())
+                finish
+            }
+
+            override fun onErrorResponse(error: String?, response: String?) {
+                hideLoading()
+                //  Toast.makeText(binding?.root?.context, "error"+response, Toast.LENGTH_SHORT).show()
+
+                showBarToast(error ?: "")
+                Log.i("Res", "error " + response)
 
             }
 
@@ -1433,6 +1464,7 @@ class AddBooking : BaseActivity() {
 //    }
 
     private fun sendSMS(finish: Unit) {
+
         val no = "+44" + phoneNo
         val uri = Uri.parse("smsto:$no")
         try {
