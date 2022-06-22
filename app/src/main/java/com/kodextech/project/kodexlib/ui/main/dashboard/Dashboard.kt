@@ -29,6 +29,7 @@ import com.kodextech.project.kodexlib.ui.main.dashboard.adapter.*
 import com.kodextech.project.kodexlib.ui.main.expenses.ExpensesActivity
 import com.kodextech.project.kodexlib.ui.main.invoice.InvoiceListing
 import com.kodextech.project.kodexlib.ui.main.jobs.JobsListing
+import com.kodextech.project.kodexlib.ui.main.quatation.QuatationActivity
 import com.kodextech.project.kodexlib.ui.main.worker.WorkerListing
 import com.kodextech.project.kodexlib.ui.main.worker.adapter.WorkerListingAdapter
 import com.kodextech.project.kodexlib.utils.generateList
@@ -142,7 +143,6 @@ class Dashboard : BaseActivity() {
         mABookingAdapter?.notifyDataSetChanged()
     }
 
-
     fun logout() {
         showLoading()
         NetworkClass.callApi(URLApi.signout(), object : Response {
@@ -193,6 +193,7 @@ class Dashboard : BaseActivity() {
         mCardData.add(DashboardItemModel("Expenses", R.drawable.ic_expenses))
         mCardData.add(DashboardItemModel("Communication", R.drawable.ic_mails))
         mCardData.add(DashboardItemModel("Statics", R.drawable.ic_statics))
+        mCardData.add(DashboardItemModel("Statics", R.drawable.ic_statics))
 
         binding?.rvDashboard?.layoutManager = GridLayoutManager(this, 2)
         binding?.rvDashboard?.adapter = DashboardItemAdapter(this, mCardData) { position: Int ->
@@ -231,18 +232,22 @@ class Dashboard : BaseActivity() {
                 7 -> {
                     val intent = Intent(this, CommunicationActivity::class.java)
                     startActivity(intent)
-                }   8 -> {
+                }
+                8 -> {
                     val intent = Intent(this, StaticActivity::class.java)
                     startActivity(intent)
+                }
+                9 -> {
+                    val intent = Intent(this, QuatationActivity::class.java)
+                    startActivity(intent)
+
                 }
 
             }
         }
-
     }
 
     private fun getJobListCall() {
-
 
         NetworkClass.callApi(
             URLApi.getJobList(
@@ -257,12 +262,9 @@ class Dashboard : BaseActivity() {
                     mBookingData.addAll(limited)
                     setBookingRecycler()
                 }
-
                 override fun onErrorResponse(error: String?, response: String?) {
-
                     showBarToast(error ?: "")
                 }
-
             })
     }
 

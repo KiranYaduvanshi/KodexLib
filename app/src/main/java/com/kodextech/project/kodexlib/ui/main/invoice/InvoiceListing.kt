@@ -39,6 +39,7 @@ class InvoiceListing : BaseActivity() {
         initTopBar()
         setInvoiceData()
 
+        
         binding?.svInvoice?.setOnRefreshListener {
             getInvoiceList()
             binding?.etSearch?.visibility = View.GONE
