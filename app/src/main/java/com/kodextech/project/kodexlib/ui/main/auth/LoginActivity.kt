@@ -35,7 +35,8 @@ class LoginActivity : BaseActivity() {
         mViewGroup = findViewById(R.id.contentLogin)
         makeLightContentStatusBar()
         val emailCommunicationModel = EmailCommunicationModel(false,"",);
-      //  emailCommunicationModel.data[0].Email
+//        emailCommunicationModel.data[0].Email
+
     }
 
     override fun setupContentViewWithBinding() {
