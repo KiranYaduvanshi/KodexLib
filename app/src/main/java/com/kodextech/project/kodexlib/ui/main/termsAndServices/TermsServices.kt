@@ -50,7 +50,7 @@ class TermsServices : BaseActivity() {
     private var media: String? = null
 
 
-    private var baseImagePath = "http://45.56.122.34/modern-movers/public/uploads/"
+    private var baseImagePath = "http://13.58.42.125/public/uploads/"
 
     override fun onSetupViewGroup() {
         mViewGroup = binding?.contentTerms
@@ -199,6 +199,8 @@ class TermsServices : BaseActivity() {
     }
 
     private fun getJobDetails(jobId: String? = null) {
+        Log.i("id","id------------"+jobId)
+        Toast.makeText(binding?.root?.context, ""+jobId, Toast.LENGTH_SHORT).show()
         showLoading()
         NetworkClass.callApi(URLApi.getSpecificJob(job_uuid = jobId.toString()), object : Response {
             override fun onSuccessResponse(response: String?, message: String) {
@@ -517,6 +519,7 @@ class TermsServices : BaseActivity() {
             }
         }
         Log.i("URL", "" + obj?.signature?.path)
+        Toast.makeText(binding?.root?.context, ""+obj?.signature?.path, Toast.LENGTH_SHORT).show()
 
         Glide.with(this).load(baseImagePath + obj?.signature?.path)
             .placeholder(R.drawable.ic_baseline_cloud_download_24).into(
