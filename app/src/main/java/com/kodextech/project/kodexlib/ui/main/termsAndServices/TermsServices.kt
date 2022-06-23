@@ -23,6 +23,7 @@ import com.kodextech.project.kodexlib.databinding.ActivityTermsServicesBinding
 import com.kodextech.project.kodexlib.dialog.AppAlertOption
 import com.kodextech.project.kodexlib.dialog.LogoutDialog
 import com.kodextech.project.kodexlib.model.JobModel
+import com.kodextech.project.kodexlib.model.PickupAddress
 import com.kodextech.project.kodexlib.network.NetworkClass
 import com.kodextech.project.kodexlib.network.Response
 import com.kodextech.project.kodexlib.network.URLApi
@@ -37,6 +38,7 @@ import org.json.JSONArray
 import org.json.JSONObject
 import java.io.IOException
 import java.util.*
+import kotlin.collections.ArrayList
 
 
 class TermsServices : BaseActivity() {
@@ -48,7 +50,8 @@ class TermsServices : BaseActivity() {
 
     private var json: JSONArray? = null
     private var media: String? = null
-
+    private  var pickupAddressADapter:PickupAddressADapter? =null
+    private var pickupAddList=ArrayList<PickupAddress>()
     private var baseImagePath = "http://13.58.42.125/public/uploads/"
 
     override fun onSetupViewGroup() {
@@ -60,6 +63,7 @@ class TermsServices : BaseActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_terms_services)
 
         initTopBar()
+        setPickUpAddressAdapter()
 
 
         binding?.topBar?.ivBack?.setOnClickListener { onBackPressed() }
@@ -115,6 +119,11 @@ class TermsServices : BaseActivity() {
         })
     }
 
+    private  fun setPickUpAddressAdapter(){
+        pickupAddressADapter = PickupAddressADapter(this,pickupAddList)
+        binding?.pickUpAddressRv?.adapter= pickupAddressADapter
+
+    }
 
     private fun initTopBar() {
         jobId = intent.getStringExtra("job_id")
@@ -199,7 +208,7 @@ class TermsServices : BaseActivity() {
 
     private fun getJobDetails(jobId: String? = null) {
         Log.i("id","id------------"+jobId)
-        Toast.makeText(binding?.root?.context, ""+jobId, Toast.LENGTH_SHORT).show()
+       // Toast.makeText(binding?.root?.context, ""+jobId, Toast.LENGTH_SHORT).show()
         showLoading()
         NetworkClass.callApi(URLApi.getSpecificJob(job_uuid = jobId.toString()), object : Response {
             override fun onSuccessResponse(response: String?, message: String) {
@@ -272,25 +281,28 @@ class TermsServices : BaseActivity() {
             newArray.clear()
             newDropArray.clear()
             obj.pickup_addresses?.forEachIndexed { index, pickupAddress ->
+                pickupAddList.add(pickupAddress)
 
-                if (pickupAddress.pickup_flat_meta?.firstOrNull()?.floor_no == "-1") {
-                    floorNo = "Basement"
-                } else if (pickupAddress.pickup_flat_meta?.firstOrNull()?.floor_no == "0") {
-                    floorNo = "Ground Floor"
-                } else {
-                    floorNo = pickupAddress.pickup_flat_meta?.firstOrNull()?.floor_no + " Floor"
-                }
+                setPickUpAddressAdapter()
 
-                if (pickupAddress.has_lift.equals("1")) {
-                    val s =
-                        "Address: " + pickupAddress.address1 + "\nFloor No: " + floorNo + "\nLift Available: Yes\n"
-                    newArray.add(AdressListingModel(s))
-
-                } else {
-                    val s =
-                        "Address: " + pickupAddress.address1 + "\nFloor No: " + floorNo + "\nLift Available: No\n"
-                    newArray.add(AdressListingModel(s))
-                }
+//                if (pickupAddress.pickup_flat_meta?.firstOrNull()?.floor_no == "-1") {
+//                    floorNo = "Basement"
+//                } else if (pickupAddress.pickup_flat_meta?.firstOrNull()?.floor_no == "0") {
+//                    floorNo = "Ground Floor"
+//                } else {
+//                    floorNo = pickupAddress.pickup_flat_meta?.firstOrNull()?.floor_no + " Floor"
+//                }
+//
+//                if (pickupAddress.has_lift.equals("1")) {
+//                    val s =
+//                        "Address: " + pickupAddress.address1 + "\nFloor No: " + floorNo + "\nLift Available: Yes\n"
+//                    newArray.add(AdressListingModel(s))
+//
+//                } else {
+//                    val s =
+//                        "Address: " + pickupAddress.address1 + "\nFloor No: " + floorNo + "\nLift Available: No\n"
+//                    newArray.add(AdressListingModel(s))
+//                }
 
             }
 
@@ -332,7 +344,7 @@ class TermsServices : BaseActivity() {
             }
 
             binding?.tvDropAddress?.text = newDropAddress?.replace("null", "")
-            binding?.tvPickUpAddress?.text = finalAddress?.replace("null", "")
+          //  binding?.tvPickUpAddress?.text = finalAddress?.replace("null", "")
 
         } else {
             val newArray = ArrayList<AdressListingModel>()
@@ -348,29 +360,29 @@ class TermsServices : BaseActivity() {
             newArray.forEach {
                 newAddress += it.address + ""
             }
-            binding?.tvPickUpAddress?.text = newAddress?.replace("null", "")
+         //   binding?.tvPickUpAddress?.text = newAddress?.replace("null", "")
             binding?.tvDropAddress?.text =
                 obj?.drop_address?.address1
         }
 
 //        ° N, ° E
 
-        binding?.tvPickUpAddress?.setOnClickListener(
-            View.OnClickListener {
-                  openMapDialog(binding?.tvPickUpAddress?.text.toString())
+//        binding?.tvPickUpAddress?.setOnClickListener(
+//            View.OnClickListener {
+//                  openMapDialog(binding?.tvPickUpAddress?.text.toString())
+//
+//            }
+//        )
 
-            }
-        )
-
-        binding?.tvPickUpAddress?.setOnLongClickListener(View.OnLongClickListener {
-            var textToCopy = binding?.tvPickUpAddress?.text
-            val clipboardManager =
-                applicationContext.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-            val clipData = ClipData.newPlainText("text", textToCopy)
-            clipboardManager.setPrimaryClip(clipData)
-            Toast.makeText(baseContext, "Detail Copied to Clipboard", Toast.LENGTH_SHORT).show()
-            true
-        })
+//        binding?.tvPickUpAddress?.setOnLongClickListener(View.OnLongClickListener {
+//            var textToCopy = binding?.tvPickUpAddress?.text
+//            val clipboardManager =
+//                applicationContext.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+//            val clipData = ClipData.newPlainText("text", textToCopy)
+//            clipboardManager.setPrimaryClip(clipData)
+//            Toast.makeText(baseContext, "Detail Copied to Clipboard", Toast.LENGTH_SHORT).show()
+//            true
+//        })
         binding?.tvDropAddress?.setOnLongClickListener(View.OnLongClickListener {
             var textToCopy = binding?.tvDropAddress?.text
             val clipboardManager =
@@ -743,5 +755,6 @@ class TermsServices : BaseActivity() {
 
 class AdressListingModel(
     var address: String? = null,
+
 
     )

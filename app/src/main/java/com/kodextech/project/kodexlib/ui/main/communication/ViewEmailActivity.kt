@@ -37,6 +37,7 @@ class ViewEmailActivity : BaseActivity() {
 
         binding?.webView?.settings?.javaScriptCanOpenWindowsAutomatically =true
         binding?.webView?.settings?.loadWithOverviewMode =true
+        binding?.webView?.settings?.useWideViewPort =true
 
         orderId = intent.getStringExtra("orderId").toString()
         getViewEmailApi()

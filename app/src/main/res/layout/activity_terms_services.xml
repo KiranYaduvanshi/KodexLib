@@ -280,34 +280,19 @@
                     android:textColor="@color/textColor"
                     android:textSize="@dimen/_13sdp" />
 
-                <TextView
-                    android:id="@+id/tvPickUpAddress"
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/pickUpAddressRv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/tvPickupAddressTitle"
-                    android:layout_marginTop="@dimen/_3sdp"
-                    android:background="@drawable/button_bg"
-                    android:backgroundTint="@color/bgEdit"
-                    android:fontFamily="@font/opensans_regular"
-                    android:gravity="center_vertical"
-                    android:inputType="textMultiLine"
-                    android:minHeight="@dimen/_45sdp"
-
-                    android:paddingStart="@dimen/_16sdp"
-                    android:paddingEnd="@dimen/_16sdp"
-                    android:singleLine="true"
-                    android:textColor="@color/textColor"
-                    android:textColorHint="@color/addProductHint"
-                    android:textCursorDrawable="@color/black"
-                    android:textSize="@dimen/_13sdp"
-                    app:drawableEndCompat="@drawable/ic_baseline_directions_24"
-                    app:drawableTint="@color/blue" />
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvDropAddressTitle"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_20sdp"
-                    android:layout_below="@id/tvPickUpAddress"
+                    android:layout_below="@id/pickUpAddressRv"
                     android:layout_marginTop="@dimen/_10sdp"
                     android:fontFamily="@font/opensans_semi_bold"
                     android:gravity="center_vertical"
