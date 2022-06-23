@@ -123,7 +123,7 @@ class AddBooking : BaseActivity() {
     private var otherComments: String? = null
     private var profileType: String? = null
     private var dateTime: String? = ""
-    private var priceNatureState: String? = "fixed-price"
+    private var priceNatureState: String? = "hourly-price"
     private var packingService: String? = null
     private var dismantling: String? = null
     private var priorityState: String? = ""
@@ -954,6 +954,7 @@ class AddBooking : BaseActivity() {
             binding?.priceSign?.visible()
             binding?.btnHourlyPrice?.isChecked = true
             binding?.btnFixedPrice?.isChecked = false
+            binding?.llMinimumBooking?.visible()
             binding?.etPrice?.background = getDrawable(R.drawable.button_without_radius)
             binding?.etPrice?.backgroundTintList = getColorStateList(R.color.bgEdit)
             binding?.btnHourlyPrice?.buttonTintList = getColorStateList(R.color.blue)

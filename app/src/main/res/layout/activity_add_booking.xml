@@ -1032,7 +1032,6 @@
                                             android:textColor="@color/locationCol"
                                             android:textSize="@dimen/_12sdp" />
 
-
                                     </RadioGroup>
 
                                 </androidx.appcompat.widget.LinearLayoutCompat>

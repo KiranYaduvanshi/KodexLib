@@ -138,6 +138,19 @@ object URLApi {
         return this
     }
 
+    fun getSmsCommunationApi(): URLApi {
+        method = NetworkMethod.GET
+        path = "get-sms-communication"
+        return this
+    }
+    fun viewEmail(orderId:String): URLApi {
+        method = NetworkMethod.GET
+        path = "get-email-view/${orderId}"
+        return this
+    }
+
+
+
     fun signout(): URLApi {
         method = NetworkMethod.POST
         path = "auth/signout"

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+<LinearLayout
+    android:id="@+id/llWebView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.main.communication.ViewEmailActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:id="@+id/workerTopBar"
+        android:background="@color/blue"
+        android:layout_height="@dimen/_60sdp">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/opensans_regular"
+            android:gravity="center"
+            android:text="Email"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_16sdp" />
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+
+            android:id="@+id/ivBack"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:maxWidth="@dimen/_55sdp"
+            android:maxHeight="@dimen/_51sdp"
+            android:paddingStart="@dimen/_20sdp"
+            android:paddingEnd="@dimen/_20sdp"
+            android:src="@drawable/ic_back"
+            android:visibility="visible" />
+    </RelativeLayout>
+
+
+    <WebView
+        android:id="@+id/webView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</LinearLayout>
+</layout>

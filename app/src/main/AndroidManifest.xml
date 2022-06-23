@@ -32,6 +32,9 @@
         tools:replace="android:theme,android:allowBackup"
         tools:targetApi="r">
         <activity
+            android:name=".ui.main.communication.ViewEmailActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.main.quatation.QuatationActivity"
             android:exported="false" />
         <activity
