@@ -49,7 +49,6 @@ class TermsServices : BaseActivity() {
     private var json: JSONArray? = null
     private var media: String? = null
 
-
     private var baseImagePath = "http://13.58.42.125/public/uploads/"
 
     override fun onSetupViewGroup() {
@@ -616,7 +615,7 @@ class TermsServices : BaseActivity() {
                 val intent = Intent(
                     Intent.ACTION_CALL,
 //                    Uri.parse("tel:" + binding?.tvPhone?.text.toString())
-                    Uri.parse("tel:" + "+917814501597")
+                    Uri.parse("tel:" + binding?.tvPhone?.text.toString())
                 )
                 startActivity(intent)
             }
@@ -710,10 +709,9 @@ class TermsServices : BaseActivity() {
             )
 
         } else {
-
             val intent = Intent(
                 Intent.ACTION_CALL,
-                Uri.parse("tel:" + "+917814501597")
+                Uri.parse("tel:" + "${binding?.tvPhone?.text.toString()}")
 //                Uri.parse("tel:" + binding?.tvPhone?.text.toString())
             )
             startActivity(intent)

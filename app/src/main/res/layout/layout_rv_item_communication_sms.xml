@@ -40,7 +40,7 @@
                             android:id="@+id/labelOrder"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:layout_weight=".2"
+                            android:layout_weight=".25"
                             android:fontFamily="@font/opensans_regular"
                             android:gravity="center_vertical"
                             android:singleLine="true"
@@ -53,7 +53,7 @@
                             android:id="@+id/tvOrder"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:layout_weight=".6"
+                            android:layout_weight=".54"
                             android:fontFamily="@font/opensans_semi_bold"
                             android:gravity="center_vertical"
                             android:singleLine="true"
@@ -64,8 +64,8 @@
                             android:id="@+id/btnResend"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight=".2"
                             android:layout_gravity="end"
+                            android:layout_weight=".2"
                             android:background="@drawable/button_bg"
                             android:text="Resend"
                             android:textColor="@color/white"
@@ -87,7 +87,7 @@
                             android:id="@+id/labelName"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:layout_weight=".2"
+                            android:layout_weight=".25"
                             android:fontFamily="@font/opensans_regular"
                             android:gravity="center_vertical"
                             android:singleLine="true"
@@ -97,10 +97,10 @@
 
 
                         <TextView
-                            android:id="@+id/tvWorkerRole"
+                            android:id="@+id/tvName"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:layout_weight=".8"
+                            android:layout_weight=".75"
                             android:fontFamily="@font/opensans_semi_bold"
                             android:gravity="center_vertical"
                             android:singleLine="true"
@@ -123,7 +123,7 @@
                             android:id="@+id/labelPhone"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:layout_weight=".2"
+                            android:layout_weight=".25"
                             android:fontFamily="@font/opensans_regular"
                             android:gravity="center_vertical"
                             android:singleLine="true"
@@ -133,10 +133,10 @@
 
 
                         <TextView
-                            android:id="@+id/tvWorkerEmail"
+                            android:id="@+id/tvWorkerPhone"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:layout_weight=".6"
+                            android:layout_weight=".55"
                             android:fontFamily="@font/opensans_semi_bold"
                             android:gravity="center_vertical"
                             android:singleLine="true"
@@ -157,6 +157,7 @@
 
 
                     </androidx.appcompat.widget.LinearLayoutCompat>
+
                     <androidx.appcompat.widget.LinearLayoutCompat
                         android:id="@+id/llDate"
                         android:layout_width="match_parent"
@@ -170,7 +171,7 @@
                             android:id="@+id/labelHour"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:layout_weight=".2"
+                            android:layout_weight=".25"
                             android:fontFamily="@font/opensans_regular"
                             android:gravity="center_vertical"
                             android:singleLine="true"
@@ -180,10 +181,10 @@
 
 
                         <TextView
-                            android:id="@+id/tvWorkerHourly"
+                            android:id="@+id/tvData"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:layout_weight=".8"
+                            android:layout_weight=".75"
                             android:fontFamily="@font/opensans_semi_bold"
                             android:gravity="center_vertical"
                             android:singleLine="true"

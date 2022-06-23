@@ -1,11 +1,18 @@
 package com.kodextech.project.kodexlib.ui.main.jobs
 
 import android.Manifest
+import android.app.Dialog
 import android.content.Context
 import android.content.ContextWrapper
 import android.content.Intent
 import android.graphics.Bitmap
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
+import android.view.Gravity
 import android.view.View
+import android.view.WindowManager
+import android.widget.Button
+import androidx.appcompat.widget.AppCompatImageView
 import androidx.databinding.DataBindingUtil
 import com.google.gson.Gson
 import com.karumi.dexter.Dexter
@@ -68,8 +75,6 @@ class StartJobActivity : BaseActivity() {
 
             }
         })
-
-
     }
 
     private fun addSignature(mSignaturePad: SignaturePad) {
@@ -137,18 +142,18 @@ class StartJobActivity : BaseActivity() {
             object : Response {
                 override fun onSuccessResponse(response: String?, message: String) {
                     hideLoading()
+                    warningDialog()
+
                     val intent = Intent(this@StartJobActivity, JobsListing::class.java)
                     startActivity(intent)
                     finish()
                     showBarToast("Job Started Successfully")
-
                 }
 
                 override fun onErrorResponse(error: String?, response: String?) {
                     hideLoading()
                     showBarToast(error ?: "")
                 }
-
             })
     }
 
@@ -364,5 +369,30 @@ class StartJobActivity : BaseActivity() {
     override fun setupLoader() {
 
     }
+
+    fun warningDialog() {
+
+        val dialog = Dialog(this)
+        dialog.setContentView(R.layout.waring_dialog)
+        val doneBtn = dialog.findViewById<Button>(R.id.doneBtn)
+        val cancelBtn = dialog.findViewById<Button>(R.id.cancelBtn)
+        val crossImg = dialog.findViewById<AppCompatImageView>(R.id.ivCross)
+        doneBtn.setOnClickListener { // App.getSharedPre().userLogOut();
+            dialog.dismiss()
+        }
+        crossImg.setOnClickListener {
+            dialog.dismiss()
+        }
+        cancelBtn.setOnClickListener { dialog.dismiss() }
+        dialog.setCancelable(false)
+        dialog.show()
+        dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.window!!.setLayout(
+            WindowManager.LayoutParams.MATCH_PARENT,
+            WindowManager.LayoutParams.WRAP_CONTENT
+        )
+        dialog.window!!.setGravity(Gravity.CENTER)
+    }
+
 
 }
