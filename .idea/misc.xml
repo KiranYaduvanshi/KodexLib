@@ -11,6 +11,7 @@
         <entry key="..\:/AndroidStudio/moderenmover/KodexLib/app/src/main/res/layout/activity_terms_services.xml" value="0.27291666666666664" />
         <entry key="..\:/AndroidStudio/moderenmover/KodexLib/app/src/main/res/layout/confirmation_dialog.xml" value="0.27291666666666664" />
         <entry key="..\:/AndroidStudio/moderenmover/KodexLib/app/src/main/res/layout/job_item.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/hp/Downloads/Modern_mover/app/src/main/res/drawable/ic_statics.xml" value="0.136" />
         <entry key="..\:/Users/hp/Downloads/Modern_mover/app/src/main/res/layout/activity_add_booking.xml" value="0.13540090771558244" />
         <entry key="..\:/Users/hp/Downloads/Modern_mover/app/src/main/res/layout/activity_communication.xml" value="0.17291666666666666" />
         <entry key="..\:/Users/hp/Downloads/Modern_mover/app/src/main/res/layout/activity_customer_listing.xml" value="0.20925925925925926" />
@@ -22,17 +23,22 @@
         <entry key="..\:/Users/hp/Downloads/Modern_mover/app/src/main/res/layout/activity_quatation.xml" value="0.234375" />
         <entry key="..\:/Users/hp/Downloads/Modern_mover/app/src/main/res/layout/activity_start_job.xml" value="0.15" />
         <entry key="..\:/Users/hp/Downloads/Modern_mover/app/src/main/res/layout/activity_static.xml" value="0.1671875" />
+        <entry key="..\:/Users/hp/Downloads/Modern_mover/app/src/main/res/layout/activity_terms_services.xml" value="0.16799999999999998" />
         <entry key="..\:/Users/hp/Downloads/Modern_mover/app/src/main/res/layout/activity_view_email.xml" value="0.10989583333333333" />
         <entry key="..\:/Users/hp/Downloads/Modern_mover/app/src/main/res/layout/add_worker_dialog.xml" value="0.18125" />
         <entry key="..\:/Users/hp/Downloads/Modern_mover/app/src/main/res/layout/address_item.xml" value="0.19895833333333332" />
         <entry key="..\:/Users/hp/Downloads/Modern_mover/app/src/main/res/layout/dashboard_item.xml" value="0.234375" />
         <entry key="..\:/Users/hp/Downloads/Modern_mover/app/src/main/res/layout/detail_custoemr_item.xml" value="0.1" />
+        <entry key="..\:/Users/hp/Downloads/Modern_mover/app/src/main/res/layout/job_item.xml" value="0.159375" />
         <entry key="..\:/Users/hp/Downloads/Modern_mover/app/src/main/res/layout/layout_rv_item_communication_email.xml" value="0.25" />
         <entry key="..\:/Users/hp/Downloads/Modern_mover/app/src/main/res/layout/layout_rv_item_communication_sms.xml" value="0.17291666666666666" />
         <entry key="..\:/Users/hp/Downloads/Modern_mover/app/src/main/res/layout/mul_sel_list_item.xml" value="0.19479166666666667" />
+        <entry key="..\:/Users/hp/Downloads/Modern_mover/app/src/main/res/layout/pickup_address_list_item.xml" value="0.1140625" />
         <entry key="..\:/Users/hp/Downloads/Modern_mover/app/src/main/res/layout/quatation_list_item.xml" value="0.1" />
-        <entry key="..\:/Users/hp/Downloads/Modern_mover/app/src/main/res/layout/quattaion_list_item.xml" value="0.1" />
+        <entry key="..\:/Users/hp/Downloads/Modern_mover/app/src/main/res/layout/quattaion_list_item.xml" value="0.16" />
         <entry key="..\:/Users/hp/Downloads/Modern_mover/app/src/main/res/layout/resendemail.xml" value="0.15" />
+        <entry key="..\:/Users/hp/Downloads/Modern_mover/app/src/main/res/layout/top_bar.xml" value="0.13177083333333334" />
+        <entry key="..\:/Users/hp/Downloads/Modern_mover/app/src/main/res/layout/view_sms_dialog.xml" value="0.1015625" />
         <entry key="..\:/Users/hp/Downloads/Modern_mover/app/src/main/res/layout/waring_dialog.xml" value="0.15" />
         <entry key="..\:/imran/app/src/main/res/drawable/ic_add_woker.xml" value="0.1" />
         <entry key="..\:/imran/app/src/main/res/drawable/ic_add_workers.xml" value="0.1" />

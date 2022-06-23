@@ -61,15 +61,15 @@
                 android:layout_marginTop="@dimen/_5sdp"
                 android:layout_marginEnd="@dimen/_15sdp"
                 android:background="@drawable/button_bg"
+                android:fontFamily="@font/opensans_light"
                 android:hint="Search With Customer Name"
                 android:imeOptions="actionDone"
                 android:paddingStart="@dimen/_10sdp"
                 android:singleLine="true"
-                android:textSize="@dimen/_10sdp"
-                android:fontFamily="@font/opensans_light"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white"
                 android:textCursorDrawable="@drawable/cursor_white"
+                android:textSize="@dimen/_10sdp"
                 android:visibility="gone" />
 
             <androidx.appcompat.widget.AppCompatImageView
@@ -81,8 +81,7 @@
                 android:layout_marginEnd="@dimen/_20sdp"
                 android:elevation="@dimen/_1sdp"
                 android:src="@drawable/ic_close"
-                android:visibility="gone"
-                 />
+                android:visibility="gone" />
 
         </RelativeLayout>
 
@@ -125,9 +124,9 @@
                     android:layout_marginBottom="@dimen/_2sdp"
                     android:fontFamily="@font/opensans_regular"
                     android:textSize="@dimen/_13sdp"
+                    app:ms_background_color="@color/white"
                     app:ms_hide_arrow="true"
                     app:ms_hint="Filter Here"
-                    app:ms_background_color="@color/white"
                     app:ms_hint_color="@color/addProductHint"
                     app:ms_padding_left="@dimen/_12sdp"
                     app:ms_padding_right="@dimen/_5sdp"
