@@ -671,6 +671,8 @@ object URLApi {
         return this
     }
 
+
+
     fun getStatics(id: String): URLApi {
         method = NetworkMethod.GET
         path = "get-earnings/" + id
@@ -684,6 +686,13 @@ object URLApi {
         params = JSONObject()
         params.put("job_uuid", job_uuid)
 
+        return this
+    }
+    fun getExport(booking_id: ArrayList<Int>): URLApi {
+        method = NetworkMethod.POST
+        path = "make-csv"
+        params = JSONObject()
+        params.put("booking_id", booking_id)
         return this
     }
 

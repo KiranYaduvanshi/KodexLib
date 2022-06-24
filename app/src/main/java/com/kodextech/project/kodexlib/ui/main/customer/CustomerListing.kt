@@ -143,7 +143,9 @@ class CustomerListing : BaseActivity() {
                 mData.addAll(data)
                 when (customerTypePosition) {
                     0 -> {
+                        mData.clear()
                         mData.addAll(data)
+
                     }
                     1 -> {
 

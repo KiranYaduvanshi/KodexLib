@@ -1,9 +1,14 @@
 package com.kodextech.project.kodexlib.ui.main.jobs
 
+import android.app.DownloadManager
+import android.content.Context
 import android.content.Intent
+import android.net.Uri
+import android.os.Environment
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -29,6 +34,7 @@ import com.kodextech.project.kodexlib.utils.visible
 import org.json.JSONObject
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.ArrayList
 
 class JobsListing : BaseActivity() {
 
@@ -49,6 +55,7 @@ class JobsListing : BaseActivity() {
 
     override fun setupContentViewWithBinding() {
         statusBarColor(getColor(R.color.blue))
+//        binding?.rlButton?.visibility = View.GONE
         binding = DataBindingUtil.setContentView(this, R.layout.activity_jobs_listing)
         initTopBar()
         setJobData()
@@ -169,6 +176,10 @@ class JobsListing : BaseActivity() {
             changeViewColor()
             getJobListCall()
         }
+
+        binding?.btnExport?.setOnClickListener {
+            jobExport()
+        }
     }
 
     private fun deleteBookings() {
@@ -191,11 +202,57 @@ class JobsListing : BaseActivity() {
         })
     }
 
+    private fun jobExport() {
+        var list : ArrayList<Int> = ArrayList();
+        val jobIds = mDataSelected.map { it.uuid }.joinToString(",")
+        val newIds = mDataSelected
+        showLoading()
+        mDataSelected.map { list.add(it.id!!) }
+        Toast.makeText(binding?.root?.context, list.toString(), Toast.LENGTH_SHORT).show()
+        NetworkClass.callApi(URLApi.getExport(booking_id = list ), object : Response {
+            override fun onSuccessResponse(response: String?, message: String) {
+                //showToast("Tester" +response.toString())
+                val uri: Uri =
+                    Uri.parse(response)
+                val downloadManager: DownloadManager =
+                    baseContext.getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
+
+                val request: DownloadManager.Request = DownloadManager.Request(uri)
+                request.setAllowedNetworkTypes(
+                    DownloadManager.Request.NETWORK_WIFI or
+                            DownloadManager.Request.NETWORK_MOBILE
+                )
+// set title and description
+                request.setTitle("CSV Downloaded")
+                request.setDescription("CSV Downloaded Successfully")
+
+                request.allowScanningByMediaScanner()
+                request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
+
+//set the local destination for download file to a path within the application's external files directory
+                request.setDestinationInExternalPublicDir(
+                    Environment.DIRECTORY_DOWNLOADS,
+                    "CDV.pdf"
+                )
+                request.setMimeType("*/*")
+                downloadManager?.enqueue(request)
+                hideLoading()
+            }
+
+            override fun onErrorResponse(error: String?, response: String?) {
+                hideLoading()
+                showToast(error ?: "")
+            }
+        })
+    }
+
     private fun getJobListCall() {
 //        if (binding?.svJobs?.isRefreshing == false) {
 //            binding?.svJobs?.isRefreshing = true
 //        }
         showLoading()
+        mDataSelected.clear()
+        binding?.rlButton?.visibility = View.GONE
         NetworkClass.callApi(
             URLApi.getJobLoistByTimeNature(
                 worker_uuid = null,
@@ -207,7 +264,6 @@ class JobsListing : BaseActivity() {
                     val json = JSONObject(response ?: "")
                     var model = json.optJSONArray("models")
                     val data = generateList(model.toString() ?: "", Array<JobModel>::class.java)
-
                     when (listingFor) {
                         "notAssigned" -> {
                             val filterData = data.filter {

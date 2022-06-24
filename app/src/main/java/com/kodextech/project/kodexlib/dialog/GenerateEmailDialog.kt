@@ -175,7 +175,9 @@ class GenerateEmailDialog : BaseDialogueFragment() {
 
                 override fun onErrorResponse(error: String?, response: String?) {
                     hideLoading()
-                    mActivity.showToast(error ?: "")
+                    mActivity.showToast(error ?: "error   error")
+                    print(error+ " Error Error")
+                    print(error+ " Error Error")
                 }
 
             })

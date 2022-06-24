@@ -14,6 +14,7 @@ import com.kodextech.project.kodexlib.base.BaseActivity
 import com.kodextech.project.kodexlib.network.LocalPreference
 import com.kodextech.project.kodexlib.ui.main.auth.LoginActivity
 import com.kodextech.project.kodexlib.ui.main.dashboard.Dashboard
+import com.kodextech.project.kodexlib.ui.main.dashboard.DriverDashboardActivity
 import com.kodextech.project.kodexlib.ui.main.jobs.JobsListing
 
 
@@ -73,8 +74,8 @@ class Splash : BaseActivity() {
                 val intent = Intent(this@Splash, Dashboard::class.java)
                 startActivity(intent)
             } else {
-                val intent = Intent(this@Splash, JobsListing::class.java)
-                intent.putExtra("from", "driver")
+                val intent = Intent(this@Splash, DriverDashboardActivity::class.java)
+//                intent.putExtra("from", "driver")
                 startActivity(intent)
             }
             finish()

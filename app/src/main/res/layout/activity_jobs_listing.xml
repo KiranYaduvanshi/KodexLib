@@ -290,6 +290,7 @@
             android:layout_marginStart="@dimen/_15sdp"
             android:layout_marginEnd="@dimen/_15sdp"
             android:orientation="horizontal"
+            android:visibility="gone"
             android:weightSum="1"
 
             >
