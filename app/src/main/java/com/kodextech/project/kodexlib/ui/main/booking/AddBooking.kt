@@ -1471,11 +1471,7 @@ class AddBooking : BaseActivity() {
         try {
             val smsManager: SmsManager = SmsManager.getDefault()
             smsManager.sendTextMessage(no, null, smsContent, null, null)
-//            Toast.makeText(
-//                applicationContext, "Message Sent",
-//                Toast.LENGTH_LONG
-//            ).show()
-        } catch (ex: Exception) {
+       } catch (ex: Exception) {
             Toast.makeText(
                 applicationContext, ex.message.toString(),
                 Toast.LENGTH_LONG
@@ -1812,18 +1808,6 @@ class AddBooking : BaseActivity() {
         dialog.window!!.setGravity(Gravity.CENTER)
 
 
-//        val builder1 = AlertDialog.Builder(binding?.root?.context)
-//        builder1.setTitle("Resend Email")
-//        builder1.setMessage("Are you sure you want to resend  ")
-//        builder1.setCancelable(false)
-////        builder1.setPositiveButton(
-////            "Yes"
-////        ) { dialog, which -> dialog.cancel() }
-//        builder1.setNegativeButton(
-//            "No"
-//        ) { dialog: DialogInterface, id: Int -> dialog.cancel() }
-//        val alert11 = builder1.create()
-//        alert11.show()
 
     }
 

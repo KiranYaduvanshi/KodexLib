@@ -1,8 +1,18 @@
 package com.kodextech.project.kodexlib.ui.main.communication
 
+import android.app.Dialog
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
+import android.net.Uri
+import android.telephony.SmsManager
 import android.util.Log
+import android.view.Gravity
+import android.view.WindowManager
+import android.widget.Button
 import android.widget.Toast
+import androidx.appcompat.widget.AppCompatImageView
+import androidx.appcompat.widget.AppCompatTextView
 import androidx.databinding.DataBindingUtil
 import com.kodextech.project.kodexlib.R
 import com.kodextech.project.kodexlib.base.BaseActivity
@@ -15,12 +25,13 @@ import com.kodextech.project.kodexlib.network.NetworkClass
 import com.kodextech.project.kodexlib.network.Response
 import com.kodextech.project.kodexlib.network.URLApi
 import com.kodextech.project.kodexlib.ui.main.communication.adapter.emailClickInterface
+import com.kodextech.project.kodexlib.ui.main.communication.adapter.viewSmsSelect
 import com.kodextech.project.kodexlib.ui.main.jobs.StartJobActivity
 import com.kodextech.project.kodexlib.utils.generateList
 import org.json.JSONArray
 import org.json.JSONObject
 
-class CommunicationActivity : BaseActivity(), emailClickInterface {
+class CommunicationActivity : BaseActivity(), emailClickInterface, viewSmsSelect {
 
     private var binding: ActivityCommunicationBinding? = null
     private var emialCommunicationAdapter: EmialCommunicationAdapter? = null
@@ -75,7 +86,7 @@ class CommunicationActivity : BaseActivity(), emailClickInterface {
     }
 
     fun setSmsAdapter(){
-        smsCommunicationAdapter = SmsCommunicationAdapter(this,smsData)
+        smsCommunicationAdapter = SmsCommunicationAdapter(this,smsData,this)
         binding?.rvMails?.adapter = smsCommunicationAdapter
     }
 
@@ -104,14 +115,12 @@ class CommunicationActivity : BaseActivity(), emailClickInterface {
 
     private fun getSMSCommunicationList() {
         showLoading()
-        NetworkClass.callApi(URLApi.getEmailCommunationApi(), object : Response {
+        NetworkClass.callApi(URLApi.getSmsCommunationApi(), object : Response {
             override fun onSuccessResponse(response: String?, message: String) {
                 hideLoading()
                 Log.i("Check","response "+response)
                 val json = JSONArray(response ?: "")
                 val data = generateList(json.toString(), Array<SmsCommunicationModel>::class.java)
-                // Toast.makeText(binding?.root?.context, "data "+data[0].Date, Toast.LENGTH_SHORT).show()
-               //  Toast.makeText(binding?.root?.context, "response"+response, Toast.LENGTH_SHORT).show()
                 smsData.addAll(data)
                 setSmsAdapter()
 
@@ -129,6 +138,57 @@ class CommunicationActivity : BaseActivity(), emailClickInterface {
         val intent = Intent(this, ViewEmailActivity::class.java)
         intent.putExtra("orderId", orderId)
         startActivity(intent)
+    }
+
+    override fun onClickViewSms(sms: String, positon: Int) {
+        viewSmsDialog(sms)
+    }
+
+    override fun onResendSms(sms: String, phone: String, positon: Int) {
+        sendSMS(sms,phone)
+    }
+
+
+    private fun sendSMS(smsContent: String, phone: String) {
+
+        val no = phone
+        val uri = Uri.parse("smsto:$no")
+        try {
+            val smsManager: SmsManager = SmsManager.getDefault()
+            smsManager.sendTextMessage(no, null, smsContent, null, null)
+        } catch (ex: Exception) {
+            Toast.makeText(
+                applicationContext, ex.message.toString(),
+                Toast.LENGTH_LONG
+            ).show()
+            ex.printStackTrace()
+            Log.i("SMS", ex.toString());
+        }
+        val intent = Intent(Intent.ACTION_SENDTO, uri)
+        intent.putExtra("sms_body", smsContent)
+        startActivity(intent)
+    }
+
+
+
+    fun viewSmsDialog(sms:String) {
+
+        val dialog = Dialog(this)
+        dialog.setContentView(R.layout.view_sms_dialog)
+        val smsTv = dialog.findViewById<AppCompatTextView>(R.id.smsTv)
+        val crossImg = dialog.findViewById<AppCompatImageView>(R.id.ivCross)
+
+        smsTv.setText(sms)
+        crossImg.setOnClickListener { dialog.dismiss() }
+        dialog.setCancelable(false)
+        dialog.show()
+        dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.window!!.setLayout(
+            WindowManager.LayoutParams.MATCH_PARENT,
+            WindowManager.LayoutParams.WRAP_CONTENT
+        )
+        dialog.window!!.setGravity(Gravity.CENTER)
+
     }
 
 }

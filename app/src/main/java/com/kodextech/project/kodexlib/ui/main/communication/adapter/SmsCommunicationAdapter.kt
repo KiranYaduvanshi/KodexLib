@@ -12,7 +12,7 @@ import com.kodextech.project.kodexlib.databinding.LayoutRvItemCommunicationSmsBi
 import com.kodextech.project.kodexlib.model.Data
 import com.kodextech.project.kodexlib.model.SmsCommunicationModel
 
-class SmsCommunicationAdapter(var context:Context,var smsData: ArrayList<SmsCommunicationModel>):RecyclerView.Adapter<SmsViewHolder>() {
+class SmsCommunicationAdapter(var context:Context,var smsData: ArrayList<SmsCommunicationModel>,var viewSmsSelect: viewSmsSelect):RecyclerView.Adapter<SmsViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SmsViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.layout_rv_item_communication_sms, parent, false)
         return SmsViewHolder(view)
@@ -23,7 +23,15 @@ class SmsCommunicationAdapter(var context:Context,var smsData: ArrayList<SmsComm
         holder.binding?.tvWorkerPhone?.text = smsData[position].phone
         holder.binding?.tvName?.text = smsData[position].Name
         holder.binding?.tvData?.text = smsData[position].Date
-        Toast.makeText(context, ""+smsData[position].phone, Toast.LENGTH_SHORT).show()
+       // Toast.makeText(context, ""+smsData[position].phone, Toast.LENGTH_SHORT).show()
+
+        holder.itemView.setOnClickListener {
+            viewSmsSelect.onClickViewSms(smsData[position].sms.toString(),position)
+        }
+        holder.binding?.btnResend?.setOnClickListener {
+            viewSmsSelect.onResendSms(smsData[position].sms.toString(),smsData[position].phone.toString(),position)
+        }
+
     }
 
     override fun getItemCount(): Int {
@@ -33,4 +41,9 @@ class SmsCommunicationAdapter(var context:Context,var smsData: ArrayList<SmsComm
 
 class SmsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     val binding: LayoutRvItemCommunicationSmsBinding? = DataBindingUtil.bind(itemView)
+}
+
+interface viewSmsSelect{
+    fun onClickViewSms(sms:String,positon:Int)
+    fun onResendSms(sms: String,phone:String,positon: Int)
 }
