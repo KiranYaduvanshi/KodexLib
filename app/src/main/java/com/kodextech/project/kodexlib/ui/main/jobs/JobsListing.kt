@@ -34,7 +34,6 @@ import com.kodextech.project.kodexlib.utils.visible
 import org.json.JSONObject
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.collections.ArrayList
 
 class JobsListing : BaseActivity() {
 
@@ -203,13 +202,14 @@ class JobsListing : BaseActivity() {
     }
 
     private fun jobExport() {
-        var list : ArrayList<Int> = ArrayList();
+        Toast.makeText(binding?.root?.context, "Download started....", Toast.LENGTH_SHORT).show()
+        var list: ArrayList<Int> = ArrayList();
         val jobIds = mDataSelected.map { it.uuid }.joinToString(",")
         val newIds = mDataSelected
         showLoading()
         mDataSelected.map { list.add(it.id!!) }
         Toast.makeText(binding?.root?.context, list.toString(), Toast.LENGTH_SHORT).show()
-        NetworkClass.callApi(URLApi.getExport(booking_id = list ), object : Response {
+        NetworkClass.callApi(URLApi.getExport(booking_id = list), object : Response {
             override fun onSuccessResponse(response: String?, message: String) {
                 //showToast("Tester" +response.toString())
                 val uri: Uri =
@@ -236,7 +236,6 @@ class JobsListing : BaseActivity() {
                 )
                 request.setMimeType("*/*")
                 downloadManager?.enqueue(request)
-                hideLoading()
             }
 
             override fun onErrorResponse(error: String?, response: String?) {
@@ -287,13 +286,13 @@ class JobsListing : BaseActivity() {
                         }
                     }
                     setJobData()
-                  //  binding?.svJobs?.isRefreshing = false
+                    //  binding?.svJobs?.isRefreshing = false
                 }
 
                 override fun onErrorResponse(error: String?, response: String?) {
                     hideLoading()
                     showBarToast(error ?: "")
-                  //  binding?.svJobs?.isRefreshing = false
+                    //  binding?.svJobs?.isRefreshing = false
                 }
             })
     }

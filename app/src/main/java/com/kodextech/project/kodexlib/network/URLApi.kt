@@ -48,13 +48,13 @@ object URLApi {
         return params
     }
 
-    final fun paramHas(): HashMap<String, Any>? {
+     fun paramHas(): HashMap<String, Any>? {
         return Gson().fromJson<HashMap<String, Any>>(
-            URLApi.param().toString(), object : TypeToken<HashMap<String?, Any?>?>() {}.type
+            param().toString(), object : TypeToken<HashMap<String?, Any?>?>() {}.type
         )
     }
 
-    final fun paramHashMap(): HashMap<*, *> {
+     fun paramHashMap(): HashMap<*, *> {
         return Gson().fromJson(params.toString(), HashMap::class.java)
     }
 
@@ -132,6 +132,14 @@ object URLApi {
         return this
     }
 
+    fun sendToMultipleUser(emails : ArrayList<String>): URLApi {
+        method = NetworkMethod.POST
+        path = "send-email-to-multiple-users"
+        params = JSONObject()
+        params.put("email", emails)
+        return this
+    }
+
     fun getEmailCommunationApi(): URLApi {
         method = NetworkMethod.GET
         path = "get-email-communication"
@@ -170,7 +178,7 @@ object URLApi {
         params.put("email", email)
         params.put("activation_code", activation_code)
         params.put("is_social", is_social)
-        Log.i("MODERN_MOVERS", activation_code + "");
+        Log.i("MODERN_MOVERS", activation_code + "")
         return this
     }
 
