@@ -140,13 +140,13 @@ class JobsListing : BaseActivity() {
 
             checkAndSetData()
         }
-        binding?.svJobs?.setOnRefreshListener {
-            if (LocalPreference.shared.user?.user?.profile_type == "worker") {
-                getWorkerJob(LocalPreference.shared.user?.user?.profile?.uuid)
-            } else {
-                getJobListCall()
-            }
-        }
+//        binding?.svJobs?.setOnRefreshListener {
+//            if (LocalPreference.shared.user?.user?.profile_type == "worker") {
+//                getWorkerJob(LocalPreference.shared.user?.user?.profile?.uuid)
+//            } else {
+//                getJobListCall()
+//            }
+//        }
 
         binding?.tvDay?.setOnClickListener {
             viewStates = "today"
@@ -454,7 +454,7 @@ class JobsListing : BaseActivity() {
                 }
 
                 setJobData()
-                binding?.svJobs?.isRefreshing = false
+              //  binding?.svJobs?.isRefreshing = false
             }
 
             override fun onErrorResponse(error: String?, response: String?) {

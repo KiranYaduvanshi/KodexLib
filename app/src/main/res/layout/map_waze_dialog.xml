@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent">
+
+        <RelativeLayout
+            android:id="@+id/cardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:background="@drawable/bg_dialog"
+            android:backgroundTint="@color/white"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/titleTv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:gravity="center"
+                android:fontFamily="@font/bold"
+                android:textSize="@dimen/_20sdp"
+
+                android:text="Open With"
+
+                android:textColor="@color/black" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/titleTv"
+                android:layout_marginTop="@dimen/_30sdp"
+                android:layout_marginBottom="@dimen/_30sdp"
+                android:weightSum="2">
+
+                <ImageView
+                    android:id="@+id/mapImg"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_40sdp"
+                    android:layout_weight="1"
+                    android:src="@drawable/google_maps" />
+
+                <ImageView
+                    android:id="@+id/wazeImg"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_40sdp"
+                    android:layout_weight="1"
+                    android:src="@drawable/waze" />
+
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+
+
+
+        </RelativeLayout>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivCross"
+            android:layout_width="@dimen/_36sdp"
+            android:layout_height="@dimen/_36sdp"
+            android:layout_alignTop="@+id/cardView"
+            android:layout_alignEnd="@+id/cardView"
+            android:layout_gravity="end"
+
+            android:layout_marginTop="-15dp"
+            android:layout_marginEnd="-16dp"
+            android:elevation="@dimen/_2sdp"
+            android:padding="@dimen/_7sdp"
+            android:src="@drawable/ic_close" />
+
+    </RelativeLayout>
+</layout>
+
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<layout>-->
+
+<!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="wrap_content"-->
+<!--    android:layout_margin="@dimen/_10sdp"-->
+<!--    android:orientation="vertical">-->
+
+<!--    <TextView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:gravity="center"-->
+<!--        android:textColor="@color/black"-->
+<!--        android:layout_marginTop="@dimen/_20sdp"-->
+
+<!--        android:text="Open With"/>-->
+
+<!--    <androidx.appcompat.widget.LinearLayoutCompat-->
+<!--        android:layout_marginTop="@dimen/_30sdp"-->
+<!--        android:layout_marginBottom="@dimen/_20sdp"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:weightSum="2">-->
+
+<!--        <ImageView-->
+<!--            android:id="@+id/mapImg"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="@dimen/_50sdp"-->
+<!--            android:layout_weight="1"-->
+<!--            android:src="@drawable/google_maps"/>-->
+<!--        <ImageView-->
+<!--            android:id="@+id/wazeImg"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="@dimen/_50sdp"-->
+<!--            android:layout_weight="1"-->
+<!--            android:src="@drawable/waze"/>-->
+
+
+<!--    </androidx.appcompat.widget.LinearLayoutCompat>-->
+
+<!--</LinearLayout>-->
+
+<!--</layout>-->

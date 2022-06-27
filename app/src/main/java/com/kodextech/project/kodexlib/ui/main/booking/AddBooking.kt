@@ -363,8 +363,6 @@ class AddBooking : BaseActivity() {
                                 itemName, itemQuantity
                             )
                         )
-
-
                         binding?.rvFloors?.adapter = AddVanAdapter(this@AddBooking, mFloorArray)
                         binding?.rvFloors?.layoutManager =
                             LinearLayoutManager(this, RecyclerView.VERTICAL, false)

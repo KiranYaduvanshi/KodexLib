@@ -4,6 +4,7 @@ import java.io.Serializable
 
 data class SmsCommunicationModel (
 
+     var id     : Int?    = null,
      var Order  : String? = null,
      var Name   : String? = null,
      var phone  : String? = null,
