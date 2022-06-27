@@ -4,12 +4,10 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.kodextech.project.kodexlib.R
 import com.kodextech.project.kodexlib.databinding.LayoutRvItemCommunicationSmsBinding
-import com.kodextech.project.kodexlib.model.Data
 import com.kodextech.project.kodexlib.model.SmsCommunicationModel
 
 class SmsCommunicationAdapter(var context:Context,var smsData: ArrayList<SmsCommunicationModel>,var viewSmsSelect: viewSmsSelect):RecyclerView.Adapter<SmsViewHolder>() {
@@ -29,7 +27,7 @@ class SmsCommunicationAdapter(var context:Context,var smsData: ArrayList<SmsComm
             viewSmsSelect.onClickViewSms(smsData[position].sms.toString(),position)
         }
         holder.binding?.btnResend?.setOnClickListener {
-            viewSmsSelect.onResendSms(smsData[position].sms.toString(),smsData[position].phone.toString(),position)
+            viewSmsSelect.onResendSms(smsData[position].sms.toString(),smsData[position].phone.toString(),position,smsData[position].id)
         }
 
     }
@@ -45,5 +43,5 @@ class SmsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
 interface viewSmsSelect{
     fun onClickViewSms(sms:String,positon:Int)
-    fun onResendSms(sms: String,phone:String,positon: Int)
+    fun onResendSms(sms: String, phone:String, positon: Int, id: Int?)
 }
