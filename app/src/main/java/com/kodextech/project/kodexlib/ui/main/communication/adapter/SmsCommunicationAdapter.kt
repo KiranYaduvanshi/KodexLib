@@ -41,6 +41,7 @@ class SmsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     val binding: LayoutRvItemCommunicationSmsBinding? = DataBindingUtil.bind(itemView)
 }
 
+
 interface viewSmsSelect{
     fun onClickViewSms(sms:String,positon:Int)
     fun onResendSms(sms: String, phone:String, positon: Int, id: Int?)

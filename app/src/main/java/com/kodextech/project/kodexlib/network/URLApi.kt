@@ -131,7 +131,6 @@ object URLApi {
         params.put("is_social", is_social)
         return this
     }
-
     fun sendToMultipleUser(emails : ArrayList<String>): URLApi {
         method = NetworkMethod.POST
         path = "send-email-to-multiple-users"
@@ -143,6 +142,11 @@ object URLApi {
     fun getEmailCommunationApi(): URLApi {
         method = NetworkMethod.GET
         path = "get-email-communication"
+        return this
+    }
+    fun sendEmailToAll(): URLApi {
+        method = NetworkMethod.GET
+        path = "send-email-to-all-users"
         return this
     }
 

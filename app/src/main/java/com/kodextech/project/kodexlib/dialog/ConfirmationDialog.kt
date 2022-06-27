@@ -175,6 +175,10 @@ class ConfirmationDialog : BaseDialogueFragment() {
         val price_amount_rounded = String.format("%.2f", price_amount)
 
         binding?.tvPrice?.text = "Price: £ $price_amount_rounded"
+        if(obj?.price_nature == "hourly-price"){        binding?.tvHours?.text = "Hours: £ API"}else{
+            binding?.tvHours?.visibility = View.GONE
+        }
+
         binding?.etTotalAmount?.setText(price_amount_rounded)
 
 
