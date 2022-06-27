@@ -34,20 +34,20 @@ class QuatationAdapter(var context: Context, var mData: ArrayList<CustomerModel>
         isSelected = true
         if (mData.size >0) {
             var itemData = mData[position]
-            holder.binding?.cardView?.setOnClickListener {
-
-                if (list.contains(itemData)) {
-                    list.remove(itemData)
-                    holder.binding?.ivSelected?.gone()
-
-                  //  holder.binding?.cardView?.setCardBackgroundColor(Color.WHITE)
-                } else {
-                    holder.binding?.ivSelected?.visible()
-
-                    list.add(itemData)
-                 //   holder.binding?.cardView?.setCardBackgroundColor(Color.BLUE)
-                }
-            }
+//            holder.binding?.cardView?.setOnClickListener {
+//
+//                if (list.contains(itemData)) {
+//                    list.remove(itemData)
+//                    holder.binding?.ivSelected?.gone()
+//
+//                  //  holder.binding?.cardView?.setCardBackgroundColor(Color.WHITE)
+//                } else {
+//                    holder.binding?.ivSelected?.visible()
+//
+//                    list.add(itemData)
+//                 //   holder.binding?.cardView?.setCardBackgroundColor(Color.BLUE)
+//                }
+//            }
 
             holder.binding?.customerName?.text = "${itemData?.first_name} ${itemData?.last_name}"
             holder.binding?.tvEmail?.text = itemData.email

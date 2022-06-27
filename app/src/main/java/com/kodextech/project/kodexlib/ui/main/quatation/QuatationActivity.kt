@@ -1,14 +1,20 @@
 package com.kodextech.project.kodexlib.ui.main.quatation
 
+import android.app.DownloadManager
+import android.content.Context
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Environment
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.kodextech.project.kodexlib.MultipleSelectionActivity
 import com.kodextech.project.kodexlib.R
 import com.kodextech.project.kodexlib.base.BaseActivity
 import com.kodextech.project.kodexlib.databinding.ActivityCustomerListingBinding
@@ -20,6 +26,7 @@ import com.kodextech.project.kodexlib.network.URLApi
 import com.kodextech.project.kodexlib.ui.main.customer.adapter.CustomerTypeAdapter
 import com.kodextech.project.kodexlib.ui.main.customer.adapter.CustomerTypeModel
 import com.kodextech.project.kodexlib.ui.main.dashboard.adapter.CustomerListingAdapter
+import com.kodextech.project.kodexlib.ui.main.jobs.adapter.JobListingAdapter
 import com.kodextech.project.kodexlib.utils.generateList
 import com.kodextech.project.kodexlib.utils.gone
 import com.kodextech.project.kodexlib.utils.visible
@@ -32,6 +39,7 @@ class QuatationActivity : BaseActivity() {
     private var quatationAdapter:QuatationAdapter? = null
 
     private var mData = ArrayList<CustomerModel>()
+
 
     private var mCustomerType = ArrayList<CustomerTypeModel>()
     private var mCustomerTypeAdapter: CustomerTypeAdapter? = null
@@ -56,9 +64,11 @@ class QuatationActivity : BaseActivity() {
         }
 
         binding?.btnSentQuotation?.setOnClickListener {
-            Log.i("Quotation ", QuatationAdapter.list.toString() )
-            QuatationAdapter.list.clear()
-            setAdapter(mData)
+          //  MultipleSelection not needed
+//            Log.i("Quotation ", QuatationAdapter.list.toString() )
+//            QuatationAdapter.list.clear()
+//            setAdapter(mData)
+            sendQuotatuon();
 
         }
         //setAdapter()
@@ -206,6 +216,7 @@ class QuatationActivity : BaseActivity() {
                 mData.addAll(data)
                 when (customerTypePosition) {
                     0 -> {
+                        mData.clear()
                         mData.addAll(data)
                     }
                     1 -> {
@@ -260,6 +271,71 @@ class QuatationActivity : BaseActivity() {
         quatationAdapter?.notifyDataSetChanged()
 
     }
+
+//
+//    private fun sendQuotatuon() {
+//        var list: ArrayList<String> = ArrayList();
+//        val jobIds = QuatationAdapter.list.map { it.email }.joinToString(",")
+//        val newIds = JobListingAdapter.mDataSelected
+//        showLoading()
+////        JobListingAdapter.mDataSelected.map { list.add(it.id!!) }
+////        Toast.makeText(binding?.root?.context, list.toString(), Toast.LENGTH_SHORT).show()
+//        NetworkClass.callApi(URLApi.sendToMultipleUser(emails = list), object : Response {
+//            override fun onSuccessResponse(response: String?, message: String) {
+//                //showToast("Tester" +response.toString())
+//                val uri: Uri =
+//                    Uri.parse(response)
+//                val downloadManager: DownloadManager =
+//                    baseContext.getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
+//
+//                val request: DownloadManager.Request = DownloadManager.Request(uri)
+//                request.setAllowedNetworkTypes(
+//                    DownloadManager.Request.NETWORK_WIFI or
+//                            DownloadManager.Request.NETWORK_MOBILE
+//                )
+//// set title and description
+//                request.setTitle("CSV Downloaded")
+//                request.setDescription("CSV Downloaded Successfully")
+//
+//                request.allowScanningByMediaScanner()
+//                request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
+//
+////set the local destination for download file to a path within the application's external files directory
+//                request.setDestinationInExternalPublicDir(
+//                    Environment.DIRECTORY_DOWNLOADS,
+//                    "CDV.pdf"
+//                )
+//                request.setMimeType("*/*")
+//                downloadManager?.enqueue(request)
+//            }
+//
+//            override fun onErrorResponse(error: String?, response: String?) {
+//                hideLoading()
+//                showToast(error ?: "")
+//            }
+//        })
+//    }
+
+    private fun sendQuotatuon() {
+        showLoading()
+//        JobListingAdapter.mDataSelected.map { list.add(it.id!!) }
+//        Toast.makeText(binding?.root?.context, list.toString(), Toast.LENGTH_SHORT).show()
+        NetworkClass.callApi(URLApi.sendEmailToAll(), object : Response {
+            override fun onSuccessResponse(response: String?, message: String) {
+                hideLoading()
+                showBarToast(message)
+                 Toast.makeText(binding?.root?.context, "response"+response, Toast.LENGTH_SHORT).show()
+                Log.i("Res", "reposne " + response)
+
+            }
+
+            override fun onErrorResponse(error: String?, response: String?) {
+                hideLoading()
+                showToast(error ?: "")
+            }
+        })
+    }
+
 
 
 

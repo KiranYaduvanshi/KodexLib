@@ -82,6 +82,18 @@
                     android:textColor="@color/addProductHint"
                     android:textSize="@dimen/_12sdp" />
 
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvHours"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_2sdp"
+                    android:fontFamily="@font/opensans_light"
+                    android:gravity="center"
+                    android:maxLines="2"
+                    android:paddingStart="@dimen/_2sdp"
+                    android:textColor="@color/addProductHint"
+                    android:textSize="@dimen/_12sdp" />
+
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:id="@+id/llPriority"
                     android:layout_width="match_parent"

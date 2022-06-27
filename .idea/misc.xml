@@ -47,20 +47,22 @@
         <entry key="..\:/imran/app/src/main/res/drawable/ic_invoice.xml" value="0.1" />
         <entry key="..\:/imran/app/src/main/res/drawable/ic_mails.xml" value="0.1" />
         <entry key="..\:/imran/app/src/main/res/drawable/ic_statics.xml" value="0.1065" />
-        <entry key="..\:/imran/app/src/main/res/layout/activity_add_booking.xml" value="0.1" />
+        <entry key="..\:/imran/app/src/main/res/layout/activity_add_booking.xml" value="0.4466666666666667" />
         <entry key="..\:/imran/app/src/main/res/layout/activity_communication.xml" value="0.22" />
         <entry key="..\:/imran/app/src/main/res/layout/activity_customer_listing.xml" value="0.17135416666666667" />
         <entry key="..\:/imran/app/src/main/res/layout/activity_dashboard.xml" value="0.1" />
         <entry key="..\:/imran/app/src/main/res/layout/activity_driver_dashboard.xml" value="0.1" />
         <entry key="..\:/imran/app/src/main/res/layout/activity_expenses.xml" value="0.22" />
         <entry key="..\:/imran/app/src/main/res/layout/activity_invoice_listing2.xml" value="0.21553884711779447" />
-        <entry key="..\:/imran/app/src/main/res/layout/activity_job_detail.xml" value="0.1" />
+        <entry key="..\:/imran/app/src/main/res/layout/activity_job_detail.xml" value="0.5" />
         <entry key="..\:/imran/app/src/main/res/layout/activity_jobs_listing.xml" value="0.12708333333333333" />
         <entry key="..\:/imran/app/src/main/res/layout/activity_mark_invoice_paid.xml" value="0.21553884711779447" />
+        <entry key="..\:/imran/app/src/main/res/layout/activity_start_job.xml" value="0.3946135831381733" />
         <entry key="..\:/imran/app/src/main/res/layout/activity_static.xml" value="0.22" />
         <entry key="..\:/imran/app/src/main/res/layout/activity_terms_services.xml" value="0.103125" />
         <entry key="..\:/imran/app/src/main/res/layout/activity_worker_listing.xml" value="0.17135416666666667" />
         <entry key="..\:/imran/app/src/main/res/layout/add_worker_dialog.xml" value="0.17135416666666667" />
+        <entry key="..\:/imran/app/src/main/res/layout/confirmation_dialog.xml" value="0.46946564885496184" />
         <entry key="..\:/imran/app/src/main/res/layout/dashboard_customer_item.xml" value="0.1" />
         <entry key="..\:/imran/app/src/main/res/layout/layout_rv_item_communication.xml" value="0.17135416666666667" />
         <entry key="..\:/imran/app/src/main/res/layout/layout_rv_item_communication_sms.xml" value="0.17135416666666667" />

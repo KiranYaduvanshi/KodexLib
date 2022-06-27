@@ -359,8 +359,9 @@
                         android:fontFamily="@font/bold"
                         android:text="Has the customer requested packing service"
                         android:textColor="@color/red"
-                        android:visibility="gone"
-                        android:textSize="@dimen/_13sdp" />
+                        android:textSize="@dimen/_13sdp"
+                        android:visibility="gone" />
+
                     <View
                         android:id="@+id/viewOne"
                         android:layout_width="match_parent"
@@ -418,12 +419,53 @@
                         android:textColor="@color/black"
                         android:textSize="@dimen/_12sdp" />
 
+                    <CheckBox
+                        android:id="@+id/checkBox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/note3"
+                        android:checked="false"
+                        android:text="Are there any damageable items"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <RelativeLayout
+                        android:id="@+id/rlWarning"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/checkBox">
+
+                        <View
+                            android:id="@+id/view4"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_1sdp"
+                            android:layout_marginTop="@dimen/_2sdp"
+                            android:background="@color/black" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/note4"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/view4"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:fontFamily="@font/opensans_regular"
+                            android:text="@string/warning"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_12sdp" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rvImage"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/note4"
+                            android:layout_marginTop="@dimen/_5sdp" />
+                    </RelativeLayout>
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tvSignature"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/note3"
+                        android:layout_below="@+id/rlWarning"
                         android:layout_marginStart="@dimen/_10sdp"
                         android:layout_marginTop="@dimen/_3sdp"
                         android:fontFamily="@font/opensans_light"
@@ -443,7 +485,6 @@
                         android:layout_marginBottom="@dimen/_2sdp"
                         android:background="@drawable/bg_black_border"
                         android:gravity="top"
-
                         android:inputType="textCapSentences|textNoSuggestions|textMultiLine"
                         android:maxLines="6"
                         android:padding="@dimen/_5sdp"

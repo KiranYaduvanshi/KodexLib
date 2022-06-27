@@ -1,6 +1,7 @@
 package com.kodextech.project.kodexlib.ui.main.jobs
 
 import android.content.Intent
+import android.view.View
 import androidx.databinding.DataBindingUtil
 import com.google.gson.Gson
 import com.kodextech.project.kodexlib.R
@@ -170,9 +171,14 @@ class JobDetail : BaseActivity() {
         when (obj?.price_nature) {
             "fixed-price" -> {
                 binding?.tvPriceType?.text = "Fixed"
+                binding?.llHourly?.visibility = View.GONE
             }
             "hourly-price" -> {
                 binding?.tvPriceType?.text = "Hourly"
+
+                binding?.llHourly?.visibility = View.VISIBLE
+
+                binding?.tvHours?.text = "Hours"
             }
         }
 

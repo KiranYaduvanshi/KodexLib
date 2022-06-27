@@ -8,12 +8,16 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.net.Uri
+import android.os.AsyncTask
+import android.util.Log
 import android.view.Gravity
 import android.view.View
 import android.view.WindowManager
 import android.widget.Button
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.GridLayoutManager
 import com.google.gson.Gson
 import com.karumi.dexter.Dexter
 import com.karumi.dexter.MultiplePermissionsReport
@@ -24,14 +28,20 @@ import com.kodextech.project.kodexlib.R
 import com.kodextech.project.kodexlib.base.BaseActivity
 import com.kodextech.project.kodexlib.databinding.ActivityStartJobBinding
 import com.kodextech.project.kodexlib.model.JobModel
+import com.kodextech.project.kodexlib.model.MediaModel
 import com.kodextech.project.kodexlib.network.NetworkClass
 import com.kodextech.project.kodexlib.network.Response
 import com.kodextech.project.kodexlib.network.URLApi
+import com.kodextech.project.kodexlib.ui.main.booking.AddBooking
+import com.kodextech.project.kodexlib.ui.main.booking.adapter.ImageUploadAdapter
 import com.kodextech.project.kodexlib.ui.main.termsAndServices.AdressListingModel
 import com.kodextech.project.kodexlib.ui.main.termsAndServices.BitmapHelper
+import com.kodextech.project.kodexlib.utils.generateList
 import com.kodextech.project.kodexlib.utils.gone
 import com.kodextech.project.kodexlib.utils.visible
 import com.williamww.silkysignature.views.SignaturePad
+import droidninja.filepicker.FilePickerBuilder
+import droidninja.filepicker.FilePickerConst
 import org.json.JSONArray
 import org.json.JSONObject
 import java.io.File
@@ -43,11 +53,14 @@ import java.util.*
 class StartJobActivity : BaseActivity() {
 
     private var binding: ActivityStartJobBinding? = null
-
+    private var uploaded_files: String? = null
     private var jobId: String? = null
     private var json: JSONArray? = null
     private var media: String? = null
-
+    private var mImageAdapter: ImageUploadAdapter? = null
+    private val IMAGE_REQUEST_CODE = 2212
+    private var mMediaData = ArrayList<MediaModel>()
+    var profile_image_selected: ArrayList<Uri>? = null
 
     override fun onSetupViewGroup() {
         mViewGroup = binding?.contentStartJob
@@ -57,6 +70,16 @@ class StartJobActivity : BaseActivity() {
         statusBarColor(getColor(R.color.blue))
         binding = DataBindingUtil.setContentView(this, R.layout.activity_start_job)
         initTopBar()
+        setImageAdapter()
+        binding?.rlWarning?.visibility = View.GONE
+        binding?.checkBox?.setOnClickListener {
+
+            if(binding?.checkBox?.isChecked == true){
+                binding?.rlWarning?.visibility = View.VISIBLE
+            }else{
+                binding?.rlWarning?.visibility = View.GONE
+            }
+        }
 
         val mSignaturePad = findViewById<View>(R.id.signature_pad) as SignaturePad
         mSignaturePad.setOnSignedListener(object : SignaturePad.OnSignedListener {
@@ -278,6 +301,7 @@ class StartJobActivity : BaseActivity() {
             binding?.llMinimumBooking?.gone()
             binding?.tvPrice?.background = getDrawable(R.drawable.bg_right_radius)
             binding?.tvPrice?.backgroundTintList = getColorStateList(R.color.bgEdit)
+
         } else {
             binding?.priceSign?.visible()
             binding?.llMinimumBooking?.visible()
@@ -394,5 +418,109 @@ class StartJobActivity : BaseActivity() {
         dialog.window!!.setGravity(Gravity.CENTER)
     }
 
+    private fun setImageAdapter() {
+        mImageAdapter =
+            ImageUploadAdapter(this, AddBooking.mData) { position, forDelete ->
+                if (forDelete) {
+                    if (position == null) {
+                        showBarToast("System Having Some Issue")
+                    } else {
+                        deleteImage(position)
+                    }
+                } else {
+                    FilePickerBuilder.instance
+                        .setMaxCount(5)
+                        .setActivityTheme(R.style.LibAppTheme) //optional
+                        .pickPhoto(this, IMAGE_REQUEST_CODE)
 
-}
+
+                }
+                mImageAdapter?.notifyDataSetChanged()
+            }
+
+        binding?.rvImage?.layoutManager =
+            GridLayoutManager(this, 3)
+        binding?.rvImage?.adapter = mImageAdapter
+        mImageAdapter?.notifyDataSetChanged()
+
+    }
+
+    private fun deleteImage(position: Int) {
+        showLoading()
+        NetworkClass.callApi(URLApi.deleteDocument(mMediaData, "booking"),
+            object : Response {
+                override fun onSuccessResponse(response: String?, message: String) {
+                    hideLoading()
+                    mMediaData.removeAt(position - 1)
+                    AddBooking.mData.removeAt(position - 1)
+                    addDocumentCall()
+                    mImageAdapter?.notifyDataSetChanged()
+                }
+
+                override fun onErrorResponse(error: String?, response: String?) {
+                    hideLoading()
+                    showBarToast(error ?: "")
+                }
+
+            })
+
+    }
+
+    private fun addDocumentCall() {
+        showLoading()
+        NetworkClass.callFileUpload(URLApi.addDocument(nature = "booking"),
+            AddBooking.mData, "uploadedFiles[]", object : Response {
+                override fun onSuccessResponse(response: String?, message: String) {
+                    hideLoading()
+                    val json = JSONArray(response ?: "")
+                    val data = generateList(json.toString(), Array<MediaModel>::class.java)
+                    mMediaData.addAll(data)
+                    uploaded_files = Gson().toJson(mMediaData)//mMediaData.toString()
+                    Log.d("uploaded_files", uploaded_files?.toString() ?: " ")
+                    AddBooking.scrollImageList.clear()
+                    AddBooking.scrollImageList.addAll(mMediaData)
+                    showBarToast(message)
+                }
+
+                override fun onErrorResponse(error: String?, response: String?) {
+                    hideLoading()
+                    showBarToast(error ?: "")
+                    AddBooking.mData.clear()
+                    mImageAdapter?.notifyDataSetChanged()
+                }
+
+            })
+
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == IMAGE_REQUEST_CODE && data != null) {
+            val array = ArrayList<Uri>()
+            data.getParcelableArrayListExtra<Uri>(FilePickerConst.KEY_SELECTED_MEDIA)?.let {
+                array.addAll(
+                    it
+                )
+            }
+            AsyncTask.THREAD_POOL_EXECUTOR.execute {
+                array.forEachIndexed { index, uri ->
+                    val file =
+                        com.kodextech.project.kodexlib.dialog.FileUtilityClass.getFileFromUri(
+                            this@StartJobActivity,
+                            uri
+                        )
+                    AddBooking.mData.add(file!!)
+                }
+
+                this.runOnUiThread {
+                    addDocumentCall()
+                    mImageAdapter?.notifyDataSetChanged()
+
+                }
+
+            }
+            profile_image_selected?.addAll(array)
+            Log.d("ProfileTAG", array.toString())
+        }
+    }
+    }
