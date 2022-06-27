@@ -14,12 +14,14 @@ import android.widget.Toast
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.databinding.DataBindingUtil
+import com.google.gson.Gson
 import com.kodextech.project.kodexlib.R
 import com.kodextech.project.kodexlib.base.BaseActivity
 import com.kodextech.project.kodexlib.ui.main.communication.adapter.EmialCommunicationAdapter
 import com.kodextech.project.kodexlib.ui.main.communication.adapter.SmsCommunicationAdapter
 import com.kodextech.project.kodexlib.databinding.ActivityCommunicationBinding
 import com.kodextech.project.kodexlib.model.Data
+import com.kodextech.project.kodexlib.model.Sms
 import com.kodextech.project.kodexlib.model.SmsCommunicationModel
 import com.kodextech.project.kodexlib.network.NetworkClass
 import com.kodextech.project.kodexlib.network.Response
@@ -144,10 +146,38 @@ class CommunicationActivity : BaseActivity(), emailClickInterface, viewSmsSelect
         viewSmsDialog(sms)
     }
 
-    override fun onResendSms(sms: String, phone: String, positon: Int) {
-        sendSMS(sms,phone)
+    override fun onResendSms(sms: String, phone: String, positon: Int,id: Int?) {
+        sendSmsApi(id,sms,phone)
     }
 
+
+
+    private fun sendSmsApi(id: Int?, msg: String, phone: String,) {
+        showLoading()
+        NetworkClass.callApi(URLApi.saveSMS(
+            booking_id = id,
+            sms_text = msg
+        ), object : Response {
+            override fun onSuccessResponse(response: String?, message: String) {
+                hideLoading()
+                showBarToast(message)
+                val json = JSONObject(response ?: "")
+                val obj = Gson().fromJson(json.toString(), Sms::class.java)
+//                 Toast.makeText(binding?.root?.context, "response"+response, Toast.LENGTH_SHORT).show()
+                Log.i("Res", "reposne " + response)
+                sendSMS(msg,phone)
+            }
+
+            override fun onErrorResponse(error: String?, response: String?) {
+                hideLoading()
+                //  Toast.makeText(binding?.root?.context, "error"+response, Toast.LENGTH_SHORT).show()
+
+                showBarToast(error ?: "")
+                Log.i("Res", "error " + response)
+
+            }
+        })
+    }
 
     private fun sendSMS(smsContent: String, phone: String) {
 
@@ -168,8 +198,6 @@ class CommunicationActivity : BaseActivity(), emailClickInterface, viewSmsSelect
         intent.putExtra("sms_body", smsContent)
         startActivity(intent)
     }
-
-
 
     fun viewSmsDialog(sms:String) {
 

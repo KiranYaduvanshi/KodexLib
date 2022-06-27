@@ -1,14 +1,22 @@
 package com.kodextech.project.kodexlib.ui.main.termsAndServices
 
 import android.app.AlertDialog
+import android.app.Dialog
 import android.content.*
 import android.content.pm.PackageManager
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.location.Address
 import android.location.Geocoder
 import android.net.Uri
 import android.util.Log
+import android.view.Gravity
 import android.view.View
+import android.view.WindowManager
+import android.widget.ImageView
 import android.widget.Toast
+import androidx.appcompat.widget.AppCompatImageView
+import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
@@ -41,7 +49,7 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 
-class TermsServices : BaseActivity() {
+class TermsServices : BaseActivity(), selectAddress {
 
 
     private var binding: ActivityTermsServicesBinding? = null
@@ -65,13 +73,11 @@ class TermsServices : BaseActivity() {
         initTopBar()
         setPickUpAddressAdapter()
 
-
         binding?.topBar?.ivBack?.setOnClickListener { onBackPressed() }
 
         binding?.tvPhone?.setOnClickListener(View.OnClickListener {
             makeCall()
         })
-
 
         val mSignaturePad = findViewById<View>(R.id.signature_pad) as SignaturePad
         binding?.btnSubmit?.setOnClickListener {
@@ -120,7 +126,7 @@ class TermsServices : BaseActivity() {
     }
 
     private  fun setPickUpAddressAdapter(){
-        pickupAddressADapter = PickupAddressADapter(this,pickupAddList)
+        pickupAddressADapter = PickupAddressADapter(this,pickupAddList,this)
         binding?.pickUpAddressRv?.adapter= pickupAddressADapter
 
     }
@@ -249,6 +255,7 @@ class TermsServices : BaseActivity() {
             if (mMedia != null) {
                 for (m in mMedia) {
                     println(m.file_url);
+                    Log.i("file path --- ",""+m.path)
                 }
 
 
@@ -273,13 +280,14 @@ class TermsServices : BaseActivity() {
         binding?.tvService?.text = obj?.service
         binding?.tvPackingFee?.text = obj?.packing_fee
 
-        if (obj?.service == "Flat Move") {
+        if (obj?.service == "House Move") {
             val newArray = ArrayList<AdressListingModel>()
             val newDropArray = ArrayList<AdressListingModel>()
             var floorNo: String? = null
             var dropFloorNo: String? = null
             newArray.clear()
             newDropArray.clear()
+
             obj.pickup_addresses?.forEachIndexed { index, pickupAddress ->
                 pickupAddList.add(pickupAddress)
 
@@ -304,7 +312,7 @@ class TermsServices : BaseActivity() {
 //                    newArray.add(AdressListingModel(s))
 //                }
 
-            }
+           }
 
 
 
@@ -346,14 +354,23 @@ class TermsServices : BaseActivity() {
             binding?.tvDropAddress?.text = newDropAddress?.replace("null", "")
           //  binding?.tvPickUpAddress?.text = finalAddress?.replace("null", "")
 
-        } else {
+        }
+        else {
             val newArray = ArrayList<AdressListingModel>()
             newArray.clear()
             obj?.pickup_addresses?.forEachIndexed { index, pickupAddress ->
+
+
 //                val s = pickupAddress.address1 + "\n"
 //                newArray.add(AdressListingModel(s))
-                val s = pickupAddress.address1
-                newArray.add(AdressListingModel(s))
+
+                pickupAddList.add(pickupAddress)
+
+                setPickUpAddressAdapter()
+
+
+//                val s = pickupAddress.address1
+//                newArray.add(AdressListingModel(s))
             }
 
             var newAddress: String? = null
@@ -394,7 +411,7 @@ class TermsServices : BaseActivity() {
         })
         binding?.tvDropAddress?.setOnClickListener(
             View.OnClickListener {
-                openMapDialog(binding?.tvDropAddress?.text.toString())
+                mapWazeDialog(binding?.tvDropAddress?.text.toString())
 
 //                var latLng = getLocationFromAddress(
 //                    context = binding?.root?.context,
@@ -530,7 +547,8 @@ class TermsServices : BaseActivity() {
             }
         }
         Log.i("URL", "" + obj?.signature?.path)
-        Toast.makeText(binding?.root?.context, ""+obj?.signature?.path, Toast.LENGTH_SHORT).show()
+     //
+        //   Toast.makeText(binding?.root?.context, "image path ---- "+obj?.signature?.path, Toast.LENGTH_SHORT).show()
 
         Glide.with(this).load(baseImagePath + obj?.signature?.path)
             .placeholder(R.drawable.ic_baseline_cloud_download_24).into(
@@ -663,15 +681,28 @@ class TermsServices : BaseActivity() {
         if (mapIntent.resolveActivity(binding?.root?.context!!.packageManager) != null) {
             startActivity(mapIntent);
         }
-//                var textToCopy = binding?.tvPickUpAddress?.text
-//                val clipboardManager =
-//                    applicationContext.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-//                val clipData = ClipData.newPlainText("text", textToCopy)
-//                clipboardManager.setPrimaryClip(clipData)
-//                Toast.makeText(baseContext, "Detail Copied to Clipboard", Toast.LENGTH_SHORT).show()
 
 
     }
+
+    fun openAddressWaze(address: String?){
+
+        var latLng = getLocationFromAddress(
+            context = binding?.root?.context,
+            strAddress = address
+        )
+        var geoUri: String = "https://waze.com/ul?q=66%20Acacia%20Avenue&ll="+latLng?.latitude+","+ latLng?.longitude +"&navigate=yes"
+
+//        "https://waze.com/ul?ll="+""+","+""
+        var mapIntent = Intent(Intent.ACTION_VIEW, Uri.parse(geoUri));
+        mapIntent.setPackage("com.waze");
+
+        if (mapIntent.resolveActivity(binding?.root?.context!!.packageManager) != null) {
+            startActivity(mapIntent);
+        }
+    }
+
+
 
     fun openMapDialog(address: String?) {
 
@@ -681,7 +712,7 @@ class TermsServices : BaseActivity() {
         builder1.setCancelable(false)
         builder1.setPositiveButton(
             "Yes"
-        ) { dialog, which -> pickupAddressMap(address) }
+        ) { dialog, which -> mapWazeDialog(address) }
         builder1.setNegativeButton(
             "No"
         ) { dialog: DialogInterface, id: Int -> dialog.cancel() }
@@ -750,6 +781,39 @@ class TermsServices : BaseActivity() {
         return p1
     }
 
+
+    fun mapWazeDialog(address: String?) {
+
+        val dialog = Dialog(this)
+        dialog.setContentView(R.layout.map_waze_dialog)
+        val crossImg = dialog.findViewById<AppCompatImageView>(R.id.ivCross)
+        val mapImg = dialog.findViewById<ImageView>(R.id.mapImg)
+        val wazeImg = dialog.findViewById<AppCompatImageView>(R.id.wazeImg)
+        crossImg.setOnClickListener { dialog.dismiss() }
+
+        wazeImg.setOnClickListener {
+            openAddressWaze(address)
+
+        }
+
+        mapImg.setOnClickListener {
+            pickupAddressMap(address)
+
+        }
+        dialog.setCancelable(false)
+        dialog.show()
+        dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.window!!.setLayout(
+            WindowManager.LayoutParams.MATCH_PARENT,
+            WindowManager.LayoutParams.WRAP_CONTENT
+        )
+        dialog.window!!.setGravity(Gravity.CENTER)
+
+    }
+
+    override fun onAddressClick(position: Int, addres: String) {
+        mapWazeDialog(addres)
+    }
 
 }
 
