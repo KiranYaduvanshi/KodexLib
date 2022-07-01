@@ -16,8 +16,6 @@ import androidx.databinding.DataBindingUtil
 import com.google.gson.Gson
 import com.kodextech.project.kodexlib.R
 import com.kodextech.project.kodexlib.base.BaseActivity
-import com.kodextech.project.kodexlib.ui.main.communication.adapter.EmialCommunicationAdapter
-import com.kodextech.project.kodexlib.ui.main.communication.adapter.SmsCommunicationAdapter
 import com.kodextech.project.kodexlib.databinding.ActivityCommunicationBinding
 import com.kodextech.project.kodexlib.model.Data
 import com.kodextech.project.kodexlib.model.Sms
@@ -25,6 +23,8 @@ import com.kodextech.project.kodexlib.model.SmsCommunicationModel
 import com.kodextech.project.kodexlib.network.NetworkClass
 import com.kodextech.project.kodexlib.network.Response
 import com.kodextech.project.kodexlib.network.URLApi
+import com.kodextech.project.kodexlib.ui.main.communication.adapter.EmialCommunicationAdapter
+import com.kodextech.project.kodexlib.ui.main.communication.adapter.SmsCommunicationAdapter
 import com.kodextech.project.kodexlib.ui.main.communication.adapter.emailClickInterface
 import com.kodextech.project.kodexlib.ui.main.communication.adapter.viewSmsSelect
 import com.kodextech.project.kodexlib.utils.generateList
@@ -41,7 +41,6 @@ class CommunicationActivity : BaseActivity(), emailClickInterface, viewSmsSelect
 
     override fun onSetupViewGroup() {
         mViewGroup = binding?.rlCommunication
-
     }
 
     override fun setupContentViewWithBinding() {
@@ -50,7 +49,6 @@ class CommunicationActivity : BaseActivity(), emailClickInterface, viewSmsSelect
         getEmailCommunicationList()
 
         binding?.tvemail?.setOnClickListener {
-
             binding?.tvemail?.setBackgroundColor(getColor(R.color.blue))
             binding?.tvemail?.setTextColor(getColor(R.color.white))
             binding?.tvsms?.setBackgroundColor(getColor(R.color.gray))
@@ -80,26 +78,26 @@ class CommunicationActivity : BaseActivity(), emailClickInterface, viewSmsSelect
     override fun setupLoader() {
     }
 
-    fun setEmailAdapter(){
-        emialCommunicationAdapter = EmialCommunicationAdapter(this,mData,this)
+    fun setEmailAdapter() {
+        emialCommunicationAdapter = EmialCommunicationAdapter(this, mData, this)
         binding?.rvMails?.adapter = emialCommunicationAdapter
     }
 
-    fun setSmsAdapter(){
-        smsCommunicationAdapter = SmsCommunicationAdapter(this,smsData,this)
+    fun setSmsAdapter() {
+        smsCommunicationAdapter = SmsCommunicationAdapter(this, smsData, this)
         binding?.rvMails?.adapter = smsCommunicationAdapter
     }
 
     private fun getEmailCommunicationList() {
-  showLoading()
+        showLoading()
         NetworkClass.callApi(URLApi.getEmailCommunationApi(), object : Response {
             override fun onSuccessResponse(response: String?, message: String) {
                 hideLoading()
-                Log.i("Check","response "+response)
+                Log.i("Check", "response " + response)
                 val json = JSONArray(response ?: "")
                 val data = generateList(json.toString(), Array<Data>::class.java)
-               // Toast.makeText(binding?.root?.context, "data "+data[0].Date, Toast.LENGTH_SHORT).show()
-               // Toast.makeText(binding?.root?.context, "response"+response, Toast.LENGTH_SHORT).show()
+                // Toast.makeText(binding?.root?.context, "data "+data[0].Date, Toast.LENGTH_SHORT).show()
+                // Toast.makeText(binding?.root?.context, "response"+response, Toast.LENGTH_SHORT).show()
                 mData.addAll(data)
                 setEmailAdapter()
 
@@ -118,7 +116,7 @@ class CommunicationActivity : BaseActivity(), emailClickInterface, viewSmsSelect
         NetworkClass.callApi(URLApi.getSmsCommunationApi(), object : Response {
             override fun onSuccessResponse(response: String?, message: String) {
                 hideLoading()
-                Log.i("Check","response "+response)
+                Log.i("Check", "response " + response)
                 val json = JSONArray(response ?: "")
                 val data = generateList(json.toString(), Array<SmsCommunicationModel>::class.java)
                 smsData.addAll(data)
@@ -165,13 +163,12 @@ class CommunicationActivity : BaseActivity(), emailClickInterface, viewSmsSelect
         viewSmsDialog(sms)
     }
 
-    override fun onResendSms(sms: String, phone: String, positon: Int,id: Int?) {
-        sendSmsApi(id,sms,phone)
+    override fun onResendSms(sms: String, phone: String, positon: Int, id: Int?) {
+        sendSmsApi(id, sms, phone)
     }
 
 
-
-    private fun sendSmsApi(id: Int?, msg: String, phone: String,) {
+    private fun sendSmsApi(id: Int?, msg: String, phone: String) {
         showLoading()
         NetworkClass.callApi(URLApi.saveSMS(
             booking_id = id,
@@ -184,7 +181,7 @@ class CommunicationActivity : BaseActivity(), emailClickInterface, viewSmsSelect
                 val obj = Gson().fromJson(json.toString(), Sms::class.java)
 //                 Toast.makeText(binding?.root?.context, "response"+response, Toast.LENGTH_SHORT).show()
                 Log.i("Res", "reposne " + response)
-                sendSMS(msg,phone)
+                sendSMS(msg, phone)
             }
 
             override fun onErrorResponse(error: String?, response: String?) {
@@ -218,7 +215,7 @@ class CommunicationActivity : BaseActivity(), emailClickInterface, viewSmsSelect
         startActivity(intent)
     }
 
-    fun viewSmsDialog(sms:String) {
+    fun viewSmsDialog(sms: String) {
 
         val dialog = Dialog(this)
         dialog.setContentView(R.layout.view_sms_dialog)

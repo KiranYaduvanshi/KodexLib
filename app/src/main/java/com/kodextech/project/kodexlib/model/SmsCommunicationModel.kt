@@ -9,6 +9,7 @@ data class SmsCommunicationModel (
      var Name   : String? = null,
      var phone  : String? = null,
      var Date   : String? = null,
+     var Time   : String? = null,
      var sms    : String? = null,
      var status : String? = null
 

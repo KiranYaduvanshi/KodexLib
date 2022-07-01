@@ -17,10 +17,12 @@ class SmsCommunicationAdapter(var context:Context,var smsData: ArrayList<SmsComm
     }
 
     override fun onBindViewHolder(holder: SmsViewHolder, position: Int) {
+
         holder.binding?.tvOrder?.text = smsData[position].Order
         holder.binding?.tvWorkerPhone?.text = smsData[position].phone
         holder.binding?.tvName?.text = smsData[position].Name
         holder.binding?.tvData?.text = smsData[position].Date
+        holder.binding?.tvTime?.text = smsData[position].Time
        // Toast.makeText(context, ""+smsData[position].phone, Toast.LENGTH_SHORT).show()
 
         holder.itemView.setOnClickListener {
