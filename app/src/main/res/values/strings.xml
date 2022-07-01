@@ -25,8 +25,8 @@
     <string name="weekly" tools:ignore="MissingTranslation">Weekly</string>
     <string name="today" tools:ignore="MissingTranslation">Today</string>
     <string name="yearly" tools:ignore="MissingTranslation">Yearly</string>
-    <string name="_300" tools:ignore="MissingTranslation">$300</string>
-    <string name="statics" tools:ignore="MissingTranslation">Statics</string>
+    <string name="_300" tools:ignore="MissingTranslation">£300</string>
+    <string name="statics" tools:ignore="MissingTranslation">Statistics</string>
     <string name="title_activity_driver_dashboard" tools:ignore="MissingTranslation">DriverDashboardActivity</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label" tools:ignore="MissingTranslation">First Fragment</string>

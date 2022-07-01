@@ -9,7 +9,6 @@ import android.telephony.SmsManager
 import android.util.Log
 import android.view.Gravity
 import android.view.WindowManager
-import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.AppCompatTextView
@@ -28,7 +27,6 @@ import com.kodextech.project.kodexlib.network.Response
 import com.kodextech.project.kodexlib.network.URLApi
 import com.kodextech.project.kodexlib.ui.main.communication.adapter.emailClickInterface
 import com.kodextech.project.kodexlib.ui.main.communication.adapter.viewSmsSelect
-import com.kodextech.project.kodexlib.ui.main.jobs.StartJobActivity
 import com.kodextech.project.kodexlib.utils.generateList
 import org.json.JSONArray
 import org.json.JSONObject
@@ -135,6 +133,27 @@ class CommunicationActivity : BaseActivity(), emailClickInterface, viewSmsSelect
 
         })
     }
+
+    override fun resendEmail(id: Int?) {
+            showLoading()
+            NetworkClass.callApi(URLApi.resendEmail(id), object : Response {
+                override fun onSuccessResponse(response: String?, message: String) {
+                    hideLoading()
+                    showBarToast("Email Sent")
+                }
+
+                override fun onErrorResponse(error: String?, response: String?) {
+                    hideLoading()
+                    showBarToast(error ?: "")
+                }
+
+            })
+
+    }
+
+
+
+
 
     override fun onEmailClick(orderId: String, position: Int) {
         val intent = Intent(this, ViewEmailActivity::class.java)

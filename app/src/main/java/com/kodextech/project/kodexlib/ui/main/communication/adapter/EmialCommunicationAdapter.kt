@@ -24,6 +24,9 @@ class EmialCommunicationAdapter(var context:Context,
         holder.binding?.tvWorkerEmail?.text = mData[position].Email
         holder.binding?.tvName?.text = mData[position].Name
         holder.binding?.dateTv?.text = mData[position].Date
+        holder.binding?.btnResend?.setOnClickListener {
+            onClickInterface.resendEmail(mData[position].id)
+        }
 
         holder.itemView.setOnClickListener {
             onClickInterface.onEmailClick(mData[position].Order.toString(),position)
@@ -42,5 +45,9 @@ class EmailViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 }
 
 interface  emailClickInterface{
-    fun onEmailClick(orderId:String,position: Int)
+    fun onEmailClick(orderId:String,position: Int){
+
+    }
+
+    fun resendEmail(id: Int?)
 }

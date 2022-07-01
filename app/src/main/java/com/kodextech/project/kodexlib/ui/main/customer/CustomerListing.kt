@@ -184,10 +184,10 @@ class CustomerListing : BaseActivity() {
 
     private fun setCustomerTypeData() {
         mCustomerType.add(CustomerTypeModel("All", true))
-        mCustomerType.add(CustomerTypeModel("House Move \nCustomer", false))
-        mCustomerType.add(CustomerTypeModel("Event Move \nCustomer", false))
-        mCustomerType.add(CustomerTypeModel("Office Move \nCustomer", false))
-        mCustomerType.add(CustomerTypeModel("Flat Move \nCustomer", false))
+        mCustomerType.add(CustomerTypeModel("House Move \nCustomers", false))
+        mCustomerType.add(CustomerTypeModel("Event Move \nCustomers", false))
+        mCustomerType.add(CustomerTypeModel("Office Move \nCustomers", false))
+        mCustomerType.add(CustomerTypeModel("Flat Move \nCustomers", false))
 
         mCustomerTypeAdapter = CustomerTypeAdapter(this, mCustomerType) { position ->
             customerTypePosition = position

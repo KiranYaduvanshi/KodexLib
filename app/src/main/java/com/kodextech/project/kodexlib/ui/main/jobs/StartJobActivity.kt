@@ -1,5 +1,6 @@
 package com.kodextech.project.kodexlib.ui.main.jobs
 
+import WariningImageAdapter
 import android.Manifest
 import android.app.Dialog
 import android.content.Context
@@ -33,7 +34,6 @@ import com.kodextech.project.kodexlib.network.NetworkClass
 import com.kodextech.project.kodexlib.network.Response
 import com.kodextech.project.kodexlib.network.URLApi
 import com.kodextech.project.kodexlib.ui.main.booking.AddBooking
-import com.kodextech.project.kodexlib.ui.main.booking.adapter.ImageUploadAdapter
 import com.kodextech.project.kodexlib.ui.main.termsAndServices.AdressListingModel
 import com.kodextech.project.kodexlib.ui.main.termsAndServices.BitmapHelper
 import com.kodextech.project.kodexlib.utils.generateList
@@ -57,7 +57,7 @@ class StartJobActivity : BaseActivity() {
     private var jobId: String? = null
     private var json: JSONArray? = null
     private var media: String? = null
-    private var mImageAdapter: ImageUploadAdapter? = null
+    private var mImageAdapter: WariningImageAdapter? = null
     private val IMAGE_REQUEST_CODE = 2212
     private var mMediaData = ArrayList<MediaModel>()
     var profile_image_selected: ArrayList<Uri>? = null
@@ -161,7 +161,7 @@ class StartJobActivity : BaseActivity() {
     private fun startJobCall(media: String?) {
         showLoading()
         NetworkClass.callApi(
-            URLApi.startJob(job_uuid = jobId, signature_media = media),
+            URLApi.startJob(job_uuid = jobId, signature_media = media , boolean = binding?.checkBox?.isChecked , uploadfile = uploaded_files),
             object : Response {
                 override fun onSuccessResponse(response: String?, message: String) {
                     hideLoading()
@@ -420,7 +420,7 @@ class StartJobActivity : BaseActivity() {
 
     private fun setImageAdapter() {
         mImageAdapter =
-            ImageUploadAdapter(this, AddBooking.mData) { position, forDelete ->
+            WariningImageAdapter(this, AddBooking.mData) { position, forDelete ->
                 if (forDelete) {
                     if (position == null) {
                         showBarToast("System Having Some Issue")
