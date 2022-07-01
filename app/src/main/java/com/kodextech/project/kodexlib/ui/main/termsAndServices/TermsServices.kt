@@ -686,20 +686,30 @@ class TermsServices : BaseActivity(), selectAddress {
     }
 
     fun openAddressWaze(address: String?){
-
         var latLng = getLocationFromAddress(
             context = binding?.root?.context,
             strAddress = address
         )
-        var geoUri: String = "https://waze.com/ul?q=66%20Acacia%20Avenue&ll="+latLng?.latitude+","+ latLng?.longitude +"&navigate=yes"
+            packageManager?.let {
+                val url = "waze://?ll=${latLng?.latitude},${latLng?.longitude}&navigate=yes"
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                intent.resolveActivity(it)?.let {
+                    startActivity(intent)
+                } ?: run {
+                    Toast.makeText(binding?.root?.context, "App not found", Toast.LENGTH_SHORT).show()
+                }
+            }
 
-//        "https://waze.com/ul?ll="+""+","+""
-        var mapIntent = Intent(Intent.ACTION_VIEW, Uri.parse(geoUri));
-        mapIntent.setPackage("com.waze");
-
-        if (mapIntent.resolveActivity(binding?.root?.context!!.packageManager) != null) {
-            startActivity(mapIntent);
-        }
+//
+//        var geoUri: String = "https://waze.com/ul?q=66%20Acacia%20Avenue&ll="+latLng?.latitude+","+ latLng?.longitude +"&navigate=yes"
+//
+////        "https://waze.com/ul?ll="+""+","+""
+//        var mapIntent = Intent(Intent.ACTION_VIEW, Uri.parse(geoUri));
+//        mapIntent.setPackage("com.waze");
+//
+//        if (mapIntent.resolveActivity(binding?.root?.context!!.packageManager) != null) {
+//            startActivity(mapIntent);
+//        }
     }
 
 

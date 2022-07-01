@@ -132,6 +132,27 @@ class CommunicationActivity : BaseActivity(), emailClickInterface, viewSmsSelect
         })
     }
 
+    override fun resendEmail(id: Int?) {
+            showLoading()
+            NetworkClass.callApi(URLApi.resendEmail(id), object : Response {
+                override fun onSuccessResponse(response: String?, message: String) {
+                    hideLoading()
+                    showBarToast("Email Sent")
+                }
+
+                override fun onErrorResponse(error: String?, response: String?) {
+                    hideLoading()
+                    showBarToast(error ?: "")
+                }
+
+            })
+
+    }
+
+
+
+
+
     override fun onEmailClick(orderId: String, position: Int) {
         val intent = Intent(this, ViewEmailActivity::class.java)
         intent.putExtra("orderId", orderId)

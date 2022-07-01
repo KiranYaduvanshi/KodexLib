@@ -131,7 +131,6 @@ object URLApi {
         params.put("is_social", is_social)
         return this
     }
-
     fun sendToMultipleUser(emails : ArrayList<String>): URLApi {
         method = NetworkMethod.POST
         path = "send-email-to-multiple-users"
@@ -139,10 +138,22 @@ object URLApi {
         params.put("email", emails)
         return this
     }
+    fun resendEmail(id: Int?): URLApi {
+        method = NetworkMethod.POST
+        path = "send-email"
+        params = JSONObject()
+        params.put("id", id)
+        return this
+    }
 
     fun getEmailCommunationApi(): URLApi {
         method = NetworkMethod.GET
         path = "get-email-communication"
+        return this
+    }
+    fun sendEmailToAll(): URLApi {
+        method = NetworkMethod.POST
+        path = "send-email-to-all-users"
         return this
     }
 
@@ -552,12 +563,16 @@ object URLApi {
     fun startJob(
         job_uuid: String? = null,
         signature_media: String? = null,
+        uploadfile: String?,
+        boolean: Boolean?,
     ): URLApi {
         method = NetworkMethod.POST
         path = "start-job"
         params = JSONObject()
         params.put("job_uuid", job_uuid)
         params.put("signature_media", signature_media)
+        params.put("boolean", boolean)
+        params.put("uploaded_files", uploadfile)
         return this
     }
 
