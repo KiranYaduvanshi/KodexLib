@@ -30,6 +30,7 @@ import com.kodextech.project.kodexlib.ui.main.expenses.ExpensesActivity
 import com.kodextech.project.kodexlib.ui.main.invoice.InvoiceListing
 import com.kodextech.project.kodexlib.ui.main.jobs.JobsListing
 import com.kodextech.project.kodexlib.ui.main.quatation.QuatationActivity
+import com.kodextech.project.kodexlib.ui.main.quatation.QuotationScreenActivity
 import com.kodextech.project.kodexlib.ui.main.worker.WorkerListing
 import com.kodextech.project.kodexlib.ui.main.worker.adapter.WorkerListingAdapter
 import com.kodextech.project.kodexlib.utils.generateList
@@ -238,9 +239,9 @@ class Dashboard : BaseActivity() {
                     startActivity(intent)
                 }
                 9 -> {
-                    val intent = Intent(this, QuatationActivity::class.java)
+                    val intent = Intent(this, QuotationScreenActivity
+                    ::class.java)
                     startActivity(intent)
-
                 }
 
             }

@@ -55,7 +55,6 @@ abstract class BaseActivity : AppCompatActivity() {
         }
     }
 
-
     fun View.snack(message: String, duration: Int = Snackbar.LENGTH_LONG) {
         Snackbar.make(this, message, duration).show()
     }
@@ -150,7 +149,6 @@ abstract class BaseActivity : AppCompatActivity() {
         if (mViewGroup != null) {
             HideUtil.init(this, mViewGroup)
         }
-
     }
 
     abstract fun onSetupViewGroup()
@@ -160,7 +158,6 @@ abstract class BaseActivity : AppCompatActivity() {
     abstract fun onBecameVisibleToUser()
     abstract fun setupLoader()
 
-
     override fun onDestroy() {
         onRecycleBeforeDestroy()
         super.onDestroy()
@@ -169,14 +166,12 @@ abstract class BaseActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         onBecameVisibleToUser()
-
     }
 
     override fun onPause() {
         onBecameInvisibleToUser()
         super.onPause()
     }
-
 
     fun showLoading(text: String = "Please wait...") {
         runOnUiThread {
@@ -192,7 +187,6 @@ abstract class BaseActivity : AppCompatActivity() {
             }
         }
     }
-
 
     fun hideLoading() {
         try {
@@ -215,8 +209,6 @@ abstract class BaseActivity : AppCompatActivity() {
         // utcFormat.timeZone = timeZone
         return utcFormat.format(this)
     }
-
-
 }
 
 

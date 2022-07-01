@@ -56,9 +56,9 @@ class WorkerListing : BaseActivity() {
                 val json = JSONObject(response ?: "")
                 val json2 = json.optJSONArray("user")
                 var data = generateList(json2.toString(), Array<User>::class.java)
-                val worker =
-                    data.filter { it.profile_type?.lowercase() == "worker".lowercase() }
-                mData.addAll(worker)
+//                val worker =
+//                    data.filter { it.profile_type?.lowercase() == "worker".lowercase() }
+                mData.addAll(data)
                 setWorkerRecycler()
 
             }
@@ -67,15 +67,13 @@ class WorkerListing : BaseActivity() {
                 hideLoading()
                 showBarToast(error ?: "")
             }
-
         })
     }
 
-
     private fun setWorkerRecycler() {
 
-        val sortedList = mData.sortedBy {
-            it.profile?.full_name
+        val sortedList = mData.sortedByDescending {
+            it.profile?.id
         }
 
         mAdapter = WorkerListingAdapter(this, ArrayList(sortedList), "1") { user, position, isFor ->

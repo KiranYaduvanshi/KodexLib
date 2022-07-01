@@ -9,6 +9,8 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.location.Address
+import android.location.Geocoder
 import android.net.Uri
 import android.os.AsyncTask
 import android.util.Log
@@ -16,9 +18,12 @@ import android.view.Gravity
 import android.view.View
 import android.view.WindowManager
 import android.widget.Button
+import android.widget.ImageView
+import android.widget.Toast
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.GridLayoutManager
+import com.google.android.gms.maps.model.LatLng
 import com.google.gson.Gson
 import com.karumi.dexter.Dexter
 import com.karumi.dexter.MultiplePermissionsReport
@@ -30,12 +35,15 @@ import com.kodextech.project.kodexlib.base.BaseActivity
 import com.kodextech.project.kodexlib.databinding.ActivityStartJobBinding
 import com.kodextech.project.kodexlib.model.JobModel
 import com.kodextech.project.kodexlib.model.MediaModel
+import com.kodextech.project.kodexlib.model.PickupAddress
 import com.kodextech.project.kodexlib.network.NetworkClass
 import com.kodextech.project.kodexlib.network.Response
 import com.kodextech.project.kodexlib.network.URLApi
 import com.kodextech.project.kodexlib.ui.main.booking.AddBooking
 import com.kodextech.project.kodexlib.ui.main.termsAndServices.AdressListingModel
 import com.kodextech.project.kodexlib.ui.main.termsAndServices.BitmapHelper
+import com.kodextech.project.kodexlib.ui.main.termsAndServices.PickupAddressADapter
+import com.kodextech.project.kodexlib.ui.main.termsAndServices.selectAddress
 import com.kodextech.project.kodexlib.utils.generateList
 import com.kodextech.project.kodexlib.utils.gone
 import com.kodextech.project.kodexlib.utils.visible
@@ -49,14 +57,17 @@ import java.io.FileOutputStream
 import java.io.IOException
 import java.io.OutputStream
 import java.util.*
-
-class StartJobActivity : BaseActivity() {
+class StartJobActivity : BaseActivity(), selectAddress {
 
     private var binding: ActivityStartJobBinding? = null
     private var uploaded_files: String? = null
     private var jobId: String? = null
     private var json: JSONArray? = null
     private var media: String? = null
+    private var pickupAddressADapter: PickupAddressADapter? = null
+    private var pickupAddList = ArrayList<PickupAddress>()
+
+
     private var mImageAdapter: WariningImageAdapter? = null
     private val IMAGE_REQUEST_CODE = 2212
     private var mMediaData = ArrayList<MediaModel>()
@@ -74,9 +85,9 @@ class StartJobActivity : BaseActivity() {
         binding?.rlWarning?.visibility = View.GONE
         binding?.checkBox?.setOnClickListener {
 
-            if(binding?.checkBox?.isChecked == true){
+            if (binding?.checkBox?.isChecked == true) {
                 binding?.rlWarning?.visibility = View.VISIBLE
-            }else{
+            } else {
                 binding?.rlWarning?.visibility = View.GONE
             }
         }
@@ -100,10 +111,17 @@ class StartJobActivity : BaseActivity() {
         })
     }
 
+    private fun setPickUpAddressAdapter() {
+        pickupAddressADapter = PickupAddressADapter(this, pickupAddList, this)
+        binding?.pickUpAddressRv?.adapter = pickupAddressADapter
+
+    }
+
     private fun addSignature(mSignaturePad: SignaturePad) {
 
         Dexter.withContext(this@StartJobActivity)
             .withPermissions(
+
                 Manifest.permission.READ_EXTERNAL_STORAGE,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE
             )
@@ -116,7 +134,6 @@ class StartJobActivity : BaseActivity() {
                             var file = bitmapToFile(bitmap, "IMAGE_${UUID.randomUUID()}.png")
                             addSignatureCall(file)
                             BitmapHelper.instance.bitmap = bitmap
-
 
                         }
                     }
@@ -161,7 +178,12 @@ class StartJobActivity : BaseActivity() {
     private fun startJobCall(media: String?) {
         showLoading()
         NetworkClass.callApi(
-            URLApi.startJob(job_uuid = jobId, signature_media = media , boolean = binding?.checkBox?.isChecked , uploadfile = uploaded_files),
+            URLApi.startJob(
+                job_uuid = jobId,
+                signature_media = media,
+                boolean = binding?.checkBox?.isChecked,
+                uploadfile = uploaded_files
+            ),
             object : Response {
                 override fun onSuccessResponse(response: String?, message: String) {
                     hideLoading()
@@ -211,6 +233,7 @@ class StartJobActivity : BaseActivity() {
     }
 
     private fun setData() {
+        Log.i("Id", "id ------ " + jobId)
         showLoading()
         NetworkClass.callApi(URLApi.getSpecificJob(job_uuid = jobId.toString()), object : Response {
             override fun onSuccessResponse(response: String?, message: String) {
@@ -241,24 +264,10 @@ class StartJobActivity : BaseActivity() {
             newDropArray.clear()
             obj.pickup_addresses?.forEachIndexed { index, pickupAddress ->
 
-                if (pickupAddress.pickup_flat_meta?.firstOrNull()?.floor_no == "-1") {
-                    floorNo = "Basement"
-                } else if (pickupAddress.pickup_flat_meta?.firstOrNull()?.floor_no == "0") {
-                    floorNo = "Ground Floor"
-                } else {
-                    floorNo = pickupAddress.pickup_flat_meta?.firstOrNull()?.floor_no + " Floor"
-                }
+                pickupAddList.add(pickupAddress)
 
-                if (pickupAddress.has_lift.equals("1")) {
-                    val s =
-                            "Address: " + pickupAddress.address1 + "\nFloor No: " + floorNo + "\nLift Available: Yes\n"
-                    newArray.add(AdressListingModel(s))
+                setPickUpAddressAdapter()
 
-                } else {
-                    val s =
-                            "Address: " + pickupAddress.address1 + "\nFloor No: " + floorNo + "\nLift Available: No\n"
-                    newArray.add(AdressListingModel(s))
-                }
 
             }
 
@@ -268,21 +277,25 @@ class StartJobActivity : BaseActivity() {
                 finalAddress += it.address + ""
             }
 
-            binding?.tvCustomerAddress?.text = finalAddress?.replace("null", "")
+            //  binding?.tvCustomerAddress?.text = finalAddress?.replace("null", "")
 
         } else {
             val newArray = ArrayList<AdressListingModel>()
             newArray.clear()
             obj?.pickup_addresses?.forEachIndexed { index, pickupAddress ->
-                val s = "Address: " + pickupAddress.address1 + "\n"
-                newArray.add(AdressListingModel(s))
+                pickupAddList.add(pickupAddress)
+
+                setPickUpAddressAdapter()
+
+//                val s = "Address: " + pickupAddress.address1 + "\n"
+//                newArray.add(AdressListingModel(s))
             }
 
             var newAddress: String? = null
             newArray.forEach {
                 newAddress += it.address + ""
             }
-            binding?.tvCustomerAddress?.text = newAddress?.replace("null", "")
+            //  binding?.tvCustomerAddress?.text = newAddress?.replace("null", "")
 
         }
 
@@ -418,6 +431,112 @@ class StartJobActivity : BaseActivity() {
         dialog.window!!.setGravity(Gravity.CENTER)
     }
 
+
+    override fun onAddressClick(position: Int, addres: String) {
+
+        mapWazeDialog(addres)
+
+    }
+
+    fun mapWazeDialog(address: String?) {
+
+        val dialog = Dialog(this)
+        dialog.setContentView(R.layout.map_waze_dialog)
+        val crossImg = dialog.findViewById<AppCompatImageView>(R.id.ivCross)
+        val mapImg = dialog.findViewById<ImageView>(R.id.mapImg)
+        val wazeImg = dialog.findViewById<AppCompatImageView>(R.id.wazeImg)
+        crossImg.setOnClickListener { dialog.dismiss() }
+
+        wazeImg.setOnClickListener {
+            openAddressWaze(address)
+
+        }
+
+        mapImg.setOnClickListener {
+            pickupAddressMap(address)
+
+        }
+        dialog.setCancelable(false)
+        dialog.show()
+        dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.window!!.setLayout(
+            WindowManager.LayoutParams.MATCH_PARENT,
+            WindowManager.LayoutParams.WRAP_CONTENT
+        )
+        dialog.window!!.setGravity(Gravity.CENTER)
+
+    }
+
+    fun openAddressWaze(address: String?) {
+        var latLng = getLocationFromAddress(
+            context = binding?.root?.context,
+            strAddress = address
+        )
+        packageManager?.let {
+            val url = "waze://?ll=${latLng?.latitude},${latLng?.longitude}&navigate=yes"
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+            intent.resolveActivity(it)?.let {
+                startActivity(intent)
+            } ?: run {
+                Toast.makeText(binding?.root?.context, "App not found", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+    }
+
+
+//    fun openAddressWaze(address: String?){
+//
+//        var latLng = getLocationFromAddress(
+//            context = binding?.root?.context,
+//            strAddress = address
+//        )
+//        var geoUri: String = "https://waze.com/ul?q=66%20Acacia%20Avenue&ll="+latLng?.latitude+","+ latLng?.longitude +"&navigate=yes"
+//
+////        "https://waze.com/ul?ll="+""+","+""
+//        var mapIntent = Intent(Intent.ACTION_VIEW, Uri.parse(geoUri));
+//        mapIntent.setPackage("com.waze");
+//
+//        if (mapIntent.resolveActivity(binding?.root?.context!!.packageManager) != null) {
+//            startActivity(mapIntent);
+//        }
+//    }
+
+    fun pickupAddressMap(address: String?) {
+
+        var latLng = getLocationFromAddress(
+            context = binding?.root?.context,
+            strAddress = address
+        )
+        var geoUri: String =
+            "http://maps.google.com/maps?q=loc:" + latLng?.latitude + "," + latLng?.longitude + " (" + address + ")"
+        var mapIntent = Intent(Intent.ACTION_VIEW, Uri.parse(geoUri));
+        if (mapIntent.resolveActivity(binding?.root?.context!!.packageManager) != null) {
+            startActivity(mapIntent);
+        }
+
+
+    }
+
+    fun getLocationFromAddress(context: Context?, strAddress: String?): LatLng? {
+        val coder = Geocoder(context)
+        val address: List<Address>
+        var p1: LatLng? = null
+        try {
+            // May throw an IOException
+            address = coder.getFromLocationName(strAddress, 5)
+            if (address == null) {
+                return null
+            }
+            val location: Address = address[0]
+            p1 = LatLng(location.getLatitude(), location.getLongitude())
+        } catch (ex: IOException) {
+            ex.printStackTrace()
+        }
+        return p1
+    }
+
+
     private fun setImageAdapter() {
         mImageAdapter =
             WariningImageAdapter(this, AddBooking.mData) { position, forDelete ->
@@ -523,4 +642,4 @@ class StartJobActivity : BaseActivity() {
             Log.d("ProfileTAG", array.toString())
         }
     }
-    }
+}
