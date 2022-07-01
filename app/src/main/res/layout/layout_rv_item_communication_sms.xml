@@ -32,7 +32,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_25sdp"
                         android:layout_below="@id/llOrder"
-
                         android:orientation="horizontal"
                         android:weightSum="1">
 
@@ -47,7 +46,6 @@
                             android:text="Order ID: "
                             android:textColor="@color/locationCol"
                             android:textSize="@dimen/_12sdp" />
-
 
                         <TextView
                             android:id="@+id/tvOrder"
@@ -71,7 +69,6 @@
                             android:textColor="@color/white"
                             android:textSize="10sp" />
 
-
                     </androidx.appcompat.widget.LinearLayoutCompat>
 
                     <androidx.appcompat.widget.LinearLayoutCompat
@@ -79,7 +76,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_25sdp"
                         android:layout_below="@id/llOrder"
-
                         android:orientation="horizontal"
                         android:weightSum="1">
 
@@ -95,7 +91,6 @@
                             android:textColor="@color/locationCol"
                             android:textSize="@dimen/_12sdp" />
 
-
                         <TextView
                             android:id="@+id/tvName"
                             android:layout_width="0dp"
@@ -106,8 +101,6 @@
                             android:singleLine="true"
                             android:textColor="@color/cusCol"
                             android:textSize="@dimen/_12sdp" />
-
-
                     </androidx.appcompat.widget.LinearLayoutCompat>
 
                     <androidx.appcompat.widget.LinearLayoutCompat
@@ -155,7 +148,6 @@
                             android:textColor="@color/cusCol"
                             android:textSize="@dimen/_12sdp" />
 
-
                     </androidx.appcompat.widget.LinearLayoutCompat>
 
                     <androidx.appcompat.widget.LinearLayoutCompat
@@ -163,7 +155,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_25sdp"
                         android:layout_below="@id/llDetailPhone"
-
                         android:orientation="horizontal"
                         android:weightSum="1">
 
@@ -178,8 +169,6 @@
                             android:text="Date: "
                             android:textColor="@color/locationCol"
                             android:textSize="@dimen/_12sdp" />
-
-
                         <TextView
                             android:id="@+id/tvData"
                             android:layout_width="0dp"
@@ -190,11 +179,39 @@
                             android:singleLine="true"
                             android:textColor="@color/cusCol"
                             android:textSize="@dimen/_12sdp" />
-
-
                     </androidx.appcompat.widget.LinearLayoutCompat>
 
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/llTime"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_25sdp"
+                        android:layout_below="@id/llDate"
+                        android:orientation="horizontal"
+                        android:weightSum="1">
 
+                        <TextView
+                            android:id="@+id/labelTime"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight=".25"
+                            android:fontFamily="@font/opensans_regular"
+                            android:gravity="center_vertical"
+                            android:singleLine="true"
+                            android:text="Time: "
+                            android:textColor="@color/locationCol"
+                            android:textSize="@dimen/_12sdp" />
+
+                        <TextView
+                            android:id="@+id/tvTime"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight=".75"
+                            android:fontFamily="@font/opensans_semi_bold"
+                            android:gravity="center_vertical"
+                            android:singleLine="true"
+                            android:textColor="@color/cusCol"
+                            android:textSize="@dimen/_12sdp" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
                 </RelativeLayout>
 
             </androidx.cardview.widget.CardView>

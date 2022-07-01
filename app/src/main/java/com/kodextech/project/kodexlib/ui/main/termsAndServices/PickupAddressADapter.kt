@@ -19,10 +19,31 @@ class PickupAddressADapter(var context:Context,var addressList:ArrayList<PickupA
 
     override fun onBindViewHolder(holder: AddressViewHolder, position: Int) {
 
-        holder.binding?.tvPickUpAddress?.text =addressList[position].address1
         holder.binding?.tvPickUpAddress?.setOnClickListener {
             selectAddress.onAddressClick(position,addressList[position].address1.toString())
         }
+           var floorNo :String =""
+
+                        if (addressList[position].pickup_flat_meta?.firstOrNull()?.floor_no == "-1") {
+                    floorNo = "Basement"
+                } else if (addressList[position].pickup_flat_meta?.firstOrNull()?.floor_no == "0") {
+                    floorNo = "Ground Floor"
+                } else {
+                    floorNo = addressList[position].pickup_flat_meta?.firstOrNull()?.floor_no + " Floor"
+                }
+
+                if (addressList[position].has_lift.equals("1")) {
+                    val s =
+                            "Address: " + addressList[position].address1 + "\nFloor No: " + floorNo + "\nLift Available: Yes\n"
+                    holder.binding?.tvPickUpAddress?.text =s
+
+
+                } else {
+                    val s =
+                            "Address: " + addressList[position].address1 + "\nFloor No: " + floorNo + "\nLift Available: No\n"
+                    holder.binding?.tvPickUpAddress?.text =s
+
+                }
 
       //  Toast.makeText(context, "size--- "+addressList.size, Toast.LENGTH_SHORT).show()
     }

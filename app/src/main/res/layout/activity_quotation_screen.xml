@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout
+        android:id="@+id/qutationCustomer"
+        android:orientation="vertical"
+        tools:context=".ui.main.quatation.QuatationActivity"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:id="@+id/workerTopBar"
+            android:background="@color/blue"
+            android:layout_height="@dimen/_60sdp">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:fontFamily="@font/opensans_regular"
+                android:gravity="center"
+                android:text="Quotation"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_16sdp" />
+
+
+            <androidx.appcompat.widget.AppCompatImageView
+
+                android:id="@+id/ivBack"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:maxWidth="@dimen/_55sdp"
+                android:maxHeight="@dimen/_51sdp"
+                android:paddingStart="@dimen/_20sdp"
+                android:paddingEnd="@dimen/_20sdp"
+                android:src="@drawable/ic_back"
+                android:visibility="visible" />
+        </RelativeLayout>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvDateTime"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_45sdp"
+            android:background="@drawable/button_bg"
+            android:backgroundTint="@color/bgEdit"
+            android:fontFamily="@font/opensans_regular"
+            android:gravity="center_vertical"
+            android:hint="Customer Name"
+            android:inputType="text"
+            android:paddingStart="@dimen/_16sdp"
+            android:paddingEnd="@dimen/_16sdp"
+            android:singleLine="true"
+            android:layout_margin="@dimen/_10sdp"
+            android:textColor="@color/textColor"
+            android:textColorHint="@color/addProductHint"
+            android:textCursorDrawable="@drawable/color_cursor"
+            android:textSize="@dimen/_13sdp" />
+
+
+
+        <!--        <Spinner-->
+<!--            android:id="@+id/nameSpinner"-->
+<!--            android:layout_height="50dp"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_marginEnd="10dp"-->
+<!--            android:layout_marginStart="10dp"-->
+<!--            android:layout_marginBottom="10dp"-->
+<!--            android:layout_marginTop="10dp" />-->
+
+<!--        <androidx.appcompat.widget.AppCompatAutoCompleteTextView-->
+<!--            android:id="@+id/etFirstName"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="@dimen/_45sdp"-->
+<!--            android:layout_below="@+id/etBookedBy"-->
+<!--            android:background="@drawable/button_bg"-->
+<!--            android:backgroundTint="@color/bgEdit"-->
+<!--            android:digits="qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM"-->
+<!--            android:fontFamily="@font/opensans_regular"-->
+<!--            android:gravity="center_vertical"-->
+<!--            android:hint="Customer Name"-->
+<!--            android:inputType="text"-->
+<!--            android:paddingStart="@dimen/_16sdp"-->
+<!--            android:paddingEnd="@dimen/_16sdp"-->
+<!--            android:singleLine="true"-->
+<!--            android:layout_margin="@dimen/_10sdp"-->
+<!--            android:textColor="@color/textColor"-->
+<!--            android:textColorHint="@color/addProductHint"-->
+<!--            android:textCursorDrawable="@drawable/color_cursor"-->
+<!--            android:textSize="@dimen/_13sdp" />-->
+
+        <RelativeLayout
+            android:id="@+id/llPrice"
+            android:layout_margin="@dimen/_10sdp"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_45sdp"
+            android:layout_below="@id/llPriceNature"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="@drawable/button_bg"
+            android:backgroundTint="#D2D1D1"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <RelativeLayout
+                android:id="@+id/ivDollar"
+                android:layout_width="@dimen/_25sdp"
+                android:layout_height="match_parent"
+                android:gravity="center">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ivDoller"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_pound" />
+            </RelativeLayout>
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etPrice"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_toStartOf="@id/priceSign"
+                android:layout_toEndOf="@+id/ivDollar"
+                android:layout_weight=".75"
+                android:background="@drawable/button_without_radius"
+                android:backgroundTint="@color/bgEdit"
+                android:fontFamily="@font/opensans_regular"
+                android:gravity="center_vertical"
+                android:hint="Hourly Rate"
+                android:inputType="number"
+                android:paddingStart="@dimen/_16sdp"
+                android:paddingEnd="@dimen/_16sdp"
+                android:singleLine="true"
+                android:textColor="@color/textColor"
+                android:textColorHint="@color/addProductHint"
+                android:textCursorDrawable="@drawable/color_cursor"
+                android:textSize="@dimen/_13sdp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/priceSign"
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="match_parent"
+                android:layout_alignParentEnd="true"
+                android:layout_weight=".15"
+                android:gravity="center"
+                android:text="/hr."
+                android:textColor="@color/black"
+                android:textSize="@dimen/_14sdp" />
+        </RelativeLayout>
+
+
+        <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+            android:id="@+id/minimumBooking"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_45sdp"
+            android:layout_below="@+id/etBookedBy"
+            android:background="@drawable/button_bg"
+            android:backgroundTint="@color/bgEdit"
+            android:digits="qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM"
+            android:fontFamily="@font/opensans_regular"
+            android:gravity="center_vertical"
+            android:hint="Minimum Booking"
+            android:inputType="text"
+            android:paddingStart="@dimen/_16sdp"
+            android:paddingEnd="@dimen/_16sdp"
+            android:singleLine="true"
+            android:layout_margin="@dimen/_10sdp"
+            android:textColor="@color/textColor"
+            android:textColorHint="@color/addProductHint"
+            android:textCursorDrawable="@drawable/color_cursor"
+            android:textSize="@dimen/_13sdp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnSentQuotation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="@dimen/_70sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_70sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:background="@drawable/bg_btn"
+            android:gravity="center"
+            android:text="Send Quotation"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_12sdp" />
+
+
+
+
+
+
+
+    </LinearLayout>
+
+</layout>
+

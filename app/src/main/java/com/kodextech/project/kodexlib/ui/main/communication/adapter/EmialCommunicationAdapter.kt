@@ -24,6 +24,7 @@ class EmialCommunicationAdapter(var context:Context,
         holder.binding?.tvWorkerEmail?.text = mData[position].Email
         holder.binding?.tvName?.text = mData[position].Name
         holder.binding?.dateTv?.text = mData[position].Date
+        holder.binding?.tvTime?.text = mData[position].Time
 
         holder.itemView.setOnClickListener {
             onClickInterface.onEmailClick(mData[position].Order.toString(),position)

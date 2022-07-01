@@ -13,5 +13,6 @@ data class Data(
     var Name: String? = null,
     var Email: String? = null,
     var Date: String? = null,
+    var Time: String? = null,
     var sent: String? = null
 ) : Serializable

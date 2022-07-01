@@ -815,6 +815,9 @@ class TermsServices : BaseActivity(), selectAddress {
         mapWazeDialog(addres)
     }
 
+
+
+
 }
 
 class AdressListingModel(

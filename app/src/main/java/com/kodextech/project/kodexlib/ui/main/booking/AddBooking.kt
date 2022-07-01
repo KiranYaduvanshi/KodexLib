@@ -570,7 +570,6 @@ class AddBooking : BaseActivity() {
                 AddAddressOption.DONE -> {
                     mDropAddressArray.add(address)
                     setDropAddressAdapter(mDropAddressArray)
-
                 }
             }
         }
@@ -580,6 +579,7 @@ class AddBooking : BaseActivity() {
     private fun setDropAddressAdapter(mDropAddressArray: ArrayList<PickupAddress>) {
         if (service.equals("Flat Move")) {
             if (mDropAddressArray?.firstOrNull()?.has_lift == "0") {
+
                 binding?.tvDropAddress?.text =
                     mDropAddressArray?.firstOrNull()?.address1 + ", " + mDropAddressArray?.firstOrNull()?.pickup_flat_meta?.firstOrNull()?.floor_no + " Floor, Lift Available"
             } else {
