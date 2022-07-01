@@ -15,7 +15,6 @@ import com.kodextech.project.kodexlib.network.LocalPreference
 import com.kodextech.project.kodexlib.ui.main.auth.LoginActivity
 import com.kodextech.project.kodexlib.ui.main.dashboard.Dashboard
 import com.kodextech.project.kodexlib.ui.main.dashboard.DriverDashboardActivity
-import com.kodextech.project.kodexlib.ui.main.jobs.JobsListing
 
 
 class Splash : BaseActivity() {
@@ -47,7 +46,8 @@ class Splash : BaseActivity() {
                 Manifest.permission.ACCESS_FINE_LOCATION,
                 Manifest.permission.READ_EXTERNAL_STORAGE,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                Manifest.permission.SEND_SMS
+                Manifest.permission.SEND_SMS,
+                Manifest.permission.CAMERA
             ).withListener(object : MultiplePermissionsListener {
                 override fun onPermissionsChecked(report: MultiplePermissionsReport) { /* ... */
                     Handler(Looper.getMainLooper()).postDelayed({

@@ -65,12 +65,12 @@ class ExpensesActivity : BaseActivity() {
     }
 
     fun setExpensis(obj : Expensis){
-     binding?.txtFuel?.text = "$"+obj.Fuel
-     binding?.txtLabour?.text = "$"+obj.Labour
-     binding?.txtVehicleMaintainance?.text = "$"+obj.VehicleMaintainence
-     binding?.txtAdvertising?.text = "$ No variable "
-     binding?.txtEquipment?.text = "$"+obj.Equipment
-     binding?.txtOther?.text = "$"+obj.Other
+     binding?.txtFuel?.text = "£"+obj.Fuel
+     binding?.txtLabour?.text = "£"+obj.Labour
+     binding?.txtVehicleMaintainance?.text = "£"+obj.VehicleMaintainence
+     binding?.txtAdvertising?.text = "£300"
+     binding?.txtEquipment?.text = "£"+obj.Equipment
+     binding?.txtOther?.text = "£"+obj.Other
     }
 
 //    fun showToast(message: String) {

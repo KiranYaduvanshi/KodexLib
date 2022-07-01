@@ -59,6 +59,9 @@ data class JobModel(
     val booker: Booker? = null,
     val worker_id: Int? = null,
     val worker_remarks: String? = null,
+    val job_start_time: String? = null,
+    val job_end_time: String? = null,
+    val actual_hours: String? = null,
     val is_packing_service: String? = null,
     val is_any_dismantling: String? = null,
     var isSelected: Boolean? = false

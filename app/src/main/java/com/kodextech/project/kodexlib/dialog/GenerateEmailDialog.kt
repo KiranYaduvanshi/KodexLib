@@ -111,10 +111,8 @@ class GenerateEmailDialog : BaseDialogueFragment() {
                 generateEmailWithFile(workerType, subject, body, fileResponsePath)
             } else {
                 uploadImage()
-
             }
         }
-
     }
 
     private fun uploadImage() {
@@ -169,15 +167,15 @@ class GenerateEmailDialog : BaseDialogueFragment() {
             ), object : Response {
                 override fun onSuccessResponse(response: String?, message: String) {
                     mActivity.hideLoading()
-                    mActivity.showToast("Email Send Successfully")
+                    mActivity.showToast("Email Sent Successfully")
                     dismiss()
                 }
 
                 override fun onErrorResponse(error: String?, response: String?) {
                     hideLoading()
                     mActivity.showToast(error ?: "error   error")
-                    print(error+ " Error Error")
-                    print(error+ " Error Error")
+                    print(error + " Error Error")
+                    print(error + " Error Error")
                 }
 
             })

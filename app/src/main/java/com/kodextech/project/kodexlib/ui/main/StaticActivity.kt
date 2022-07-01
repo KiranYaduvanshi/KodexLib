@@ -62,11 +62,11 @@ class StaticActivity : BaseActivity() {
     }
 
     fun setStatics(obj: Statics) {
-        binding?.txtEarning?.text = "$"+obj.Earnings
-        binding?.txtHours?.text = "$"+obj.Hours
-        binding?.txtRides?.text = "$"+obj.Rides
-        binding?.txtLoss?.text = "$"+obj.Loss
-        binding?.txtProfit?.text = "$"+obj.Profit
+        binding?.txtEarning?.text = "£"+obj.Earnings
+        binding?.txtHours?.text = "£"+obj.Hours
+        binding?.txtRides?.text = "£"+obj.Rides
+        binding?.txtLoss?.text = "£"+obj.Loss
+        binding?.txtProfit?.text = "£"+obj.Profit
     }
 
 

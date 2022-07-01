@@ -40,7 +40,7 @@ class JobDetail : BaseActivity() {
         binding?.detailTopBar?.ivBack?.setOnClickListener {
             val intent = Intent(this, Dashboard::class.java)
             startActivity(intent)
-            finish()
+           // finish()
         }
 
         binding?.detailTopBar?.ivLogout?.setOnClickListener {
@@ -168,6 +168,10 @@ class JobDetail : BaseActivity() {
             obj?.start_time
         )
 
+        binding?.tvJobStart?.text = obj?.job_start_time
+        binding?.tvJobEnd?.text = obj?.job_end_time
+
+
         when (obj?.price_nature) {
             "fixed-price" -> {
                 binding?.tvPriceType?.text = "Fixed"
@@ -178,7 +182,7 @@ class JobDetail : BaseActivity() {
 
                 binding?.llHourly?.visibility = View.VISIBLE
 
-                binding?.tvHours?.text = "Hours"
+                binding?.tvHours?.text = obj?.actual_hours
             }
         }
 

@@ -249,6 +249,7 @@ class JobsListing : BaseActivity() {
 //        if (binding?.svJobs?.isRefreshing == false) {
 //            binding?.svJobs?.isRefreshing = true
 //        }
+
         showLoading()
         mDataSelected.clear()
         binding?.rlButton?.visibility = View.GONE
@@ -488,6 +489,9 @@ class JobsListing : BaseActivity() {
     }
 
     private fun checkAndSetData() {
+//        mDataSelected.clear()
+        binding?.rlButton?.gone()
+        mDataSelected.clear()
         if (LocalPreference.shared.user?.user?.profile?.worker_type?.lowercase() == "driver".lowercase()) {
             getWorkerJob(LocalPreference.shared.user?.user?.profile?.uuid)
 
