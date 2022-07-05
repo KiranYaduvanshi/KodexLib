@@ -18,6 +18,7 @@ import android.view.Gravity
 import android.view.View
 import android.view.WindowManager
 import android.widget.Button
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.widget.AppCompatImageView
@@ -111,6 +112,7 @@ class StartJobActivity : BaseActivity(), selectAddress {
         })
     }
 
+
     private fun setPickUpAddressAdapter() {
         pickupAddressADapter = PickupAddressADapter(this, pickupAddList, this)
         binding?.pickUpAddressRv?.adapter = pickupAddressADapter
@@ -118,7 +120,6 @@ class StartJobActivity : BaseActivity(), selectAddress {
     }
 
     private fun addSignature(mSignaturePad: SignaturePad) {
-
         Dexter.withContext(this@StartJobActivity)
             .withPermissions(
 
