@@ -32,7 +32,7 @@
         tools:replace="android:theme,android:allowBackup"
         tools:targetApi="r">
         <activity
-            android:name=".SearchCustomerActivity"
+            android:name=".ui.main.quatation.SearchCustomerActivity"
             android:exported="false" />
         <activity
             android:name=".ui.main.quatation.QuotationScreenActivity"

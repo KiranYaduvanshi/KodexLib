@@ -1,9 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.main.quatation.SearchCustomerActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:id="@+id/customerNameLL"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".ui.main.quatation.SearchCustomerActivity">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:id="@+id/workerTopBar"
+            android:background="@color/blue"
+            android:layout_height="@dimen/_60sdp">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:fontFamily="@font/opensans_regular"
+                android:gravity="center"
+                android:text="Search"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_16sdp" />
+
+
+            <androidx.appcompat.widget.AppCompatImageView
+
+                android:id="@+id/ivBack"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:maxWidth="@dimen/_55sdp"
+                android:maxHeight="@dimen/_51sdp"
+                android:paddingStart="@dimen/_20sdp"
+                android:paddingEnd="@dimen/_20sdp"
+                android:src="@drawable/ic_back"
+                android:visibility="visible" />
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:elevation="10dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/button_bg"
+            android:backgroundTint="@color/bgEdit"
+            >
+
+            <EditText
+                android:id="@+id/searchEt"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/bg_search_et"
+                android:imeOptions="actionSearch"
+                android:drawableLeft="@drawable/ic_search"
+                android:drawablePadding="10dp"
+                android:drawableTint="@color/black"
+                android:hint="Search Customer"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:singleLine="true" />
+
+
+        </RelativeLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/customerNameListRv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/customer_name_list"
+
+            />
+
+
+
+    </LinearLayout>
+</layout>

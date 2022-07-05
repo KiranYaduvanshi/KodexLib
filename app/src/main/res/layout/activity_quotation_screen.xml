@@ -41,7 +41,7 @@
         </RelativeLayout>
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvDateTime"
+            android:id="@+id/tvCustomerName"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_45sdp"
             android:background="@drawable/button_bg"
