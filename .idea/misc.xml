@@ -11,6 +11,7 @@
         <entry key="..\:/AndroidStudio/moderenmover/KodexLib/app/src/main/res/layout/activity_terms_services.xml" value="0.27291666666666664" />
         <entry key="..\:/AndroidStudio/moderenmover/KodexLib/app/src/main/res/layout/confirmation_dialog.xml" value="0.27291666666666664" />
         <entry key="..\:/AndroidStudio/moderenmover/KodexLib/app/src/main/res/layout/job_item.xml" value="0.27291666666666664" />
+        <entry key="..\:/Users/hp/Downloads/Modern_mover/app/src/main/res/drawable/bg_search_et.xml" value="0.136" />
         <entry key="..\:/Users/hp/Downloads/Modern_mover/app/src/main/res/drawable/ic_statics.xml" value="0.136" />
         <entry key="..\:/Users/hp/Downloads/Modern_mover/app/src/main/res/layout/activity_add_booking.xml" value="0.13540090771558244" />
         <entry key="..\:/Users/hp/Downloads/Modern_mover/app/src/main/res/layout/activity_communication.xml" value="0.17291666666666666" />
@@ -19,9 +20,12 @@
         <entry key="..\:/Users/hp/Downloads/Modern_mover/app/src/main/res/layout/activity_driver_dashboard.xml" value="0.12552083333333333" />
         <entry key="..\:/Users/hp/Downloads/Modern_mover/app/src/main/res/layout/activity_expenses.xml" value="0.1671875" />
         <entry key="..\:/Users/hp/Downloads/Modern_mover/app/src/main/res/layout/activity_invoice_listing2.xml" value="0.1" />
+        <entry key="..\:/Users/hp/Downloads/Modern_mover/app/src/main/res/layout/activity_job_detail.xml" value="0.20925925925925926" />
+        <entry key="..\:/Users/hp/Downloads/Modern_mover/app/src/main/res/layout/activity_jobs_listing.xml" value="0.1140625" />
         <entry key="..\:/Users/hp/Downloads/Modern_mover/app/src/main/res/layout/activity_multiple_selection.xml" value="0.1" />
         <entry key="..\:/Users/hp/Downloads/Modern_mover/app/src/main/res/layout/activity_quatation.xml" value="0.234375" />
         <entry key="..\:/Users/hp/Downloads/Modern_mover/app/src/main/res/layout/activity_quotation_screen.xml" value="0.25" />
+        <entry key="..\:/Users/hp/Downloads/Modern_mover/app/src/main/res/layout/activity_search_customer.xml" value="0.13854166666666667" />
         <entry key="..\:/Users/hp/Downloads/Modern_mover/app/src/main/res/layout/activity_start_job.xml" value="0.15" />
         <entry key="..\:/Users/hp/Downloads/Modern_mover/app/src/main/res/layout/activity_static.xml" value="0.1671875" />
         <entry key="..\:/Users/hp/Downloads/Modern_mover/app/src/main/res/layout/activity_terms_services.xml" value="0.16799999999999998" />
@@ -29,11 +33,15 @@
         <entry key="..\:/Users/hp/Downloads/Modern_mover/app/src/main/res/layout/add_worker_dialog.xml" value="0.18125" />
         <entry key="..\:/Users/hp/Downloads/Modern_mover/app/src/main/res/layout/address_item.xml" value="0.19895833333333332" />
         <entry key="..\:/Users/hp/Downloads/Modern_mover/app/src/main/res/layout/confirmation_dialog.xml" value="0.25" />
+        <entry key="..\:/Users/hp/Downloads/Modern_mover/app/src/main/res/layout/customer_list_item.xml" value="0.253125" />
+        <entry key="..\:/Users/hp/Downloads/Modern_mover/app/src/main/res/layout/customer_name_list.xml" value="0.2076923076923077" />
+        <entry key="..\:/Users/hp/Downloads/Modern_mover/app/src/main/res/layout/customer_type_item.xml" value="0.253125" />
         <entry key="..\:/Users/hp/Downloads/Modern_mover/app/src/main/res/layout/dashboard_item.xml" value="0.234375" />
         <entry key="..\:/Users/hp/Downloads/Modern_mover/app/src/main/res/layout/detail_custoemr_item.xml" value="0.1" />
         <entry key="..\:/Users/hp/Downloads/Modern_mover/app/src/main/res/layout/job_item.xml" value="0.159375" />
         <entry key="..\:/Users/hp/Downloads/Modern_mover/app/src/main/res/layout/layout_rv_item_communication_email.xml" value="0.25" />
         <entry key="..\:/Users/hp/Downloads/Modern_mover/app/src/main/res/layout/layout_rv_item_communication_sms.xml" value="0.17291666666666666" />
+        <entry key="..\:/Users/hp/Downloads/Modern_mover/app/src/main/res/layout/map_waze_dialog.xml" value="0.14479166666666668" />
         <entry key="..\:/Users/hp/Downloads/Modern_mover/app/src/main/res/layout/mul_sel_list_item.xml" value="0.19479166666666667" />
         <entry key="..\:/Users/hp/Downloads/Modern_mover/app/src/main/res/layout/pickup_address_list_item.xml" value="0.1140625" />
         <entry key="..\:/Users/hp/Downloads/Modern_mover/app/src/main/res/layout/quatation_list_item.xml" value="0.1" />
@@ -47,31 +55,24 @@
         <entry key="..\:/imran/app/src/main/res/drawable/ic_customers.xml" value="0.1" />
         <entry key="..\:/imran/app/src/main/res/drawable/ic_expenses.xml" value="0.1" />
         <entry key="..\:/imran/app/src/main/res/drawable/ic_invoice.xml" value="0.1" />
-        <entry key="..\:/imran/app/src/main/res/drawable/ic_job_completed.xml" value="0.1" />
         <entry key="..\:/imran/app/src/main/res/drawable/ic_mails.xml" value="0.1" />
         <entry key="..\:/imran/app/src/main/res/drawable/ic_statics.xml" value="0.1065" />
-        <entry key="..\:/imran/app/src/main/res/layout/activity_add_booking.xml" value="0.4466666666666667" />
+        <entry key="..\:/imran/app/src/main/res/layout/activity_add_booking.xml" value="0.1" />
         <entry key="..\:/imran/app/src/main/res/layout/activity_communication.xml" value="0.22" />
         <entry key="..\:/imran/app/src/main/res/layout/activity_customer_listing.xml" value="0.17135416666666667" />
         <entry key="..\:/imran/app/src/main/res/layout/activity_dashboard.xml" value="0.1" />
         <entry key="..\:/imran/app/src/main/res/layout/activity_driver_dashboard.xml" value="0.1" />
-        <entry key="..\:/imran/app/src/main/res/layout/activity_expenses.xml" value="0.5173611111111112" />
-        <entry key="..\:/imran/app/src/main/res/layout/activity_invoice_listing2.xml" value="0.21553884711779447" />
-        <entry key="..\:/imran/app/src/main/res/layout/activity_job_detail.xml" value="0.5" />
-        <entry key="..\:/imran/app/src/main/res/layout/activity_jobs_listing.xml" value="0.6" />
-        <entry key="..\:/imran/app/src/main/res/layout/activity_mark_invoice_paid.xml" value="0.21553884711779447" />
-        <entry key="..\:/imran/app/src/main/res/layout/activity_start_job.xml" value="0.3946135831381733" />
+        <entry key="..\:/imran/app/src/main/res/layout/activity_expenses.xml" value="0.22" />
+        <entry key="..\:/imran/app/src/main/res/layout/activity_job_detail.xml" value="0.1" />
+        <entry key="..\:/imran/app/src/main/res/layout/activity_jobs_listing.xml" value="0.12708333333333333" />
         <entry key="..\:/imran/app/src/main/res/layout/activity_static.xml" value="0.22" />
-        <entry key="..\:/imran/app/src/main/res/layout/activity_terms_services.xml" value="0.4466666666666667" />
+        <entry key="..\:/imran/app/src/main/res/layout/activity_terms_services.xml" value="0.103125" />
         <entry key="..\:/imran/app/src/main/res/layout/activity_worker_listing.xml" value="0.17135416666666667" />
         <entry key="..\:/imran/app/src/main/res/layout/add_worker_dialog.xml" value="0.17135416666666667" />
-        <entry key="..\:/imran/app/src/main/res/layout/confirmation_dialog.xml" value="0.46946564885496184" />
         <entry key="..\:/imran/app/src/main/res/layout/dashboard_customer_item.xml" value="0.1" />
-        <entry key="..\:/imran/app/src/main/res/layout/dashboard_item.xml" value="0.1873536299765808" />
-        <entry key="..\:/imran/app/src/main/res/layout/generate_email_dialog.xml" value="0.3946135831381733" />
         <entry key="..\:/imran/app/src/main/res/layout/layout_rv_item_communication.xml" value="0.17135416666666667" />
         <entry key="..\:/imran/app/src/main/res/layout/layout_rv_item_communication_sms.xml" value="0.17135416666666667" />
-        <entry key="..\:/imran/app/src/main/res/layout/new_invoice_item.xml" value="0.14666666666666667" />
+        <entry key="..\:/imran/app/src/main/res/layout/new_invoice_item.xml" value="0.17167919799498746" />
         <entry key="..\:/imran/app/src/main/res/layout/top_bar.xml" value="0.17135416666666667" />
         <entry key="..\:/imran/app/src/main/res/layout/worker_item.xml" value="0.17135416666666667" />
         <entry key="..\:/moderenmover-UpdatedAPIs/KodexLib/app/src/main/res/drawable/button_bg.xml" value="0.169" />

@@ -728,6 +728,17 @@ object URLApi {
         return this
     }
 
+
+    fun getCustomerNameList(name: String): URLApi {
+        method = NetworkMethod.POST
+        path = "search-costumer"
+        params = JSONObject()
+        params.put("search_text", name)
+
+        return this
+    }
+
+
     fun validateToken(email: String, code: String): URLApi {
         method = NetworkMethod.POST
         path = "auth/validate-token"
