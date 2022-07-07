@@ -3,6 +3,7 @@ package com.kodextech.project.kodexlib.ui.main.booking
 import android.Manifest
 import android.app.Activity
 import android.app.Dialog
+import android.app.PendingIntent
 import android.content.*
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -215,7 +216,8 @@ class AddBooking : BaseActivity() {
         }
 
         binding?.btnCancel?.setOnClickListener {
-            finish()
+            sendSMS(finish())
+            //finish()
         }
 
 //        binding?.btnLiftNo?.setOnClickListener {
@@ -1212,23 +1214,27 @@ class AddBooking : BaseActivity() {
                         finish()
                     } else {
                         showBarToast("Booking Created Successfully")
-                        showBarToast("Booking Created Successfully")
+
                         setDataForSMS(obj)
-                        val dialog = SendConfirmationDialog.newInstance {
-                            when (it) {
-                                ConfirmationOption.SMS -> {
-                                  sendSms(bookingId,smsContent , finish())
-                                }
-                                ConfirmationOption.EMAIL -> {
-                                    //   resendEmailDialog()
-                                    sendEmail(finish(), obj?.uuid)
-                                }
-                                ConfirmationOption.CANCEL -> {
-                                    finish()
-                                }
-                            }
-                        }
-                        dialog.show(supportFragmentManager, "")
+//                        sendSms(bookingId,smsContent , finish())
+                        sendSMS(finish())
+//                        finish
+                        //sendEmail(finish(), obj?.uuid)
+//                        val dialog = SendConfirmationDialog.newInstance {
+//                            when (it) {
+//                                ConfirmationOption.SMS -> {
+//                                  sendSms(bookingId,smsContent , finish())
+//                                }
+//                                ConfirmationOption.EMAIL -> {
+//                                    //   resendEmailDialog()
+//                                    sendEmail(finish(), obj?.uuid)
+//                                }
+//                                ConfirmationOption.CANCEL -> {
+//                                    finish()
+//                                }
+//                            }
+//                        }
+//                        dialog.show(supportFragmentManager, "")
                     }
                 }
 
@@ -1388,100 +1394,133 @@ class AddBooking : BaseActivity() {
 
 
         val bookingNo = obj?.id
-        smsContent = "Hello $fullName, \n \n" +
-                "Booking #$bookingNo \n\n" +
+//        smsContent = "Hello $fullName, \n \n" +
+//                "Booking #$bookingNo \n\n" +
+//                "Your removals is scheduled on the $startTime at $time \n\n" +
+//                "From: $address \n\n" +
+//                "To: $dropAddress \n\n" +
+//                "Detail: $vanDetail & $info \n\n" +
+//                "Notes: $detail \n\n" +
+//                "Terms: $termsText \n\n" +
+//                "Cheers!"
+        smsContent = "Booking #$bookingNo \n \n" +
+                "Hello $fullName at $time \n\n" +
                 "Your removals is scheduled on the $startTime at $time \n\n" +
-                "From: $address \n\n" +
-                "To: $dropAddress \n\n" +
                 "Detail: $vanDetail & $info \n\n" +
-                "Notes: $detail \n\n" +
                 "Terms: $termsText \n\n" +
                 "Cheers!"
 
     }
 
-//    private fun sendSMS(finish: Unit) {
-////        val no = phoneCode + phoneNo
-//        val no = "+91" + phoneNo
-//        val uri = Uri.parse("smsto:$no")
-//        val SENT = "SMS_SENT"
-//        val DELIVERED = "SMS_DELIVERED"
-//        val sentPI: PendingIntent = PendingIntent.getBroadcast(
-//            this, 0,
-//            Intent(SENT), 0
-//        )
-//        val deliveredPI: PendingIntent = PendingIntent.getBroadcast(
-//            this, 0,
-//            Intent(DELIVERED), 0
-//        )
-//
-//        //---when the SMS has been sent---
-//        registerReceiver(object : BroadcastReceiver() {
-//            override fun onReceive(arg0: Context?, arg1: Intent?) {
-//                when (getResultCode()) {
-//                    RESULT_OK -> Toast.makeText(
-//                        baseContext, "SMS sent",
-//                        Toast.LENGTH_SHORT
-//                    ).show()
-//                    SmsManager.RESULT_ERROR_GENERIC_FAILURE -> Toast.makeText(
-//                        baseContext, "Generic failure",
-//                        Toast.LENGTH_SHORT
-//                    ).show()
-//                    SmsManager.RESULT_ERROR_NO_SERVICE -> Toast.makeText(
-//                        baseContext, "No service",
-//                        Toast.LENGTH_SHORT
-//                    ).show()
-//                    SmsManager.RESULT_ERROR_NULL_PDU -> Toast.makeText(
-//                        baseContext, "Null PDU",
-//                        Toast.LENGTH_SHORT
-//                    ).show()
-//                    SmsManager.RESULT_ERROR_RADIO_OFF -> Toast.makeText(
-//                        baseContext, "Radio off",
-//                        Toast.LENGTH_SHORT
-//                    ).show()
-//                }
-//            }
-//        }, IntentFilter(SENT))
-//
-//        //---when the SMS has been delivered---
-//        registerReceiver(object : BroadcastReceiver() {
-//            override fun onReceive(arg0: Context?, arg1: Intent?) {
-//                when (getResultCode()) {
-//                    RESULT_OK -> Toast.makeText(
-//                        baseContext, "SMS delivered",
-//                        Toast.LENGTH_SHORT
-//                    ).show()
-//                    RESULT_CANCELED -> Toast.makeText(
-//                        baseContext, "SMS not delivered",
-//                        Toast.LENGTH_SHORT
-//                    ).show()
-//                }
-//            }
-//        }, IntentFilter(DELIVERED))
-//        val sms = SmsManager.getDefault()
-//        sms.sendTextMessage(no, null, smsContent, sentPI, deliveredPI)
+
+    //    fun sendSMS(finish: Unit) {
+//        Toast.makeText(binding?.root?.context, "Sms checking", Toast.LENGTH_SHORT).show()
+//        try {
+//            val smsManager = getSystemService(SmsManager::class.java)
+//            smsManager.sendTextMessage("+917973072913", null, "gjghjasgh bjhajghdhg najjhjha", null, null)
+//            Toast.makeText(
+//                applicationContext, "Message Sent",
+//                Toast.LENGTH_LONG
+//            ).show()
+//        } catch (ex: Exception) {
+//            Toast.makeText(
+//                applicationContext, ex.message.toString(),
+//                Toast.LENGTH_LONG
+//            ).show()
+//            ex.printStackTrace()
+//        }
 //    }
-
     private fun sendSMS(finish: Unit) {
+//        val no = phoneCode + phoneNo
+        var msg : String = smsContent.toString()
+        Log.i("SMS", "sendSMS: $msg")
+        Log.i("SMS", "sendSMS: ")
+        Toast.makeText(binding?.root?.context, "Testing SMS", Toast.LENGTH_SHORT).show()
+        Toast.makeText(binding?.root?.context, "$msg", Toast.LENGTH_SHORT).show()
 
+        Log.i("SMS", "sendSMS: Step 2")
         val no = "+44" + phoneNo
         val uri = Uri.parse("smsto:$no")
-        try {
-            val smsManager: SmsManager = SmsManager.getDefault()
-            smsManager.sendTextMessage(no, null, smsContent, null, null)
-       } catch (ex: Exception) {
-            Toast.makeText(
-                applicationContext, ex.message.toString(),
-                Toast.LENGTH_LONG
-            ).show()
-            ex.printStackTrace()
-            Log.i("SMS", ex.toString());
-        }
-        val intent = Intent(Intent.ACTION_SENDTO, uri)
-        intent.putExtra("sms_body", smsContent)
-        startActivity(intent)
-        return finish
+        val SENT = "SMS_SENT"
+        val DELIVERED = "SMS_DELIVERED"
+        val sentPI: PendingIntent = PendingIntent.getBroadcast(
+            this, 0,
+            Intent(SENT), 0
+        )
+        val deliveredPI: PendingIntent = PendingIntent.getBroadcast(
+            this, 0,
+            Intent(DELIVERED), 0
+        )
+
+        //---when the SMS has been sent---
+        registerReceiver(object : BroadcastReceiver() {
+            override fun onReceive(arg0: Context?, arg1: Intent?) {
+                when (getResultCode()) {
+                    RESULT_OK -> Toast.makeText(
+                        baseContext, "SMS sent",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    SmsManager.RESULT_ERROR_GENERIC_FAILURE -> Toast.makeText(
+                        baseContext, "Generic failure",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    SmsManager.RESULT_ERROR_NO_SERVICE -> Toast.makeText(
+                        baseContext, "No service",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    SmsManager.RESULT_ERROR_NULL_PDU -> Toast.makeText(
+                        baseContext, "Null PDU",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    SmsManager.RESULT_ERROR_RADIO_OFF -> Toast.makeText(
+                        baseContext, "Radio off",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+        }, IntentFilter(SENT))
+
+        //---when the SMS has been delivered---
+        registerReceiver(object : BroadcastReceiver() {
+            override fun onReceive(arg0: Context?, arg1: Intent?) {
+                when (getResultCode()) {
+                    RESULT_OK -> Toast.makeText(
+                        baseContext, "SMS delivered",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    RESULT_CANCELED -> Toast.makeText(
+                        baseContext, "SMS not delivered",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+        }, IntentFilter(DELIVERED))
+        Log.i("SMS", "sendSMS: intent ")
+        val sms = SmsManager.getDefault()
+//        sms.sendTextMessage(no, null, smsContent, sentPI, deliveredPI)
+        sms.sendTextMessage("+917973072913", null, msg, sentPI, deliveredPI)
     }
+
+//    private fun sendSMS(finish: Unit) {
+//
+//        val no = "+44" + phoneNo
+//        val uri = Uri.parse("smsto:$no")
+//        try {
+//            val smsManager: SmsManager = SmsManager.getDefault()
+//            smsManager.sendTextMessage("+917973072913", null, smsContent, null, null)
+//       } catch (ex: Exception) {
+//            Toast.makeText(
+//                applicationContext, ex.message.toString(),
+//                Toast.LENGTH_LONG
+//            ).show()
+//            ex.printStackTrace()
+//            Log.i("SMS", ex.toString());
+//        }
+//        val intent = Intent(Intent.ACTION_SENDTO, uri)
+//        intent.putExtra("sms_body", smsContent)
+//        startActivity(intent)
+//        return finish
+//    }
 
 
     private fun initTopBar() {
@@ -1804,7 +1843,6 @@ class AddBooking : BaseActivity() {
             WindowManager.LayoutParams.WRAP_CONTENT
         )
         dialog.window!!.setGravity(Gravity.CENTER)
-
 
 
     }
