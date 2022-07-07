@@ -30,8 +30,6 @@ open class BaseApplication : Application(), LifecycleObserver {
         var fontInterRegular: Typeface? = null
         var fontSFPRORegular: Typeface? = null
         var fontSFPROSemibold: Typeface? = null
-
-
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_START)
@@ -58,7 +56,6 @@ open class BaseApplication : Application(), LifecycleObserver {
 //        updateOnlineStatus(0)
     }
 
-
     @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
     open fun onMoveToBackground() {
         // app moved to background
@@ -68,7 +65,6 @@ open class BaseApplication : Application(), LifecycleObserver {
     }
 
     var count = 0
-
 
     override fun onCreate() {
         super.onCreate()

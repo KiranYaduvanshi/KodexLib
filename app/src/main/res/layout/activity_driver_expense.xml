@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout>
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/rlExpensis"
+    android:id="@+id/rlExpenses"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.main.expenses.ExpensesActivity">
+    android:layout_height="match_parent">
 
     <RelativeLayout
         android:id="@+id/rlHeader"
@@ -25,9 +26,7 @@
             android:textColor="@color/white"
             android:textSize="@dimen/_16sdp" />
 
-
         <androidx.appcompat.widget.AppCompatImageView
-
             android:id="@+id/icBack"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -37,18 +36,6 @@
             android:paddingEnd="@dimen/_20sdp"
             android:src="@drawable/ic_back"
             android:visibility="visible" />
-
-        <TextView
-            android:id="@+id/addExpenseTv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:fontFamily="@font/opensans_semi_bold"
-            android:paddingEnd="@dimen/_20sdp"
-            android:text="Add Expense"
-
-            android:textColor="@color/white" />
 
     </RelativeLayout>
 
@@ -115,7 +102,6 @@
                 android:fontFamily="@font/opensans_regular"
                 android:gravity="center"
                 android:text="@string/monthly"
-
                 android:textColor="@color/cusCol"
                 android:textSize="@dimen/_13sdp" />
 
@@ -137,7 +123,6 @@
                 android:textColor="@color/cusCol"
                 android:textSize="@dimen/_13sdp" />
 
-
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
@@ -156,18 +141,19 @@
             android:weightSum="1">
 
             <TextView
+                android:id="@+id/tvPhoneTitle"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight=".5"
                 android:gravity="center_vertical"
                 android:paddingStart="@dimen/_5sdp"
-                android:text="Fuel"
+                android:text="Rides"
                 android:textColor="@color/locationCol"
                 android:textSize="@dimen/_14sdp"
                 tools:ignore="RtlSymmetry" />
 
             <TextView
-                android:id="@+id/txtFuel"
+                android:id="@+id/txtRides"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight=".5"
@@ -195,13 +181,13 @@
                 android:layout_weight=".5"
                 android:gravity="center_vertical"
                 android:paddingStart="@dimen/_5sdp"
-                android:text="Labour"
+                android:text="Earnings"
                 android:textColor="@color/locationCol"
                 android:textSize="@dimen/_14sdp"
                 tools:ignore="RtlSymmetry" />
 
             <TextView
-                android:id="@+id/txtLabour"
+                android:id="@+id/txtEarning"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight=".5"
@@ -219,59 +205,22 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/_30sdp"
             android:layout_marginHorizontal="@dimen/_25sdp"
-            android:layout_marginTop="@dimen/_5sdp"
             android:orientation="horizontal"
             android:weightSum="1">
 
             <TextView
-
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight=".7"
-                android:gravity="center_vertical"
-                android:paddingStart="@dimen/_5sdp"
-                android:text="Vehicle Maintenance"
-                android:textColor="@color/locationCol"
-                android:textSize="@dimen/_14sdp"
-                tools:ignore="RtlSymmetry" />
-
-            <TextView
-                android:id="@+id/txtVehicleMaintainance"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight=".3"
-                android:ellipsize="marquee"
-                android:fontFamily="@font/opensans_semi_bold"
-                android:gravity="end|center"
-                android:singleLine="true"
-                android:text="@string/_300"
-                android:textColor="@color/textColor"
-                android:textSize="@dimen/_14sdp" />
-
-        </androidx.appcompat.widget.LinearLayoutCompat>
-
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_30sdp"
-            android:layout_marginHorizontal="@dimen/_25sdp"
-            android:layout_marginTop="@dimen/_5sdp"
-            android:orientation="horizontal"
-            android:weightSum="1">
-
-            <TextView
-
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight=".5"
                 android:gravity="center_vertical"
                 android:paddingStart="@dimen/_5sdp"
-                android:text="Advertising"
+                android:text="Hours"
                 android:textColor="@color/locationCol"
                 android:textSize="@dimen/_14sdp"
                 tools:ignore="RtlSymmetry" />
 
             <TextView
-                android:id="@+id/txtAdvertising"
+                android:id="@+id/txtHours"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight=".5"
@@ -289,24 +238,23 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/_30sdp"
             android:layout_marginHorizontal="@dimen/_25sdp"
-            android:layout_marginTop="@dimen/_5sdp"
             android:orientation="horizontal"
+            android:visibility="gone"
             android:weightSum="1">
 
             <TextView
-
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight=".5"
                 android:gravity="center_vertical"
                 android:paddingStart="@dimen/_5sdp"
-                android:text="Equipment"
+                android:text="Profit"
                 android:textColor="@color/locationCol"
                 android:textSize="@dimen/_14sdp"
                 tools:ignore="RtlSymmetry" />
 
             <TextView
-                android:id="@+id/txtEquipment"
+                android:id="@+id/txtProfit"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight=".5"
@@ -321,10 +269,10 @@
         </androidx.appcompat.widget.LinearLayoutCompat>
 
         <androidx.appcompat.widget.LinearLayoutCompat
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_30sdp"
             android:layout_marginHorizontal="@dimen/_25sdp"
-            android:layout_marginTop="@dimen/_5sdp"
             android:orientation="horizontal"
             android:weightSum="1">
 
@@ -334,13 +282,13 @@
                 android:layout_weight=".5"
                 android:gravity="center_vertical"
                 android:paddingStart="@dimen/_5sdp"
-                android:text="Other"
+                android:text="Loss"
                 android:textColor="@color/locationCol"
                 android:textSize="@dimen/_14sdp"
                 tools:ignore="RtlSymmetry" />
 
             <TextView
-                android:id="@+id/txtOther"
+                android:id="@+id/txtLoss"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight=".5"
@@ -357,3 +305,4 @@
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 </RelativeLayout>
+</layout>

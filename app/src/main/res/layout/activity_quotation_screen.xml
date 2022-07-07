@@ -150,18 +150,16 @@
         </RelativeLayout>
 
 
-        <androidx.appcompat.widget.AppCompatAutoCompleteTextView
-            android:id="@+id/minimumBooking"
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/minimumBookingTv"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_45sdp"
-            android:layout_below="@+id/etBookedBy"
             android:background="@drawable/button_bg"
             android:backgroundTint="@color/bgEdit"
-            android:digits="qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM"
             android:fontFamily="@font/opensans_regular"
             android:gravity="center_vertical"
             android:hint="Minimum Booking"
-            android:inputType="text"
+            android:inputType="number"
             android:paddingStart="@dimen/_16sdp"
             android:paddingEnd="@dimen/_16sdp"
             android:singleLine="true"
@@ -170,6 +168,27 @@
             android:textColorHint="@color/addProductHint"
             android:textCursorDrawable="@drawable/color_cursor"
             android:textSize="@dimen/_13sdp" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/etMenCount"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_45sdp"
+            android:layout_below="@+id/etBookedBy"
+            android:background="@drawable/button_bg"
+            android:backgroundTint="@color/bgEdit"
+            android:fontFamily="@font/opensans_regular"
+            android:gravity="center_vertical"
+            android:hint="Men Count"
+            android:inputType="number"
+            android:paddingStart="@dimen/_16sdp"
+            android:paddingEnd="@dimen/_16sdp"
+            android:singleLine="true"
+            android:layout_margin="@dimen/_10sdp"
+            android:textColor="@color/textColor"
+            android:textColorHint="@color/addProductHint"
+            android:textCursorDrawable="@drawable/color_cursor"
+            android:textSize="@dimen/_13sdp" />
+
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnSentQuotation"

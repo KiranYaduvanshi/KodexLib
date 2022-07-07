@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+<LinearLayout
+    android:id="@+id/expenseLL"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.main.expenses.AddExpensesActivity">
+  <androidx.core.widget.NestedScrollView
+      android:layout_width="match_parent"
+      android:layout_height="match_parent">
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:id="@+id/workerTopBar"
+        android:background="@color/blue"
+        android:layout_height="@dimen/_60sdp">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/opensans_regular"
+            android:gravity="center"
+            android:text="Expenses"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_16sdp" />
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+
+            android:id="@+id/ivBack"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:maxWidth="@dimen/_55sdp"
+            android:maxHeight="@dimen/_51sdp"
+            android:paddingStart="@dimen/_20sdp"
+            android:paddingEnd="@dimen/_20sdp"
+            android:src="@drawable/ic_back"
+            android:visibility="visible" />
+    </RelativeLayout>
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvFuel"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_45sdp"
+        android:background="@drawable/button_bg"
+        android:backgroundTint="@color/bgEdit"
+        android:fontFamily="@font/opensans_regular"
+        android:gravity="center_vertical"
+        android:hint="Fuel"
+        android:inputType="number"
+        android:paddingStart="@dimen/_16sdp"
+        android:paddingEnd="@dimen/_16sdp"
+        android:singleLine="true"
+        android:layout_margin="@dimen/_10sdp"
+        android:textColor="@color/textColor"
+        android:textColorHint="@color/addProductHint"
+        android:textCursorDrawable="@drawable/color_cursor"
+        android:textSize="@dimen/_13sdp" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvMaintainanence"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_45sdp"
+        android:background="@drawable/button_bg"
+        android:backgroundTint="@color/bgEdit"
+        android:fontFamily="@font/opensans_regular"
+        android:gravity="center_vertical"
+        android:hint="Vehicle Maintenance"
+        android:inputType="number"
+        android:paddingStart="@dimen/_16sdp"
+        android:paddingEnd="@dimen/_16sdp"
+        android:singleLine="true"
+        android:layout_margin="@dimen/_10sdp"
+        android:textColor="@color/textColor"
+        android:textColorHint="@color/addProductHint"
+        android:textCursorDrawable="@drawable/color_cursor"
+        android:textSize="@dimen/_13sdp" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvAdvertising"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_45sdp"
+        android:background="@drawable/button_bg"
+        android:backgroundTint="@color/bgEdit"
+        android:fontFamily="@font/opensans_regular"
+        android:gravity="center_vertical"
+        android:hint="Advertising"
+        android:inputType="number"
+        android:paddingStart="@dimen/_16sdp"
+        android:paddingEnd="@dimen/_16sdp"
+        android:singleLine="true"
+        android:layout_margin="@dimen/_10sdp"
+        android:textColor="@color/textColor"
+        android:textColorHint="@color/addProductHint"
+        android:textCursorDrawable="@drawable/color_cursor"
+        android:textSize="@dimen/_13sdp" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvEquipment"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_45sdp"
+        android:background="@drawable/button_bg"
+        android:backgroundTint="@color/bgEdit"
+        android:fontFamily="@font/opensans_regular"
+        android:gravity="center_vertical"
+        android:hint="Equipment"
+        android:inputType="number"
+        android:paddingStart="@dimen/_16sdp"
+        android:paddingEnd="@dimen/_16sdp"
+        android:singleLine="true"
+        android:layout_margin="@dimen/_10sdp"
+        android:textColor="@color/textColor"
+        android:textColorHint="@color/addProductHint"
+        android:textCursorDrawable="@drawable/color_cursor"
+        android:textSize="@dimen/_13sdp" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvOther"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_45sdp"
+        android:background="@drawable/button_bg"
+        android:backgroundTint="@color/bgEdit"
+        android:fontFamily="@font/opensans_regular"
+        android:gravity="center_vertical"
+        android:hint="Other"
+        android:inputType="number"
+        android:paddingStart="@dimen/_16sdp"
+        android:paddingEnd="@dimen/_16sdp"
+        android:singleLine="true"
+        android:layout_margin="@dimen/_10sdp"
+        android:textColor="@color/textColor"
+        android:textColorHint="@color/addProductHint"
+        android:textCursorDrawable="@drawable/color_cursor"
+        android:textSize="@dimen/_13sdp" />
+
+<!--    <androidx.appcompat.widget.AppCompatTextView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="@dimen/_45sdp"-->
+<!--        android:background="@drawable/button_bg"-->
+<!--        android:backgroundTint="@color/bgEdit"-->
+<!--        android:fontFamily="@font/opensans_regular"-->
+<!--        android:gravity="center_vertical"-->
+<!--        android:hint="Customer Name"-->
+<!--        android:inputType="text"-->
+<!--        android:paddingStart="@dimen/_16sdp"-->
+<!--        android:paddingEnd="@dimen/_16sdp"-->
+<!--        android:singleLine="true"-->
+<!--        android:layout_margin="@dimen/_10sdp"-->
+<!--        android:textColor="@color/textColor"-->
+<!--        android:textColorHint="@color/addProductHint"-->
+<!--        android:textCursorDrawable="@drawable/color_cursor"-->
+<!--        android:textSize="@dimen/_13sdp" />-->
+
+          <androidx.appcompat.widget.AppCompatButton
+              android:id="@+id/btnSentQuotation"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_alignParentBottom="true"
+              android:layout_marginStart="@dimen/_70sdp"
+              android:layout_marginTop="@dimen/_10sdp"
+              android:layout_marginEnd="@dimen/_70sdp"
+              android:layout_marginBottom="@dimen/_10sdp"
+              android:background="@drawable/bg_btn"
+              android:gravity="center"
+              android:text="Submit"
+              android:textAllCaps="false"
+              android:textColor="@color/white"
+              android:textSize="@dimen/_12sdp" />
+
+      </LinearLayout>
+  </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>
+</layout>

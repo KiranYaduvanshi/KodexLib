@@ -113,12 +113,6 @@ class SearchCustomerActivity : BaseActivity() {
 
 
     private fun searchData() {
-
-
-        
-        
-
-
 //        binding?.searchEt?.setOnEditorActionListener(object : TextView.OnEditorActionListener {
 //            override fun onEditorAction(v: TextView?, actionId: Int, event: KeyEvent?): Boolean {
 //                if (actionId == EditorInfo.IME_ACTION_SEARCH) {
