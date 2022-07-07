@@ -22,6 +22,7 @@ import com.kodextech.project.kodexlib.ui.main.communication.CommunicationActivit
 import com.kodextech.project.kodexlib.ui.main.customer.CustomerListing
 import com.kodextech.project.kodexlib.ui.main.dashboard.adapter.DashboardItemAdapter
 import com.kodextech.project.kodexlib.ui.main.dashboard.adapter.DashboardItemModel
+import com.kodextech.project.kodexlib.ui.main.expenses.DriverExpenseActivity
 import com.kodextech.project.kodexlib.ui.main.expenses.ExpensesActivity
 import com.kodextech.project.kodexlib.ui.main.invoice.InvoiceListing
 import com.kodextech.project.kodexlib.ui.main.jobs.JobsListing
@@ -115,20 +116,16 @@ class DriverDashboardActivity : BaseActivity() {
     }
 
     private fun initTopBar() {
+
         binding?.dashboardTopBar?.ivBack?.gone()
         binding?.dashboardTopBar?.tvText?.text = "Dashboard"
-
-
     }
 
     private fun setUpDashboardRecyler() {
 
         mCardData.add(DashboardItemModel("View Jobs", R.drawable.ic_job_inprogress))
-        mCardData.add(DashboardItemModel("Expenses", R.drawable.ic_expenses))
         mCardData.add(DashboardItemModel("Communication", R.drawable.ic_mails))
-        mCardData.add(DashboardItemModel("Statics", R.drawable.ic_statics))
-
-
+        mCardData.add(DashboardItemModel("Expense", R.drawable.ic_expenses))
 
         binding?.rvDashboard?.layoutManager = GridLayoutManager(this, 2)
         binding?.rvDashboard?.adapter = DashboardItemAdapter(this, mCardData) { position: Int ->
@@ -145,12 +142,10 @@ class DriverDashboardActivity : BaseActivity() {
                     startActivity(intent)
                 }
                 2 -> {
-                    val intent = Intent(this, CommunicationActivity::class.java)
+                    val intent = Intent(this, DriverExpenseActivity::class.java)
                     startActivity(intent)
-                }
-                3 -> {
-                    val intent = Intent(this, StaticActivity::class.java)
-                    startActivity(intent)
+
+
                 }
 
             }

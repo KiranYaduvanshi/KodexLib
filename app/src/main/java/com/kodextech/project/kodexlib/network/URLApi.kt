@@ -748,6 +748,19 @@ object URLApi {
         return this
     }
 
+    fun sendQuotation(name: String, hourly_rate: String,minimum_hours:String,email:String,men_count:String): URLApi {
+        method = NetworkMethod.POST
+        path = "auth/send-quotation"
+        params = JSONObject()
+        params.put("name", name)
+        params.put("hourly_rate", hourly_rate)
+        params.put("minimum_hours", minimum_hours)
+        params.put("email", email)
+        params.put("men_count", men_count)
+        return this
+    }
+
+
 
     object Randomized {
         fun generate(min: Int, max: Int): Int {

@@ -1,5 +1,6 @@
 package com.kodextech.project.kodexlib.ui.main.expenses
 
+import android.content.Intent
 import android.util.Log
 import com.google.gson.Gson
 import com.kodextech.glitterupsapp.utils.loader.ProgressDialogue
@@ -26,6 +27,12 @@ class ExpensesActivity : BaseActivity() {
         setContentView(binding!!.root)
         onclickListeners()
         getExpenses("1")
+
+         binding?.addExpenseTv?.setOnClickListener {
+             var intent =Intent(this,AddExpensesActivity::class.java)
+             startActivity(intent)
+
+         }
     }
 
     override fun onRecycleBeforeDestroy() {
