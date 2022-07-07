@@ -69,7 +69,7 @@ class AddWorkerDialog : BaseDialogueFragment() {
         binding?.etWorkerEmail?.hint = setMandatoryHintData("Work Email")
         binding?.etWorkerPassword?.hint = setMandatoryHintData("Password")
         binding?.etHourlyRate?.hint = setMandatoryHintData("Hourly Rate")
-        binding?.spWorkerType?.setItems("Admin", "Office", "Driver")
+        binding?.spWorkerType?.setItems("Admin", "Office", "Driver","Porter")
         binding?.spWorkerType?.text = setMandatoryHintData("Worker Type")
 
         workerName = binding?.etWrkerName?.text.toString()

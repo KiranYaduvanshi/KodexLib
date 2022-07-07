@@ -188,7 +188,7 @@ class StartJobActivity : BaseActivity(), selectAddress {
             object : Response {
                 override fun onSuccessResponse(response: String?, message: String) {
                     hideLoading()
-                    warningDialog()
+//                    warningDialog()
 
                     val intent = Intent(this@StartJobActivity, JobsListing::class.java)
                     startActivity(intent)
