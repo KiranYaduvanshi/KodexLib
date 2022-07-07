@@ -16,7 +16,6 @@ import android.view.WindowManager
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.widget.AppCompatImageView
-import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
@@ -45,8 +44,6 @@ import com.williamww.silkysignature.views.SignaturePad
 import org.json.JSONArray
 import org.json.JSONObject
 import java.io.IOException
-import java.util.*
-import kotlin.collections.ArrayList
 
 
 class TermsServices : BaseActivity(), selectAddress {
@@ -675,13 +672,23 @@ class TermsServices : BaseActivity(), selectAddress {
             context = binding?.root?.context,
             strAddress = address
         )
-        var geoUri: String =
-            "http://maps.google.com/maps?q=loc:" + latLng?.latitude + "," + latLng?.longitude + " (" + address + ")"
-        var mapIntent = Intent(Intent.ACTION_VIEW, Uri.parse(geoUri));
-        if (mapIntent.resolveActivity(binding?.root?.context!!.packageManager) != null) {
-            startActivity(mapIntent);
+//        var geoUri: String =
+//            "http://maps.google.com/maps?q=loc:" + latLng?.latitude + "," + latLng?.longitude + " (" + address + ")"
+//        var mapIntent = Intent(Intent.ACTION_VIEW, Uri.parse(geoUri));
+//        if (mapIntent.resolveActivity(binding?.root?.context!!.packageManager) != null) {
+//            startActivity(mapIntent);
+//        }
+        packageManager?.let {
+            val url = "http://maps.google.com/maps?q=loc:" + latLng?.latitude + "," + latLng?.longitude + " (" + address + ")"
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+            intent.resolveActivity(it)?.let {
+                startActivity(intent)
+            } ?: run {
+                val intent =
+                    Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=com.google.android.apps.maps"))
+                startActivity(intent)
+            }
         }
-
 
     }
 
@@ -696,7 +703,9 @@ class TermsServices : BaseActivity(), selectAddress {
                 intent.resolveActivity(it)?.let {
                     startActivity(intent)
                 } ?: run {
-                    Toast.makeText(binding?.root?.context, "App not found", Toast.LENGTH_SHORT).show()
+                    val intent =
+                        Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=com.waze"))
+                    startActivity(intent)
                 }
             }
 
