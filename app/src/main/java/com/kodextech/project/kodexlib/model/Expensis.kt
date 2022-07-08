@@ -7,7 +7,8 @@ import java.io.Serializable
 data class Expensis(
     var Fuel: Int? = null,
     var Labour: Int? = null,
-    var VehicleMaintainence: Int? = null,
+    var Advertising : Int? = null,
+    var Vehiclemaintenance : Int? = null,
     var Equipment: Int? = null,
     var Other: Int? = null
 

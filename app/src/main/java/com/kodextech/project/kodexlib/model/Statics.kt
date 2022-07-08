@@ -4,11 +4,10 @@ import java.io.Serializable
 
 
 data class Statics(
-
-    var Hours: Int? = null,
-    var Rides: Int? = null,
-    var Earnings: Int? = null,
-    var Profit: Int? = null,
-    var Loss: Int? = null
+     var rides    : Int? = null,
+     var earnings : Int? = null,
+     var hours    : Int? = null,
+     var profit   : Int? = null,
+     var loss     : Int? = null
 
 ) : Serializable

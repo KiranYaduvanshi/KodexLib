@@ -1,15 +1,12 @@
 package com.kodextech.project.kodexlib.ui.main.quatation
 
 import CustomerSearchModel
+import android.content.Intent
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
-import android.view.KeyEvent
-import android.view.inputmethod.EditorInfo
 import android.widget.EditText
-import android.widget.TextView
 import android.widget.Toast
-import androidx.core.widget.doOnTextChanged
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.coroutineScope
 import com.kodextech.project.kodexlib.R
@@ -23,20 +20,15 @@ import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.*
 import org.json.JSONArray
 import java.util.*
-import kotlin.collections.ArrayList
 import kotlin.concurrent.timerTask
 
 
-class SearchCustomerActivity : BaseActivity() {
+class SearchCustomerActivity : BaseActivity(), SearchCustomerAdapter.SelectName {
 
 
     private var binding: ActivitySearchCustomerBinding? = null
     private var customerAdapter: SearchCustomerAdapter? = null
     private var mData = ArrayList<CustomerSearchModel>()
-
-
-
-
 
     override fun onSetupViewGroup() {
         mViewGroup =binding?.customerNameLL
@@ -63,7 +55,7 @@ class SearchCustomerActivity : BaseActivity() {
     }
 
     private fun setCustomerAdapter(){
-        customerAdapter = SearchCustomerAdapter(this,mData)
+        customerAdapter = SearchCustomerAdapter(this,mData,this)
         binding?.customerNameListRv?.adapter = customerAdapter
     }
 
@@ -172,6 +164,15 @@ class SearchCustomerActivity : BaseActivity() {
 
     }
 
+    override fun onClickName(name: String, email: String) {
+
+        val intent = Intent()
+        intent.putExtra("name", name)
+        intent.putExtra("email", email)
+        setResult(RESULT_OK, intent)
+        finish()
+
+    }
 
 
 }

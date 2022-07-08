@@ -4,7 +4,7 @@
     <LinearLayout
         android:id="@+id/customerNameLL"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <TextView
@@ -14,12 +14,12 @@
             android:textSize="@dimen/_16sdp"
             android:padding="@dimen/_8sdp"
             android:layout_margin="@dimen/_8sdp"
+            android:textColor="@color/black"
             android:text="customer Name"/>
         <View
             android:layout_width="match_parent"
-            android:layout_height="3dp"
-            android:layout_marginLeft="@dimen/_8sdp"
-            android:layout_marginEnd="@dimen/_8sdp"
+            android:layout_height="2dp"
+            android:background="@color/lightGrey"
             />
 
 
