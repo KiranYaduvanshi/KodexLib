@@ -154,11 +154,7 @@ class AddWorkerDialog : BaseDialogueFragment() {
                         workerHourlyRate.toString()
                     )
                 }
-
-
             }
-
-
         }
 
         binding?.ivCross?.setOnClickListener {
@@ -218,8 +214,6 @@ class AddWorkerDialog : BaseDialogueFragment() {
                 val json2 = json.optJSONObject("user")
                 val data = Gson().fromJson(json2.toString() ?: "", User::class.java)
                 setWorkerData(data)
-
-
             }
 
             override fun onErrorResponse(error: String?, response: String?) {
