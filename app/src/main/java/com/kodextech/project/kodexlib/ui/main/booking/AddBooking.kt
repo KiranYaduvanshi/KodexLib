@@ -120,6 +120,7 @@ class AddBooking : BaseActivity() {
     private var locationDropID: String? = null
     private var pickupAddress: String? = null
     private var price: String? = null
+    private var labour: String? = null
     private var model: JSONArray? = null
     private var otherComments: String? = null
     private var profileType: String? = null
@@ -167,12 +168,13 @@ class AddBooking : BaseActivity() {
     private var wmbVanCount: Int? = 0
     private var lutonVanCount: Int? = 0
 
-    private var smsContent: String? = null
+    private var smsContent: String = "NOT DATA ENTERED"
     private var uploaded_files: String? = null
     private var dropAddressString: String? = null
     private var pickupAddressString: String? = null
     private var jsonVan: String? = null
     private var jobIdForEdit: String? = ""
+    private var sentReceiver: BroadcastReceiver? = null
 
 
     companion object {
@@ -216,8 +218,8 @@ class AddBooking : BaseActivity() {
         }
 
         binding?.btnCancel?.setOnClickListener {
-            sendSMS(finish())
-            //finish()
+
+            finish()
         }
 
 //        binding?.btnLiftNo?.setOnClickListener {
@@ -1033,6 +1035,8 @@ class AddBooking : BaseActivity() {
             showBarToast("Please Select Priority")
         } else if (price.isNullOrEmpty()) {
             binding?.etPrice?.error = "Required"
+        } else if (binding?.etLabour?.text.isNullOrEmpty()) {
+            binding?.etLabour?.error = "Required"
         } else if (pickupAddressString.isNullOrEmpty()) {
             showBarToast("Please Add Pickup Address")
         } else if (dropAddressString.isNullOrEmpty()) {
@@ -1180,7 +1184,8 @@ class AddBooking : BaseActivity() {
                 vans_data = jsonVan,
                 packing_fee = packingFee,
                 is_packing_service = is_packing_service,
-                is_any_dismantling = is_any_dismantling
+                is_any_dismantling = is_any_dismantling,
+                labour_cost = binding?.etLabour?.text.toString()
                 //                pickup_places_id = locationId,
 //                pickup_address_title = locationName,
 //                pickup_address1 = pickupAddress,
@@ -1209,6 +1214,8 @@ class AddBooking : BaseActivity() {
 
                     if (jobIdForEdit?.isNullOrEmpty() == false) {
                         showBarToast("Booking Updated Successfully")
+
+                        setDataForSMS(obj)
                         val intent = Intent(this@AddBooking, JobsListing::class.java)
                         startActivity(intent)
                         finish()
@@ -1216,10 +1223,12 @@ class AddBooking : BaseActivity() {
                         showBarToast("Booking Created Successfully")
 
                         setDataForSMS(obj)
-//                        sendSms(bookingId,smsContent , finish())
-                        sendSMS(finish())
+
+                        sendSms(bookingId, smsContent)
+//                        setDataForSMS()
+//                        sendSMS("nsjkjkll askjkdasjk dnkkkja djkja dkjajk")
 //                        finish
-                        //sendEmail(finish(), obj?.uuid)
+                        sendEmail(finish(), obj?.uuid)
 //                        val dialog = SendConfirmationDialog.newInstance {
 //                            when (it) {
 //                                ConfirmationOption.SMS -> {
@@ -1273,35 +1282,6 @@ class AddBooking : BaseActivity() {
         })
     }
 
-    private fun sendSms(id: Int?, msg: String?, finish: Unit) {
-        showLoading()
-        NetworkClass.callApi(URLApi.saveSMS(
-            booking_id = id,
-            sms_text = msg
-        ), object : Response {
-            override fun onSuccessResponse(response: String?, message: String) {
-                hideLoading()
-                showBarToast(message)
-                val json = JSONObject(response ?: "")
-                val obj = Gson().fromJson(json.toString(), Sms::class.java)
-//                 Toast.makeText(binding?.root?.context, "response"+response, Toast.LENGTH_SHORT).show()
-                Log.i("Res", "reposne " + response)
-//                resendEmailDialog()
-                sendSMS(finish())
-                finish
-            }
-
-            override fun onErrorResponse(error: String?, response: String?) {
-                hideLoading()
-                //  Toast.makeText(binding?.root?.context, "error"+response, Toast.LENGTH_SHORT).show()
-
-                showBarToast(error ?: "")
-                Log.i("Res", "error " + response)
-
-            }
-
-        })
-    }
 
     private fun setDataForSMS(obj: JobModel?) {
         val fullName = obj?.first_name + " " + obj?.last_name
@@ -1391,114 +1371,155 @@ class AddBooking : BaseActivity() {
         } else {
             "£ $amountRounded/hr " + obj?.min_hours_count + " hours minimum booking. Cash will be collected before offloading."
         }
+        var bookingNo = obj?.id
+//        Toast.makeText(binding?.root?.context, "$bookingNo  $fullName  $startTime  $time  $dropAddress $vanDetail   $info  $detail   $termsText", Toast.LENGTH_SHORT).show()
+        Log.i(
+            "MSG",
+            "$bookingNo  aa $fullName bb $startTime cc $time dd $dropAddress ee $vanDetail  ff $info gg $detail hh  $termsText"
+        )
 
 
-        val bookingNo = obj?.id
-//        smsContent = "Hello $fullName, \n \n" +
-//                "Booking #$bookingNo \n\n" +
-//                "Your removals is scheduled on the $startTime at $time \n\n" +
-//                "From: $address \n\n" +
-//                "To: $dropAddress \n\n" +
-//                "Detail: $vanDetail & $info \n\n" +
-//                "Notes: $detail \n\n" +
-//                "Terms: $termsText \n\n" +
-//                "Cheers!"
-        smsContent = "Booking #$bookingNo \n \n" +
-                "Hello $fullName at $time \n\n" +
-                "Your removals is scheduled on the $startTime at $time \n\n" +
-                "Detail: $vanDetail & $info \n\n" +
-                "Terms: $termsText \n\n" +
-                "Cheers!"
 
+
+        try {
+            smsContent = "Booking #$bookingNo\n" +
+                    "Hello $fullName at $time\n" +
+                    "Your removals is scheduled on the $startTime at $time\n" +
+                    "Detail: $vanDetail & $info\n" +
+                    "Terms: $termsText \n" +
+                    "Cheers!"
+
+//            smsContent = "Hello $fullName, \n \n" +
+//                    "Booking #$bookingNo \n\n" +
+//                    "Your removals is scheduled on the $startTime at $time \n\n" +
+//                    "From: $address \n\n" +
+//                    "To: $dropAddress \n\n" +
+//                    "Detail: $vanDetail & $info \n\n" +
+//                    "Notes: $detail \n\n" +
+//                    "Terms: $termsText \n\n" +
+//                    "Cheers!"
+
+            Log.i("MSG", "Message Length    ${smsContent.length}")
+        } catch (e: Exception) {
+            Toast.makeText(binding?.root?.context, "Error $e", Toast.LENGTH_SHORT)
+                .show()
+        }
     }
 
 
-    //    fun sendSMS(finish: Unit) {
-//        Toast.makeText(binding?.root?.context, "Sms checking", Toast.LENGTH_SHORT).show()
-//        try {
-//            val smsManager = getSystemService(SmsManager::class.java)
-//            smsManager.sendTextMessage("+917973072913", null, "gjghjasgh bjhajghdhg najjhjha", null, null)
-//            Toast.makeText(
-//                applicationContext, "Message Sent",
-//                Toast.LENGTH_LONG
-//            ).show()
-//        } catch (ex: Exception) {
-//            Toast.makeText(
-//                applicationContext, ex.message.toString(),
-//                Toast.LENGTH_LONG
-//            ).show()
-//            ex.printStackTrace()
-//        }
-//    }
-    private fun sendSMS(finish: Unit) {
+    fun sendSMS(smsContent: String) {
 //        val no = phoneCode + phoneNo
-        var msg : String = smsContent.toString()
-        Log.i("SMS", "sendSMS: $msg")
-        Log.i("SMS", "sendSMS: ")
-        Toast.makeText(binding?.root?.context, "Testing SMS", Toast.LENGTH_SHORT).show()
-        Toast.makeText(binding?.root?.context, "$msg", Toast.LENGTH_SHORT).show()
+        val sms = SmsManager.getDefault()
 
+        Log.i("SMS", "sendSMS: " + smsContent)
+        Toast.makeText(binding?.root?.context, "Testing SMS", Toast.LENGTH_SHORT).show()
+
+        val parts: ArrayList<String> = sms.divideMessage(smsContent)
+        var msgParts = parts.size
+
+        val mSendIntent = Intent("CTS_SMS_SEND_ACTION")
         Log.i("SMS", "sendSMS: Step 2")
         val no = "+44" + phoneNo
         val uri = Uri.parse("smsto:$no")
         val SENT = "SMS_SENT"
         val DELIVERED = "SMS_DELIVERED"
-        val sentPI: PendingIntent = PendingIntent.getBroadcast(
-            this, 0,
-            Intent(SENT), 0
-        )
-        val deliveredPI: PendingIntent = PendingIntent.getBroadcast(
-            this, 0,
-            Intent(DELIVERED), 0
-        )
+//        val sentPI: PendingIntent = PendingIntent.getBroadcast(
+//            this, 0,
+//            Intent(SENT), 0
+//        )
+//        val deliveredPI: PendingIntent = PendingIntent.getBroadcast(
+//            this, 0,
+//            Intent(DELIVERED), 0
+//        )
+//
+//        //---when the SMS has been sent---
+//        registerReceiver(object : BroadcastReceiver() {
+//            override fun onReceive(arg0: Context?, arg1: Intent?) {
+//                when (getResultCode()) {
+//                    RESULT_OK -> Toast.makeText(
+//                        baseContext, "SMS sent",
+//                        Toast.LENGTH_SHORT
+//                    ).show()
+//                    SmsManager.RESULT_ERROR_GENERIC_FAILURE -> Toast.makeText(
+//                        baseContext, "Generic failure",
+//                        Toast.LENGTH_SHORT
+//                    ).show()
+//                    SmsManager.RESULT_ERROR_NO_SERVICE -> Toast.makeText(
+//                        baseContext, "No service",
+//                        Toast.LENGTH_SHORT
+//                    ).show()
+//                    SmsManager.RESULT_ERROR_NULL_PDU -> Toast.makeText(
+//                        baseContext, "Null PDU",
+//                        Toast.LENGTH_SHORT
+//                    ).show()
+//                    SmsManager.RESULT_ERROR_RADIO_OFF -> Toast.makeText(
+//                        baseContext, "Radio off",
+//                        Toast.LENGTH_SHORT
+//                    ).show()
+//                }
+//            }
+//        }, IntentFilter(SENT))
+//
+//        //---when the SMS has been delivered---
+//        registerReceiver(object : BroadcastReceiver() {
+//            override fun onReceive(arg0: Context?, arg1: Intent?) {
+//                when (getResultCode()) {
+//                    RESULT_OK -> Toast.makeText(
+//                        baseContext, "SMS delivered",
+//                        Toast.LENGTH_SHORT
+//                    ).show()
+//                    RESULT_CANCELED -> Toast.makeText(
+//                        baseContext, "SMS not delivered",
+//                        Toast.LENGTH_SHORT
+//                    ).show()
+//                }
+//            }
+//        }, IntentFilter(DELIVERED))
 
-        //---when the SMS has been sent---
-        registerReceiver(object : BroadcastReceiver() {
-            override fun onReceive(arg0: Context?, arg1: Intent?) {
-                when (getResultCode()) {
-                    RESULT_OK -> Toast.makeText(
-                        baseContext, "SMS sent",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                    SmsManager.RESULT_ERROR_GENERIC_FAILURE -> Toast.makeText(
-                        baseContext, "Generic failure",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                    SmsManager.RESULT_ERROR_NO_SERVICE -> Toast.makeText(
-                        baseContext, "No service",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                    SmsManager.RESULT_ERROR_NULL_PDU -> Toast.makeText(
-                        baseContext, "Null PDU",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                    SmsManager.RESULT_ERROR_RADIO_OFF -> Toast.makeText(
-                        baseContext, "Radio off",
-                        Toast.LENGTH_SHORT
-                    ).show()
+        sentReceiver = object : BroadcastReceiver() {
+            override fun onReceive(context: Context, intent: Intent?) {
+                var anyError = false
+                when (resultCode) {
+                    RESULT_OK -> {}
+                    SmsManager.RESULT_ERROR_GENERIC_FAILURE, SmsManager.RESULT_ERROR_NO_SERVICE, SmsManager.RESULT_ERROR_NULL_PDU, SmsManager.RESULT_ERROR_RADIO_OFF -> anyError =
+                        true
+                }
+                msgParts--
+                if (msgParts === 0) {
+                    binding?.root?.context?.unregisterReceiver(sentReceiver)
+                    Log.d("smsresiver", "send ok")
+                    if (anyError) {
+                        Toast.makeText(
+                            context, "sending sms fail",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
                 }
             }
-        }, IntentFilter(SENT))
+        }
+        registerReceiver(
+            sentReceiver, IntentFilter(
+                "CTS_SMS_SEND_ACTION"
+            )
+        )
+        val sentIntents = ArrayList<PendingIntent>()
 
-        //---when the SMS has been delivered---
-        registerReceiver(object : BroadcastReceiver() {
-            override fun onReceive(arg0: Context?, arg1: Intent?) {
-                when (getResultCode()) {
-                    RESULT_OK -> Toast.makeText(
-                        baseContext, "SMS delivered",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                    RESULT_CANCELED -> Toast.makeText(
-                        baseContext, "SMS not delivered",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
-            }
-        }, IntentFilter(DELIVERED))
+        for (i in parts.indices) {
+            sentIntents.add(
+                PendingIntent.getBroadcast(
+                    this@AddBooking, 0, mSendIntent,
+                    0
+                )
+            )
+        }
+
+
         Log.i("SMS", "sendSMS: intent ")
-        val sms = SmsManager.getDefault()
+
 //        sms.sendTextMessage(no, null, smsContent, sentPI, deliveredPI)
-        sms.sendTextMessage("+917973072913", null, msg, sentPI, deliveredPI)
+//        sms.sendTextMessage("+917973072913", null, smsContent, sentPI, deliveredPI)
+
+        sms.sendMultipartTextMessage(no, null, parts, sentIntents, null)
     }
 
 //    private fun sendSMS(finish: Unit) {
@@ -1522,6 +1543,36 @@ class AddBooking : BaseActivity() {
 //        return finish
 //    }
 
+//}
+
+    private fun sendSms(id: Int?, msg: String?) {
+        showLoading()
+        NetworkClass.callApi(URLApi.saveSMS(
+            booking_id = id,
+            sms_text = msg
+        ), object : Response {
+            override fun onSuccessResponse(response: String?, message: String) {
+                hideLoading()
+                showBarToast(message)
+                val json = JSONObject(response ?: "")
+                val obj = Gson().fromJson(json.toString(), Sms::class.java)
+//                 Toast.makeText(binding?.root?.context, "response"+response, Toast.LENGTH_SHORT).show()
+                Log.i("Res", "reposne " + response)
+//                resendEmailDialog()
+                sendSMS(smsContent)
+            }
+
+            override fun onErrorResponse(error: String?, response: String?) {
+                hideLoading()
+                //  Toast.makeText(binding?.root?.context, "error"+response, Toast.LENGTH_SHORT).show()
+
+                showBarToast(error ?: "")
+                Log.i("Res", "error " + response)
+
+            }
+
+        })
+    }
 
     private fun initTopBar() {
 
