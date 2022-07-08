@@ -273,6 +273,7 @@ object URLApi {
         packing_fee: String? = null,
         is_packing_service: String? = null,
         is_any_dismantling: String? = null,
+        labour_cost: String? = null
 
         ):
             URLApi {
@@ -346,6 +347,7 @@ object URLApi {
         params.put("packing_fee", packing_fee)
         params.put("is_packing_service", is_packing_service)
         params.put("is_any_dismantling", is_any_dismantling)
+        params.put("labour_cost", labour_cost)
 //        params.put("vans", vans)
 
         return this
