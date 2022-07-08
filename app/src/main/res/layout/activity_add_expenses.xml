@@ -49,8 +49,8 @@
     </RelativeLayout>
 
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvFuel"
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/etFuel"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_45sdp"
         android:background="@drawable/button_bg"
@@ -69,8 +69,8 @@
         android:textSize="@dimen/_13sdp" />
 
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvMaintainanence"
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/etMaintainanence"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_45sdp"
         android:background="@drawable/button_bg"
@@ -89,8 +89,8 @@
         android:textSize="@dimen/_13sdp" />
 
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvAdvertising"
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/etAdvertising"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_45sdp"
         android:background="@drawable/button_bg"
@@ -109,8 +109,8 @@
         android:textSize="@dimen/_13sdp" />
 
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvEquipment"
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/etEquipment"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_45sdp"
         android:background="@drawable/button_bg"
@@ -128,8 +128,8 @@
         android:textCursorDrawable="@drawable/color_cursor"
         android:textSize="@dimen/_13sdp" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvOther"
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/etOther"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_45sdp"
         android:background="@drawable/button_bg"

@@ -15,6 +15,7 @@ import com.kodextech.project.kodexlib.network.Response
 import com.kodextech.project.kodexlib.network.URLApi
 import com.kodextech.project.kodexlib.ui.main.booking.AddBooking
 import com.kodextech.project.kodexlib.ui.main.dashboard.Dashboard
+import com.kodextech.project.kodexlib.ui.main.dashboard.DriverDashboardActivity
 import com.kodextech.project.kodexlib.utils.gone
 import com.kodextech.project.kodexlib.utils.zDateConvertor
 import org.json.JSONObject
@@ -38,7 +39,7 @@ class JobDetail : BaseActivity() {
         setData()
 
         binding?.detailTopBar?.ivBack?.setOnClickListener {
-            val intent = Intent(this, Dashboard::class.java)
+            val intent = Intent(this, DriverDashboardActivity::class.java)
             startActivity(intent)
            // finish()
         }
@@ -53,8 +54,9 @@ class JobDetail : BaseActivity() {
     }
 
     override fun onBackPressed() {
-        val intent = Intent(this, Dashboard::class.java)
+        val intent = Intent(this, DriverDashboardActivity::class.java)
         startActivity(intent)
+
         finish()
     }
 

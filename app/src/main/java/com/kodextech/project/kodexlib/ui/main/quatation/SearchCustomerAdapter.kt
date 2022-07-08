@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.kodextech.project.kodexlib.R
 import com.kodextech.project.kodexlib.databinding.CustomerNameListBinding
 
-class SearchCustomerAdapter(var context:Context,var list:ArrayList<CustomerSearchModel>) :RecyclerView.Adapter<MySearchClass>() {
+class SearchCustomerAdapter(var context:Context,var list:ArrayList<CustomerSearchModel>,var select:SelectName) :RecyclerView.Adapter<MySearchClass>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MySearchClass {
         val view =
             LayoutInflater.from(context).inflate(R.layout.customer_name_list, parent, false)
@@ -22,12 +22,20 @@ class SearchCustomerAdapter(var context:Context,var list:ArrayList<CustomerSearc
 
         holder.binding?.nameTv?.text=list[position].full_name.toString()
 
+        holder.itemView.setOnClickListener {
+            select.onClickName(list[position].full_name.toString(),list[position].email.toString())
+        }
+
 
       //  Toast.makeText(context, "Size --- "+list.toString(), Toast.LENGTH_SHORT).show()
     }
 
     override fun getItemCount(): Int {
         return  list.size
+    }
+
+    interface  SelectName{
+        fun onClickName(name:String,email:String)
     }
 }
 

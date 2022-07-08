@@ -485,6 +485,8 @@ object URLApi {
         return this
     }
 
+
+
     fun getCustomerList(): URLApi {
         method = NetworkMethod.POST
         path = "list-unique-customers"
@@ -695,12 +697,18 @@ object URLApi {
         path = "get-expensive/" + id
         return this
     }
+    fun getDriverExpense(id: String): URLApi {
+        method = NetworkMethod.GET
+        path = "get-earnings/"+id
+        params = JSONObject()
+        return this
+    }
 
 
 
     fun getStatics(id: String): URLApi {
         method = NetworkMethod.GET
-        path = "get-earnings/" + id
+        path = "get-static-data/" + id
         return this
     }
 
@@ -752,7 +760,7 @@ object URLApi {
 
     fun sendQuotation(name: String, hourly_rate: String,minimum_hours:String,email:String,men_count:String): URLApi {
         method = NetworkMethod.POST
-        path = "auth/send-quotation"
+        path = "send-quotation"
         params = JSONObject()
         params.put("name", name)
         params.put("hourly_rate", hourly_rate)
@@ -761,6 +769,19 @@ object URLApi {
         params.put("men_count", men_count)
         return this
     }
+
+    fun addExpense(fuel: String, vehical_maintenance: String,advertising:String,equipment:String,other:String): URLApi {
+        method = NetworkMethod.POST
+        path = "add-expense"
+        params = JSONObject()
+        params.put("fuel", fuel)
+        params.put("vehical_maintenance", vehical_maintenance)
+        params.put("advertising", advertising)
+        params.put("equipment", equipment)
+        params.put("other", other)
+        return this
+    }
+
 
 
 
