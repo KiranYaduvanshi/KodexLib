@@ -61,7 +61,7 @@
         <entry key="..\:/imran/app/src/main/res/drawable/ic_invoice.xml" value="0.1" />
         <entry key="..\:/imran/app/src/main/res/drawable/ic_mails.xml" value="0.1" />
         <entry key="..\:/imran/app/src/main/res/drawable/ic_statics.xml" value="0.1065" />
-        <entry key="..\:/imran/app/src/main/res/layout/activity_add_booking.xml" value="0.6" />
+        <entry key="..\:/imran/app/src/main/res/layout/activity_add_booking.xml" value="0.7333333333333334" />
         <entry key="..\:/imran/app/src/main/res/layout/activity_communication.xml" value="0.22" />
         <entry key="..\:/imran/app/src/main/res/layout/activity_customer_listing.xml" value="0.17135416666666667" />
         <entry key="..\:/imran/app/src/main/res/layout/activity_dashboard.xml" value="0.1" />
@@ -69,6 +69,7 @@
         <entry key="..\:/imran/app/src/main/res/layout/activity_expenses.xml" value="0.22" />
         <entry key="..\:/imran/app/src/main/res/layout/activity_job_detail.xml" value="0.1" />
         <entry key="..\:/imran/app/src/main/res/layout/activity_jobs_listing.xml" value="0.12708333333333333" />
+        <entry key="..\:/imran/app/src/main/res/layout/activity_search_customer.xml" value="0.3946135831381733" />
         <entry key="..\:/imran/app/src/main/res/layout/activity_start_job.xml" value="0.4466666666666667" />
         <entry key="..\:/imran/app/src/main/res/layout/activity_static.xml" value="0.22" />
         <entry key="..\:/imran/app/src/main/res/layout/activity_terms_services.xml" value="0.103125" />

@@ -9,6 +9,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.kodextech.project.kodexlib.R
@@ -110,6 +111,7 @@ class InvoiceListingAdapter(
         }
 
         holder.binding?.btnDownload?.setOnClickListener {
+            Toast.makeText(mContext, "Downloading file.....", Toast.LENGTH_SHORT).show()
             Log.i("PDF PATH", "" + mItem.invoice_file?.path)
             dowloadPdf(mItem.invoice_file?.path)
         }
