@@ -32,6 +32,12 @@
         tools:replace="android:theme,android:allowBackup"
         tools:targetApi="r">
         <activity
+            android:name=".SelectPorterDialog"
+            android:exported="false" />
+        <activity
+            android:name=".Select_Porter_Dialog"
+            android:exported="false" />
+        <activity
             android:name=".ui.main.expenses.DriverExpenseActivity"
             android:exported="false" />
         <activity

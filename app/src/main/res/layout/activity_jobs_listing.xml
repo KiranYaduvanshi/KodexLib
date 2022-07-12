@@ -269,19 +269,21 @@
 <!--            android:layout_marginBottom="@dimen/_10sdp">-->
 
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvJobs"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/_10sdp"
-                android:clipToPadding="false"
-                android:paddingStart="@dimen/_10sdp"
-                android:paddingTop="@dimen/_10sdp"
-                android:paddingEnd="@dimen/_10sdp"
-                android:paddingBottom="@dimen/_10sdp"
-                android:layout_above="@id/rlButton"
-                android:layout_below="@id/rlRadioButton"
-                />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvJobs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/rlButton"
+            android:layout_below="@id/rlRadioButton"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:clipToPadding="false"
+            android:paddingStart="@dimen/_10sdp"
+            android:paddingTop="@dimen/_10sdp"
+            android:paddingEnd="@dimen/_10sdp"
+            android:paddingBottom="@dimen/_10sdp" />
 <!--        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>-->
 
         <androidx.appcompat.widget.LinearLayoutCompat

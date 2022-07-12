@@ -205,6 +205,7 @@ class AddWorkerDialog : BaseDialogueFragment() {
     }
 
     private fun getSpecificWorker(uuid: String) {
+        Log.i("uuid0","-----"+uuid)
         showLoading()
         NetworkClass.callApi(URLApi.getUser(user_uuid = uuid), object : Response {
             override fun onSuccessResponse(response: String?, message: String) {
