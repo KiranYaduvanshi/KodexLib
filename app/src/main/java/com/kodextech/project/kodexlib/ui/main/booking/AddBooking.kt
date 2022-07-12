@@ -494,6 +494,14 @@ class AddBooking : BaseActivity() {
                 item.toString()
 
             }
+            if(
+                noOfMens == "0"|| binding?.spMen?.text == null){
+                binding?.llLabour?.visibility = View.GONE
+                binding?.etLabour?.text("0")
+            }else{
+                binding?.llLabour?.visibility = View.VISIBLE
+            }
+
 
         }
 
@@ -1412,7 +1420,6 @@ class AddBooking : BaseActivity() {
         val sms = SmsManager.getDefault()
 
         Log.i("SMS", "sendSMS: " + smsContent)
-        Toast.makeText(binding?.root?.context, "Testing SMS", Toast.LENGTH_SHORT).show()
 
         val parts: ArrayList<String> = sms.divideMessage(smsContent)
         var msgParts = parts.size
@@ -1480,9 +1487,26 @@ class AddBooking : BaseActivity() {
             override fun onReceive(context: Context, intent: Intent?) {
                 var anyError = false
                 when (resultCode) {
-                    RESULT_OK -> {}
-                    SmsManager.RESULT_ERROR_GENERIC_FAILURE, SmsManager.RESULT_ERROR_NO_SERVICE, SmsManager.RESULT_ERROR_NULL_PDU, SmsManager.RESULT_ERROR_RADIO_OFF -> anyError =
-                        true
+                    RESULT_OK -> Toast.makeText(
+                        baseContext, "SMS sent",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    SmsManager.RESULT_ERROR_GENERIC_FAILURE -> Toast.makeText(
+                        baseContext, "Generic failure",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    SmsManager.RESULT_ERROR_NO_SERVICE -> Toast.makeText(
+                        baseContext, "No service",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    SmsManager.RESULT_ERROR_NULL_PDU -> Toast.makeText(
+                        baseContext, "Null PDU",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    SmsManager.RESULT_ERROR_RADIO_OFF -> Toast.makeText(
+                        baseContext, "Radio off",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
                 msgParts--
                 if (msgParts === 0) {
