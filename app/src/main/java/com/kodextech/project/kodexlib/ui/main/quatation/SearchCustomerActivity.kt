@@ -31,14 +31,17 @@ class SearchCustomerActivity : BaseActivity(), SearchCustomerAdapter.SelectName 
     private var mData = ArrayList<CustomerSearchModel>()
 
     override fun onSetupViewGroup() {
-        mViewGroup =binding?.customerNameLL
+        mViewGroup = binding?.customerNameLL
 
     }
 
     override fun setupContentViewWithBinding() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_search_customer)
         searchData()
-
+        binding?.ivBack?.setOnClickListener {
+            Toast.makeText(binding?.root?.context, "asdfghjkl", Toast.LENGTH_SHORT).show()
+            onBackPressed();
+        }
 
     }
 
@@ -54,8 +57,8 @@ class SearchCustomerActivity : BaseActivity(), SearchCustomerAdapter.SelectName 
     override fun setupLoader() {
     }
 
-    private fun setCustomerAdapter(){
-        customerAdapter = SearchCustomerAdapter(this,mData,this)
+    private fun setCustomerAdapter() {
+        customerAdapter = SearchCustomerAdapter(this, mData, this)
         binding?.customerNameListRv?.adapter = customerAdapter
     }
 
@@ -67,16 +70,17 @@ class SearchCustomerActivity : BaseActivity(), SearchCustomerAdapter.SelectName 
                 hideLoading()
                 val json = JSONArray(response ?: "")
                 val data = generateList(json.toString(), Array<CustomerSearchModel>::class.java)
-              //  Toast.makeText(binding?.root?.context, "response--- "+response, Toast.LENGTH_SHORT).show()
+                //  Toast.makeText(binding?.root?.context, "response--- "+response, Toast.LENGTH_SHORT).show()
 
-                Log.i("data","------"+data)
+                Log.i("data", "------" + data)
                 mData.addAll(data)
                 setCustomerAdapter()
             }
 
             override fun onErrorResponse(error: String?, response: String?) {
                 hideLoading()
-                Toast.makeText(binding?.root?.context, "Error--- "+response, Toast.LENGTH_SHORT).show()
+                Toast.makeText(binding?.root?.context, "Error--- " + response, Toast.LENGTH_SHORT)
+                    .show()
                 Log.i("Search", "onErrorResponse: $error")
 
             }
@@ -88,7 +92,13 @@ class SearchCustomerActivity : BaseActivity(), SearchCustomerAdapter.SelectName 
         return callbackFlow<CharSequence?> {
             val listener = object : TextWatcher {
                 override fun afterTextChanged(s: Editable?) = Unit
-                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) = Unit
+                override fun beforeTextChanged(
+                    s: CharSequence?,
+                    start: Int,
+                    count: Int,
+                    after: Int
+                ) = Unit
+
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                     trySend(s)
                 }
@@ -97,10 +107,17 @@ class SearchCustomerActivity : BaseActivity(), SearchCustomerAdapter.SelectName 
             awaitClose { removeTextChangedListener(listener) }
         }.onStart { emit(text) }
     }
+
     val timer = Timer()
-    fun delayFunctoin(){
-        timer.cancel() ;
-        timer.schedule(timerTask { Toast.makeText( binding?.root?.context,"Search", Toast.LENGTH_SHORT).show() } ,2000 );
+    fun delayFunctoin() {
+        timer.cancel();
+        timer.schedule(timerTask {
+            Toast.makeText(
+                binding?.root?.context,
+                "Search",
+                Toast.LENGTH_SHORT
+            ).show()
+        }, 2000);
     }
 
 
@@ -125,10 +142,9 @@ class SearchCustomerActivity : BaseActivity(), SearchCustomerAdapter.SelectName 
 //                Toast.LENGTH_SHORT
 //            ).show()
 
-            if (it.toString() == ""){
+            if (it.toString() == "") {
 
-            }
-            else{
+            } else {
                 getCustomerList(it.toString())
                 customerAdapter?.notifyDataSetChanged()
             }
@@ -136,7 +152,7 @@ class SearchCustomerActivity : BaseActivity(), SearchCustomerAdapter.SelectName 
         }?.launchIn(lifecycle.coroutineScope)
 
 //      bi
-    //      nding?.searchEt?.addTextChangedListener(object : TextWatcher {
+        //      nding?.searchEt?.addTextChangedListener(object : TextWatcher {
 //            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
 //            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
 //               // getCustomerList(s.toString())
