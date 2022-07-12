@@ -102,7 +102,7 @@ class PortingListingAdapter(var mContext: BaseActivity,
 
 
                    // holder.binding?.ivSelected?.visible()
- if(list.size < Integer.parseInt(menCount)){
+// if(list.size < Integer.parseInt(menCount)){
      holder.binding?.cv?.setCardBackgroundColor(mContext.getColor(R.color.white))
      holder.binding?.tvWorkerName?.setTextColor(mContext.getColor(R.color.cusCol))
      holder.binding?.tvWorkerEmail?.setTextColor(mContext.getColor(R.color.cusCol))
@@ -115,7 +115,7 @@ class PortingListingAdapter(var mContext: BaseActivity,
      list.add(mItem)
 
 
- }
+ //}
                  //   holder.binding?.cardView?.setCardBackgroundColor(Color.BLUE)
                 }
             }

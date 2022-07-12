@@ -68,7 +68,6 @@ class SelectPorterDialog : BaseDialogueFragment() {
                 mActivity.startActivity(intent)
                 dismiss()
             }
-
         }
 
         return binding?.root!!
