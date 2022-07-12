@@ -15,7 +15,9 @@ import com.kodextech.project.kodexlib.ui.main.dashboard.adapter.loadImage
 import com.kodextech.project.kodexlib.utils.gone
 import com.kodextech.project.kodexlib.utils.visible
 
-class WorkerListingAdapter(
+class
+WorkerListingAdapter(
+
     var mContext: BaseActivity,
     var mData: ArrayList<User>,
     var isFor: String,
