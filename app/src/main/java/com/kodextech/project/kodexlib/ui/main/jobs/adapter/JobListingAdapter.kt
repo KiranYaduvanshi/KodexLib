@@ -189,6 +189,7 @@ class JobListingAdapter(
                 val dialog = SelectWorkerDialog.newInstance()
                 val bundle = Bundle()
                 bundle.putString("jobId", mItem.uuid)
+                bundle.putString("menCount", mItem.men_count)
                 dialog.arguments = bundle
                 dialog.show(mContext.supportFragmentManager, "")
             } else if (mItem.worker_id != null) {
