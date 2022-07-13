@@ -16,6 +16,7 @@ class AddAddressAdapter(
     var mData: ArrayList<PickupAddress>,
     var callBack: ((positionL: Int) -> Unit)
 ) : RecyclerView.Adapter<AddAddressVH>() {
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AddAddressVH {
         val view = LayoutInflater.from(context).inflate(R.layout.address_item, parent, false)
         return AddAddressVH(view)
@@ -25,7 +26,6 @@ class AddAddressAdapter(
         val mItem = mData[position]
 
         holder.binding?.tvAddress?.text = mItem.address1
-
 
         if (mItem.has_lift == "1") {
             holder.binding?.tvLifr?.text = "Yes"
@@ -57,9 +57,6 @@ class AddAddressAdapter(
         } else {
             holder.binding?.llFloor?.gone()
         }
-
-
-
 
         holder.binding?.ivClose?.setOnClickListener {
             callBack(position)

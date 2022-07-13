@@ -126,7 +126,7 @@ class JobDetail : BaseActivity() {
             }
         }
         jobId = intent.getStringExtra("id")
-        Toast.makeText(this@JobDetail, "job idd --- "+jobId, Toast.LENGTH_SHORT).show()
+     //   Toast.makeText(this@JobDetail, "job idd --- "+jobId, Toast.LENGTH_SHORT).show()
         getJob(jobId)
 
 
@@ -152,9 +152,11 @@ class JobDetail : BaseActivity() {
                                 Log.i("id","iddddddd1 --"+id.profile?.uuid)
                                 Log.i("id","iddddddd2 --"+driverId)
                                 Log.i("id","iddddddd3 --"+jobId)
-                                Toast.makeText(this@JobDetail, "iddd --- "+ id.profile?.uuid, Toast.LENGTH_SHORT).show()
+                              //  Toast.makeText(this@JobDetail, "iddd --- "+ id.profile?.uuid, Toast.LENGTH_SHORT).show()
                                 porterList.add(id.profile?.uuid.toString())
                             }
+                            Log.i("id","idddddddList ---"+porterList.toString())
+
                             assignJobCall(driverId, jobId , porterList)
                         }
 
@@ -173,7 +175,10 @@ class JobDetail : BaseActivity() {
             object : Response {
                 override fun onSuccessResponse(response: String?, message: String) {
                     hideLoading()
+                    Toast.makeText(this@JobDetail
+                        , "Job Assigned successfully-- "+response.toString(), Toast.LENGTH_SHORT).show()
                     finish()
+
                 }
 
                 override fun onErrorResponse(error: String?, response: String?) {

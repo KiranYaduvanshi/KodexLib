@@ -50,10 +50,10 @@ class SelectPorterDialog : BaseDialogueFragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.activity_select_porter_dialog, container, false)
         isCancelable = false
 
+
          id = arguments?.getString("jobId")
          menCount = arguments?.getString("menCount").toString()
         driverInfo = arguments?.getSerializable("driverInfo") as User?
-        Toast.makeText(activity, "Driver info ---- "+driverInfo, Toast.LENGTH_SHORT).show()
 
 
 
@@ -79,7 +79,7 @@ class SelectPorterDialog : BaseDialogueFragment() {
 
                  }
                 else if (PortingListingAdapter.list.size < Integer.parseInt(menCount)){
-                     Toast.makeText(binding?.root?.context, "Please Select Porter", Toast.LENGTH_SHORT).show()
+                     Toast.makeText(binding?.root?.context, "Please select more Porter", Toast.LENGTH_SHORT).show()
                 }
                 else{
 

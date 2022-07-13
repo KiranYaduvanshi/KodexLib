@@ -99,11 +99,11 @@ class PortingListingAdapter(
   // holder.binding?.ivSelected?.gone()
 
                 //  holder.binding?.cardView?.setCardBackgroundColor(Color.WHITE)
-                Toast.makeText(
-                    mContext,
-                    "adapter" + menCount + "list size --" + list.size,
-                    Toast.LENGTH_SHORT
-                ).show()
+//                Toast.makeText(
+//                    mContext,
+//                    "adapter" + menCount + "list size --" + list.size,
+//                    Toast.LENGTH_SHORT
+              //  ).show()
             } else {
 
 
@@ -124,11 +124,11 @@ class PortingListingAdapter(
 
 
                 }
-                Toast.makeText(
-                    mContext,
-                    "adapter" + menCount + "list size --" + list.size,
-                    Toast.LENGTH_SHORT
-                ).show()
+//                Toast.makeText(
+//                    mContext,
+//                    "adapter" + menCount + "list size --" + list.size,
+//                    Toast.LENGTH_SHORT
+//                ).show()
                 //   holder.binding?.cardView?.setCardBackgroundColor(Color.BLUE)
             }
         }

@@ -1259,7 +1259,6 @@ class AddBooking : BaseActivity() {
                     hideLoading()
                     showBarToast(error ?: "")
                 }
-
             }
         )
     }
