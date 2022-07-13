@@ -19,9 +19,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@id/detailTopBar"
-            android:paddingBottom="@dimen/_20sdp"
-
-            >
+            android:layout_marginBottom="@dimen/_40sdp"
+            android:paddingBottom="@dimen/_20sdp">
 
             <RelativeLayout
                 android:id="@+id/mailRL"
@@ -134,9 +133,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/rlInfo"
                     android:layout_marginStart="@dimen/_15sdp"
-                    android:layout_marginEnd="@dimen/_15sdp"
-
-                    >
+                    android:layout_marginEnd="@dimen/_15sdp">
 
                     <androidx.appcompat.widget.LinearLayoutCompat
                         android:id="@+id/llStatus"
@@ -591,6 +588,7 @@
                         <androidx.appcompat.widget.AppCompatTextView
                             android:id="@+id/tvHours"
                             android:layout_width="0dp"
+
                             android:layout_height="wrap_content"
                             android:layout_weight=".55"
                             android:ellipsize="marquee"
@@ -612,30 +610,41 @@
 
                 </RelativeLayout>
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btnAssignJob"
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/porterListRv"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/_40sdp"
+                    android:layout_height="wrap_content"
                     android:layout_below="@id/rlTable"
-                    android:layout_marginStart="@dimen/_50sdp"
-                    android:layout_marginTop="@dimen/_50sdp"
-                    android:layout_marginEnd="@dimen/_50sdp"
-                    android:background="@drawable/bg_btn"
-                    android:backgroundTint="@color/blue"
-                    android:fontFamily="@font/opensans_semi_bold"
-                    android:gravity="center"
-                    android:text="Assign"
-                    android:textAllCaps="true"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/_14sdp"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/worker_item"/>
 
-                    />
 
 
             </RelativeLayout>
 
 
         </ScrollView>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnAssignJob"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="@dimen/_50sdp"
+            android:layout_marginTop="@dimen/_50sdp"
+            android:layout_marginEnd="@dimen/_50sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:background="@drawable/bg_btn"
+            android:backgroundTint="@color/blue"
+            android:fontFamily="@font/opensans_semi_bold"
+            android:gravity="center"
+            android:text="Assign"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_14sdp"
+
+            />
+
 
     </RelativeLayout>
 </layout>

@@ -555,12 +555,14 @@ object URLApi {
     fun assignJob(
         job_uuid: String? = null,
         worker_uuid: String? = null,
+        porter_uuid : ArrayList<String>? = null
     ): URLApi {
         method = NetworkMethod.POST
         path = "assign-job"
         params = JSONObject()
         params.put("job_uuid", job_uuid)
         params.put("worker_uuid", worker_uuid)
+        params.put("porter_uuid", porter_uuid)
         return this
     }
 

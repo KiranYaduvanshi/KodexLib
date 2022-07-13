@@ -3,26 +3,28 @@ package com.kodextech.project.kodexlib.ui.main.worker.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.kodextech.project.kodexlib.R
 import com.kodextech.project.kodexlib.base.BaseActivity
 import com.kodextech.project.kodexlib.databinding.WorkerItemBinding
 import com.kodextech.project.kodexlib.dialog.AddWorkerDialog
-import com.kodextech.project.kodexlib.model.CustomerModel
 import com.kodextech.project.kodexlib.model.User
 import com.kodextech.project.kodexlib.ui.main.dashboard.adapter.Placeholders
 import com.kodextech.project.kodexlib.ui.main.dashboard.adapter.loadImage
 import com.kodextech.project.kodexlib.utils.gone
 import com.kodextech.project.kodexlib.utils.visible
 
-class PortingListingAdapter(var mContext: BaseActivity,
-                            var mData: ArrayList<User>,
-                            var isFor: String,
-                            var menCount:String,
-                            var callBack: ((item: User, position: Int, isFor: String) -> Unit)) : RecyclerView.Adapter<PorterListingVH>() {
+class PortingListingAdapter(
+    var mContext: BaseActivity,
+    var mData: ArrayList<User>,
+    var isFor: String,
+    var menCount: String,
+    var callBack: ((item: User, position: Int, isFor: String) -> Unit)
+) : RecyclerView.Adapter<PorterListingVH>() {
 
-    companion object{
+    companion object {
         var list: ArrayList<User> = ArrayList()
     }
 
@@ -62,7 +64,6 @@ class PortingListingAdapter(var mContext: BaseActivity,
         )
 
 
-
 //        holder.itemView.setOnClickListener {
 //            if (isFor == "0") {
 //
@@ -84,8 +85,30 @@ class PortingListingAdapter(var mContext: BaseActivity,
 
         holder.itemView.setOnClickListener {
 
-                if (list.contains(mItem)) {
-                    list.remove(mItem)
+            if (list.contains(mItem)) {
+                list.remove(mItem)
+                holder.binding?.cv?.setCardBackgroundColor(mContext.getColor(R.color.white))
+                holder.binding?.tvWorkerName?.setTextColor(mContext.getColor(R.color.cusCol))
+                holder.binding?.tvWorkerEmail?.setTextColor(mContext.getColor(R.color.cusCol))
+                holder.binding?.tvWorkerRole?.setTextColor(mContext.getColor(R.color.cusCol))
+                holder.binding?.labelRole?.setTextColor(mContext.getColor(R.color.locationCol))
+                holder.binding?.labelHour?.setTextColor(mContext.getColor(R.color.locationCol))
+                holder.binding?.tvWorkerHourly?.setTextColor(mContext.getColor(R.color.cusCol))
+                holder.binding?.labelEmail?.setTextColor(mContext.getColor(R.color.locationCol))
+
+  // holder.binding?.ivSelected?.gone()
+
+                //  holder.binding?.cardView?.setCardBackgroundColor(Color.WHITE)
+                Toast.makeText(
+                    mContext,
+                    "adapter" + menCount + "list size --" + list.size,
+                    Toast.LENGTH_SHORT
+                ).show()
+            } else {
+
+
+                // holder.binding?.ivSelected?.visible()
+                if (list.size < Integer.parseInt(menCount)) {
 
                     holder.binding?.cv?.setCardBackgroundColor(mContext.getColor(R.color.blue))
                     holder.binding?.tvWorkerName?.setTextColor(mContext.getColor(R.color.white))
@@ -95,30 +118,20 @@ class PortingListingAdapter(var mContext: BaseActivity,
                     holder.binding?.labelEmail?.setTextColor(mContext.getColor(R.color.white))
                     holder.binding?.labelHour?.setTextColor(mContext.getColor(R.color.white))
                     holder.binding?.tvWorkerHourly?.setTextColor(mContext.getColor(R.color.white))
-                   // holder.binding?.ivSelected?.gone()
-
-                  //  holder.binding?.cardView?.setCardBackgroundColor(Color.WHITE)
-                } else {
 
 
-                   // holder.binding?.ivSelected?.visible()
-// if(list.size < Integer.parseInt(menCount)){
-     holder.binding?.cv?.setCardBackgroundColor(mContext.getColor(R.color.white))
-     holder.binding?.tvWorkerName?.setTextColor(mContext.getColor(R.color.cusCol))
-     holder.binding?.tvWorkerEmail?.setTextColor(mContext.getColor(R.color.cusCol))
-     holder.binding?.tvWorkerRole?.setTextColor(mContext.getColor(R.color.cusCol))
-     holder.binding?.labelRole?.setTextColor(mContext.getColor(R.color.locationCol))
-     holder.binding?.labelHour?.setTextColor(mContext.getColor(R.color.locationCol))
-     holder.binding?.tvWorkerHourly?.setTextColor(mContext.getColor(R.color.cusCol))
-     holder.binding?.labelEmail?.setTextColor(mContext.getColor(R.color.locationCol))
-
-     list.add(mItem)
+                    list.add(mItem)
 
 
- //}
-                 //   holder.binding?.cardView?.setCardBackgroundColor(Color.BLUE)
                 }
+                Toast.makeText(
+                    mContext,
+                    "adapter" + menCount + "list size --" + list.size,
+                    Toast.LENGTH_SHORT
+                ).show()
+                //   holder.binding?.cardView?.setCardBackgroundColor(Color.BLUE)
             }
+        }
 
 
 //        if (isFor == "0") {
@@ -141,7 +154,7 @@ class PortingListingAdapter(var mContext: BaseActivity,
 //                holder.binding?.tvWorkerHourly?.setTextColor(mContext.getColor(R.color.cusCol))
 //                holder.binding?.labelEmail?.setTextColor(mContext.getColor(R.color.locationCol))
 //            }
-   //     }
+        //     }
 
 
     }

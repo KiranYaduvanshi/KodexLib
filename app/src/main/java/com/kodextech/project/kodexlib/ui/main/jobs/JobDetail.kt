@@ -1,8 +1,12 @@
 package com.kodextech.project.kodexlib.ui.main.jobs
 
 import android.content.Intent
+import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
 import com.kodextech.project.kodexlib.R
 import com.kodextech.project.kodexlib.base.BaseActivity
@@ -16,6 +20,9 @@ import com.kodextech.project.kodexlib.network.URLApi
 import com.kodextech.project.kodexlib.ui.main.booking.AddBooking
 import com.kodextech.project.kodexlib.ui.main.dashboard.Dashboard
 import com.kodextech.project.kodexlib.ui.main.dashboard.DriverDashboardActivity
+import com.kodextech.project.kodexlib.ui.main.jobs.adapter.PorterDetailAdapter
+import com.kodextech.project.kodexlib.ui.main.worker.adapter.PortingListingAdapter
+import com.kodextech.project.kodexlib.ui.main.worker.adapter.WorkerListingAdapter
 import com.kodextech.project.kodexlib.utils.gone
 import com.kodextech.project.kodexlib.utils.zDateConvertor
 import org.json.JSONObject
@@ -27,6 +34,11 @@ class JobDetail : BaseActivity() {
     private var jobId: String? = null
     private var driverId: String? = null
     var isfor: String? = ""
+    var list: ArrayList<User> = ArrayList()
+    private var mAdapter: PorterDetailAdapter? = null
+
+
+
     override fun onSetupViewGroup() {
         mViewGroup = binding?.contentDetail
     }
@@ -39,9 +51,19 @@ class JobDetail : BaseActivity() {
         setData()
 
         binding?.detailTopBar?.ivBack?.setOnClickListener {
-            val intent = Intent(this, DriverDashboardActivity::class.java)
-            startActivity(intent)
-           // finish()
+            if (intent.getStringExtra("check") == "0"){
+                val intent = Intent(this, Dashboard::class.java)
+                startActivity(intent)
+                finish()
+
+
+            }
+            else{
+                val intent = Intent(this, DriverDashboardActivity::class.java)
+                startActivity(intent)
+                finish()
+
+            }
         }
 
         binding?.detailTopBar?.ivLogout?.setOnClickListener {
@@ -54,13 +76,33 @@ class JobDetail : BaseActivity() {
     }
 
     override fun onBackPressed() {
-        val intent = Intent(this, DriverDashboardActivity::class.java)
-        startActivity(intent)
+        if (intent.getStringExtra("check") == "0"){
+            val intent = Intent(this, Dashboard::class.java)
+            startActivity(intent)
+            finish()
 
-        finish()
+
+        }
+        else{
+            val intent = Intent(this, DriverDashboardActivity::class.java)
+            startActivity(intent)
+            finish()
+
+        }
+
     }
 
     private fun setData() {
+
+    }
+    private fun  setPorterAdapter(){
+
+        mAdapter = PorterDetailAdapter(this,list)
+
+        binding?.porterListRv?.adapter = mAdapter
+
+        mAdapter?.notifyDataSetChanged()
+
 
     }
 
@@ -73,8 +115,18 @@ class JobDetail : BaseActivity() {
             binding?.btnAssignJob?.text = "Finish Job"
         } else {
             driverInfo = intent.getSerializableExtra("driverInfo") as? User?
+            list = intent.getSerializableExtra("list") as ArrayList<User>
+            if (list !=null){
+                binding?.porterListRv?.visibility=View.VISIBLE
+                setPorterAdapter()
+
+            }
+            else{
+                binding?.porterListRv?.visibility=View.GONE
+            }
         }
         jobId = intent.getStringExtra("id")
+        Toast.makeText(this@JobDetail, "job idd --- "+jobId, Toast.LENGTH_SHORT).show()
         getJob(jobId)
 
 
@@ -95,7 +147,15 @@ class JobDetail : BaseActivity() {
                     } else {
                         if (driverInfo == null) {
                         } else {
-                            assignJobCall(driverId, jobId)
+                            var porterList = ArrayList<String>();
+                            for( id  in list){
+                                Log.i("id","iddddddd1 --"+id.profile?.uuid)
+                                Log.i("id","iddddddd2 --"+driverId)
+                                Log.i("id","iddddddd3 --"+jobId)
+                                Toast.makeText(this@JobDetail, "iddd --- "+ id.profile?.uuid, Toast.LENGTH_SHORT).show()
+                                porterList.add(id.profile?.uuid.toString())
+                            }
+                            assignJobCall(driverId, jobId , porterList)
                         }
 
                     }
@@ -106,10 +166,10 @@ class JobDetail : BaseActivity() {
         binding?.detailTopBar?.tvText?.text = "Detail Page"
     }
 
-    private fun assignJobCall(workerId: String? = null, jobId: String? = null) {
+    private fun assignJobCall(workerId: String? = null, jobId: String? = null, porterId: ArrayList<String>) {
         showLoading()
         NetworkClass.callApi(
-            URLApi.assignJob(job_uuid = jobId, worker_uuid = workerId),
+            URLApi.assignJob(job_uuid = jobId, worker_uuid = workerId,porter_uuid =  porterId),
             object : Response {
                 override fun onSuccessResponse(response: String?, message: String) {
                     hideLoading()
@@ -119,6 +179,8 @@ class JobDetail : BaseActivity() {
                 override fun onErrorResponse(error: String?, response: String?) {
                     hideLoading()
                     showBarToast(error ?: "")
+                    Log.i("id","idddddd  "+error.toString())
+
                 }
 
             })

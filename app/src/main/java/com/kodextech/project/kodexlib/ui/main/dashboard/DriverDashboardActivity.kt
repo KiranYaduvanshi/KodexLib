@@ -138,7 +138,7 @@ class DriverDashboardActivity : BaseActivity() {
 
                 1 -> {
 
-                    val intent = Intent(this, ExpensesActivity::class.java)
+                    val intent = Intent(this, CommunicationActivity::class.java)
                     startActivity(intent)
                 }
                 2 -> {
