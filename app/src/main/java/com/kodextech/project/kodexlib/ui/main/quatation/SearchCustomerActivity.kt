@@ -39,8 +39,7 @@ class SearchCustomerActivity : BaseActivity(), SearchCustomerAdapter.SelectName 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_search_customer)
         searchData()
         binding?.ivBack?.setOnClickListener {
-            Toast.makeText(binding?.root?.context, "asdfghjkl", Toast.LENGTH_SHORT).show()
-            onBackPressed();
+             onBackPressed();
         }
 
     }

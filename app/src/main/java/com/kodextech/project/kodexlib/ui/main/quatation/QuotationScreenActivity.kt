@@ -15,11 +15,11 @@ import com.kodextech.project.kodexlib.network.URLApi
 class QuotationScreenActivity : BaseActivity() {
 
     private var binding: ActivityQuotationScreenBinding? = null
-    var name:String=""
-    var hourlyRate:String=""
-    var email:String=""
-    var menCount:String=""
-    var minimumHours:String=""
+    var name: String = ""
+    var hourlyRate: String = ""
+    var email: String = ""
+    var menCount: String = ""
+    var minimumHours: String = ""
     private val MY_REQUEST_CODE = 1
 
 
@@ -33,11 +33,15 @@ class QuotationScreenActivity : BaseActivity() {
 
         binding?.tvCustomerName?.setOnClickListener {
             val intent = Intent(this, SearchCustomerActivity::class.java)
-          startActivityForResult(intent,MY_REQUEST_CODE)
+            startActivityForResult(intent, MY_REQUEST_CODE)
 
         }
         binding?.btnSentQuotation?.setOnClickListener {
-                validateFields()
+            validateFields()
+        }
+
+        binding?.ivBack?.setOnClickListener {
+            onBackPressed()
         }
 
     }
@@ -59,55 +63,63 @@ class QuotationScreenActivity : BaseActivity() {
 
         if (resultCode == Activity.RESULT_OK) {
             if (requestCode == MY_REQUEST_CODE) {
-                if (data != null){
-                    name= data.getStringExtra("name").toString()
-                    email=data.getStringExtra("email").toString()
-                    binding?.tvCustomerName?.text=name
-                   // Toast.makeText(binding?.root?.context, "name --- "+name+"-- email --"+email, Toast.LENGTH_SHORT).show()
+                if (data != null) {
+                    name = data.getStringExtra("name").toString()
+                    email = data.getStringExtra("email").toString()
+                    binding?.tvCustomerName?.text = name
+                    // Toast.makeText(binding?.root?.context, "name --- "+name+"-- email --"+email, Toast.LENGTH_SHORT).show()
 
                 }
-               // textView.setText(data.getStringExtra("value"));
+                // textView.setText(data.getStringExtra("value"));
             }
         }
 
     }
 
-    private  fun validateFields(){
+    private fun validateFields() {
 
-        hourlyRate=binding?.etPrice?.text.toString()
-        minimumHours=binding?.minimumBookingTv?.text.toString()
-        menCount=binding?.etMenCount?.text.toString()
+        hourlyRate = binding?.etPrice?.text.toString()
+        minimumHours = binding?.minimumBookingTv?.text.toString()
+        menCount = binding?.etMenCount?.text.toString()
 
         if (name?.isNullOrEmpty() == true) {
             showBarToast("Please Select Customer Name")
         } else if (hourlyRate?.isNullOrEmpty() == true) {
             binding?.etPrice?.error = "Required"
-        }
-        else if (minimumHours?.isNullOrEmpty() == true) {
+        } else if (minimumHours?.isNullOrEmpty() == true) {
             binding?.minimumBookingTv?.error = "Required"
-        }
-        else if (menCount?.isNullOrEmpty() == true) {
+        } else if (menCount?.isNullOrEmpty() == true) {
             binding?.etMenCount?.error = "Required"
-        }
-        else {
+        } else {
 
 
-           sendQuotation(name,hourlyRate,minimumHours,email,menCount)
+            sendQuotation(name, hourlyRate, minimumHours, email, menCount)
 
 
         }
     }
 
 
+    private fun sendQuotation(
+        name: String,
+        hourlyRate: String,
+        minimumHours: String,
+        email: String,
+        menCount: String
+    ) {
 
-    private fun sendQuotation(name:String,hourlyRate:String,minimumHours:String,email:String,menCount:String) {
-
-        Toast.makeText(binding?.root?.context, "--name--"+name+"--hour--"+minimumHours+"--rate--"+hourlyRate+"--email--"+email+"--men count--"+menCount, Toast.LENGTH_SHORT).show()
+        Toast.makeText(
+            binding?.root?.context,
+            "--name--" + name + "--hour--" + minimumHours + "--rate--" + hourlyRate + "--email--" + email + "--men count--" + menCount,
+            Toast.LENGTH_SHORT
+        ).show()
 
 
         showLoading()
-        NetworkClass.callApi(URLApi.sendQuotation(name = name, hourly_rate = hourlyRate, minimum_hours = minimumHours,
-            email = email, men_count = menCount), object : Response {
+        NetworkClass.callApi(URLApi.sendQuotation(
+            name = name, hourly_rate = hourlyRate, minimum_hours = minimumHours,
+            email = email, men_count = menCount
+        ), object : Response {
             override fun onSuccessResponse(response: String?, message: String) {
 
                 hideLoading()
@@ -115,11 +127,12 @@ class QuotationScreenActivity : BaseActivity() {
                 finish()
 
 
-           }
+            }
 
             override fun onErrorResponse(error: String?, response: String?) {
                 hideLoading()
-                Toast.makeText(binding?.root?.context, "Error--- "+error, Toast.LENGTH_SHORT).show()
+                Toast.makeText(binding?.root?.context, "Error--- " + error, Toast.LENGTH_SHORT)
+                    .show()
                 Log.i("Search", "onErrorResponse: $error")
 
             }
