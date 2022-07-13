@@ -31,6 +31,9 @@ class SelectPorterDialog : BaseDialogueFragment() {
     private var mData = ArrayList<User>()
     private var mAdapter: PortingListingAdapter? = null
     private var driverInfo: User? = null
+    private  var menCount:String =""
+    private  var id:String? = null
+
 
 
     override fun onSetupArguments() {
@@ -47,9 +50,11 @@ class SelectPorterDialog : BaseDialogueFragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.activity_select_porter_dialog, container, false)
         isCancelable = false
 
-        val id = arguments?.getString("jobId")
-        val menCount = arguments?.getString("menCount").toString()
-        Toast.makeText(activity, "Men Count ---- "+menCount, Toast.LENGTH_SHORT).show()
+         id = arguments?.getString("jobId")
+         menCount = arguments?.getString("menCount").toString()
+        driverInfo = arguments?.getSerializable("driverInfo") as User?
+        Toast.makeText(activity, "Driver info ---- "+driverInfo, Toast.LENGTH_SHORT).show()
+
 
 
         getWorkerList(menCount)
@@ -59,21 +64,36 @@ class SelectPorterDialog : BaseDialogueFragment() {
         }
 
         binding?.btnSelect?.setOnClickListener {
-            if(driverInfo==null){
-                mActivity.showToast("Please Select Worker")
+            if(PortingListingAdapter.list.size ==  0){
+                mActivity.showToast("Please Select Porter")
             }else{
-                val intent = Intent(mActivity, JobDetail::class.java)
-                intent.putExtra("driverInfo", driverInfo)
-                intent.putExtra("id", id)
-                mActivity.startActivity(intent)
-                dismiss()
-            }
+                 if (PortingListingAdapter.list.size == Integer.parseInt(menCount)){
+                     val intent = Intent(mActivity, JobDetail::class.java)
+                     intent.putExtra("driverInfo", driverInfo)
+                     intent.putExtra("id", id)
+                     intent.putExtra("check","0")
+                     intent.putExtra("list", PortingListingAdapter.list)
 
+                     mActivity.startActivity(intent)
+                     dismiss()
+
+                 }
+                else if (PortingListingAdapter.list.size < Integer.parseInt(menCount)){
+                     Toast.makeText(binding?.root?.context, "Please Select Porter", Toast.LENGTH_SHORT).show()
+                }
+                else{
+
+                }
+            }
         }
 
         return binding?.root!!
     }
 
+    override fun onDestroy() {
+        PortingListingAdapter.list.clear()
+        super.onDestroy()
+    }
     private fun getWorkerList( menCount:String) {
         showLoading()
         NetworkClass.callApi(URLApi.getUser(), object : Response {
@@ -106,6 +126,7 @@ class SelectPorterDialog : BaseDialogueFragment() {
         binding?.rvWorkers?.layoutManager =
             LinearLayoutManager(mActivity, RecyclerView.VERTICAL, false)
         binding?.rvWorkers?.adapter = mAdapter
+
         mAdapter?.notifyDataSetChanged()
     }
 

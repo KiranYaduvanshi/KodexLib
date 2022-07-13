@@ -20,6 +20,7 @@ import com.kodextech.project.kodexlib.network.NetworkClass
 import com.kodextech.project.kodexlib.network.Response
 import com.kodextech.project.kodexlib.network.URLApi
 import com.kodextech.project.kodexlib.ui.main.jobs.JobDetail
+import com.kodextech.project.kodexlib.ui.main.worker.adapter.PortingListingAdapter
 import com.kodextech.project.kodexlib.ui.main.worker.adapter.WorkerListingAdapter
 import com.kodextech.project.kodexlib.utils.generateList
 import org.json.JSONObject
@@ -31,6 +32,7 @@ class SelectWorkerDialog : BaseDialogueFragment() {
     private var mAdapter: WorkerListingAdapter? = null
     private var driverInfo: User? = null
     var menCount=""
+    private  var id:String? = null
 
     override fun onSetupArguments() {
 
@@ -48,7 +50,7 @@ class SelectWorkerDialog : BaseDialogueFragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.select_worker_dialog, container, false)
         isCancelable = false
 
-        val id = arguments?.getString("jobId")
+         id = arguments?.getString("jobId")
          menCount = arguments?.getString("menCount").toString()
         Toast.makeText(activity, "Men Count ---- "+menCount, Toast.LENGTH_SHORT).show()
         getWorkerList()
@@ -59,36 +61,34 @@ class SelectWorkerDialog : BaseDialogueFragment() {
 
         binding?.btnSelect?.setOnClickListener {
 
-                        if(driverInfo==null){
+            if(driverInfo==null){
                 mActivity.showToast("Please Select Worker")
-
 
             }else{
                 if (menCount>"0"){
                     val dialog = SelectPorterDialog.newInstance()
                     val bundle = Bundle()
-                    bundle.putString("jobId", "")
+                    bundle.putString("jobId", id)
                     bundle.putString("menCount", menCount)
+                    bundle.putSerializable("driverInfo", driverInfo)
+
                     dialog.arguments = bundle
                     dialog.show(this.childFragmentManager, "")
-
-
                 }
-                            else{
+                else{
                     val intent = Intent(mActivity, JobDetail::class.java)
                     intent.putExtra("driverInfo", driverInfo)
                     intent.putExtra("id", id)
+                    intent.putExtra("check","0")
+
+                    intent.putExtra("list", PortingListingAdapter.list)
                     mActivity.startActivity(intent)
                     dismiss()
-
                 }
             }
-
         }
-
         return binding?.root!!
     }
-
 
     private fun getWorkerList() {
         showLoading()
@@ -145,7 +145,6 @@ class SelectWorkerDialog : BaseDialogueFragment() {
             (getScreenWidth(mActivity) * .9).toInt(),
             ViewGroup.LayoutParams.WRAP_CONTENT
         )
-
     }
 
     private fun getScreenWidth(activity: Activity): Int {
@@ -164,6 +163,5 @@ class SelectWorkerDialog : BaseDialogueFragment() {
             fragment.arguments = args
             return fragment
         }
-
     }
 }
