@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.kodextech.project.kodexlib.R
 import com.kodextech.project.kodexlib.base.BaseActivity
 import com.kodextech.project.kodexlib.databinding.JobItemBinding
+import com.kodextech.project.kodexlib.dialog.SelectPorterDialog
 import com.kodextech.project.kodexlib.dialog.SelectWorkerDialog
 import com.kodextech.project.kodexlib.model.JobModel
 import com.kodextech.project.kodexlib.ui.main.dashboard.adapter.Placeholders
@@ -27,10 +28,22 @@ class JobListingAdapter(
     var mContext: BaseActivity,
     var mData: ArrayList<JobModel>,
     var callBack: ((item: JobModel, position: Int, invoiceGenerated: Boolean, isFor: String) -> Unit)
-) : RecyclerView.Adapter<JobListingVH>() {
+) : RecyclerView.Adapter<JobListingVH>(){
     companion object {
         var mDataSelected: ArrayList<JobModel> = ArrayList()
         var isButtonState: Boolean = false
+
+    }
+
+    fun dialogLabour(position : Int ){
+        val dialog = SelectPorterDialog.newInstance()
+        val bundle = Bundle()
+        bundle.putString("jobId", mData[position].uuid)
+        bundle.putString("menCount", mData[position].men_count)
+        bundle.putSerializable("driverInfo", mData[position])
+        dialog.arguments = bundle
+
+        dialog.show(mContext.supportFragmentManager, "")
     }
 
     var longclicked = false
@@ -299,12 +312,17 @@ class JobListingAdapter(
 
     }
 
+
     fun filterJobList(filteredList: ArrayList<JobModel>) {
         mData = filteredList
         notifyDataSetChanged()
     }
 
+
     override fun getItemCount() = mData.size
+
+
+
 }
 
 

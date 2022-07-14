@@ -205,6 +205,8 @@ class Dashboard : BaseActivity() {
                 }
                 1 -> {
                     val intent = Intent(this, JobsListing::class.java)
+                    intent.putExtra("from", "customer")
+
                     startActivity(intent)
                 }
                 2 -> {

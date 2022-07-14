@@ -412,6 +412,8 @@ class JobsListing : BaseActivity() {
             binding?.topBar?.ivLogout?.gone()
             binding?.topBar?.ivSearch?.visible()
             listingFor = "notAssigned"
+            from = intent.getStringExtra("from")
+
         }
         binding?.viewNotAssigned?.visible()
         binding?.btnNotAssigned?.visible()
@@ -470,11 +472,13 @@ class JobsListing : BaseActivity() {
     }
 
     override fun onBackPressed() {
-        if (from == "driver") {
-            finish()
-        } else {
+        if (from == "customer") {
             val intent = Intent(this, Dashboard::class.java)
             startActivity(intent)
+            finish()
+        }
+        else {
+
             finish()
         }
     }

@@ -47,6 +47,10 @@ class AddAddressAdapter(
                 }
                 "-2" -> {
                     holder.binding?.llFloor?.gone()
+                    holder.binding?.tvFloor?.text =""
+
+
+
 
                 }
                 else -> {

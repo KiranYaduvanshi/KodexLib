@@ -113,8 +113,8 @@ class StartJobActivity : BaseActivity(), selectAddress {
     }
 
 
-    private fun setPickUpAddressAdapter() {
-        pickupAddressADapter = PickupAddressADapter(this, pickupAddList, this)
+    private fun setPickUpAddressAdapter(service:String) {
+        pickupAddressADapter = PickupAddressADapter(this, pickupAddList, this,service)
         binding?.pickUpAddressRv?.adapter = pickupAddressADapter
 
     }
@@ -267,7 +267,7 @@ class StartJobActivity : BaseActivity(), selectAddress {
 
                 pickupAddList.add(pickupAddress)
 
-                setPickUpAddressAdapter()
+                setPickUpAddressAdapter(obj?.service)
 
 
             }
@@ -286,7 +286,7 @@ class StartJobActivity : BaseActivity(), selectAddress {
             obj?.pickup_addresses?.forEachIndexed { index, pickupAddress ->
                 pickupAddList.add(pickupAddress)
 
-                setPickUpAddressAdapter()
+                obj?.service?.let { setPickUpAddressAdapter(it) }
 
 //                val s = "Address: " + pickupAddress.address1 + "\n"
 //                newArray.add(AdressListingModel(s))
@@ -324,7 +324,6 @@ class StartJobActivity : BaseActivity(), selectAddress {
             binding?.tvPrice?.backgroundTintList = getColorStateList(R.color.bgEdit)
             binding?.tvPrice?.background = getDrawable(R.drawable.bg_right_radius)
         }
-
     }
 
     private fun setMinimumButtonColorState(minimumBooking: String?) {

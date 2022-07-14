@@ -5,6 +5,8 @@ import android.app.Dialog
 import android.content.Intent
 import android.graphics.Point
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,9 +25,10 @@ import com.kodextech.project.kodexlib.ui.main.jobs.JobDetail
 import com.kodextech.project.kodexlib.ui.main.worker.adapter.PortingListingAdapter
 import com.kodextech.project.kodexlib.ui.main.worker.adapter.WorkerListingAdapter
 import com.kodextech.project.kodexlib.utils.generateList
+import kotlinx.coroutines.selects.select
 import org.json.JSONObject
 
-class SelectWorkerDialog : BaseDialogueFragment() {
+class SelectWorkerDialog() : BaseDialogueFragment() {
 
     private var binding: SelectWorkerDialogBinding? = null
     private var mData = ArrayList<User>()
@@ -33,7 +36,7 @@ class SelectWorkerDialog : BaseDialogueFragment() {
     private var driverInfo: User? = null
     var menCount=""
     private  var id:String? = null
-   //  var  dialog = null
+   // var selectPorterDialog:SelectPorterDialog? = null
 
     override fun onSetupArguments() {
 
@@ -72,10 +75,12 @@ class SelectWorkerDialog : BaseDialogueFragment() {
                     bundle.putString("jobId", id)
                     bundle.putString("menCount", menCount)
                     bundle.putSerializable("driverInfo", driverInfo)
-
                     dialog.arguments = bundle
-                    dialog.show(this.childFragmentManager, "")
 
+                    dialog.show(this.childFragmentManager, "")
+                    Handler(Looper.getMainLooper()).postDelayed({
+
+                    }, 2000L)
 
 
                 }
@@ -130,6 +135,7 @@ class SelectWorkerDialog : BaseDialogueFragment() {
     }
 
 
+
     override fun onRecycleBeforeDestroy() {
 
     }
@@ -171,6 +177,10 @@ class SelectWorkerDialog : BaseDialogueFragment() {
 
     override fun onDestroy() {
         super.onDestroy()
-        dismiss()
+    }
+    interface  SelectDialogInterface{
+        fun openPorterDialog(position:Int)
     }
 }
+
+
