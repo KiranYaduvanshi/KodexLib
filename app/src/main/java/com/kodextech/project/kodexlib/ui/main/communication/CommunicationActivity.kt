@@ -213,7 +213,7 @@ class CommunicationActivity : BaseActivity(), emailClickInterface, viewSmsSelect
 
         val mSendIntent = Intent("CTS_SMS_SEND_ACTION")
         Log.i("SMS", "sendSMS: Step 2")
-        val no = "+917973072913"
+        val no = phone
         val uri = Uri.parse("smsto:$no")
         val SENT = "SMS_SENT"
         val DELIVERED = "SMS_DELIVERED"
