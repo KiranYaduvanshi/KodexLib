@@ -12,7 +12,8 @@ import com.kodextech.project.kodexlib.model.FloorAndFlatModel
 
 class AddVanAdapter(
     var context: BaseActivity,
-    var mData: ArrayList<FloorAndFlatModel>
+    var mData: ArrayList<FloorAndFlatModel>,
+    var removeAddress: RemoveAddress
 ) : RecyclerView.Adapter<AddQuantityVH>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AddQuantityVH {
         val view = LayoutInflater.from(context).inflate(R.layout.add_van_view, parent, false)
@@ -25,14 +26,20 @@ class AddVanAdapter(
 
 
         holder.binding?.ivClose?.setOnClickListener {
-            mData.removeAt(position)
-            notifyItemRemoved(position)
-            notifyItemRangeRemoved(position, mData.size)
-            notifyDataSetChanged()
+            removeAddress.removeAddress(position)
+//            mData.removeAt(position)
+//            notifyItemRemoved(position)
+//            notifyItemRangeRemoved(position, mData.size)
+//            notifyDataSetChanged()
         }
     }
 
     override fun getItemCount() = mData.size
+
+
+    interface RemoveAddress{
+        fun removeAddress(position : Int)
+    }
 }
 
 class AddQuantityVH(itemView: View) : RecyclerView.ViewHolder(itemView) {

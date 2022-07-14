@@ -16,6 +16,7 @@ import com.kodextech.project.kodexlib.databinding.JobItemBinding
 import com.kodextech.project.kodexlib.dialog.SelectPorterDialog
 import com.kodextech.project.kodexlib.dialog.SelectWorkerDialog
 import com.kodextech.project.kodexlib.model.JobModel
+import com.kodextech.project.kodexlib.network.LocalPreference
 import com.kodextech.project.kodexlib.ui.main.dashboard.adapter.Placeholders
 import com.kodextech.project.kodexlib.ui.main.dashboard.adapter.loadImage
 import com.kodextech.project.kodexlib.ui.main.jobs.JobDetail
@@ -32,7 +33,6 @@ class JobListingAdapter(
     companion object {
         var mDataSelected: ArrayList<JobModel> = ArrayList()
         var isButtonState: Boolean = false
-
     }
 
     fun dialogLabour(position : Int ){
@@ -57,7 +57,12 @@ class JobListingAdapter(
         val mItem = mData[position]
         checkState(mItem, position, holder)
 
+         if(LocalPreference.shared.user?.user?.profile?.worker_type?.lowercase() == "porter"){
+             holder.binding?.tvDriverTitle?.text="Porter Name"
+         }else{
+             holder.binding?.tvDriverTitle?.text="Driver Name"
 
+         }
         if (mItem.has_requested_insurance == "1" || mItem.priority == "high") {
             holder.binding?.cvJob?.setCardBackgroundColor(mContext.getColor(R.color.red))
             holder.binding?.tvCustomerName?.setTextColor(mContext.getColor(R.color.white))

@@ -72,7 +72,7 @@ import java.util.*
 import kotlin.toString
 
 
-class AddBooking : BaseActivity() {
+class AddBooking : BaseActivity(), AddVanAdapter.RemoveAddress {
 
     private var binding: ActivityAddBookingBinding? = null
 
@@ -384,7 +384,7 @@ class AddBooking : BaseActivity() {
                                 itemName, itemQuantity
                             )
                         )
-                        binding?.rvFloors?.adapter = AddVanAdapter(this@AddBooking, mFloorArray)
+                        binding?.rvFloors?.adapter = AddVanAdapter(this@AddBooking, mFloorArray, this)
                         binding?.rvFloors?.layoutManager =
                             LinearLayoutManager(this, RecyclerView.VERTICAL, false)
                         mVanAdapter?.notifyDataSetChanged()
@@ -648,17 +648,17 @@ class AddBooking : BaseActivity() {
     private fun setPickupAdapter(mPAddressArrayy: ArrayList<PickupAddress>) {
         binding?.rvPickUpAddress?.adapter =
             AddAddressAdapter(this@AddBooking, mPAddressArrayy) { position ->
-                mPAddressArrayy.removeAt(position)
-//                mAddressAdapter?.notifyItemRemoved(position)
-//                mAddressAdapter?.notifyItemRangeRemoved(position, mPAddressArrayy.size)
-                pickupAddressString = Gson().toJson(mPAddressArrayy)
+                mPAddressArray.removeAt(position)
+                mAddressAdapter?.notifyItemRemoved(position)
+                mAddressAdapter?.notifyItemRangeRemoved(position, mPAddressArrayy.size)
+                pickupAddressString = Gson().toJson(mPAddressArray)
 
                 binding?.rvPickUpAddress?.adapter?.notifyDataSetChanged()
             }
         binding?.rvPickUpAddress?.layoutManager =
             LinearLayoutManager(this, RecyclerView.VERTICAL, false)
         binding?.rvPickUpAddress?.adapter?.notifyDataSetChanged()
-        pickupAddressString = Gson().toJson(mPAddressArrayy)
+        pickupAddressString = Gson().toJson(mPAddressArray)
     }
 
 
@@ -1062,7 +1062,7 @@ class AddBooking : BaseActivity() {
             binding?.etPrice?.error = "Required"
         } else if (binding?.etLabour?.text.isNullOrEmpty()) {
             binding?.etLabour?.error = "Required"
-        } else if (pickupAddressString.isNullOrEmpty()) {
+        } else if (pickupAddressString.isNullOrEmpty()|| mPAddressArray.size==0) {
             showBarToast("Please Add Pickup Address")
         } else if (dropAddressString.isNullOrEmpty()) {
             showBarToast("Please Add Drop Address")
@@ -2183,6 +2183,13 @@ class AddBooking : BaseActivity() {
             Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
         )
         return builder
+    }
+
+    override fun removeAddress(position: Int) {
+        mFloorArray.removeAt(position)
+           mVanAdapter?.notifyItemRemoved(position)
+        mVanAdapter?.notifyItemRangeRemoved(position, mFloorArray.size)
+        mVanAdapter?.notifyDataSetChanged()
     }
 
 }

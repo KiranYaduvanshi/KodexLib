@@ -64,7 +64,8 @@ data class JobModel(
     val actual_hours: String? = null,
     val is_packing_service: String? = null,
     val is_any_dismantling: String? = null,
-    var isSelected: Boolean? = false
+    var isSelected: Boolean? = false,
+    var worker_type: String? = null,
 ) : Serializable {
     constructor(cellType: TypeJobs, sepDate: String) : this() {
 
