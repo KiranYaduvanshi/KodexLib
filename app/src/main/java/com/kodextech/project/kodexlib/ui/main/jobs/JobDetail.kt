@@ -176,7 +176,7 @@ class JobDetail : BaseActivity() {
                 override fun onSuccessResponse(response: String?, message: String) {
                     hideLoading()
                     Toast.makeText(this@JobDetail
-                        , "Job Assigned successfully-- "+response.toString(), Toast.LENGTH_SHORT).show()
+                        , "Job Assigned successfully ", Toast.LENGTH_SHORT).show()
                     finish()
 
                 }
