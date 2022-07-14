@@ -37,8 +37,6 @@ class JobDetail : BaseActivity() {
     var list: ArrayList<User> = ArrayList()
     private var mAdapter: PorterDetailAdapter? = null
 
-
-
     override fun onSetupViewGroup() {
         mViewGroup = binding?.contentDetail
     }
@@ -72,7 +70,6 @@ class JobDetail : BaseActivity() {
             intent.putExtra("isF", "edit")
             startActivity(intent)
         }
-
     }
 
     override fun onBackPressed() {
@@ -89,7 +86,6 @@ class JobDetail : BaseActivity() {
             finish()
 
         }
-
     }
 
     private fun setData() {
@@ -102,8 +98,6 @@ class JobDetail : BaseActivity() {
         binding?.porterListRv?.adapter = mAdapter
 
         mAdapter?.notifyDataSetChanged()
-
-
     }
 
     private fun initTopBar() {
