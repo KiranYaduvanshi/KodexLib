@@ -68,7 +68,7 @@ class TermsServices : BaseActivity(), selectAddress {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_terms_services)
 
         initTopBar()
-        setPickUpAddressAdapter()
+        //setPickUpAddressAdapter("")
 
         binding?.topBar?.ivBack?.setOnClickListener { onBackPressed() }
 
@@ -122,8 +122,8 @@ class TermsServices : BaseActivity(), selectAddress {
         })
     }
 
-    private  fun setPickUpAddressAdapter(){
-        pickupAddressADapter = PickupAddressADapter(this,pickupAddList,this)
+    private  fun setPickUpAddressAdapter( service:String){
+        pickupAddressADapter = PickupAddressADapter(this,pickupAddList,this,service)
         binding?.pickUpAddressRv?.adapter= pickupAddressADapter
 
     }
@@ -288,7 +288,7 @@ class TermsServices : BaseActivity(), selectAddress {
             obj.pickup_addresses?.forEachIndexed { index, pickupAddress ->
                 pickupAddList.add(pickupAddress)
 
-                setPickUpAddressAdapter()
+                setPickUpAddressAdapter(obj?.service)
 
 //                if (pickupAddress.pickup_flat_meta?.firstOrNull()?.floor_no == "-1") {
 //                    floorNo = "Basement"
@@ -315,28 +315,38 @@ class TermsServices : BaseActivity(), selectAddress {
 
             obj.drop_addresses?.forEachIndexed { index, pickupAddress ->
 
-                when (pickupAddress.pickup_flat_meta?.firstOrNull()?.floor_no) {
-                    "-1" -> {
-                        dropFloorNo = "Basement"
+                if (obj?.service == "Flat Move"){
+                    when (pickupAddress.pickup_flat_meta?.firstOrNull()?.floor_no) {
+                        "-1" -> {
+                            dropFloorNo = "Basement"
+                        }
+                        "0" -> {
+                            floorNo = "Ground Floor"
+                        }
+                        else -> {
+                            dropFloorNo =
+                                pickupAddress.pickup_flat_meta?.firstOrNull()?.floor_no + " Floor"
+                        }
                     }
-                    "0" -> {
-                        floorNo = "Ground Floor"
+
+                    if (pickupAddress.has_lift.equals("1")) {
+                        val s =
+                            "Address: " + pickupAddress.address1 + "\nFloor No: " + dropFloorNo + "\nLift Available: Yes \n"
+                        newDropArray.add(AdressListingModel(s))
+                    } else {
+                        val s =
+                            "Address: " + pickupAddress.address1 + "\nFloor No: " + dropFloorNo + "\nLift Available: No \n"
+                        newDropArray.add(AdressListingModel(s))
                     }
-                    else -> {
-                        dropFloorNo =
-                            pickupAddress.pickup_flat_meta?.firstOrNull()?.floor_no + " Floor"
-                    }
+
+                }
+                else{
+                    val s =
+                        "Address: " + pickupAddress.address1
+                    newDropArray.add(AdressListingModel(s))
+
                 }
 
-                if (pickupAddress.has_lift.equals("1")) {
-                    val s =
-                        "Address: " + pickupAddress.address1 + "\nFloor No: " + dropFloorNo + "\nLift Available: Yes \n"
-                    newDropArray.add(AdressListingModel(s))
-                } else {
-                    val s =
-                        "Address: " + pickupAddress.address1 + "\nFloor No: " + dropFloorNo + "\nLift Available: No \n"
-                    newDropArray.add(AdressListingModel(s))
-                }
             }
 
             var newDropAddress: String? = null
@@ -363,7 +373,10 @@ class TermsServices : BaseActivity(), selectAddress {
 
                 pickupAddList.add(pickupAddress)
 
-                setPickUpAddressAdapter()
+
+
+                obj?.service?.let { setPickUpAddressAdapter(it) }
+
 
 
 //                val s = pickupAddress.address1
