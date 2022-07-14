@@ -7,6 +7,7 @@ import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
 import android.text.style.ForegroundColorSpan
 import android.util.Patterns
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.google.gson.Gson
 import com.kodextech.project.kodexlib.R
@@ -112,17 +113,23 @@ class LoginActivity : BaseActivity() {
                         Gson().fromJson(json.toString(), UserModel::class.java)
                     LocalPreference.shared.token = LocalPreference.shared.user?.access_token
 
-                    if (LocalPreference?.shared?.user?.user?.profile?.worker_type?.lowercase() == "Driver".lowercase()) {
+                    if (LocalPreference?.shared?.user?.user?.profile?.worker_type?.lowercase() == "Driver".lowercase()
+
+                        ||LocalPreference?.shared?.user?.user?.profile?.worker_type?.lowercase() == "Porter".lowercase()
+                    ) {
 //                        val intent = Intent(this@LoginActivity, JobsListing::class.java)
 //                        intent.putExtra("from", "driver")
 //                        startActivity(intent)
 //                        finish()
+                     //   Toast.makeText(this@LoginActivity, "type "+LocalPreference?.shared?.user?.user?.profile?.worker_type, Toast.LENGTH_SHORT).show()
                         val intent = Intent(this@LoginActivity, DriverDashboardActivity::class.java)
                         startActivity(intent)
                         finish()
                     } else {
                         val intent = Intent(this@LoginActivity, Dashboard::class.java)
                         startActivity(intent)
+                      //  Toast.makeText(this@LoginActivity, "type "+LocalPreference?.shared?.user?.user?.profile?.worker_type, Toast.LENGTH_SHORT).show()
+
                         finish()
                     }
                 }

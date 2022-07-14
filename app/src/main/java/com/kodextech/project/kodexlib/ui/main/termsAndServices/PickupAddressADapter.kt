@@ -23,9 +23,7 @@ class PickupAddressADapter(
 
     override fun onBindViewHolder(holder: AddressViewHolder, position: Int) {
 
-        holder.binding?.tvPickUpAddress?.setOnClickListener {
-            selectAddress.onAddressClick(position, addressList[position].address1.toString())
-        }
+
         var floorNo: String = ""
 
         if (addressList[position].pickup_flat_meta?.firstOrNull()?.floor_no == "-1") {
@@ -47,6 +45,10 @@ class PickupAddressADapter(
                 "Address: " + addressList[position].address1 + "\nFloor No: " + floorNo + "\nLift Available: No\n"
             holder.binding?.tvPickUpAddress?.text = s
 
+        }
+
+        holder.binding?.tvPickUpAddress?.setOnClickListener {
+            selectAddress.onAddressClick(position, addressList[position].address1.toString())
         }
 
         //  Toast.makeText(context, "size--- "+addressList.size, Toast.LENGTH_SHORT).show()

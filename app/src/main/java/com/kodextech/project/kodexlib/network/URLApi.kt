@@ -5,6 +5,7 @@ package com.kodextech.project.kodexlib.network
 
 import android.util.Log
 import com.google.gson.Gson
+import com.google.gson.JsonArray
 import com.google.gson.reflect.TypeToken
 import com.kodextech.project.kodexlib.model.MediaModel
 import org.json.JSONArray
@@ -562,7 +563,16 @@ object URLApi {
         params = JSONObject()
         params.put("job_uuid", job_uuid)
         params.put("worker_uuid", worker_uuid)
-        params.put("porter_uuid", porter_uuid)
+        var arrayPorter = JSONArray();
+         if (porter_uuid?.size!=0) {
+             if (porter_uuid != null) {
+                 for (values in porter_uuid)
+                     arrayPorter.put(values)
+             }
+             params.put("porter_uuid", arrayPorter)
+         }
+
+        Log.i("porter","uuid"+arrayPorter.toString())
         return this
     }
 

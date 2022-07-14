@@ -42,7 +42,7 @@
                     android:paddingStart="@dimen/_2sdp"
                     android:paddingTop="@dimen/_10sdp"
                     android:paddingBottom="@dimen/_10sdp"
-                    android:text="List of Worker"
+                    android:text="List of Driver"
                     android:textColor="@color/textColor"
                     android:textSize="@dimen/_14sdp" />
 

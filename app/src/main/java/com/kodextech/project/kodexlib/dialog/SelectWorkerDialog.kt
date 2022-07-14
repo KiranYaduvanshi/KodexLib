@@ -33,6 +33,7 @@ class SelectWorkerDialog : BaseDialogueFragment() {
     private var driverInfo: User? = null
     var menCount=""
     private  var id:String? = null
+   //  var  dialog = null
 
     override fun onSetupArguments() {
 
@@ -52,7 +53,7 @@ class SelectWorkerDialog : BaseDialogueFragment() {
 
          id = arguments?.getString("jobId")
          menCount = arguments?.getString("menCount").toString()
-        Toast.makeText(activity, "Men Count ---- "+menCount, Toast.LENGTH_SHORT).show()
+     //   Toast.makeText(activity, "Men Count ---- "+menCount, Toast.LENGTH_SHORT).show()
         getWorkerList()
 
         binding?.ivCross?.setOnClickListener {
@@ -65,7 +66,7 @@ class SelectWorkerDialog : BaseDialogueFragment() {
                 mActivity.showToast("Please Select Worker")
 
             }else{
-                if (menCount>"0"){
+                if (menCount > "0"){
                     val dialog = SelectPorterDialog.newInstance()
                     val bundle = Bundle()
                     bundle.putString("jobId", id)
@@ -74,6 +75,9 @@ class SelectWorkerDialog : BaseDialogueFragment() {
 
                     dialog.arguments = bundle
                     dialog.show(this.childFragmentManager, "")
+
+
+
                 }
                 else{
                     val intent = Intent(mActivity, JobDetail::class.java)
@@ -83,7 +87,7 @@ class SelectWorkerDialog : BaseDialogueFragment() {
 
                     intent.putExtra("list", PortingListingAdapter.list)
                     mActivity.startActivity(intent)
-                    dismiss()
+                   dismiss()
                 }
             }
         }
@@ -140,7 +144,7 @@ class SelectWorkerDialog : BaseDialogueFragment() {
 
     override fun onStart() {
         super.onStart()
-        val dialog: Dialog? = dialog
+        var dialog: Dialog? = dialog
         dialog?.window?.setLayout(
             (getScreenWidth(mActivity) * .9).toInt(),
             ViewGroup.LayoutParams.WRAP_CONTENT
@@ -163,5 +167,10 @@ class SelectWorkerDialog : BaseDialogueFragment() {
             fragment.arguments = args
             return fragment
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        dismiss()
     }
 }
