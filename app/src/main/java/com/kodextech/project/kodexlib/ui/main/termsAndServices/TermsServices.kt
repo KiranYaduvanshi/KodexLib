@@ -134,7 +134,9 @@ class TermsServices : BaseActivity(), selectAddress {
         var isFor = intent.getStringExtra("isFor")
 
         if (isForView.equals("viewOnly")) {
-            binding?.topBar?.tvText?.text = "Booking Detail"
+            binding?.topBar?.tvText?.text = "" +
+                    "" +
+                    "Booking Detail"
             if (isFor.equals("history")) {
                 binding?.rlIvCancel?.gone()
                 binding?.signaturePad?.gone()
