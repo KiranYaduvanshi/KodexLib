@@ -5,12 +5,9 @@ import android.app.Dialog
 import android.content.Intent
 import android.graphics.Point
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -25,10 +22,9 @@ import com.kodextech.project.kodexlib.ui.main.jobs.JobDetail
 import com.kodextech.project.kodexlib.ui.main.worker.adapter.PortingListingAdapter
 import com.kodextech.project.kodexlib.ui.main.worker.adapter.WorkerListingAdapter
 import com.kodextech.project.kodexlib.utils.generateList
-import kotlinx.coroutines.selects.select
 import org.json.JSONObject
 
-class SelectWorkerDialog() : BaseDialogueFragment() {
+class SelectWorkerDialog(var selectPorterDialog:SelectDialogInterface) : BaseDialogueFragment() {
 
     private var binding: SelectWorkerDialogBinding? = null
     private var mData = ArrayList<User>()
@@ -36,7 +32,7 @@ class SelectWorkerDialog() : BaseDialogueFragment() {
     private var driverInfo: User? = null
     var menCount=""
     private  var id:String? = null
-   // var selectPorterDialog:SelectPorterDialog? = null
+    //var selectPorterDialog:SelectDialogInterface? = null
 
     override fun onSetupArguments() {
 
@@ -70,17 +66,19 @@ class SelectWorkerDialog() : BaseDialogueFragment() {
 
             }else{
                 if (menCount > "0"){
-                    val dialog = SelectPorterDialog.newInstance()
-                    val bundle = Bundle()
-                    bundle.putString("jobId", id)
-                    bundle.putString("menCount", menCount)
-                    bundle.putSerializable("driverInfo", driverInfo)
-                    dialog.arguments = bundle
 
-                    dialog.show(this.childFragmentManager, "")
-                    Handler(Looper.getMainLooper()).postDelayed({
-
-                    }, 2000L)
+                    selectPorterDialog.openPorterDialog(id , menCount , driverInfo!!);
+//                    val dialog = SelectPorterDialog.newInstance()
+//                    val bundle = Bundle()
+//                    bundle.putString("jobId", id)
+//                    bundle.putString("menCount", menCount)
+//                    bundle.putSerializable("driverInfo", driverInfo)
+//                    dialog.arguments = bundle
+//
+//                    dialog.show(this.childFragmentManager, "")
+//                    Handler(Looper.getMainLooper()).postDelayed({
+//
+//                    }, 2000L)
 
 
                 }
@@ -165,11 +163,11 @@ class SelectWorkerDialog() : BaseDialogueFragment() {
 
     companion object {
         fun newInstance(
-
+select : SelectDialogInterface
         ): SelectWorkerDialog {
             val args = Bundle()
 
-            val fragment = SelectWorkerDialog()
+            val fragment = SelectWorkerDialog(select)
             fragment.arguments = args
             return fragment
         }
@@ -179,7 +177,7 @@ class SelectWorkerDialog() : BaseDialogueFragment() {
         super.onDestroy()
     }
     interface  SelectDialogInterface{
-        fun openPorterDialog(position:Int)
+        fun openPorterDialog(id: String?, menCount: String, driverInfo: User)
     }
 }
 

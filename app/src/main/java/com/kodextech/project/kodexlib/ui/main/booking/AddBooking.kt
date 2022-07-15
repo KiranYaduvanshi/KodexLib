@@ -210,7 +210,7 @@ class AddBooking : BaseActivity(), AddVanAdapter.RemoveAddress {
         binding?.tvPickUpAddress?.text = setMandatoryHintData("Pickup Address");
         binding?.tvDropAddress?.text = setMandatoryHintData("Drop Address");
         binding?.tvDateTime?.text = setMandatoryHintData("Date & Time");
-        binding?.etPackingFee?.text = setMandatoryHintData("Packing Fee &amp; Dismantling/Assembling");
+        binding?.etPackingFee?.hint = setMandatoryHintData("Packing Fee &amp; Dismantling/Assembling");
 
         binding?.tvBookedBy?.text = LocalPreference.shared.user?.user?.profile?.full_name
 
@@ -772,7 +772,6 @@ class AddBooking : BaseActivity(), AddVanAdapter.RemoveAddress {
                         .setMaxCount(5)
                         .setActivityTheme(R.style.LibAppTheme) //optional
                         .pickPhoto(this, IMAGE_REQUEST_CODE)
-
 
                 }
                 mImageAdapter?.notifyDataSetChanged()
@@ -1593,7 +1592,7 @@ class AddBooking : BaseActivity(), AddVanAdapter.RemoveAddress {
         ), object : Response {
             override fun onSuccessResponse(response: String?, message: String) {
                 hideLoading()
-                showBarToast(message)
+//                showBarToast(message)
                 val json = JSONObject(response ?: "")
                 val obj = Gson().fromJson(json.toString(), Sms::class.java)
 //                 Toast.makeText(binding?.root?.context, "response"+response, Toast.LENGTH_SHORT).show()
@@ -1905,6 +1904,8 @@ class AddBooking : BaseActivity(), AddVanAdapter.RemoveAddress {
 
             override fun onErrorResponse(error: String?, response: String?) {
 //                hideLoading()
+
+                Log.i("error","response --"+response)
                 showBarToast(error ?: "")
             }
 
@@ -1971,6 +1972,8 @@ class AddBooking : BaseActivity(), AddVanAdapter.RemoveAddress {
                             uri
                         )
                     mData.add(file!!)
+
+
                 }
 
                 this.runOnUiThread {

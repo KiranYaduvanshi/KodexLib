@@ -16,6 +16,7 @@ import com.kodextech.project.kodexlib.databinding.JobItemBinding
 import com.kodextech.project.kodexlib.dialog.SelectPorterDialog
 import com.kodextech.project.kodexlib.dialog.SelectWorkerDialog
 import com.kodextech.project.kodexlib.model.JobModel
+import com.kodextech.project.kodexlib.model.User
 import com.kodextech.project.kodexlib.network.LocalPreference
 import com.kodextech.project.kodexlib.ui.main.dashboard.adapter.Placeholders
 import com.kodextech.project.kodexlib.ui.main.dashboard.adapter.loadImage
@@ -29,11 +30,12 @@ class JobListingAdapter(
     var mContext: BaseActivity,
     var mData: ArrayList<JobModel>,
     var callBack: ((item: JobModel, position: Int, invoiceGenerated: Boolean, isFor: String) -> Unit)
-) : RecyclerView.Adapter<JobListingVH>(){
+) : RecyclerView.Adapter<JobListingVH>(), SelectWorkerDialog.SelectDialogInterface{
     companion object {
         var mDataSelected: ArrayList<JobModel> = ArrayList()
         var isButtonState: Boolean = false
     }
+    val dialog = SelectWorkerDialog.newInstance(this)
 
     fun dialogLabour(position : Int ){
         val dialog = SelectPorterDialog.newInstance()
@@ -204,12 +206,13 @@ class JobListingAdapter(
         {
 
             if (mItem.worker_id == null) {
-                val dialog = SelectWorkerDialog.newInstance()
+//                val dialog = SelectWorkerDialog.newInstance(this)
                 val bundle = Bundle()
                 bundle.putString("jobId", mItem.uuid)
                 bundle.putString("menCount", mItem.men_count)
                 dialog.arguments = bundle
                 dialog.show(mContext.supportFragmentManager, "")
+
             } else if (mItem.worker_id != null) {
                 if (mItem.job_status?.lowercase() == "assigned".lowercase()) {
                     val intent = Intent(mContext, TermsServices::class.java)
@@ -325,7 +328,17 @@ class JobListingAdapter(
 
 
     override fun getItemCount() = mData.size
+    override fun openPorterDialog(id: String?, menCount: String, driverInfo: User) {
+        dialog.dismiss()
+        val dialogPorter = SelectPorterDialog.newInstance()
+                    val bundle = Bundle()
+                    bundle.putString("jobId", id)
+                    bundle.putString("menCount", menCount)
+                    bundle.putSerializable("driverInfo", driverInfo)
+        dialogPorter.arguments = bundle
 
+        dialogPorter.show(mContext.supportFragmentManager, "")
+    }
 
 
 }

@@ -182,7 +182,7 @@ class CommunicationActivity : BaseActivity(), emailClickInterface, viewSmsSelect
         ), object : Response {
             override fun onSuccessResponse(response: String?, message: String) {
                 hideLoading()
-                showBarToast(message)
+//                showBarToast(message)
                 val json = JSONObject(response ?: "")
                 val obj = Gson().fromJson(json.toString(), Sms::class.java)
 //                 Toast.makeText(binding?.root?.context, "response"+response, Toast.LENGTH_SHORT).show()
