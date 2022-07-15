@@ -54,13 +54,11 @@ class JobDetail : BaseActivity() {
                 startActivity(intent)
                 finish()
 
-
             }
             else{
                 val intent = Intent(this, DriverDashboardActivity::class.java)
                 startActivity(intent)
                 finish()
-
             }
         }
 
@@ -77,8 +75,6 @@ class JobDetail : BaseActivity() {
             val intent = Intent(this, Dashboard::class.java)
             startActivity(intent)
             finish()
-
-
         }
         else{
             val intent = Intent(this, DriverDashboardActivity::class.java)
@@ -89,6 +85,7 @@ class JobDetail : BaseActivity() {
     }
 
     private fun setData() {
+
 
     }
     private fun  setPorterAdapter(){

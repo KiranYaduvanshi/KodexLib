@@ -772,7 +772,6 @@ class AddBooking : BaseActivity(), AddVanAdapter.RemoveAddress {
                         .setMaxCount(5)
                         .setActivityTheme(R.style.LibAppTheme) //optional
                         .pickPhoto(this, IMAGE_REQUEST_CODE)
-
                 }
                 mImageAdapter?.notifyDataSetChanged()
             }
@@ -800,12 +799,11 @@ class AddBooking : BaseActivity(), AddVanAdapter.RemoveAddress {
                     hideLoading()
                     showBarToast(error ?: "")
                 }
-
             })
-
     }
 
     private fun addDocumentCall() {
+        Log.i("file ", "image file "+ mData)
         showLoading()
         NetworkClass.callFileUpload(URLApi.addDocument(nature = "booking"),
             mData, "uploadedFiles[]", object : Response {
