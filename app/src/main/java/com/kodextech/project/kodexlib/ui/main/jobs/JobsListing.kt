@@ -396,9 +396,9 @@ class JobsListing : BaseActivity() {
 
         binding?.etSearch?.hint = "Type Here"
 
-        if (LocalPreference.shared.user?.user?.profile?.worker_type?.lowercase() == "driver".lowercase()) {
+        if (LocalPreference.shared.user?.user?.profile?.worker_type?.lowercase() == "driver".lowercase()||LocalPreference.shared.user?.user?.profile?.worker_type?.lowercase() == "porter".lowercase()) {
             binding?.cvMain?.gone()
-            binding?.topBar?.ivBack?.gone()
+            binding?.topBar?.ivBack?.visible()
             binding?.topBar?.ivLogout?.visible()
             binding?.topBar?.ivSearch?.visible()
             from = intent.getStringExtra("from")
@@ -495,7 +495,7 @@ class JobsListing : BaseActivity() {
 //        mDataSelected.clear()
         binding?.rlButton?.gone()
         mDataSelected.clear()
-        if (LocalPreference.shared.user?.user?.profile?.worker_type?.lowercase() == "driver".lowercase()) {
+        if (LocalPreference.shared.user?.user?.profile?.worker_type?.lowercase() == "driver".lowercase()||LocalPreference.shared.user?.user?.profile?.worker_type?.lowercase() == "porter".lowercase()) {
             getWorkerJob(LocalPreference.shared.user?.user?.profile?.uuid)
 
         } else {

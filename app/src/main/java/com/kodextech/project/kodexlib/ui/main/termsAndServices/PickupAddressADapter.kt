@@ -24,12 +24,9 @@ class PickupAddressADapter(
 
     override fun onBindViewHolder(holder: AddressViewHolder, position: Int) {
 
-        if (service == "House Move") {
+        if (service == "Flat Move") {
 
-            holder.binding?.tvPickUpAddress?.text =addressList[position].address1
 
-        }
-        else{
             var floorNo: String = ""
 
             if (addressList[position].pickup_flat_meta?.firstOrNull()?.floor_no == "-1") {
@@ -52,10 +49,12 @@ class PickupAddressADapter(
                 holder.binding?.tvPickUpAddress?.text = s
 
             }
+        }
+        else{
+
+            holder.binding?.tvPickUpAddress?.text =addressList[position].address1
 
         }
-
-
 
         holder.binding?.tvPickUpAddress?.setOnClickListener {
             selectAddress.onAddressClick(position, addressList[position].address1.toString())

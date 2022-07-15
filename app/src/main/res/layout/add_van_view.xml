@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/_2sdp">
@@ -26,9 +26,9 @@
             <TextView
                 android:id="@+id/tvVansDetail"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_30sdp"
-                android:fontFamily="@font/opensans_semi_bold"
+                android:layout_height="41dp"
                 android:layout_gravity="center_vertical"
+                android:fontFamily="@font/opensans_semi_bold"
                 android:gravity="center_vertical"
                 android:paddingLeft="@dimen/_15sdp"
                 android:text="0 Vans"

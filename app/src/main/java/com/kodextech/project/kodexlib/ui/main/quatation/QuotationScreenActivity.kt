@@ -108,13 +108,6 @@ class QuotationScreenActivity : BaseActivity() {
         menCount: String
     ) {
 
-        Toast.makeText(
-            binding?.root?.context,
-            "--name--" + name + "--hour--" + minimumHours + "--rate--" + hourlyRate + "--email--" + email + "--men count--" + menCount,
-            Toast.LENGTH_SHORT
-        ).show()
-
-
         showLoading()
         NetworkClass.callApi(URLApi.sendQuotation(
             name = name, hourly_rate = hourlyRate, minimum_hours = minimumHours,
@@ -131,8 +124,7 @@ class QuotationScreenActivity : BaseActivity() {
 
             override fun onErrorResponse(error: String?, response: String?) {
                 hideLoading()
-                Toast.makeText(binding?.root?.context, "Error--- " + error, Toast.LENGTH_SHORT)
-                    .show()
+                showToast(error.toString());
                 Log.i("Search", "onErrorResponse: $error")
 
             }

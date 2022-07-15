@@ -124,7 +124,7 @@ class DriverDashboardActivity : BaseActivity() {
     private fun setUpDashboardRecyler() {
 
         mCardData.add(DashboardItemModel("View Jobs", R.drawable.ic_job_inprogress))
-        mCardData.add(DashboardItemModel("Communication", R.drawable.ic_mails))
+//        mCardData.add(DashboardItemModel("Communication", R.drawable.ic_mails))
         mCardData.add(DashboardItemModel("Expense", R.drawable.ic_expenses))
 
         binding?.rvDashboard?.layoutManager = GridLayoutManager(this, 2)
@@ -136,12 +136,12 @@ class DriverDashboardActivity : BaseActivity() {
            startActivity(intent)
                 }
 
+//                1 -> {
+//
+//                    val intent = Intent(this, CommunicationActivity::class.java)
+//                    startActivity(intent)
+//                }
                 1 -> {
-
-                    val intent = Intent(this, CommunicationActivity::class.java)
-                    startActivity(intent)
-                }
-                2 -> {
                     val intent = Intent(this, DriverExpenseActivity::class.java)
                     startActivity(intent)
 
