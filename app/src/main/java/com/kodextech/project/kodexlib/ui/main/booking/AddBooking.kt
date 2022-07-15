@@ -27,6 +27,7 @@ import android.widget.RadioButton
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.widget.AppCompatImageView
+import androidx.core.widget.NestedScrollView
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -71,7 +72,7 @@ import java.util.*
 import kotlin.toString
 
 
-class AddBooking : BaseActivity() {
+class AddBooking : BaseActivity(), AddVanAdapter.RemoveAddress {
 
     private var binding: ActivityAddBookingBinding? = null
 
@@ -191,6 +192,7 @@ class AddBooking : BaseActivity() {
         statusBarColor(getColor(R.color.blue))
         binding = DataBindingUtil.setContentView(this, R.layout.activity_add_booking)
 
+
         checkPermissions()
         initTopBar()
         changePriceColorState()
@@ -208,6 +210,7 @@ class AddBooking : BaseActivity() {
         binding?.tvPickUpAddress?.text = setMandatoryHintData("Pickup Address");
         binding?.tvDropAddress?.text = setMandatoryHintData("Drop Address");
         binding?.tvDateTime?.text = setMandatoryHintData("Date & Time");
+        binding?.etPackingFee?.hint = setMandatoryHintData("Packing Fee &amp; Dismantling/Assembling");
 
         binding?.tvBookedBy?.text = LocalPreference.shared.user?.user?.profile?.full_name
 
@@ -234,6 +237,20 @@ class AddBooking : BaseActivity() {
 //            ChangeLiftColorState()
 //        }
 
+
+        binding?.slBooking?.setOnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
+
+            binding?.etFirstName?.clearFocus()
+            binding?.etLabour?.clearFocus()
+            binding?.etLastName?.clearFocus()
+            binding?.etEmail?.clearFocus()
+            binding?.etPrice?.clearFocus()
+            binding?.etNoOfBags?.clearFocus()
+            binding?.etNoOfBoxes?.clearFocus()
+            binding?.etAdvancePayment?.clearFocus()
+            binding?.etPackingFee?.clearFocus()
+            binding?.phoneNo?.clearFocus()
+        }
 
         binding?.btnPackingServiceYes?.setOnClickListener {
             binding?.rlPackingFee?.visibility = View.VISIBLE
@@ -367,7 +384,7 @@ class AddBooking : BaseActivity() {
                                 itemName, itemQuantity
                             )
                         )
-                        binding?.rvFloors?.adapter = AddVanAdapter(this@AddBooking, mFloorArray)
+                        binding?.rvFloors?.adapter = AddVanAdapter(this@AddBooking, mFloorArray, this)
                         binding?.rvFloors?.layoutManager =
                             LinearLayoutManager(this, RecyclerView.VERTICAL, false)
                         mVanAdapter?.notifyDataSetChanged()
@@ -494,11 +511,11 @@ class AddBooking : BaseActivity() {
                 item.toString()
 
             }
-            if(
-                noOfMens == "0"|| binding?.spMen?.text == null){
+            if (
+                noOfMens == "0" || binding?.spMen?.text == null) {
                 binding?.llLabour?.visibility = View.GONE
                 binding?.etLabour?.text("0")
-            }else{
+            } else {
                 binding?.llLabour?.visibility = View.VISIBLE
             }
 
@@ -631,17 +648,17 @@ class AddBooking : BaseActivity() {
     private fun setPickupAdapter(mPAddressArrayy: ArrayList<PickupAddress>) {
         binding?.rvPickUpAddress?.adapter =
             AddAddressAdapter(this@AddBooking, mPAddressArrayy) { position ->
-                mPAddressArrayy.removeAt(position)
-//                mAddressAdapter?.notifyItemRemoved(position)
-//                mAddressAdapter?.notifyItemRangeRemoved(position, mPAddressArrayy.size)
-                pickupAddressString = Gson().toJson(mPAddressArrayy)
+                mPAddressArray.removeAt(position)
+                mAddressAdapter?.notifyItemRemoved(position)
+                mAddressAdapter?.notifyItemRangeRemoved(position, mPAddressArrayy.size)
+                pickupAddressString = Gson().toJson(mPAddressArray)
 
                 binding?.rvPickUpAddress?.adapter?.notifyDataSetChanged()
             }
         binding?.rvPickUpAddress?.layoutManager =
             LinearLayoutManager(this, RecyclerView.VERTICAL, false)
         binding?.rvPickUpAddress?.adapter?.notifyDataSetChanged()
-        pickupAddressString = Gson().toJson(mPAddressArrayy)
+        pickupAddressString = Gson().toJson(mPAddressArray)
     }
 
 
@@ -755,7 +772,6 @@ class AddBooking : BaseActivity() {
                         .setMaxCount(5)
                         .setActivityTheme(R.style.LibAppTheme) //optional
                         .pickPhoto(this, IMAGE_REQUEST_CODE)
-
 
                 }
                 mImageAdapter?.notifyDataSetChanged()
@@ -1045,7 +1061,7 @@ class AddBooking : BaseActivity() {
             binding?.etPrice?.error = "Required"
         } else if (binding?.etLabour?.text.isNullOrEmpty()) {
             binding?.etLabour?.error = "Required"
-        } else if (pickupAddressString.isNullOrEmpty()) {
+        } else if (pickupAddressString.isNullOrEmpty()|| mPAddressArray.size==0) {
             showBarToast("Please Add Pickup Address")
         } else if (dropAddressString.isNullOrEmpty()) {
             showBarToast("Please Add Drop Address")
@@ -1576,7 +1592,7 @@ class AddBooking : BaseActivity() {
         ), object : Response {
             override fun onSuccessResponse(response: String?, message: String) {
                 hideLoading()
-                showBarToast(message)
+//                showBarToast(message)
                 val json = JSONObject(response ?: "")
                 val obj = Gson().fromJson(json.toString(), Sms::class.java)
 //                 Toast.makeText(binding?.root?.context, "response"+response, Toast.LENGTH_SHORT).show()
@@ -1888,6 +1904,8 @@ class AddBooking : BaseActivity() {
 
             override fun onErrorResponse(error: String?, response: String?) {
 //                hideLoading()
+
+                Log.i("error","response --"+response)
                 showBarToast(error ?: "")
             }
 
@@ -1954,6 +1972,8 @@ class AddBooking : BaseActivity() {
                             uri
                         )
                     mData.add(file!!)
+
+
                 }
 
                 this.runOnUiThread {
@@ -2166,6 +2186,13 @@ class AddBooking : BaseActivity() {
             Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
         )
         return builder
+    }
+
+    override fun removeAddress(position: Int) {
+        mFloorArray.removeAt(position)
+           mVanAdapter?.notifyItemRemoved(position)
+        mVanAdapter?.notifyItemRangeRemoved(position, mFloorArray.size)
+        mVanAdapter?.notifyDataSetChanged()
     }
 
 }
