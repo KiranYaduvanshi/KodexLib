@@ -74,8 +74,8 @@ class ExpensesActivity : BaseActivity() {
     fun setExpensis(obj : Expensis){
      binding?.txtFuel?.text = "£"+obj.Fuel
      binding?.txtLabour?.text = "£"+obj.Labour
-     binding?.txtVehicleMaintainance?.text = "£"+obj.Vehiclemaintenance
-     binding?.txtAdvertising?.text = ""+obj.Advertising
+     binding?.txtVehicleMaintainance?.text = "£"+obj.Vehicle_maintenance
+     binding?.txtAdvertising?.text = "£"+obj.Advertising
      binding?.txtEquipment?.text = "£"+obj.Equipment
      binding?.txtOther?.text = "£"+obj.Other
     }
