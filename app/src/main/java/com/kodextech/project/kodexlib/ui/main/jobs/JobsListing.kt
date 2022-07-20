@@ -78,9 +78,18 @@ class JobsListing : BaseActivity() {
         }
 
         binding?.topBar?.ivBack?.setOnClickListener {
-            val intent = Intent(this, Dashboard::class.java)
-            startActivity(intent)
-            finish()
+            if (from == "customer") {
+                val intent = Intent(this, Dashboard::class.java)
+                startActivity(intent)
+                finish()
+            }
+            else {
+
+                finish()
+            }
+//            val intent = Intent(this, Dashboard::class.java)
+//            startActivity(intent)
+//            finish()
         }
 
         binding?.topBar?.ivLogout?.setOnClickListener {

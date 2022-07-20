@@ -45,7 +45,7 @@
                             android:fontFamily="@font/opensans_regular"
                             android:gravity="center_vertical"
                             android:singleLine="true"
-                            android:text="Order ID: "
+                            android:text="Booking# "
                             android:textColor="@color/locationCol"
                             android:textSize="@dimen/_12sdp" />
 

@@ -31,11 +31,11 @@ class QuotationScreenActivity : BaseActivity() {
     override fun setupContentViewWithBinding() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_quotation_screen)
 
-        binding?.tvCustomerName?.setOnClickListener {
-            val intent = Intent(this, SearchCustomerActivity::class.java)
-            startActivityForResult(intent, MY_REQUEST_CODE)
-
-        }
+//        binding?.tvCustomerName?.setOnClickListener {
+//            val intent = Intent(this, SearchCustomerActivity::class.java)
+//            startActivityForResult(intent, MY_REQUEST_CODE)
+//
+//        }
         binding?.btnSentQuotation?.setOnClickListener {
             validateFields()
         }
@@ -58,44 +58,45 @@ class QuotationScreenActivity : BaseActivity() {
     override fun setupLoader() {
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        if (resultCode == Activity.RESULT_OK) {
-            if (requestCode == MY_REQUEST_CODE) {
-                if (data != null) {
-                    name = data.getStringExtra("name").toString()
-                    email = data.getStringExtra("email").toString()
-                    binding?.tvCustomerName?.text = name
-                    // Toast.makeText(binding?.root?.context, "name --- "+name+"-- email --"+email, Toast.LENGTH_SHORT).show()
-
-                }
-                // textView.setText(data.getStringExtra("value"));
-            }
-        }
-
-    }
+//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+//        super.onActivityResult(requestCode, resultCode, data)
+//
+//        if (resultCode == Activity.RESULT_OK) {
+//            if (requestCode == MY_REQUEST_CODE) {
+//                if (data != null) {
+//                    name = data.getStringExtra("name").toString()
+//                    email = data.getStringExtra("email").toString()
+//                    binding?.tvCustomerName?.text = name
+//                    // Toast.makeText(binding?.root?.context, "name --- "+name+"-- email --"+email, Toast.LENGTH_SHORT).show()
+//
+//                }
+//                // textView.setText(data.getStringExtra("value"));
+//            }
+//        }
+//
+//    }
 
     private fun validateFields() {
 
         hourlyRate = binding?.etPrice?.text.toString()
         minimumHours = binding?.minimumBookingTv?.text.toString()
         menCount = binding?.etMenCount?.text.toString()
+        name = binding?.customerName?.text.toString()
+        email = binding?.customerEmail?.text.toString()
 
         if (name?.isNullOrEmpty() == true) {
-            showBarToast("Please Select Customer Name")
-        } else if (hourlyRate?.isNullOrEmpty() == true) {
+            binding?.customerName?.error = "Required"
+        }else if (email?.isNullOrEmpty() == true) {
+            binding?.customerEmail?.error = "Required"
+        }
+        else if (hourlyRate?.isNullOrEmpty() == true) {
             binding?.etPrice?.error = "Required"
         } else if (minimumHours?.isNullOrEmpty() == true) {
             binding?.minimumBookingTv?.error = "Required"
         } else if (menCount?.isNullOrEmpty() == true) {
             binding?.etMenCount?.error = "Required"
         } else {
-
-
             sendQuotation(name, hourlyRate, minimumHours, email, menCount)
-
-
         }
     }
 

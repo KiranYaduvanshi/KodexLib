@@ -173,7 +173,6 @@ class CommunicationActivity : BaseActivity(), emailClickInterface, viewSmsSelect
         sendSmsApi(id, sms, phone)
     }
 
-
     private fun sendSmsApi(id: Int?, msg: String, phone: String) {
         showLoading()
         NetworkClass.callApi(URLApi.saveSMS(
@@ -194,10 +193,8 @@ class CommunicationActivity : BaseActivity(), emailClickInterface, viewSmsSelect
             override fun onErrorResponse(error: String?, response: String?) {
                 hideLoading()
                 //  Toast.makeText(binding?.root?.context, "error"+response, Toast.LENGTH_SHORT).show()
-
                 showBarToast(error ?: "")
                 Log.i("Res", "error " + response)
-
             }
         })
     }
@@ -370,7 +367,5 @@ class CommunicationActivity : BaseActivity(), emailClickInterface, viewSmsSelect
             WindowManager.LayoutParams.WRAP_CONTENT
         )
         dialog.window!!.setGravity(Gravity.CENTER)
-
     }
-
 }

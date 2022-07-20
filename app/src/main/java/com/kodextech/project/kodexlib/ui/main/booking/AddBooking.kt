@@ -241,7 +241,7 @@ class AddBooking : BaseActivity(), AddVanAdapter.RemoveAddress {
         binding?.slBooking?.setOnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
 
             binding?.etFirstName?.clearFocus()
-            binding?.etLabour?.clearFocus()
+//            binding?.etLabour?.clearFocus()
             binding?.etLastName?.clearFocus()
             binding?.etEmail?.clearFocus()
             binding?.etPrice?.clearFocus()
@@ -511,13 +511,13 @@ class AddBooking : BaseActivity(), AddVanAdapter.RemoveAddress {
                 item.toString()
 
             }
-            if (
-                noOfMens == "0" || binding?.spMen?.text == null) {
-                binding?.llLabour?.visibility = View.GONE
-                binding?.etLabour?.text("0")
-            } else {
-                binding?.llLabour?.visibility = View.VISIBLE
-            }
+//            if (
+//                noOfMens == "0" || binding?.spMen?.text == null) {
+//                binding?.llLabour?.visibility = View.GONE
+//                binding?.etLabour?.text("0")
+//            } else {
+//                binding?.llLabour?.visibility = View.VISIBLE
+//            }
 
 
         }
@@ -1059,8 +1059,8 @@ class AddBooking : BaseActivity(), AddVanAdapter.RemoveAddress {
             showBarToast("Please Select Priority")
         } else if (price.isNullOrEmpty()) {
             binding?.etPrice?.error = "Required"
-        } else if (binding?.etLabour?.text.isNullOrEmpty()) {
-            binding?.etLabour?.error = "Required"
+//        } else if (binding?.etLabour?.text.isNullOrEmpty()) {
+//            binding?.etLabour?.error = "Required"
         } else if (pickupAddressString.isNullOrEmpty()|| mPAddressArray.size==0) {
             showBarToast("Please Add Pickup Address")
         } else if (dropAddressString.isNullOrEmpty()) {
@@ -1209,7 +1209,7 @@ class AddBooking : BaseActivity(), AddVanAdapter.RemoveAddress {
                 packing_fee = packingFee,
                 is_packing_service = is_packing_service,
                 is_any_dismantling = is_any_dismantling,
-                labour_cost = binding?.etLabour?.text.toString()
+//                labour_cost = binding?.etLabour?.text.toString()
                 //                pickup_places_id = locationId,
 //                pickup_address_title = locationName,
 //                pickup_address1 = pickupAddress,

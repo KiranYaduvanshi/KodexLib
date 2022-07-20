@@ -77,7 +77,7 @@
                             android:textSize="@dimen/_13sdp"
                             app:ms_background_color="@color/bgEdit"
                             app:ms_hide_arrow="true"
-                            app:ms_hint="Services"
+                            app:ms_hint="Customer Type"
 
                             app:ms_hint_color="@color/addProductHint"
                             app:ms_padding_left="@dimen/_12sdp"
@@ -144,17 +144,18 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_marginTop="@dimen/_10sdp"
                     android:layout_height="@dimen/_60sdp"
-                    android:background="@drawable/bg_dottted_border"
-                    >
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:background="@drawable/bg_dottted_border">
+
                     <ImageView
                         android:id="@+id/ivImage"
-                        android:src="@drawable/ic_upload"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_60sdp"
-                        android:layout_margin="@dimen/_5sdp" />
+                        android:layout_margin="@dimen/_5sdp"
+                        android:src="@drawable/ic_upload" />
                 </RelativeLayout>
+
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:id="@+id/rlButton"
                     android:layout_width="match_parent"
