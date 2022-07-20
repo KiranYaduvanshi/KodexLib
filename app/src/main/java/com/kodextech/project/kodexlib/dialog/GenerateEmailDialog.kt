@@ -105,18 +105,24 @@ class GenerateEmailDialog : BaseDialogueFragment() {
             mActivity.showToast("Please Select Worker Type")
         } else if (subject?.isNullOrEmpty() == true) {
             binding?.etEmailSubject?.error = "Required"
+
         } else if (body?.isNullOrEmpty() == true) {
             binding?.etMessage?.error = "Required"
         } else {
             if (file == null) {
+               // Toast.makeText(mActivity, "file null -- "+file, Toast.LENGTH_SHORT).show()
                 generateEmailWithFile(workerType, subject, body, fileResponsePath)
             } else {
+               // Toast.makeText(mActivity, "file not null -- "+file, Toast.LENGTH_SHORT).show()
+
                 uploadImage()
             }
         }
     }
 
     private fun uploadImage() {
+        Log.i("file","media files-- "+mData
+        )
         showLoading()
         NetworkClass.callFileUpload(URLApi.addDocument(nature = "email_medias"),
             mData!!, "uploadedFiles[]", object : Response {

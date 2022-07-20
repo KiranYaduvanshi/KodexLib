@@ -630,7 +630,9 @@ class AddBooking : BaseActivity(), AddVanAdapter.RemoveAddress {
 
     private fun addPickupAddressDialog(s: String) {
         val dialog = AddAddressDialog.newInstance(
-            "Add Pickup Address",
+            "Add Pickup Add" +
+                    "" +
+                    "ress",
             "Save",
             "pickup",
             s
@@ -642,6 +644,8 @@ class AddBooking : BaseActivity(), AddVanAdapter.RemoveAddress {
                 }
             }
         }
+
+
         dialog.show(supportFragmentManager, "")
     }
 
@@ -772,7 +776,6 @@ class AddBooking : BaseActivity(), AddVanAdapter.RemoveAddress {
                         .setMaxCount(5)
                         .setActivityTheme(R.style.LibAppTheme) //optional
                         .pickPhoto(this, IMAGE_REQUEST_CODE)
-
                 }
                 mImageAdapter?.notifyDataSetChanged()
             }
@@ -800,12 +803,11 @@ class AddBooking : BaseActivity(), AddVanAdapter.RemoveAddress {
                     hideLoading()
                     showBarToast(error ?: "")
                 }
-
             })
-
     }
 
     private fun addDocumentCall() {
+        Log.i("file ", "image file "+ mData)
         showLoading()
         NetworkClass.callFileUpload(URLApi.addDocument(nature = "booking"),
             mData, "uploadedFiles[]", object : Response {

@@ -487,7 +487,6 @@ class JobsListing : BaseActivity() {
             finish()
         }
         else {
-
             finish()
         }
     }
