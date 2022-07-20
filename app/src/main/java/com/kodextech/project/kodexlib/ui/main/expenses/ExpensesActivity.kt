@@ -22,6 +22,7 @@ class ExpensesActivity : BaseActivity() {
         mViewGroup = binding?.rlExpensis
     }
 
+
     override fun setupContentViewWithBinding() {
         binding = ActivityExpensesBinding.inflate(layoutInflater)
         setContentView(binding!!.root)
