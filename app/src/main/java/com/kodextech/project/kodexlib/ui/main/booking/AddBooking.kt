@@ -630,7 +630,9 @@ class AddBooking : BaseActivity(), AddVanAdapter.RemoveAddress {
 
     private fun addPickupAddressDialog(s: String) {
         val dialog = AddAddressDialog.newInstance(
-            "Add Pickup Address",
+            "Add Pickup Add" +
+                    "" +
+                    "ress",
             "Save",
             "pickup",
             s
@@ -642,6 +644,8 @@ class AddBooking : BaseActivity(), AddVanAdapter.RemoveAddress {
                 }
             }
         }
+
+
         dialog.show(supportFragmentManager, "")
     }
 
