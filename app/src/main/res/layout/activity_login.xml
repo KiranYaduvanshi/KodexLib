@@ -172,7 +172,7 @@
                             android:layout_marginStart="@dimen/_3sdp"
                             android:layout_toEndOf="@+id/ivPassword"
                             android:backgroundTint="@color/black"
-                            android:digits="ABCDEFGHIJKLMNOPQRSTaqbcdefghijklmnopqrstuvwxyz1234567890!@#$%*_+"
+                            android:digits="ABCDEFGHIJKLMNOPQRSTaqbcdefghijklmnopqrstuvwxyz1234567890!@#$%*_+=-^';'':&amp;()?/"
                             android:ellipsize="end"
                             android:fontFamily="@font/opensans_regular"
                             android:hint="Enter Password"
