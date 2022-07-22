@@ -262,7 +262,6 @@
                         android:gravity="start"
                         android:inputType="textMultiLine"
                         android:padding="@dimen/_2sdp"
-
                         android:textColor="@color/black" />
 
                 </RelativeLayout>

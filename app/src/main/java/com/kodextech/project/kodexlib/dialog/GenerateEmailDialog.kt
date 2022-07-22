@@ -67,7 +67,7 @@ class GenerateEmailDialog : BaseDialogueFragment() {
             DataBindingUtil.inflate(inflater, R.layout.generate_email_dialog, container, false)
         isCancelable = false
 
-        binding?.spService?.hint = "Services"
+        binding?.spService?.hint = "Customer Type"
 
 
         getWorkerTypeList()
@@ -201,8 +201,15 @@ class GenerateEmailDialog : BaseDialogueFragment() {
 //                array.add("All")
 //                array.addAll(mWorkerData)
 
-
-                binding?.spService?.setItems(mWorkerData)
+//
+//                binding?.spService?.setItems(mWorkerData)
+                binding?.spService?.setItems(
+                    "All",
+                    "House Move",
+                    "Event Move",
+                    "Office Move",
+                    "Flat Move"
+                )
             }
 
             override fun onErrorResponse(error: String?, response: String?) {

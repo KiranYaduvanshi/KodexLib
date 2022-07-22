@@ -279,6 +279,7 @@ class TermsServices : BaseActivity(), selectAddress {
         binding?.tvService?.text = obj?.service
         binding?.tvPackingFee?.text = obj?.packing_fee
 
+
         if(obj?.additional_details != null){
             binding?.tvComments?.visible()
             binding?.tvComments?.text= obj?.additional_details

@@ -61,11 +61,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:background="@drawable/bg_search_et"
-                android:imeOptions="actionSearch"
                 android:drawableLeft="@drawable/ic_search"
                 android:drawablePadding="10dp"
                 android:drawableTint="@color/black"
                 android:hint="Search Customer"
+                android:imeOptions="actionSearch"
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
                 android:singleLine="true" />
@@ -81,7 +81,6 @@
             tools:listitem="@layout/customer_name_list"
 
             />
-
 
 
     </LinearLayout>
