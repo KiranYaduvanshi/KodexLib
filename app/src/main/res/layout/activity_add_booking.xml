@@ -1594,6 +1594,7 @@
                                 android:layout_marginTop="@dimen/_5sdp"
                                 android:layout_marginEnd="@dimen/_2sdp"
                                 android:layout_marginBottom="@dimen/_90sdp"
+
                                 android:background="@drawable/bg_des"
                                 android:gravity="top"
                                 android:inputType="textCapSentences|textNoSuggestions|textMultiLine"
@@ -1666,11 +1667,7 @@
                     android:textColor="@color/txtColor"
                     android:textSize="@dimen/_12sdp" />
             </RelativeLayout>
-
-
         </androidx.appcompat.widget.LinearLayoutCompat>
-
-
     </RelativeLayout>
 
 </layout>

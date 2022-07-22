@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout>
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
@@ -172,7 +172,10 @@
                             android:layout_marginStart="@dimen/_3sdp"
                             android:layout_toEndOf="@+id/ivPassword"
                             android:backgroundTint="@color/black"
-                            android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890!@#$%^-_.,*"
+
+
+                            android:digits="ABCDEFGHIJKLMNOPQRSTaqbcdefghijklmnopqrstuvwxyz1234567890!@#$%*_+=-^';'':&amp;()?/"
+
                             android:ellipsize="end"
                             android:fontFamily="@font/opensans_regular"
                             android:hint="Enter Password"
