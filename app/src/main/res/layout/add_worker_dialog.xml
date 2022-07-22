@@ -161,7 +161,7 @@
                         android:layout_toStartOf="@id/showPass"
                         android:background="@drawable/button_bg"
                         android:backgroundTint="@color/bgEdit"
-                        android:digits="ABCDEFGHIJKLMNOPQRSTqbcdefghijklmnopqrstuvwxyz1234567890!@#$%*_+"
+                        android:digits="ABCDEFGHIJKLMNOPQRSTaqbcdefghijklmnopqrstuvwxyz1234567890!@#$%*_+=-^';'':&amp;()?/"
                         android:fontFamily="@font/opensans_regular"
                         android:gravity="center_vertical"
                         android:hint="Password"
