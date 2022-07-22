@@ -172,7 +172,7 @@
                             android:layout_marginStart="@dimen/_3sdp"
                             android:layout_toEndOf="@+id/ivPassword"
                             android:backgroundTint="@color/black"
-                            android:digits="ABCDEFGHIJKLMNOPQRSTaqbcdefghijklmnopqrstuvwxyz1234567890!@#$%*_+"
+                            android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890!@#$%^-_.,*"
                             android:ellipsize="end"
                             android:fontFamily="@font/opensans_regular"
                             android:hint="Enter Password"
@@ -188,7 +188,7 @@
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
                             android:layout_centerVertical="true"
-                            android:layout_marginEnd="@dimen/_10sdp"
+                            android:layout_marginEnd="@dimen/_20sdp"
                             android:src="@drawable/ic_eye_closed"
                             android:tint="@color/black" />
 

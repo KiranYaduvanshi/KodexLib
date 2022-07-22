@@ -279,6 +279,8 @@ class TermsServices : BaseActivity(), selectAddress {
         binding?.tvService?.text = obj?.service
         binding?.tvPackingFee?.text = obj?.packing_fee
 
+
+
         if (obj?.service == "House Move") {
             val newArray = ArrayList<AdressListingModel>()
             val newDropArray = ArrayList<AdressListingModel>()

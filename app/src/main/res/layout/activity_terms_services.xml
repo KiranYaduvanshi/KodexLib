@@ -686,16 +686,7 @@
                                 android:orientation="horizontal"
                                 android:weightSum="1">
 
-                                <RadioButton
-                                    android:id="@+id/btnFixedPrice"
-                                    android:layout_width="0dp"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight=".5"
-                                    android:buttonTint="@color/locationCol"
-                                    android:enabled="false"
-                                    android:text="Fixed Price"
-                                    android:textColor="@color/locationCol"
-                                    android:textSize="@dimen/_12sdp" />
+
 
                                 <RadioButton
                                     android:id="@+id/btnHourlyPrice"
@@ -705,6 +696,18 @@
                                     android:buttonTint="@color/locationCol"
                                     android:enabled="false"
                                     android:text="Hourly Price"
+                                    android:textColor="@color/locationCol"
+                                    android:textSize="@dimen/_12sdp" />
+
+
+                                <RadioButton
+                                    android:id="@+id/btnFixedPrice"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight=".5"
+                                    android:buttonTint="@color/locationCol"
+                                    android:enabled="false"
+                                    android:text="Fixed Price"
                                     android:textColor="@color/locationCol"
                                     android:textSize="@dimen/_12sdp" />
 
