@@ -41,7 +41,6 @@ class WorkerListing : BaseActivity() {
             val dialog = AddWorkerDialog.newInstance("Create Worker") {
                 //Worker Add in AddWorkerDialog
             }
-
             dialog.show(supportFragmentManager, "")
         }
 

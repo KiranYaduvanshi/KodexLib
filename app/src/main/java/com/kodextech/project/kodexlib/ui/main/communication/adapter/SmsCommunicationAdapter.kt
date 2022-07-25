@@ -18,7 +18,7 @@ class SmsCommunicationAdapter(var context:Context,var smsData: ArrayList<SmsComm
 
     override fun onBindViewHolder(holder: SmsViewHolder, position: Int) {
 
-        holder.binding?.tvOrder?.text = smsData[position].Order
+        holder.binding?.tvOrder?.text = smsData[position].id.toString()
         holder.binding?.tvWorkerPhone?.text = smsData[position].phone
         holder.binding?.tvName?.text = smsData[position].Name
         holder.binding?.tvData?.text = smsData[position].Date
