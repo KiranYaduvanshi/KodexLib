@@ -282,10 +282,13 @@ class TermsServices : BaseActivity(), selectAddress {
 
         if(obj?.additional_details != null){
             binding?.tvComments?.visible()
-            binding?.tvComments?.text= obj?.additional_details
+            binding?.tvDescription?.visible()
+            binding?.tvDescription?.text = obj?.additional_details
+
         }
         else{
             binding?.tvComments?.gone()
+            binding?.tvDescription?.gone()
 
         }
 
@@ -495,7 +498,6 @@ class TermsServices : BaseActivity(), selectAddress {
             binding?.insurancedCustomer?.gone()
         }
 
-        binding?.tvDescription?.text = obj?.additional_details
 
         if (obj?.is_packing_service == "0") {
             binding?.btnPackingServiceNo?.isChecked = true
