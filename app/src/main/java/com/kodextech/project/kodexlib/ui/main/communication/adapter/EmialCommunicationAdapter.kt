@@ -20,7 +20,7 @@ class EmialCommunicationAdapter(var context:Context,
 
     override fun onBindViewHolder(holder: EmailViewHolder, position: Int) {
 
-        holder.binding?.tvOrder?.text = mData[position].Order.toString()
+        holder.binding?.tvOrder?.text = mData[position].id.toString()
         holder.binding?.tvWorkerEmail?.text = mData[position].Email
         holder.binding?.tvName?.text = mData[position].Name
         holder.binding?.dateTv?.text = mData[position].Date
