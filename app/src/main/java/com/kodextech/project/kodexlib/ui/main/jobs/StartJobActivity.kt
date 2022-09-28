@@ -119,7 +119,7 @@ class StartJobActivity : BaseActivity(), selectAddress {
 
     }
 
-    private fun addSignature(mSignaturePad: SignaturePad) {
+    private fun  addSignature(mSignaturePad: SignaturePad) {
         Dexter.withContext(this@StartJobActivity)
             .withPermissions(
 

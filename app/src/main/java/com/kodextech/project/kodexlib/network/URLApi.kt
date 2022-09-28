@@ -771,7 +771,7 @@ object URLApi {
         return this
     }
 
-    fun sendQuotation(name: String, hourly_rate: String,minimum_hours:String,email:String,men_count:String): URLApi {
+    fun sendQuotation(name: String, hourly_rate: String,minimum_hours:String,email:String,men_count:String,deposit : String): URLApi {
         method = NetworkMethod.POST
         path = "send-quotation"
         params = JSONObject()
@@ -780,6 +780,7 @@ object URLApi {
         params.put("minimum_hours", minimum_hours)
         params.put("email", email)
         params.put("men_count", men_count)
+        params.put("deposit", men_count)
         return this
     }
 

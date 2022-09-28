@@ -20,6 +20,7 @@ class QuotationScreenActivity : BaseActivity() {
     var email: String = ""
     var menCount: String = ""
     var minimumHours: String = ""
+    var deposit: String = "0"
     private val MY_REQUEST_CODE = 1
 
 
@@ -83,6 +84,7 @@ class QuotationScreenActivity : BaseActivity() {
         menCount = binding?.etMenCount?.text.toString()
         name = binding?.customerName?.text.toString()
         email = binding?.customerEmail?.text.toString()
+        deposit = binding?.etDeposit?.text.toString()
 
         if (name?.isNullOrEmpty() == true) {
             binding?.customerName?.error = "Required"
@@ -96,7 +98,7 @@ class QuotationScreenActivity : BaseActivity() {
         } else if (menCount?.isNullOrEmpty() == true) {
             binding?.etMenCount?.error = "Required"
         } else {
-            sendQuotation(name, hourlyRate, minimumHours, email, menCount)
+            sendQuotation(name, hourlyRate, minimumHours, email, menCount , deposit)
         }
     }
 
@@ -106,13 +108,15 @@ class QuotationScreenActivity : BaseActivity() {
         hourlyRate: String,
         minimumHours: String,
         email: String,
-        menCount: String
+        menCount: String,
+        deposit: String,
+
     ) {
 
         showLoading()
         NetworkClass.callApi(URLApi.sendQuotation(
             name = name, hourly_rate = hourlyRate, minimum_hours = minimumHours,
-            email = email, men_count = menCount
+            email = email, men_count = menCount , deposit = deposit
         ), object : Response {
             override fun onSuccessResponse(response: String?, message: String) {
 

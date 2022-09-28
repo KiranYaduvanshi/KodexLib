@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
     <LinearLayout
         android:id="@+id/qutationCustomer"
-        android:orientation="vertical"
-        tools:context=".ui.main.quatation.QuatationActivity"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_width="match_parent">
+        android:orientation="vertical"
+        tools:context=".ui.main.quatation.QuatationActivity">
 
         <RelativeLayout
-            android:layout_width="match_parent"
             android:id="@+id/workerTopBar"
-            android:background="@color/blue"
-            android:layout_height="@dimen/_60sdp">
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_60sdp"
+            android:background="@color/blue">
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvText"
@@ -44,6 +44,7 @@
             android:id="@+id/customerName"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_45sdp"
+            android:layout_margin="@dimen/_10sdp"
             android:background="@drawable/button_bg"
             android:backgroundTint="@color/bgEdit"
             android:fontFamily="@font/opensans_regular"
@@ -53,15 +54,16 @@
             android:paddingStart="@dimen/_16sdp"
             android:paddingEnd="@dimen/_16sdp"
             android:singleLine="true"
-            android:layout_margin="@dimen/_10sdp"
             android:textColor="@color/textColor"
             android:textColorHint="@color/addProductHint"
             android:textCursorDrawable="@drawable/color_cursor"
             android:textSize="@dimen/_13sdp" />
+
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/customerEmail"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_45sdp"
+            android:layout_margin="@dimen/_10sdp"
             android:background="@drawable/button_bg"
             android:backgroundTint="@color/bgEdit"
             android:fontFamily="@font/opensans_regular"
@@ -71,50 +73,48 @@
             android:paddingStart="@dimen/_16sdp"
             android:paddingEnd="@dimen/_16sdp"
             android:singleLine="true"
-            android:layout_margin="@dimen/_10sdp"
             android:textColor="@color/textColor"
             android:textColorHint="@color/addProductHint"
             android:textCursorDrawable="@drawable/color_cursor"
             android:textSize="@dimen/_13sdp" />
 
 
-
         <!--        <Spinner-->
-<!--            android:id="@+id/nameSpinner"-->
-<!--            android:layout_height="50dp"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_marginEnd="10dp"-->
-<!--            android:layout_marginStart="10dp"-->
-<!--            android:layout_marginBottom="10dp"-->
-<!--            android:layout_marginTop="10dp" />-->
+        <!--            android:id="@+id/nameSpinner"-->
+        <!--            android:layout_height="50dp"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_marginEnd="10dp"-->
+        <!--            android:layout_marginStart="10dp"-->
+        <!--            android:layout_marginBottom="10dp"-->
+        <!--            android:layout_marginTop="10dp" />-->
 
-<!--        <androidx.appcompat.widget.AppCompatAutoCompleteTextView-->
-<!--            android:id="@+id/etFirstName"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="@dimen/_45sdp"-->
-<!--            android:layout_below="@+id/etBookedBy"-->
-<!--            android:background="@drawable/button_bg"-->
-<!--            android:backgroundTint="@color/bgEdit"-->
-<!--            android:digits="qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM"-->
-<!--            android:fontFamily="@font/opensans_regular"-->
-<!--            android:gravity="center_vertical"-->
-<!--            android:hint="Customer Name"-->
-<!--            android:inputType="text"-->
-<!--            android:paddingStart="@dimen/_16sdp"-->
-<!--            android:paddingEnd="@dimen/_16sdp"-->
-<!--            android:singleLine="true"-->
-<!--            android:layout_margin="@dimen/_10sdp"-->
-<!--            android:textColor="@color/textColor"-->
-<!--            android:textColorHint="@color/addProductHint"-->
-<!--            android:textCursorDrawable="@drawable/color_cursor"-->
-<!--            android:textSize="@dimen/_13sdp" />-->
+        <!--        <androidx.appcompat.widget.AppCompatAutoCompleteTextView-->
+        <!--            android:id="@+id/etFirstName"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="@dimen/_45sdp"-->
+        <!--            android:layout_below="@+id/etBookedBy"-->
+        <!--            android:background="@drawable/button_bg"-->
+        <!--            android:backgroundTint="@color/bgEdit"-->
+        <!--            android:digits="qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM"-->
+        <!--            android:fontFamily="@font/opensans_regular"-->
+        <!--            android:gravity="center_vertical"-->
+        <!--            android:hint="Customer Name"-->
+        <!--            android:inputType="text"-->
+        <!--            android:paddingStart="@dimen/_16sdp"-->
+        <!--            android:paddingEnd="@dimen/_16sdp"-->
+        <!--            android:singleLine="true"-->
+        <!--            android:layout_margin="@dimen/_10sdp"-->
+        <!--            android:textColor="@color/textColor"-->
+        <!--            android:textColorHint="@color/addProductHint"-->
+        <!--            android:textCursorDrawable="@drawable/color_cursor"-->
+        <!--            android:textSize="@dimen/_13sdp" />-->
 
         <RelativeLayout
             android:id="@+id/llPrice"
-            android:layout_margin="@dimen/_10sdp"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_45sdp"
             android:layout_below="@id/llPriceNature"
+            android:layout_margin="@dimen/_10sdp"
             android:layout_marginTop="@dimen/_10sdp"
             android:background="@drawable/button_bg"
             android:backgroundTint="#D2D1D1"
@@ -172,6 +172,7 @@
             android:id="@+id/minimumBookingTv"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_45sdp"
+            android:layout_margin="@dimen/_10sdp"
             android:background="@drawable/button_bg"
             android:backgroundTint="@color/bgEdit"
             android:fontFamily="@font/opensans_regular"
@@ -181,7 +182,26 @@
             android:paddingStart="@dimen/_16sdp"
             android:paddingEnd="@dimen/_16sdp"
             android:singleLine="true"
+            android:textColor="@color/textColor"
+            android:textColorHint="@color/addProductHint"
+            android:textCursorDrawable="@drawable/color_cursor"
+            android:textSize="@dimen/_13sdp" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/etDeposit"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_45sdp"
+            android:layout_below="@+id/etBookedBy"
             android:layout_margin="@dimen/_10sdp"
+            android:background="@drawable/button_bg"
+            android:backgroundTint="@color/bgEdit"
+            android:fontFamily="@font/opensans_regular"
+            android:gravity="center_vertical"
+            android:hint="Deposit"
+            android:inputType="number"
+            android:paddingStart="@dimen/_16sdp"
+            android:paddingEnd="@dimen/_16sdp"
+            android:singleLine="true"
             android:textColor="@color/textColor"
             android:textColorHint="@color/addProductHint"
             android:textCursorDrawable="@drawable/color_cursor"
@@ -192,6 +212,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/_45sdp"
             android:layout_below="@+id/etBookedBy"
+            android:layout_margin="@dimen/_10sdp"
             android:background="@drawable/button_bg"
             android:backgroundTint="@color/bgEdit"
             android:fontFamily="@font/opensans_regular"
@@ -201,7 +222,6 @@
             android:paddingStart="@dimen/_16sdp"
             android:paddingEnd="@dimen/_16sdp"
             android:singleLine="true"
-            android:layout_margin="@dimen/_10sdp"
             android:textColor="@color/textColor"
             android:textColorHint="@color/addProductHint"
             android:textCursorDrawable="@drawable/color_cursor"
@@ -223,11 +243,6 @@
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="@dimen/_12sdp" />
-
-
-
-
-
 
 
     </LinearLayout>
