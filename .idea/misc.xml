@@ -198,17 +198,18 @@
         <entry key="app/src/main/res/layout/activity_invoice.xml" value="0.19739583333333333" />
         <entry key="app/src/main/res/layout/activity_invoice_listing.xml" value="0.13159722222222223" />
         <entry key="app/src/main/res/layout/activity_invoice_listing2.xml" value="0.33" />
-        <entry key="app/src/main/res/layout/activity_job_detail.xml" value="0.125" />
+        <entry key="app/src/main/res/layout/activity_job_detail.xml" value="0.2" />
         <entry key="app/src/main/res/layout/activity_jobs_listing.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_mark_invoice_paid.xml" value="0.1527777777777778" />
         <entry key="app/src/main/res/layout/activity_remove_worker.xml" value="0.12222222222222222" />
         <entry key="app/src/main/res/layout/activity_signup.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.17314814814814813" />
-        <entry key="app/src/main/res/layout/activity_start_job.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/activity_start_job.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_terms_services.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_worker_listing.xml" value="0.12222222222222222" />
         <entry key="app/src/main/res/layout/add_address_dialog.xml" value="0.1295138888888889" />
+        <entry key="app/src/main/res/layout/add_liability_dialog.xml" value="0.31979166666666664" />
         <entry key="app/src/main/res/layout/add_van_sheet.xml" value="0.1295138888888889" />
         <entry key="app/src/main/res/layout/add_van_view.xml" value="0.1295138888888889" />
         <entry key="app/src/main/res/layout/add_worker_dialog.xml" value="0.19739583333333333" />
@@ -230,7 +231,7 @@
         <entry key="app/src/main/res/layout/image_view.xml" value="0.1295138888888889" />
         <entry key="app/src/main/res/layout/invoice_item.xml" value="0.165" />
         <entry key="app/src/main/res/layout/job_history.xml" value="0.165" />
-        <entry key="app/src/main/res/layout/job_item.xml" value="0.125" />
+        <entry key="app/src/main/res/layout/job_item.xml" value="0.25" />
         <entry key="app/src/main/res/layout/list_worker.xml" value="0.19739583333333333" />
         <entry key="app/src/main/res/layout/loader_view.xml" value="0.1787037037037037" />
         <entry key="app/src/main/res/layout/new_invoice_item.xml" value="0.33" />
@@ -238,6 +239,7 @@
         <entry key="app/src/main/res/layout/send_confirmation_dialog.xml" value="0.1295138888888889" />
         <entry key="app/src/main/res/layout/success_dialog.xml" value="0.13159722222222223" />
         <entry key="app/src/main/res/layout/top_bar.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/waring_dialog.xml" value="0.32083333333333336" />
         <entry key="app/src/main/res/layout/worker_item.xml" value="0.165" />
         <entry key="app/src/main/res/menu/fab_menu.xml" value="0.14814814814814814" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.21025641025641026" />

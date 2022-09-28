@@ -1,41 +1,75 @@
 package com.kodextech.project.kodexlib.ui.main.jobs
 
+import WariningImageAdapter
+import android.Manifest
+import android.app.Dialog
 import android.app.DownloadManager
 import android.content.Context
+import android.content.ContextWrapper
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.net.Uri
+import android.os.AsyncTask
 import android.os.Environment
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
+import android.view.Gravity
 import android.view.View
+import android.view.WindowManager
+import android.widget.CheckBox
 import android.widget.Toast
+import androidx.appcompat.widget.AppCompatButton
+import androidx.appcompat.widget.AppCompatImageView
+import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.app.ActivityCompat
 import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.gson.Gson
+import com.karumi.dexter.Dexter
+import com.karumi.dexter.MultiplePermissionsReport
+import com.karumi.dexter.PermissionToken
+import com.karumi.dexter.listener.PermissionRequest
+import com.karumi.dexter.listener.multi.MultiplePermissionsListener
 import com.kodextech.project.kodexlib.R
 import com.kodextech.project.kodexlib.base.BaseActivity
 import com.kodextech.project.kodexlib.databinding.ActivityJobsListingBinding
 import com.kodextech.project.kodexlib.dialog.AppAlertOption
 import com.kodextech.project.kodexlib.dialog.LogoutDialog
 import com.kodextech.project.kodexlib.model.JobModel
+import com.kodextech.project.kodexlib.model.MediaModel
 import com.kodextech.project.kodexlib.network.LocalPreference
 import com.kodextech.project.kodexlib.network.NetworkClass
 import com.kodextech.project.kodexlib.network.Response
 import com.kodextech.project.kodexlib.network.URLApi
 import com.kodextech.project.kodexlib.ui.main.auth.LoginActivity
+import com.kodextech.project.kodexlib.ui.main.booking.AddBooking
 import com.kodextech.project.kodexlib.ui.main.dashboard.Dashboard
 import com.kodextech.project.kodexlib.ui.main.jobs.adapter.JobListingAdapter
 import com.kodextech.project.kodexlib.ui.main.jobs.adapter.JobListingAdapter.Companion.mDataSelected
+import com.kodextech.project.kodexlib.ui.main.jobs.adapter.selectDialog
+import com.kodextech.project.kodexlib.ui.main.termsAndServices.BitmapHelper
 import com.kodextech.project.kodexlib.utils.generateList
 import com.kodextech.project.kodexlib.utils.gone
 import com.kodextech.project.kodexlib.utils.text
 import com.kodextech.project.kodexlib.utils.visible
+import com.williamww.silkysignature.views.SignaturePad
+import droidninja.filepicker.FilePickerBuilder
+import droidninja.filepicker.FilePickerConst
+import org.json.JSONArray
 import org.json.JSONObject
+import java.io.File
+import java.io.FileOutputStream
+import java.io.IOException
+import java.io.OutputStream
 import java.text.SimpleDateFormat
 import java.util.*
 
-class JobsListing : BaseActivity() {
+class JobsListing : BaseActivity(), selectDialog {
 
     private var binding: ActivityJobsListingBinding? = null
     private var mData = ArrayList<JobModel>()
@@ -47,6 +81,15 @@ class JobsListing : BaseActivity() {
     private var searchText: String? = ""
     private var screenSate: JOBSSTATE? = JOBSSTATE.INPROGRESS
     private var isFor: String? = ""
+
+    private var mImageAdapter: WariningImageAdapter? = null
+    private val IMAGE_REQUEST_CODE = 2212
+    private var mMediaData = ArrayList<MediaModel>()
+    private var uploaded_files: String? = null
+    var profile_image_selected: ArrayList<Uri>? = null
+    private var json: JSONArray? = null
+    private var media: String? = null
+    private var jobId: String? = null
 
     override fun onSetupViewGroup() {
         mViewGroup = binding?.contentJobs
@@ -333,6 +376,7 @@ class JobsListing : BaseActivity() {
         mAdapter = JobListingAdapter(
             this,
             mData,
+            this
         ) { item, position, invoiceGenerated, isFor ->
             if (isFor == "1") {
                 if (invoiceGenerated) {
@@ -399,7 +443,6 @@ class JobsListing : BaseActivity() {
             binding?.rvJobs?.visible()
         }
     }
-
 
     private fun initTopBar() {
 
@@ -521,7 +564,6 @@ class JobsListing : BaseActivity() {
 
     }
 
-
     private fun changeViewColor() {
         when (viewStates) {
             "today" -> {
@@ -584,6 +626,274 @@ class JobsListing : BaseActivity() {
             }
         })
     }
+
+    override fun openDialog(jobId:String) {
+        liabilityDialog(jobId)
+    }
+
+
+    /** Liability Dialog **/
+    fun liabilityDialog(jobId: String) {
+
+        val dialog = Dialog(this)
+        dialog.setContentView(R.layout.add_liability_dialog)
+        val crossImg = dialog.findViewById<AppCompatImageView>(R.id.ivCross)
+        val ivCancel = dialog.findViewById<AppCompatImageView>(R.id.ivCancel)
+        val checkBox = dialog.findViewById<CheckBox>(R.id.checkBox)
+        val note4 = dialog.findViewById<AppCompatTextView>(R.id.note4)
+        val rvImage = dialog.findViewById<RecyclerView>(R.id.rvImage)
+        val doneBtn = dialog.findViewById<AppCompatButton>(R.id.doneBtn)
+        val mSignaturePad = dialog.findViewById<SignaturePad>(R.id.signature_pad_liability)
+
+
+        crossImg.setOnClickListener { dialog.dismiss() }
+        checkBox?.setOnClickListener {
+
+            if (checkBox?.isChecked == true) {
+                note4?.visibility = View.VISIBLE
+            } else {
+                note4?.visibility = View.GONE
+            }
+        }
+
+        doneBtn.setOnClickListener {
+        }
+
+
+
+        mSignaturePad.setOnSignedListener(object : SignaturePad.OnSignedListener {
+            override fun onStartSigning() {
+
+            }
+
+            override fun onSigned() {
+                doneBtn.setOnClickListener {
+                    addSignature(mSignaturePad,jobId)
+                }
+                ivCancel.setOnClickListener { mSignaturePad.clear() }
+            }
+
+            override fun onClear() {
+
+            }
+        })
+
+
+
+        mImageAdapter =
+            WariningImageAdapter(this, AddBooking.mData) { position, forDelete ->
+                if (forDelete) {
+                    if (position == null) {
+                        showBarToast("System Having Some Issue")
+                    } else {
+                         deleteImage(position)
+                    }
+                } else {
+                    FilePickerBuilder.instance
+                        .setMaxCount(5)
+                        .setActivityTheme(R.style.LibAppTheme) //optional
+                        .pickPhoto(this, IMAGE_REQUEST_CODE)
+
+
+                }
+                mImageAdapter?.notifyDataSetChanged()
+            }
+
+        rvImage.layoutManager =
+            GridLayoutManager(this, 3)
+        rvImage.adapter = mImageAdapter
+        mImageAdapter?.notifyDataSetChanged()
+
+
+        dialog.setCancelable(false)
+        dialog.show()
+        dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.window!!.setLayout(
+            WindowManager.LayoutParams.MATCH_PARENT,
+            WindowManager.LayoutParams.WRAP_CONTENT
+        )
+        dialog.window!!.setGravity(Gravity.CENTER)
+
+    }
+
+    private fun deleteImage(position: Int) {
+        showLoading()
+        NetworkClass.callApi(URLApi.deleteDocument(mMediaData, "booking"),
+            object : Response {
+                override fun onSuccessResponse(response: String?, message: String) {
+                    hideLoading()
+                    mMediaData.removeAt(position - 1)
+                    AddBooking.mData.removeAt(position - 1)
+                    addDocumentCall()
+                    mImageAdapter?.notifyDataSetChanged()
+                }
+
+                override fun onErrorResponse(error: String?, response: String?) {
+                    hideLoading()
+                    showBarToast(error ?: "")
+                }
+
+            })
+
+    }
+
+    private fun addDocumentCall() {
+        showLoading()
+        NetworkClass.callFileUpload(URLApi.addDocument(nature = "booking"),
+            AddBooking.mData, "uploadedFiles[]", object : Response {
+                override fun onSuccessResponse(response: String?, message: String) {
+                    hideLoading()
+                    val json = JSONArray(response ?: "")
+                    val data = generateList(json.toString(), Array<MediaModel>::class.java)
+                    mMediaData.addAll(data)
+                    uploaded_files = Gson().toJson(mMediaData)//mMediaData.toString()
+                    Log.d("uploaded_files", uploaded_files?.toString() ?: " ")
+                    AddBooking.scrollImageList.clear()
+                    AddBooking.scrollImageList.addAll(mMediaData)
+                    showBarToast(message)
+                }
+
+                override fun onErrorResponse(error: String?, response: String?) {
+                    hideLoading()
+                    showBarToast(error ?: "")
+                    AddBooking.mData.clear()
+                    mImageAdapter?.notifyDataSetChanged()
+                }
+
+            })
+
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == IMAGE_REQUEST_CODE && data != null) {
+            val array = ArrayList<Uri>()
+            data.getParcelableArrayListExtra<Uri>(FilePickerConst.KEY_SELECTED_MEDIA)?.let {
+                array.addAll(
+                    it
+                )
+            }
+            AsyncTask.THREAD_POOL_EXECUTOR.execute {
+                array.forEachIndexed { index, uri ->
+                    val file =
+                        com.kodextech.project.kodexlib.dialog.FileUtilityClass.getFileFromUri(
+                            this,
+                            uri
+                        )
+                    AddBooking.mData.add(file!!)
+                }
+
+                this.runOnUiThread {
+                    addDocumentCall()
+                    mImageAdapter?.notifyDataSetChanged()
+
+                }
+
+            }
+            profile_image_selected?.addAll(array)
+            Log.d("ProfileTAG", array.toString())
+        }
+    }
+
+    private fun addSignature(mSignaturePad: SignaturePad, jobId: String) {
+        Dexter.withContext(this)
+            .withPermissions(
+
+                Manifest.permission.READ_EXTERNAL_STORAGE,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE
+            )
+            .withListener(object : MultiplePermissionsListener {
+                override fun onPermissionsChecked(report: MultiplePermissionsReport?) {
+                    report?.let {
+                        if (report.areAllPermissionsGranted()) {
+//                            val bitmap = mSignaturePad.transparentSignatureBitmap
+                            val bitmap = mSignaturePad.signatureBitmap
+                            var file = bitmapToFile(bitmap, "IMAGE_${UUID.randomUUID()}.png")
+                            addSignatureCall(file,jobId)
+                            BitmapHelper.instance.bitmap = bitmap
+
+                        }
+                    }
+                }
+
+                override fun onPermissionRationaleShouldBeShown(
+                    permissions: MutableList<PermissionRequest>?,
+                    token: PermissionToken?
+                ) {
+
+                    token?.continuePermissionRequest()
+                }
+            })
+            .withErrorListener {
+                showToast(it.name)
+            }
+            .check()
+    }
+
+    private fun addSignatureCall(file: File?, jobId: String) {
+        showLoading()
+        NetworkClass.callFileUploadSingle(URLApi.addDocument(nature = "job"),
+            file, "uploadedFiles[]", object : Response {
+                override fun onSuccessResponse(response: String?, message: String) {
+                    json = JSONArray(response ?: "")
+                    media = json.toString()
+                    startJobCall(media,jobId)
+                }
+
+                override fun onErrorResponse(error: String?, response: String?) {
+                    hideLoading()
+                    showBarToast(error ?: "")
+
+                }
+            })
+    }
+    private fun startJobCall(media: String?, jobId: String) {
+        showLoading()
+        NetworkClass.callApi(
+            URLApi.startJob(
+                job_uuid = jobId,
+                signature_media = media,
+                boolean =true,
+                uploadfile = uploaded_files
+            ),
+            object : Response {
+                override fun onSuccessResponse(response: String?, message: String) {
+                    hideLoading()
+//                    warningDialog()
+
+//                    val intent = Intent(this, JobsListing::class.java)
+//                    startActivity(intent)
+                    finish()
+                    showBarToast("Job Started Successfully")
+                }
+
+                override fun onErrorResponse(error: String?, response: String?) {
+                    hideLoading()
+                    showBarToast(error ?: "")
+                }
+            })
+    }
+    private fun bitmapToFile(bitmap: Bitmap?, fileNameToSave: String): File {
+        val wrapper = ContextWrapper(applicationContext)
+
+        // Initialize a new file instance to save bitmap object
+        var file = wrapper.getDir("Images", Context.MODE_PRIVATE)
+        file = File(file, fileNameToSave)
+
+        try {
+            // Compress the bitmap and save in jpg format
+            val stream: OutputStream = FileOutputStream(file)
+            bitmap?.compress(Bitmap.CompressFormat.JPEG, 100, stream)
+            stream.flush()
+            stream.close()
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }
+
+        // Return the saved bitmap uri
+        return file
+    }
+
 }
 
 

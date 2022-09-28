@@ -1,10 +1,21 @@
 package com.kodextech.project.kodexlib.ui.main.jobs
 
+import WariningImageAdapter
+import android.app.Dialog
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.util.Log
+import android.view.Gravity
 import android.view.View
+import android.view.WindowManager
+import android.widget.CheckBox
+import android.widget.ImageView
 import android.widget.Toast
+import androidx.appcompat.widget.AppCompatImageView
+import androidx.appcompat.widget.AppCompatTextView
 import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
@@ -36,6 +47,9 @@ class JobDetail : BaseActivity() {
     var isfor: String? = ""
     var list: ArrayList<User> = ArrayList()
     private var mAdapter: PorterDetailAdapter? = null
+
+    private var mImageAdapter: WariningImageAdapter? = null
+
 
     override fun onSetupViewGroup() {
         mViewGroup = binding?.contentDetail
@@ -80,14 +94,16 @@ class JobDetail : BaseActivity() {
             val intent = Intent(this, DriverDashboardActivity::class.java)
             startActivity(intent)
             finish()
-
         }
     }
 
+
+
+
     private fun setData() {
 
-
     }
+
     private fun  setPorterAdapter(){
 
         mAdapter = PorterDetailAdapter(this,list)
