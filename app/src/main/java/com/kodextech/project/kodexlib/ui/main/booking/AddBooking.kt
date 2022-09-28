@@ -1205,7 +1205,9 @@ class AddBooking : BaseActivity(), AddVanAdapter.RemoveAddress {
 
                 has_lift = has_lift,
                 uploaded_files = uploaded_files,
-                men_count = mens,
+                men_count =(( noOfMens!!.toInt()) - (jumboVanCount!! +
+                        wmbVanCount!! +
+                        lutonVanCount!! )).toString(),
                 min_hours_count = minimum_booking,
                 vans_data = jsonVan,
                 packing_fee = packingFee,

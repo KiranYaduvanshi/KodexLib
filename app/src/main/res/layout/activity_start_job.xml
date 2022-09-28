@@ -436,6 +436,7 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/note3"
                         android:checked="false"
+                        android:visibility="gone"
                         android:text="Are there any damageable items"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
