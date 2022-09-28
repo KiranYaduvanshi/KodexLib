@@ -22,22 +22,22 @@ import com.kodextech.project.kodexlib.ui.main.dashboard.adapter.Placeholders
 import com.kodextech.project.kodexlib.ui.main.dashboard.adapter.loadImage
 import com.kodextech.project.kodexlib.ui.main.jobs.JobDetail
 import com.kodextech.project.kodexlib.ui.main.termsAndServices.TermsServices
-import com.kodextech.project.kodexlib.utils.gone
-import com.kodextech.project.kodexlib.utils.visible
-import com.kodextech.project.kodexlib.utils.zDateConvertor
+import com.kodextech.project.kodexlib.utils.*
 
 class JobListingAdapter(
     var mContext: BaseActivity,
     var mData: ArrayList<JobModel>,
-    var callBack: ((item: JobModel, position: Int, invoiceGenerated: Boolean, isFor: String) -> Unit)
-) : RecyclerView.Adapter<JobListingVH>(), SelectWorkerDialog.SelectDialogInterface{
+    var  selectDialog: selectDialog,
+
+    var callBack: ((item: JobModel, position: Int, invoiceGenerated: Boolean, isFor: String) -> Unit)) : RecyclerView.Adapter<JobListingVH>(), SelectWorkerDialog.SelectDialogInterface {
     companion object {
         var mDataSelected: ArrayList<JobModel> = ArrayList()
         var isButtonState: Boolean = false
     }
+
     val dialog = SelectWorkerDialog.newInstance(this)
 
-    fun dialogLabour(position : Int ){
+    fun dialogLabour(position: Int) {
         val dialog = SelectPorterDialog.newInstance()
         val bundle = Bundle()
         bundle.putString("jobId", mData[position].uuid)
@@ -58,13 +58,18 @@ class JobListingAdapter(
     override fun onBindViewHolder(holder: JobListingVH, position: Int) {
         val mItem = mData[position]
         checkState(mItem, position, holder)
+        holder.binding?.checkBox?.setOnClickListener {
+            selectDialog.openDialog(mItem.uuid.toString());
 
-         if(LocalPreference.shared.user?.user?.profile?.worker_type?.lowercase() == "porter"){
-             holder.binding?.tvDriverTitle?.text="Porter Name"
-         }else{
-             holder.binding?.tvDriverTitle?.text="Driver Name"
+        }
 
-         }
+        if (LocalPreference.shared.user?.user?.profile?.worker_type?.lowercase() == "porter") {
+            holder.binding?.tvDriverTitle?.text = "Porter Name"
+            holder.binding?.btnAssign?.visibility = View.GONE
+        } else {
+            holder.binding?.tvDriverTitle?.text = "Driver Name"
+
+        }
         if (mItem.has_requested_insurance == "1" || mItem.priority == "high") {
             holder.binding?.cvJob?.setCardBackgroundColor(mContext.getColor(R.color.red))
             holder.binding?.tvCustomerName?.setTextColor(mContext.getColor(R.color.white))
@@ -83,7 +88,7 @@ class JobListingAdapter(
             holder.binding?.tvTitleTitle?.setTextColor(mContext.getColor(R.color.white))
             holder.binding?.tvBookingNo?.setTextColor(mContext.getColor(R.color.white))
 
-        }else{
+        } else {
             holder.binding?.tvType?.setTextColor(mContext.getColor(R.color.textColor))
             holder.binding?.tvBookingNo?.setTextColor(mContext.getColor(R.color.textColor))
         }
@@ -252,7 +257,6 @@ class JobListingAdapter(
         }
     }
 
-
     private fun checkJobStatus(mItem: JobModel, holder: JobListingVH) {
         if (mItem.job_status?.lowercase() == "completed".lowercase()) {
             holder.binding?.tvStatus?.visible()
@@ -288,6 +292,10 @@ class JobListingAdapter(
             holder.binding?.tvDriverName?.text = mItem.worker?.full_name
             holder.binding?.tvCancel?.gone()
         } else if (mItem.job_status?.lowercase() == "active".lowercase()) {
+            if (LocalPreference?.shared?.user?.user?.profile?.worker_type?.lowercase() == "Driver".lowercase()
+            ) {
+                holder.binding?.checkBox?.visibility = View.VISIBLE
+            }
             holder.binding?.tvStatus?.visible()
             holder.binding?.tvStatus?.text = "Inprogress"
             holder.binding?.tvStatus?.setTextColor(mContext.getColor(R.color.blue))
@@ -303,12 +311,10 @@ class JobListingAdapter(
                 holder.binding?.btnGenerateInvoice?.gone()
                 holder.binding?.tvCopy?.gone()
                 holder.binding?.tvStatus?.gone()
-
                 holder.binding?.btnAssign?.text = "Assign Job"
             }
         }
     }
-
 
     fun calculateHours(mItem: JobModel, holder: JobListingVH) {
         //For Calculate hours ..
@@ -320,27 +326,29 @@ class JobListingAdapter(
 
     }
 
-
     fun filterJobList(filteredList: ArrayList<JobModel>) {
         mData = filteredList
         notifyDataSetChanged()
     }
-
-
+    
     override fun getItemCount() = mData.size
     override fun openPorterDialog(id: String?, menCount: String, driverInfo: User) {
         dialog.dismiss()
         val dialogPorter = SelectPorterDialog.newInstance()
-                    val bundle = Bundle()
-                    bundle.putString("jobId", id)
-                    bundle.putString("menCount", menCount)
-                    bundle.putSerializable("driverInfo", driverInfo)
+        val bundle = Bundle()
+        bundle.putString("jobId", id)
+        bundle.putString("menCount", menCount)
+        bundle.putSerializable("driverInfo", driverInfo)
         dialogPorter.arguments = bundle
 
         dialogPorter.show(mContext.supportFragmentManager, "")
     }
 
 
+}
+
+interface  selectDialog{
+    fun  openDialog(jobId: String);
 }
 
 

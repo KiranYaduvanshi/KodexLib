@@ -155,8 +155,6 @@ class StartJobActivity : BaseActivity(), selectAddress {
 
 
     }
-
-
     private fun addSignatureCall(file: File?) {
         showLoading()
         NetworkClass.callFileUploadSingle(URLApi.addDocument(nature = "job"),
@@ -202,7 +200,6 @@ class StartJobActivity : BaseActivity(), selectAddress {
                 }
             })
     }
-
     private fun bitmapToFile(bitmap: Bitmap?, fileNameToSave: String): File {
         val wrapper = ContextWrapper(applicationContext)
 

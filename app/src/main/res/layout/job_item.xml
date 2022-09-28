@@ -90,11 +90,15 @@
                                 android:textSize="@dimen/_13sdp" />
 
 
+
+
                             <RelativeLayout
                                 android:id="@+id/rlCancel"
                                 android:layout_width="@dimen/_85sdp"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentEnd="true">
+
+
 
                                 <androidx.appcompat.widget.AppCompatTextView
                                     android:id="@+id/tvCancel"
@@ -133,7 +137,6 @@
                                     android:textSize="@dimen/_10sdp"
                                     android:visibility="gone" />
 
-
                             </RelativeLayout>
                         </RelativeLayout>
 
@@ -167,11 +170,9 @@
                                 android:textColor="@color/locationCol"
                                 android:textSize="@dimen/_12sdp" />
 
-
                         </androidx.appcompat.widget.LinearLayoutCompat>
 
                     </RelativeLayout>
-
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -423,17 +424,27 @@
 
                 </RelativeLayout>
 
+                <CheckBox
+                    android:id="@+id/checkBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/rlInfo"
+                    android:checked="false"
+                    android:visibility="visible"
+                    android:text="Are there any damageable items"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btnAssign"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_30sdp"
-                    android:layout_below="@id/rlInfo"
+                    android:layout_below="@id/checkBox"
                     android:layout_marginStart="@dimen/_70sdp"
                     android:layout_marginTop="@dimen/_10sdp"
                     android:layout_marginEnd="@dimen/_70sdp"
                     android:background="@drawable/bg_btn"
-
                     android:fontFamily="@font/opensans_regular"
                     android:gravity="center"
                     android:text="Assign"
